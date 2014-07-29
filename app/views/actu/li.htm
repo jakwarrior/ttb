@@ -1,0 +1,4 @@
+<li>
+	{{ @item['content'] | raw }}
+	<span class="date">{{ date('j/m/y à G\hi', strtotime(@item['date_posted']) ) }}</span>
+</li>

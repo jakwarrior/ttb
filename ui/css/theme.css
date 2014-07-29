@@ -1,0 +1,256 @@
+body{font-family:Ubuntu,sans-serif;font-size:1.1em;color:#262626;background:#F1F1F1;padding-bottom:15px}
+
+html {
+    font-size: 20px;
+}
+
+@media(max-width: 800px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media(max-width: 400px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+.container {
+	padding: 0;
+	margin-right: auto;
+	margin-left: auto;
+	width: 940px;
+}
+ .header {
+	margin-bottom:15px;
+}
+.header li {
+	width: 310px;
+	float:left;
+	font-weight:bold;
+
+	transition: opacity 1s ease;
+
+	
+}
+.header li a {
+	transition: font-size .05s linear;	
+}
+
+
+.header li:hover {
+	opacity:0.8;
+	background-size:100px !important;
+	padding-left:110px !important;	
+}
+.header li.hfrtv:hover {
+	padding-left:0px !important;	
+	padding-right:110px !important;		
+}
+.header li:hover a {
+	font-size:24px;
+}
+
+.header ul li {
+	margin-left:5px;
+}
+.header ul li:first-child {
+	margin-left:0 !important;
+}
+.homebox {
+	border: 1px solid #000;
+	background:#F1F1F1;
+	margin-bottom:25px;
+}
+
+.homebox h2, .homebox h2 a, .header li, .header li a {
+	height:50px;
+	line-height: 50px;
+	font-size: 20px;
+	
+	margin:0;
+	padding:0;
+}
+
+.allinks {
+	float:right;
+	font-size: 14px;
+	padding:10px;
+	font-style:italic;	
+}
+
+
+#gibbactu, .header li.gibbactu  {
+	border: 1px solid rgb(3, 37, 74);
+	background-color: rgba(3, 37, 74, .1);
+}
+#gibbactu h2, .header li.gibbactu {
+	background:  rgb(3, 37, 74)  url(/ui/images/gibbactu.jpg) no-repeat center left;
+	background-size:contain;
+	padding-left:65px;
+}
+#gibbactu h2 a, .header li.gibbactu a {
+	color: #ccff33;
+	text-decoration:none;
+	display: block;
+}
+#gibbactu li {
+	border-left: 5px solid rgb(3, 37, 74);
+	padding:5px 15px;
+	margin-bottom: 15px;
+	text-align:justify;
+}
+#gibbactu li a, #gibbactu .allinks {
+	color:rgb(3, 37, 74);
+}
+
+#hfrtv, .header li.hfrtv {
+	border: 1px solid rgb(100, 65, 165);
+	background-color: rgba(100, 65, 165, .1);
+}
+#hfrtv h2, .header li.hfrtv {
+	background: url(/ui/images/hfrtv.png) rgb(100, 65, 165) no-repeat center right;
+	background-size:contain;	
+	padding-right:60px;
+	text-align:right;	
+}
+#hfrtv h2 a, .header li.hfrtv a {
+	color: #fff;
+	text-decoration:none;
+	display: block;
+}
+#hfrtv .allinks {
+	color:rgb(100, 65, 165);
+}
+
+#crotypedia, .header li.crotypedia {
+	border: 1px solid #aaa;
+	background-color: rgb(249, 249, 249);
+}
+#crotypedia h2, .header li.crotypedia {
+	background: url(/ui/images/crotypedia.png) #fff no-repeat center left;
+	background-size:contain;
+	
+	padding-left:65px;
+}
+#crotypedia h2 a, .header li.crotypedia a {
+	color: #000;
+	text-decoration:none;
+	display: block;
+}
+#crotypedia li {
+	line-height: 35px;
+}
+#crotypedia li a {
+	color:#0645ad;
+	text-decoration: none;
+}
+
+#crotypedia .allinks {
+	color:#262626;
+}
+
+span.date {
+	font-size:15px;
+	display:block;
+	font-style:italic;	
+	text-align:right;
+}
+
+ul {
+	margin:0;
+	padding:10px 15px;
+	list-style-type: none;
+}
+
+.header ul {margin:0; padding:0}
+
+#hfrtv ul {
+	padding:0;
+	background:black;
+	z-index:1;	
+	position: relative;
+  
+}
+
+#hfrtv ul li {
+	display: block;
+	position: relative;
+	float:left;
+	width:50%;
+
+}
+#hfrtv ul li::before{
+	content: "";
+	display: block;
+	padding-top: 50%; 	/* initial ratio of 1:1*/
+	z-index:-21;
+	position: relative;
+		
+	
+}
+#hfrtv ul li a {
+	position:  absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;  
+	font-size:.7em;
+	color:white;
+	text-decoration: none;
+	
+	background-color:rgba(100, 65, 165, 0.8);
+	height:2em;
+	line-height:2em;
+	padding-left:0.4em;
+}
+
+#hfrtv ul li::before {
+	content: "";
+	background-color:black;
+}
+#hfrtv ul li::after {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;	
+	background-position:center center;
+	top: 0;
+	left: 0;
+	content: "";
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;	
+	transition: opacity .2s ease;	
+	
+}
+#hfrtv ul li:hover::after {
+	opacity:.8;
+	
+}
+
+#crotypedia.catbox .innercontent {
+	padding:15px;
+	text-align:justify;
+	
+}
+
+#crotypedia.catbox .innercontent p {
+	margin:0;
+	padding:0;
+
+}
+
+
+#crotypedia.catbox p a {
+
+	color:#0645ad !important;
+	text-decoration: none;
+	display:inline;
+}
+
+#crotypedia.catbox img {
+	width:100%;
+	margin:0 !important;
+	
+}
