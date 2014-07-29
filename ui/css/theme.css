@@ -254,3 +254,9 @@ ul {
 	margin:0 !important;
 	
 }
+
+.version {
+	color:grey;
+	font-size:10px;
+	text-decoration: none;
+}
