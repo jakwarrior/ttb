@@ -15,6 +15,9 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:
   }
 }
 
+a {
+  text-decoration: none;
+}
 .container {
 	padding: 15px 0;
 }
@@ -58,7 +61,6 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:
 
 .header h1 a {
   color:#262626;
-  text-decoration: none;
   font-weight: 700;
   font-size:1.2em;
 }
@@ -119,6 +121,8 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:
 	font-size: 14px;
 	padding:10px;
 	font-style:italic;
+
+  font-weight: bolder;
 }
 
 
@@ -144,6 +148,7 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:
 }
 #gibbactu li a, #gibbactu .allinks {
 	color:rgb(3, 37, 74);
+
 }
 
 #hfrtv, .header li.hfrtv {
@@ -161,6 +166,12 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:
 	text-decoration:none;
 	display: block;
 }
+
+#gibbactu li a:hover {
+  color:#ccff33;
+  background-color:rgba(3, 37, 74, 1);
+}
+
 #hfrtv .allinks {
 	color:rgb(100, 65, 165);
 }
@@ -186,6 +197,7 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:
 #crotypedia li a {
 	color:#0645ad;
 	text-decoration: none;
+  font-weight: bold;
 }
 
 #crotypedia .allinks {
@@ -225,7 +237,7 @@ ul {
 #hfrtv ul li::before{
 	content: "";
 	display: block;
-	padding-top: 50%; 	/* initial ratio of 1:1*/
+	padding-top: 50%;
 	z-index:-21;
 	position: relative;
 
@@ -283,7 +295,7 @@ ul {
 
 #crotypedia.catbox p a {
 
-	color:#0645ad !important;
+	color:#0645ad;
 	text-decoration: none;
 	display:inline;
 }
@@ -294,6 +306,18 @@ ul {
 
 
 }
+
+#crotypedia.catbox li a:hover, #crotypedia.catbox p a:hover {
+
+  color:#000;
+  background-color:#fff;
+}
+
+#crotypedia.catbox ul {
+  list-style-type: disc;
+  padding: 0 30px;
+}
+
 
 .footer {
   font-family: 'Dosis', sans-serif;
