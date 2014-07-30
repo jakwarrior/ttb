@@ -8,12 +8,12 @@ class CRController extends Controller {
         $this->f3->set('list',$CRs->all());
         $this->f3->set('view','cr/list.htm');
 	}
-	
+
 	public function view()
 	{
         $CRs = new CR($this->db);
         $this->f3->set('cr',$CRs->load(array('id=?',$this->f3->get('PARAMS.id'))));
-        $this->f3->set('view','cr/view.htm');		
+        $this->f3->set('view','cr/view.htm');
 	}
 	/*
 

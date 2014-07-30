@@ -3,19 +3,19 @@
 	<ul>
 		<repeat group="{{ @page[subset] }}" value="{{ @item }}">
 			<include href="actu/li.htm" />
-		</repeat>		
+		</repeat>
 	</ul>
 
-	<check if="{{ @page[pos]+1 < @page[count] }}">	
-		<a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos]+2 }}" title="">plus anciennes &rsaquo;</a>	
+	<check if="{{ @page[pos]+1 < @page[count] }}">
+		<a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos]+2 }}" title="">plus anciennes &rsaquo;</a>
 	</check>
-		
+
 	<check if="{{ @page[pos] > 0 }}">
-		<a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos] }}" title="">&lsaquo; plus recentes</a>		
+		<a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos] }}" title="">&lsaquo; plus recentes</a>
 	</check>
-	
-	<check if="{{ @page[pos] > 1 }}">	
+
+	<check if="{{ @page[pos] > 1 }}">
 		<a class="allinks" href="{{@ALIASES.actus_list}}" title="Gibb'Actu">&lsaquo;&lsaquo; toutes les actus </a>
-	</check>	
-	
+	</check>
+
 </div><!-- #gibbactu -->
