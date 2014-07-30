@@ -2,7 +2,7 @@ html {
     font-size: 20px;
 }
 
-body{font-family:Ubuntu,sans-serif;font-size:1.1em;color:#262626;background:#F1F1F1;padding-bottom:15px}
+body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:#262626;background:#F1F1F1;padding-bottom:15px}
 
 @media(max-width: 800px) {
   html {
@@ -46,20 +46,20 @@ body{font-family:Ubuntu,sans-serif;font-size:1.1em;color:#262626;background:#F1F
 
 .header h1, .header h3, .footer h3 {
   margin:0;
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Arvo', Georgia, Times, serif;
 
 }
 .header h3 {
   margin:0.3em 0;
   font-size:0.7em;
   color:#262626;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .header h1 a {
   color:#262626;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 700;
   font-size:1.2em;
 }
 
