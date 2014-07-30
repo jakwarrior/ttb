@@ -1,8 +1,8 @@
-body{font-family:Ubuntu,sans-serif;font-size:1.1em;color:#262626;background:#F1F1F1;padding-bottom:15px}
-
 html {
     font-size: 20px;
 }
+
+body{font-family:Ubuntu,sans-serif;font-size:1.1em;color:#262626;background:#F1F1F1;padding-bottom:15px}
 
 @media(max-width: 800px) {
   html {
@@ -11,22 +11,64 @@ html {
 }
 @media(max-width: 400px) {
   html {
-    font-size: 10px;
+    font-size: 15px;
   }
 }
 
 .container {
-	padding: 0;
-	margin-right: auto;
-	margin-left: auto;
-	width: 940px;
+	padding: 15px 0;
 }
+.container .wrap {
+  width:940px;
+  margin:0 auto;
+}
+
+.container.header {
+  border:1px solid #262626;
+  border-width:0 0 10px 0;
+}
+.container.footer {
+  border:1px solid #262626;
+  border-width:10px 0 0 0;
+}
+
+.container .header {
+  float:left;
+  width:60%;
+
+}
+
+.container .menu {
+  float:right;
+  width:40%;
+
+}
+
+.header h1, .header h3, .footer h3 {
+  margin:0;
+  font-family: 'Dosis', sans-serif;
+
+}
+.header h3 {
+  margin:0.3em 0;
+  font-size:0.7em;
+  color:#262626;
+  font-weight: 200;
+}
+
+.header h1 a {
+  color:#262626;
+  text-decoration: none;
+  font-weight: 800;
+  font-size:1.2em;
+}
+
  .header {
-	margin-bottom:15px;
+
 }
 .header li {
 	width: 310px;
-	float:left;
+	float:right;
 	font-weight:bold;
 
 	transition: opacity 1s ease;
@@ -250,8 +292,30 @@ ul {
 	width:100%;
 	margin:0 !important;
 
+
 }
 
+.footer {
+  font-family: 'Dosis', sans-serif;
+
+}
+.sponsors {
+  text-align:center;
+}
+
+.sponsors img {
+  cursor:pointer;
+}
+
+.footer h3 {
+
+}
+
+.copyr {
+  font-size:.7em;
+  font-weight:800;
+  text-align:center;
+}
 .version {
 	color:grey;
 	font-size:10px;

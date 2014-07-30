@@ -7,33 +7,44 @@
 		<link rel="stylesheet" href="ui/css/base.css" type="text/css" />
 		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
 		<link rel="stylesheet" href="lib/code.css" type="text/css" />
+
+		<link href='http://fonts.googleapis.com/css?family=Dosis:200,400,600,800' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-		<div class="container">
-			<div class="header">
+		<div class="container header">
+			<div class="wrap">
+				<div class="header">
+					<h1><a href="/" title="{{ @site }}">{{ @site }}</a></h1>
+					<h3>&laquo; Seulement -80% ? J'attendrais que les soldes commencent vraiment. &raquo; &ndash; <i>Un Maitre Tartuffe</i></h3>
+				</div>
 
-				<h1><a href="/" title="{{ @site }}">{{ @site }}</a></h1>
-				<h3>&laquo; Seulement -80% ? J'attendrais les soldes. &raquo; <i>Un Maitre Tartuffier</i></h3>
-
-				<ul>
-					<li class="gibbactu"><a href="/gibbactu" title="Gibb'Actu">Gibb'Actu</a></li>
-					<li class="hfrtv"><a href="/hfrtv" title="HFRtv">HFRtv</a></li>
-					<li class="crotypedia"><a href="/crotypedia" title="">CROTYpedia</a></li>
+				<ul class="menu">
+						<li class="gibbactu"><a href="/gibbactu" title="Gibb'Actu">Gibb'Actu</a></li>
+						<li class="hfrtv"><a href="/hfrtv" title="HFRtv">HFRtv</a></li>
+						<li class="crotypedia"><a href="/crotypedia" title="">CROTYpedia</a></li>
 				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="container">
+			<div class="wrap">
+				<include href="{{ @view }}" />
 			</div>
 		</div>
 
-		<div class="container">
-			<include href="{{ @view }}" />
-		</div>
+		<div class="container footer">
+			<div class="wrap">
+				<div class="sponsors">
+					<img src="/ui/sponsor/nodlc.png" alt=""><img src="/ui/sponsor/hru.png" alt=""><img src="/ui/sponsor/bra.png" alt="">
+				</div>
 
-		<div class="container">
-			<div class="footer">
-				<h3>Sponsorisé par :</h3>
+				<div class="copyr">
+					<span class="copy">ⓣ2014 FLK.</span> <a href="https://github.com/FLKone/ttb/commits/master" class="version" target="_blank">version 0.0.3</a>
+				</div>
 
-				<h5>soon&copy;</h2>
-
-				<span class="copy">ⓣ tartufferight 2014 FLK. No Rights Reserved. </span> <a href="https://github.com/FLKone/ttb/commits/master" class="version" target="_blank">version 0.0.2</a>
+				</div>
 			</div>
 		</div>
 	</body>
