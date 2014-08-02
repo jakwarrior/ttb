@@ -1,0 +1,107 @@
+input {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size:1.1em;
+    color:#262626;
+    background:#fff;
+height: 40px;
+line-height: 40px;
+width: 100%;
+padding-left:15px;
+
+}
+
+h4, h5, .games input[type=button] {
+cursor: pointer;
+text-decoration: none;
+display: inline-block;
+border: 1px solid grey;
+padding: 5px 5px 5px 25px;
+background-color: lightgrey;
+width: 300px;
+font-size:15px;
+}
+
+h4 {
+  width:100%;
+  margin:10px 0;
+}
+
+h4:hover, .games input[type=button]:hover {
+  background-color:white;
+
+}
+
+h5 {
+  cursor:auto;
+  background-color:inherit;
+margin:10px 0;
+
+}
+
+.importcr h3 {
+  font-size:15px;
+  font-style:italic;
+  border-top:3px dashed grey;
+  padding:3px 0;
+  color: grey;
+}
+
+.games {
+  padding: 4px 0;
+}
+
+.games * {
+  vertical-align: bottom;
+}
+
+.games input[type=text] {
+font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+font-size:1.1em;
+color:#262626;
+background:#fff;
+height: 40px;
+line-height: 40px;
+width: 80%;
+padding-left:15px;
+
+
+
+}
+
+.games input[type=button] {
+  width:19%;
+  padding:5px;
+  text-align:center;
+  line-height: 28px;font-weight:bold;
+}
+
+.message {
+border: 1px solid green;
+padding: 10px;
+margin: 12px 0;
+background-color: greenyellow;
+}
+
+.messageko {
+border: 1px solid red;
+padding: 10px;
+margin: 12px 0;
+background-color: lightcoral;
+}
+
+.games2 {
+  height:50px;
+  background:white;
+  border:1px solid black;
+  margin-top:3px;
+  padding:5px;
+  position:relative;
+}
+
+.games2 img {
+  height:50px;
+  float:right;
+  position:absolute;
+  top:0;
+  right:0;
+}

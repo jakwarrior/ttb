@@ -301,14 +301,18 @@ ul {
 }
 
 #crotypedia.catbox img {
-	width:100%;
+	max-width:100%;
 	margin:0 !important;
-
-
 }
 
-#crotypedia.catbox li a:hover, #crotypedia.catbox p a:hover {
+#crotypedia.catbox img[onload] {
+  display:block;
+  margin:5px auto !important;
+}
 
+
+
+#crotypedia li a:hover, #crotypedia.catbox p a:hover {
   color:#000;
   background-color:#fff;
 }
@@ -344,4 +348,8 @@ ul {
 	color:grey;
 	font-size:10px;
 	text-decoration: none;
+}
+
+.signature, .edited {
+  display:none !important;
 }

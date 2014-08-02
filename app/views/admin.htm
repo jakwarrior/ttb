@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+	<head>
+		<meta charset="<?php echo $ENCODING; ?>" />
+		<title>{{ @site }}</title>
+		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
+		<link rel="stylesheet" href="ui/css/base.css" type="text/css" />
+		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="ui/css/admin.css" type="text/css" />
+		<link rel="stylesheet" href="ui/css/loading-bar.css" type="text/css" />
+		<link rel="stylesheet" href="lib/code.css" type="text/css" />
+
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+	</head>
+	<body class="admin">
+		<div class="container header">
+			<div class="wrap">
+				<div class="header">
+					<h1><a href="/" title="{{ @site }}">{{ @site }}</a></h1>
+					<h3>ADMIN > {{ @admin_cat }}</h3>
+				</div>
+
+				<ul class="menu">
+						<li class="gibbactu"><a href="/gibbactu" title="Gibb'Actu">Gibb'Actu</a></li>
+						<li class="hfrtv"><a href="/hfrtv" title="HFRtv">HFR.tv</a></li>
+						<li class="crotypedia"><a href="/crotypedia" title="">CROTYpedia</a></li>
+				</ul>
+
+			</div>
+
+		</div>
+
+		<div class="container">
+			<div class="wrap">
+				<include href="{{ @view }}" />
+			</div>
+		</div>
+
+		<div class="container footer">
+			<div class="wrap">
+				<div class="sponsors">
+					<img src="/ui/sponsor/nodlc.png" alt=""><img src="/ui/sponsor/hru.png" alt=""><img src="/ui/sponsor/bra.png" alt="">
+				</div>
+
+				<div class="copyr">
+					<span class="copy">ⓣ2014 FLK.</span> <a href="https://github.com/FLKone/ttb/commits/master" class="version" target="_blank">version 0.0.3</a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="ui/js/admin/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="ui/js/admin/loading-bar.js"></script>
+		<script type="text/javascript" src="ui/js/admin/importcrHelperController.js"></script>
+	</body>
+</html>

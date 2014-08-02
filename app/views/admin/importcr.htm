@@ -1,0 +1,39 @@
+<div ng-controller="importcrHelperController" ng-cloak class="importcr">
+  <h2>Import d'un CR</h2>
+
+  <div class="messageko" ng-show="import_stepKO" ng-bind-html="messageKO"></div>
+  <div class="message" ng-show="import_stepOK" ng-bind-html="message"></div>
+
+  <input type="url" ng-change="resetURL()"  name="input" ng-model="cr_url" placeholder="<ignore>{{somePlaceholder}}</ignore>">
+
+  <h4 ng-click="validateUrl(this)">Etape 1/3 > Vérifier le CR</h4>
+
+  <div id="setp2" ng-show="import_step2">
+    <h5>Etape 2/3 > Associer le(s) jeu(x)</h3>
+
+    <div class="games" ng-repeat="game in table.games track by $index">
+        <input keyboard-poster post-function="searchGames" post-index="$index" ng-model="table.games[$index].name" type="text" placeholder='nom du jeu' />
+        <input type="button" ng-show="table.games.length > 1" ng-click="table.games.splice($index, 1)" value="supprimer"/>
+        <div class="gamelist">
+          <div class="games2" ng-repeat="gameAPI in table.games[$index].dataList">
+            <ignore>{{gameAPI.name}}, {{gameAPI.expected_release_year}}, {{gameAPI.original_release_date}}, <img ng-src="{{gameAPI.image.thumb_url}}"></ignore>
+          </div>
+        </div>
+
+
+
+    </div>
+
+    <h4 ng-click="addGame(this)">+ Associer un autre jeu </h4>
+    <br>
+    <h4 ng-click="validateCR(this)" ng-show="import_step3">Etape 3/3 > Valider le CR</h4>
+
+
+
+    <h3>preview du CR</h3>
+    <div id="preview" ng-bind-html="cr_preview">
+
+    </div>
+  </div>
+
+</div>
