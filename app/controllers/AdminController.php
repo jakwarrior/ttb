@@ -29,9 +29,10 @@ class AdminController extends Controller {
 
     //print_r($request);
     //print_r($cr);
-    header("HTTP/1.1 406 Not Found");
-    echo "STOP IT";
-    exit();
+    //header("HTTP/1.1 406 Not Found");
+
+    //print_r($request);
+//    exit();
 
     $GamesID = array();
     $CRID = 0;
@@ -39,11 +40,11 @@ class AdminController extends Controller {
     //On check les jeux
     $games = new Game($this->db);
 
-    foreach($request['games']['games'] as $key => $value)
+    foreach($request['games'] as $key => $value)
     {
-      //print_r($value);
+    //  print_r($value);
 
-      $games->load(array('name = ?', $value['name']));
+      $games->load(array('api_uid = ?', $value['id']));
 
       if($games->id) {
         $GamesID[] = $games->id;
@@ -54,6 +55,9 @@ class AdminController extends Controller {
         //on doit l'ajouter
         $games->reset();
         $games->name = $value['name'];
+        $games->api_uid = $value['id'];
+        $games->api_image = $value['image']['thumb_url'];
+        $games->api_date = $value['date'];
         $games->save();
         $GamesID[] = $games->id;
       }
@@ -217,8 +221,28 @@ class AdminController extends Controller {
     $html = curl_exec($ch);
     $manage = (array) json_decode($html);
 
-    $return['games'] = $manage['results'];
-    $return['index'] = $request['index'];
+    foreach($manage['results'] as $k => $result) {
+
+      if($result->original_release_date) $result->date_release = date('Y', strtotime($result->original_release_date));
+      if($result->expected_release_year) $result->date_expectd = $result->expected_release_year;
+
+      if (property_exists($result, 'date_expectd') && !property_exists($result, 'date_release')) {
+        $result->date = $result->date_expectd;
+      }
+      else if (!property_exists($result, 'date_expectd') && property_exists($result, 'date_release')) {
+        $result->date = $result->date_release;
+      }
+
+      if (!property_exists($result, 'date')) {
+        unset($manage['results'][$k]);
+      }
+
+    }
+
+    //print_r(array_values($manage['results']));
+
+    $return['games'] = array_values($manage['results']);
+    //$return['index'] = $request['index'];
     //print_r($manage);
 
     echo json_encode($return);

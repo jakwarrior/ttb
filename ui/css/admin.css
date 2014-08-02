@@ -54,18 +54,19 @@ margin:10px 0;
   vertical-align: bottom;
 }
 
-.games input[type=text] {
-font-family: 'PT Sans', Helvetica, Arial, sans-serif;
-font-size:1.1em;
-color:#262626;
-background:#fff;
-height: 40px;
-line-height: 40px;
-width: 80%;
-padding-left:15px;
+input[type=text] {
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+  font-size:1.1em;
+  color:#262626;
+  background:#fff;
+  height: 40px;
+  line-height: 40px;
+  width: 80%;
+  padding-left:15px;
+}
 
-
-
+input.inputsearch {
+  width:100%;
 }
 
 .games input[type=button] {

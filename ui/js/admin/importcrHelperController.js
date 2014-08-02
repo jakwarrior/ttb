@@ -5,11 +5,11 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 }])
 .service('Giantbomb', function($q, $http){
 
-  this.searchGames = function(term, index) {
+  this.searchGames = function(term) {
     var deferred = $q.defer();
 
-    $http({method: 'POST', url: '/api/cr/games/', data : { 'index' : index, 'term' : term } }).then(function(data){
-      console.log('returns0 =' + data.data);
+    $http({method: 'POST', url: '/api/cr/games/', data : { 'term' : term } }).then(function(data){
+      console.log("my object0: %o", data)
 
       /*var _data = { index: returns.data.index, games : ['']};
       var games = returns.data.games;
@@ -28,7 +28,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
     return deferred.promise;
   }
 })
-.controller('importcrHelperController', function($scope, $http, $location, $timeout, Giantbomb) {
+.controller('importcrHelperController', function($scope, $http, $location, $timeout, $filter, Giantbomb) {
 
     $scope.cr_url = '';
     $scope.cr_preview = 'preview';
@@ -36,7 +36,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
     $scope.messageKO = '';
     $scope.somePlaceholder = 'URL du CR';
 
-    $scope.import_step2 = true;
+    $scope.import_step2 = false;
     $scope.import_step3 = false;
     $scope.import_stepOK = false;
     $scope.import_stepKO = false;
@@ -45,21 +45,28 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
       this.name = '';
       this.id = 0
       this.status = true;
-      this.dataList;
+      this.dataList = [];
     }
 
-    $scope.table = { games: [ new Game ] };
+    $scope.table = [];
+    $scope.tableGames = [];
 
-    $scope.searchGames = function(term, index) {
-      console.log(index +' + '+ term);
-      console.log($scope.table.games[index]);
 
-      Giantbomb.searchGames(term, index).then(function(returns){
-        $scope.table.games[index].dataList = returns.games;
+    $scope.searchGames = function(term) {
 
-        console.log("my object: %o", returns)
+      if (!term) {
+        console.log('reinit');
+        $scope.tableGames = [];
+      }
+      else {
+        Giantbomb.searchGames(term).then(function(returns){
+          console.log("my object1: %o", returns)
 
-      });
+          $scope.tableGames = returns.games;
+
+        });
+      }
+
     }
 
 
@@ -69,7 +76,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
       $scope.cr_url = '';
       $scope.import_step2 = false;
       $scope.import_step3 = false;
-      $scope.table = { games: [ new Game ] };
+      $scope.table = [];
     }
     $scope.resetMSG  = function(e) {
       $scope.import_stepKO = false;
@@ -101,6 +108,8 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
             $scope.cr_preview = data;
             $scope.import_step2 = true;
             $scope.import_stepOK = false;
+            $scope.import_stepKO = false;
+            $scope.messageKO = '';
             $scope.message = '';
             // this callback will be called asynchronously
             // when the response is available
@@ -115,9 +124,19 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 
     };
 
-    $scope.addGame = function(e) {
-      console.log($scope.table);
-        $scope.table.games.push( new Game );
+    $scope.addGame = function(game) {
+
+        if ($filter('exist')($scope.table, game) == -1) {
+          $scope.table.push( game );
+          $scope.searchterm = '';
+          $scope.tableGames = [];
+        }
+        else
+          {
+            console.log('déjà là');
+          }
+
+
     };
 
     $scope.validateCR = function(e) {
@@ -125,6 +144,8 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
         .success(function(data, status, headers, config) {
           $scope.message = data;
           $scope.import_stepOK = true;
+          $scope.import_stepKO = false;
+          $scope.messageKO = '';          
           $scope.reset(e);
           //console.log(data);
           // this callback will be called asynchronously
@@ -152,8 +173,9 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
     }
 
     $scope.$watch('table', function(scope, current, previous) {
+      console.log(current);
 
-      if ($scope.import_step2 == true && $scope.table.games.length >= 1 && $scope.table.games[0].status) {
+      if ($scope.import_step2 == true && $scope.table.length >= 1) {
         $scope.import_step3 = true;
       }
       else
@@ -161,8 +183,6 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
         $scope.import_step3 = false;
       }
     }, true);
-
-
 
 })
 .directive('keyboardPoster', function($parse, $timeout){
@@ -175,18 +195,26 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 
     element.oninput = function() {
       var model = $parse(attrs.postFunction);
-      var index_model = $parse(attrs.postIndex);
       var poster = model(scope);
-      var index = index_model(scope);
 
       if(currentTimeout) {
         $timeout.cancel(currentTimeout)
       }
       currentTimeout = $timeout(function(){
 
-        poster(angular.element(element).val(), index);
+        poster(angular.element(element).val());
       }, DELAY_TIME_BEFORE_POSTING)
     }
+  }
+}).filter('exist', function(){
+
+  return function(games, game) {
+    for (var index in games) {
+      if (games[index].id == game.id) {
+        return 1;
+      }
+    }
+    return -1;
   }
 })
 ;
