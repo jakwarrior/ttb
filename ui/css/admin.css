@@ -76,6 +76,11 @@ input.inputsearch {
   line-height: 28px;font-weight:bold;
 }
 
+.games2 input[type=button] {
+  width:150px;
+  line-height: 28px;font-weight:bold;
+}
+
 .message {
 border: 1px solid green;
 padding: 10px;
@@ -97,6 +102,8 @@ background-color: lightcoral;
   margin-top:3px;
   padding:5px;
   position:relative;
+font-size: 20px;
+line-height: 40px;
 }
 
 .games2 img {

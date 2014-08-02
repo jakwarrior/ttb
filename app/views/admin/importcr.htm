@@ -15,15 +15,15 @@
         <input ng-model="table[$index].name" type="text" placeholder='nom du jeu' disabled />
         <input type="button" ng-click="table.splice($index, 1)" value="supprimer"/>
     </div>
-    <p ng-hide="table.length">aucun jeux!</p>
-    <h5>Recherche de jeux</h3>
+    <p style="margin:10px;" ng-hide="table.length">aucun jeu associé!</p>
+    <h5>Recherche d'un jeu</h3>
 
     <input keyboard-poster post-function="searchGames" class="inputsearch" ng-model="searchterm" type="text" placeholder='nom un jeu' />
     <div class="gamelist">
       <div class="games2" ng-repeat="game in tableGames">
         <ignore>
             {{game.name}} ({{game.date}})
-            <input ng-show="(table | exist: game) < 0" style="width:100px" type="button" ng-click="addGame(game)" value="ajouter"/>
+            <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
             <img ng-src="{{game.image.thumb_url}}">
           </ignore>
       </div>
