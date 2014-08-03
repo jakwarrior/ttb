@@ -8,7 +8,7 @@ class ActuController extends Controller {
     {
         $actus = new Actu($this->db);
 
-		$page=$actus->paginate(0,$this->nbPage, NULL, array('order'=>'date_posted DESC, id DESC'));
+		$page=$actus->paginate(0,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
 
 		//print_r($page);
 
@@ -26,7 +26,7 @@ class ActuController extends Controller {
 		}
 
         $actus = new Actu($this->db);
-		$page=$actus->paginate($pageNum,$this->nbPage, NULL, array('order'=>'date_posted DESC, id DESC'));
+		$page=$actus->paginate($pageNum,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
 
 		if($pageNum > $page['count']) { //On vérifie que le numéro de page existe
 			$this->f3->reroute('@actus_list');

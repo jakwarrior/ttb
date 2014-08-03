@@ -8,7 +8,7 @@ class HomeController extends Controller {
         $Actus = new Actu($this->db);
         $Streams = new Stream($this->db);
 
-        $this->f3->set('actus',$Actus->all(10));
+        $this->f3->set('actus',$Actus->all());
         $this->f3->set('streams',$Streams->find());
         $this->f3->set('crs',$CRs->all());
 

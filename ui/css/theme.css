@@ -2,7 +2,7 @@ html {
     font-size: 20px;
 }
 
-body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.1em;color:#262626;background:#F1F1F1;padding-bottom:15px}
+body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.2em;color:#262626;background:#F1F1F1;padding-bottom:15px}
 
 @media(max-width: 800px) {
   html {
@@ -39,6 +39,10 @@ a {
   float:left;
   width:60%;
 
+}
+
+.container.data {
+  font-size:0.9em;
 }
 
 .container .menu {
@@ -81,15 +85,16 @@ a {
 	transition: font-size .05s linear;
 }
 
-
 .header li:hover {
 	opacity:0.8;
 	background-size:100px !important;
-	padding-left:110px !important;
 }
-.header li.hfrtv:hover {
-	padding-left:0px !important;
-	padding-right:110px !important;
+.header li:hover a {
+  padding-left:110px !important;
+}
+.header li.hfrtv:hover a {
+  padding-left:0px !important;
+  padding-right:110px !important;
 }
 .header li:hover a {
 	font-size:24px;
@@ -133,22 +138,49 @@ a {
 #gibbactu h2, .header li.gibbactu {
 	background:  rgb(3, 37, 74)  url(/ui/images/gibbactu.jpg) no-repeat center left;
 	background-size:contain;
-	padding-left:65px;
+
 }
 #gibbactu h2 a, .header li.gibbactu a {
 	color: #ccff33;
 	text-decoration:none;
 	display: block;
+  padding-left:65px;
 }
-#gibbactu li {
+
+
+#gibbactu .gibbactus {
 	border-left: 5px solid rgb(3, 37, 74);
 	padding:5px 15px;
-	margin-bottom: 15px;
+	margin: 15px 15px 30px 15px;
 	text-align:justify;
 }
-#gibbactu li a, #gibbactu .allinks {
-	color:rgb(3, 37, 74);
+#gibbactu .gibbactus ul {
+  border:none;
+  padding: 0 15px;
+  margin:0;
+  list-style-type: disc;
+}
 
+#gibbactu .gibbactus li {
+  margin-bottom:15px;
+}
+
+#gibbactu .gibbactus a, #gibbactu .allinks {
+	color:rgb(3, 37, 74);
+}
+
+#gibbactu .gibbactus .container, #gibbactu .gibbactus .container p {
+  padding:0;
+  margin:0;
+}
+
+#gibbactu .gibbactus .s1Topic {
+  font-size:0.9em;
+}
+
+table.spoiler, table.quote {
+  border: 1px dashed lightslategray;
+  margin-bottom: 10px;
 }
 
 #hfrtv, .header li.hfrtv {
@@ -158,16 +190,16 @@ a {
 #hfrtv h2, .header li.hfrtv {
 	background: url(/ui/images/hfrtv.png) rgb(100, 65, 165) no-repeat center right;
 	background-size:contain;
-	padding-right:60px;
 	text-align:right;
 }
 #hfrtv h2 a, .header li.hfrtv a {
 	color: #fff;
 	text-decoration:none;
 	display: block;
+  padding-right:60px;
 }
 
-#gibbactu li a:hover {
+#gibbactu .gibbactus a:hover {
   color:#ccff33;
   background-color:rgba(3, 37, 74, 1);
 }
@@ -184,12 +216,13 @@ a {
 	background: url(/ui/images/crotypedia.png) #fff no-repeat center left;
 	background-size:contain;
 
-	padding-left:65px;
 }
 #crotypedia h2 a, .header li.crotypedia a {
 	color: #000;
 	text-decoration:none;
 	display: block;
+
+  padding-left:65px;
 }
 #crotypedia li {
 	line-height: 35px;
@@ -204,11 +237,15 @@ a {
 	color:#262626;
 }
 
-span.date {
+a.date {
 	font-size:15px;
-	display:block;
 	font-style:italic;
 	text-align:right;
+  float:right;
+}
+#gibbactu .gibbactus a.date:hover {
+  background:none;
+  color:inherit;
 }
 
 ul {
@@ -305,11 +342,11 @@ ul {
 	margin:0 !important;
 }
 
-#crotypedia.catbox img[onload] {
+#crotypedia.catbox img[onload], .gibbactus table img[onload] {
+  max-width:100%;
   display:block;
   margin:5px auto !important;
 }
-
 
 
 #crotypedia li a:hover, #crotypedia.catbox p a:hover {
@@ -349,7 +386,21 @@ ul {
 	font-size:10px;
 	text-decoration: none;
 }
-
+/*
 .signature, .edited {
   display:none !important;
+}
+*/
+
+.masque {
+  visibility: hidden;
+}
+
+.spoiler br {
+  line-height:0;
+  display: block;
+  display:none;
+}
+.spoiler td, .quote td {
+  padding: 10px;
 }
