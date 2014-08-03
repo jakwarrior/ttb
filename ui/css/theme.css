@@ -124,7 +124,7 @@ a {
 .allinks {
 	float:right;
 	font-size: 14px;
-	padding:10px;
+	padding:20px;
 	font-style:italic;
 
   font-weight: bolder;
@@ -150,13 +150,14 @@ a {
 
 #gibbactu .gibbactus {
 	border-left: 5px solid rgb(3, 37, 74);
-	padding:5px 15px;
+	padding:5px 0 30px 15px;
 	margin: 15px 15px 30px 15px;
 	text-align:justify;
+  position: relative;
 }
 #gibbactu .gibbactus ul {
   border:none;
-  padding: 0 15px;
+  padding: 0 0 0 15px;
   margin:0;
   list-style-type: disc;
 }
@@ -165,8 +166,10 @@ a {
   margin-bottom:15px;
 }
 
-#gibbactu .gibbactus a, #gibbactu .allinks {
-	color:rgb(3, 37, 74);
+#gibbactu .gibbactus a, #gibbactu .allinks
+{
+  color:rgb(3, 37, 74);
+  font-weight:bold;
 }
 
 #gibbactu .gibbactus .container, #gibbactu .gibbactus .container p {
@@ -237,11 +240,14 @@ table.spoiler, table.quote {
 	color:#262626;
 }
 
-a.date {
+#gibbactu .gibbactus a.date {
 	font-size:15px;
 	font-style:italic;
 	text-align:right;
-  float:right;
+  position: absolute;
+  bottom: 5px;
+  right: 2px;
+  font-weight: normal;
 }
 #gibbactu .gibbactus a.date:hover {
   background:none;
