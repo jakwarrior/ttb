@@ -98,7 +98,7 @@ class Crontroller extends Controller {
 		foreach($NotProcessedActus as $NPA) {
 			$processActu = array();
 
-			echo $NPA->id."<br>";
+			//echo $NPA->id."<br>";
 
 			//Raw HTML to DOM/XPATH
 			$dom = new DOMDocument();
@@ -110,17 +110,21 @@ class Crontroller extends Controller {
 			//userID :
 			$processActu['hfr_user_id'] = $xpath->query('//td[@class = "messCase2"]//a[contains(@href, "profil-")]')->item(0)->getAttribute('href');
 			$processActu['hfr_user_id'] = preg_replace("/[^0-9]+/", "", $processActu['hfr_user_id']);
-			echo $processActu['hfr_user_id']."<br>";
+			//echo $processActu['hfr_user_id']."<br>";
 
 			//pseudo :
 			$processActu['username'] = $xpath->query('//td[@class = "messCase1"]//b[@class = "s2"]')->item(0)->textContent;
-			echo $processActu['username']."<br>";
+			//echo $processActu['username']."<br>";
+
+			if ($processActu['username'] <> 'roswellent​ongues') {
+				//continue;
+			}
 
 			//Check si le smiley est bien directement dans le message
 			$checkSmileyGAParent = $xpath->query('//img[contains(@title, "[:gibbactu]")]//..//..//..//div[starts-with(@id, "para")]');
 
 			if (!$checkSmileyGAParent->length) { //pas de smiley, on skip
-				echo "smiley pas à la racine<br/><br/><br/>";
+				//echo "smiley pas à la racine<br/><br/><br/>";
 				$NPA->active = 0;
 				$NPA->save();
 				continue;
@@ -129,7 +133,10 @@ class Crontroller extends Controller {
 			//post ID
 			$processActu["hfr_post_id"] = $xpath->query('//a[contains(@href, "#t")]')->item(0)->getAttribute('href');
 			$processActu['hfr_post_id'] = str_replace("#t", "", $processActu["hfr_post_id"]);
-			echo $processActu['hfr_post_id'];
+			//echo $processActu['hfr_post_id'];
+			if ($processActu['hfr_post_id'] <> '10753965') {
+				//continue;
+			}
 
 			//date posted
 			$divDate = $xpath->query('//div[@class="toolbar"]/div[@class="left"]');
@@ -137,12 +144,56 @@ class Crontroller extends Controller {
 			$processActu['date_posted'] = date('Y-m-d H:i', strtotime($oldate));
 			//echo $crDatePosted.' ';
 
+			echo $processActu['username']."\n";
+			//le contenu au même niveau que le smiley
+			$actuNodesZero = $xpath->query('//img[contains(@title, "[:gibbactu]")]/../node()');
+
+			$processHTMLstep0 = '';
+			$startInsert = false;
+
+			foreach ($actuNodesZero as $actuNodeZ)
+			{
+				if ($actuNodeZ->nodeType == XML_ELEMENT_NODE && $actuNodeZ->getAttribute('title') == '[:gibbactu]') {
+					$startInsert = true;
+					continue;
+				}
+
+				if ($actuNodeZ->nodeType == XML_ELEMENT_NODE && !strcasecmp($actuNodeZ->nodeValue, 'gibbactu')) {
+					continue;
+				}
+
+				if (!$startInsert) {
+					continue;
+				}
+
+				echo "len    =".strlen(trim($actuNodeZ->nodeValue))."\n";
+				echo "htmlen =".strlen(trim($processHTMLstep0))."\n";
+				echo "html   =".htmlentities($dom->saveHTML($actuNodeZ))."\n";
+				if($actuNodeZ->nodeType == XML_ELEMENT_NODE) echo "tag    =".$actuNodeZ->tagName."\n";
+				else echo "tag    =pasnode\n";
+				if (trim(htmlentities($dom->saveHTML($actuNodeZ))) == '&nbsp;') {
+					echo ">> on skip\n";
+					continue;
+				}
+
+				if (!strlen(trim($processHTMLstep0)) && $actuNodeZ->nodeType == XML_ELEMENT_NODE && $actuNodeZ->tagName == 'br') {
+					echo ">> on skip\n";
+					continue;
+				}
+				echo "==\nNew HTML:\n".htmlentities($processHTMLstep0)."\n============\n";
+
+				//var_dump($actuNodeZ);
+				$processHTMLstep0.=htmlentities($dom->saveHTML($actuNodeZ));
+				//echo htmlentities($dom->saveHTML($actuNodeZ))."\n".$actuNodeZ->nodeValue."\n\n";
+			}
+
 			//On va chercher tout le contenu APRES le smiley gibbactu
 			$actuNodes = $xpath->query('//img[contains(@title, "[:gibbactu]")]/../following-sibling::*');
 
 			//var_dump($actuNodes);
 
-			$processHTMLstep1 = '';
+			$processHTMLstep1 = $processHTMLstep0;
+
 			foreach ($actuNodes as $actuNode)
 			{
 				//var_dump($actuNode);
@@ -157,7 +208,7 @@ class Crontroller extends Controller {
 				}
 
 				if ($actuNode->nodeValue) {
-					$processHTMLstep1.=$dom->saveHTML($actuNode);
+					$processHTMLstep1.=htmlentities($dom->saveHTML($actuNode));
 				}
 			}
 
@@ -166,7 +217,7 @@ class Crontroller extends Controller {
 
 			$processHTMLfinal = str_replace("\n", '', $processHTMLfinal);
 			$processHTMLfinal = str_replace("\r", '', $processHTMLfinal);
-			$processHTMLfinal = str_replace("<p><br></p>", '', $processHTMLfinal);
+			$processHTMLfinal = htmlentities(str_replace("<p><br></p>", '', html_entity_decode($processHTMLfinal)));
 
 
 			if (!$processHTMLfinal) {
@@ -191,7 +242,7 @@ class Crontroller extends Controller {
 			$NPA->content=$processHTMLfinal;
 			$NPA->active = 1;
 			$NPA->save();
-			echo "<br/><br/><br/>";
+			echo "\n\n\n\n\n";
 
 		}
 
@@ -199,7 +250,9 @@ class Crontroller extends Controller {
 		ob_end_clean();
 		libxml_use_internal_errors(false);
 
-		$this->f3->set('report',$myStr);
-		echo Template::instance()->render('cron.htm');
+			echo $myStr;
+
+		//$this->f3->set('report',$myStr);
+		//echo Template::instance()->render('cron.htm');
 	}
 }
