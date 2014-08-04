@@ -56,7 +56,7 @@ class AdminController extends Controller {
         $games->reset();
         $games->name = $value['name'];
         $games->api_uid = $value['id'];
-        $games->api_image = $value['image']['thumb_url'];
+        $games->api_image = $value['image']['super_url'];
         $games->api_date = $value['date'];
         $games->save();
         $GamesID[] = $games->id;
@@ -69,33 +69,40 @@ class AdminController extends Controller {
     //print_r($GamesID);
 
     //On ajoute le CR
-    $CRs = new CR($this->db);
+    $newCR = new CR($this->db);
 
     //on vérfie si il est pas déjà en base
-    $CRs->load(array('hfr_post_id = ?', $cr['hfr_post_id']));
-    if ($CRs->id) {
+    $newCR->load(array('hfr_post_id = ?', $cr['hfr_post_id']));
+    if ($newCR->id) {
       header("HTTP/1.1 405 Not Found");
-      echo 'CR déjà en base :) > <a target="_blank" href="/crotypedia/'.$CRs->id.'">voir sur le site</a>';
+      echo 'CR déjà en base :) > <a target="_blank" href="/crotypedia/'.$newCR->id.'">voir sur le site</a>';
       exit();
     }
-    $CRs->reset();
+    $newCR->reset();
 
-    $CRs->hfr_cat_id = 5;
-    $CRs->hfr_subcat_id = 249;
-    $CRs->hfr_topic_id = 177180;
-    $CRs->hfr_page_id = $cr['hfr_page_id'];
-    $CRs->hfr_post_id = $cr['hfr_post_id'];
-    $CRs->hfr_user_id = $cr['hfr_user_id'];
-    $CRs->username	= $cr['username'];
-    $CRs->content = $cr['content'];
-    $CRs->date_posted = $cr['date_posted'];
-    $CRs->date_modified = date('Y-m-d H:i:s');
-    $CRs->date_added = date('Y-m-d H:i:s');
+    $crProcessed = $newCR->processRawContent($cr);
 
-    $CRs->save();
-    $CRID = $CRs->id;
 
-    $CRs->reset();
+    //print_r($crProcessed);
+
+    $newCR->hfr_cat_id = 5;
+    $newCR->hfr_subcat_id = 249;
+    $newCR->hfr_topic_id = 177180;
+    //$newCR->hfr_page_id = $crProcessed['hfr_page_id'];
+    $newCR->hfr_post_id = $crProcessed['hfr_post_id'];
+    $newCR->hfr_user_id = $crProcessed['hfr_user_id'];
+    $newCR->username	= $crProcessed['username'];
+    $newCR->content = $crProcessed['content'];
+    $newCR->content_raw = $crProcessed['content_raw'];
+    $newCR->date_posted = $crProcessed['date_posted'];
+    $newCR->date_modified = date('Y-m-d H:i:s');
+    $newCR->date_added = date('Y-m-d H:i:s');
+    $newCR->active = 1;
+
+    $newCR->save();
+    $CRID = $newCR->id;
+
+    $newCR->reset();
     //On ajoute en DB
 
     $CrGame = new CrGame($this->db);
@@ -135,6 +142,7 @@ class AdminController extends Controller {
       exit();
     }
 
+    $cr['content'] = $cr['content_raw'];
     $this->f3->set('cr', $cr);
     echo Template::instance()->render('cr/view.htm');
   }
@@ -162,41 +170,13 @@ class AdminController extends Controller {
     @$dom->loadHTML($html);
     @$xpath = new DomXpath($dom);
 
+
+
     $divCR = $xpath->query('//div[@id = "para'.$fragment.'"]')->item(0);
-    $divCRtotal = $xpath->query('..//..', $divCR)->item(0);
+    $divCRtotal = $xpath->query('..//..//..', $divCR)->item(0);
 
-    //$cr['content'] = $dom->saveHTML($divCRtotal);
-
-    //PageID
-    $pageUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-    preg_match_all('!\d+!', $pageUrl, $matches);
-    $cr['hfr_page_id'] = $matches[0][1];
-
-    //postID
     $cr['hfr_post_id'] = $fragment;
-    //echo $crPostID.' ';
-
-    //userID :
-    $crUserID = $xpath->query('td[@class = "messCase2"]//a[contains(@href, "profil-")]', $divCRtotal)->item(0)->getAttribute('href');
-    $cr['hfr_user_id'] = preg_replace("/[^0-9]+/", "", $crUserID);
-    //echo $crUserID;
-
-    //pseudo :
-    $cr['username'] = $xpath->query('td[@class = "messCase1"]//b[@class = "s2"]', $divCRtotal)->item(0)->textContent;
-    //echo $crPseudo.' ';
-
-    //content
-    $cr['content'] = trim($dom->saveHTML($divCR));
-
-    //date posted
-    $divDate = $xpath->query('td[@class = "messCase2"]//div[@class="toolbar"]/div[@class="left"]', $divCRtotal);
-    $oldate = preg_replace("/[^0-9:-]+/", "", $divDate->item(0)->nodeValue);
-    $cr['date_posted'] = date('Y-m-d H:i', strtotime($oldate));
-    //echo $crDatePosted.' ';
-
-    //print_r($cr);
-
-
+    $cr['content_raw'] = $dom->saveHTML($divCRtotal);
 
     echo json_encode(array('data' => $cr));
 

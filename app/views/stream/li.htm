@@ -1,2 +1,2 @@
 <style>li.{{ @item['twitch_username'] }}:after { background-image:url('{{ @item['image_url'] }}');}</style>
-<li class="{{ @item['twitch_username'] }}"><a href="http://twitch.tv/{{ @item['twitch_username'] }}" title="">{{ @item['twitch_username'] }} <check if="{{ @item['hfr_username'] <> @item['twitch_username'] }}">({{ @item['hfr_username'] }})</check></a></li>
+<li class="{{ @item['twitch_username'] }}"><a href="http://twitch.tv/{{ @item['twitch_username'] }}" title="">{{ @item['twitch_username'] }} <check if="{{ @item['username'] <> @item['twitch_username'] }}">({{ @item['username'] }})</check></a></li>

@@ -255,4 +255,44 @@ class Crontroller extends Controller {
 		//$this->f3->set('report',$myStr);
 		//echo Template::instance()->render('cron.htm');
 	}
+
+	public function crotyPostProcess()
+	{
+		$CR = new CR($this->db);
+
+		$NotProcessed = $CR->find(array('processed = ?', 0));
+		//print_r($NotProcessedActus);
+		libxml_use_internal_errors(true);
+		ob_start();
+
+		foreach($NotProcessed as $NP) {
+			//print_r($NP);
+			echo "========\nDEBUT\n\n";
+			$process = $NP->processRawContent(array('content_raw' => $NP->content_raw));
+
+			$NP->hfr_cat_id = 5;
+			$NP->hfr_subcat_id = 249;
+			$NP->hfr_topic_id = 177180;
+			//$NPA->hfr_page_id
+			$NP->hfr_post_id = $process['hfr_post_id'];
+			$NP->hfr_user_id = $process['hfr_user_id'];
+			$NP->username = $process['username'];
+
+			$NP->date_modified = date('Y-m-d H:i:s');
+			$NP->date_posted = $process['date_posted'];
+
+			$NP->content = $process['content'];
+			$NP->active = 1;
+			$NP->save();
+			echo "\n\n\n\n\n";
+
+		}
+
+		$myStr = ob_get_contents();
+		ob_end_clean();
+		libxml_use_internal_errors(false);
+
+		echo $myStr;
+
+	}
 }

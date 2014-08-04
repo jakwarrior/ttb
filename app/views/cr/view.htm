@@ -1,9 +1,16 @@
 <div id="crotypedia" class="homebox catbox">
 	<h2><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
+
+	<check if="{{ isset(@game) }}">
+		<style>h3.game{{ @game['id'] }} { background-image:url('{{ @game['api_image'] }}');}</style>
+		<h3 class="game game{{ @game['id'] }}">
+			{{ @game.name }} ({{ @cr['username'] }})
+		</h3>
+	</check>
+
 	<div class="innercontent">
 		{{ @cr['content'] | raw }}
 	</div>
-
 
 	<a class="allinks" href="{{@ALIASES.crs_list}}" title="CROTYpedia">tous les CRs &rsaquo;</a>
 </div><!-- #crotypedia -->
