@@ -20,6 +20,7 @@ class CR extends DB\SQL\Mapper {
     }
 
 
+
     public function byGame($idGame) {
       return $this->db->exec(
         'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
