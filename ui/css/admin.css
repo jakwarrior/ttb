@@ -1,3 +1,7 @@
+select {
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+}
+
 input {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size:1.1em;
@@ -96,10 +100,10 @@ background-color: greenyellow;
 }
 
 .games2 {
-  height:50px;
+  min-height: 50px;
   background:white;
   border:1px solid black;
-  margin-top:3px;
+  margin: 5px 0;
   padding:5px;
   position:relative;
   font-size: 20px;
@@ -107,7 +111,7 @@ background-color: greenyellow;
 }
 
 .games2 img {
-  height:50px;
+  height: 50px;
   float:right;
   position:absolute;
   top:0;
@@ -116,4 +120,16 @@ background-color: greenyellow;
 
 #preview .message {
   background:none;
+}
+
+.step {
+  padding: 5px 0 5px 15px;
+  border-left: 5px solid grey;
+  margin: 5px;
+}
+
+
+.manual input {
+  width: 100%;
+  margin:5px 0;
 }

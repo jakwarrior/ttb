@@ -6,33 +6,55 @@
 
   <input type="url" ng-change="resetURL()"  name="input" ng-model="cr_url" placeholder="<ignore>{{somePlaceholder}}</ignore>"/>
 
-  <h4 ng-click="validateUrl(this)">Etape 1/3 > Vérifier le CR</h4>
+  <h4 ng-click="validateUrl(this)">Etape 1/4 > Vérifier le CR</h4>
 
   <div id="setp2" ng-show="import_step2">
-    <h5>Etape 2/3 > Associer le(s) jeu(x)</h3>
 
-    <div class="games" ng-repeat="game in table track by $index">
-        <input ng-model="table[$index].name" type="text" placeholder='nom du jeu' disabled />
-        <input type="button" ng-click="table.splice($index, 1)" value="supprimer"/>
+    <h5>Etape 2/4 > Infos sur le CR</h3>
+    <div class="step">
+      Type : <select ng-model="selectedType" name="selectedType">
+        <repeat group="{{ @types }}" value="{{ @item }}">
+            <option value="{{ @item['id'] }}">{{ @item['name'] }}</p>
+        </repeat>
+      </select> - Format : <select ng-model="selectedFormat" name="selectedFormat">
+        <repeat group="{{ @formats }}" value="{{ @item }}">
+            <option value="{{ @item['id'] }}">{{ @item['name'] }}</p>
+        </repeat>
+      </select>
+      <br><br><input type="text" ng-model="selectedComment" placeholder='commentaire'/>
     </div>
-    <p style="margin:10px;" ng-hide="table.length">aucun jeu associé!</p>
-    <h5>Recherche d'un jeu</h3>
 
-    <input keyboard-poster post-function="searchGames" class="inputsearch" ng-model="searchterm" type="text" placeholder='nom un jeu' />
-    <div class="gamelist">
-      <div class="games2" ng-repeat="game in tableGames">
-        <ignore>
-            {{game.name}} ({{game.date}})
-            <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
-            <img ng-src="{{game.image.thumb_url}}">
-          </ignore>
+    <h5>Etape 3/4> Associer le(s) jeu(x)</h3>
+    <div class="step">
+      <div class="games" ng-repeat="game in table track by $index">
+          <input ng-model="table[$index].name" type="text" placeholder='nom du jeu' disabled />
+          <input type="button" ng-click="table.splice($index, 1)" value="supprimer"/>
       </div>
+      <p style="margin:10px;" ng-hide="table.length">Aucun jeu associé!</p>
+      <h5>Recherche d'un jeu</h3>
+
+      <input keyboard-poster post-function="searchGames" class="inputsearch" ng-model="searchterm" type="text" placeholder='nom un jeu' />
+      <div class="gamelist">
+        <div class="games2" ng-repeat="game in tableGames">
+          <ignore>
+              {{game.name}} ({{game.date}})
+              <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
+              <img ng-src="{{game.image.thumb_url}}">
+            </ignore>
+        </div>
+        <input type="button" ng-click="forceManualGame()" ng-show="tableGames && import_searchKO == 2" value="Pas dans la liste > passage en manuel"/>
+      </div>
+      <div class="manual" ng-hide="import_searchKO != 3">
+        <p style="margin:10px;" >Aucun résultat > Saisie manuelle :</p>
+        <input class="inputmanuel" ng-model="manualname" type="text" placeholder='Nom un jeu' />
+        <input class="inputmanuel" ng-model="manualimage" type="text" placeholder="Url de l'image (large :o)" />
+
+        <input type="button" ng-click="addManualGame()" value="associer"/>
+      </div>
+
     </div>
 
-
-    <h4 ng-click="validateCR(this)" ng-show="import_step3">Etape 3/3 > Valider le CR</h4>
-
-
+    <h4 ng-click="validateCR(this)" ng-show="import_step3">Etape 4/4 > Valider le CR</h4>
 
     <h3>preview du CR</h3>
     <div id="preview" ng-bind-html="cr_preview">

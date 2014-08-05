@@ -10,6 +10,14 @@ class AdminController extends Controller {
   }
 
   public function importcr() {
+    //liste les types
+    $types = new CrType($this->db);
+    $this->f3->set('types', $types->find());
+
+    //liste les formats
+    $formats = new CrFormat($this->db);
+    $this->f3->set('formats', $formats->find());
+
     $this->f3->set('admin_cat', 'Import CR');
     $this->f3->set('view','admin/importcr.htm');
     echo Template::instance()->render('admin.htm');
@@ -98,6 +106,10 @@ class AdminController extends Controller {
     $newCR->date_modified = date('Y-m-d H:i:s');
     $newCR->date_added = date('Y-m-d H:i:s');
     $newCR->active = 1;
+
+    $newCR->type_id = $request['type'];
+    $newCR->format_id = $request['format'];
+    $newCR->comment = $request['comment'];
 
     $newCR->save();
     $CRID = $newCR->id;

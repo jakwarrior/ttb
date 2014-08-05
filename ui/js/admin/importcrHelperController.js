@@ -30,54 +30,67 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 })
 .controller('importcrHelperController', function($scope, $http, $location, $timeout, $filter, Giantbomb) {
 
-    $scope.cr_url = '';
     $scope.cr_preview = 'preview';
     $scope.message = '';
     $scope.messageKO = '';
     $scope.somePlaceholder = 'URL du CR';
 
-    $scope.import_step2 = false;
-    $scope.import_step3 = false;
     $scope.import_stepOK = false;
     $scope.import_stepKO = false;
 
-    function Game(){
-      this.name = '';
-      this.id = 0
-      this.status = true;
-      this.dataList = [];
-    }
-
-    $scope.table = [];
-    $scope.tableGames = [];
-
+		function Game(){
+		  this.name = '';
+		  this.id = 99999999;
+		  this.image = { 'super_url' : '' };
+		  this.date = "1";
+		}
 
     $scope.searchGames = function(term) {
 
       if (!term) {
         console.log('reinit');
         $scope.tableGames = [];
+				$scope.import_searchKO = 1;
       }
       else {
         Giantbomb.searchGames(term).then(function(returns){
-          console.log("my object1: %o", returns)
+          console.log("my object1: %o", returns.games.length)
+					if (!returns.games.length) {
 
-          $scope.tableGames = returns.games;
+						$scope.manualname = $scope.searchterm;
+						$scope.import_searchKO = 3;
+						$scope.tableGames = [];
+					}
+					else {
+						$scope.import_searchKO = 2;
+						$scope.tableGames = returns.games;
+					}
 
         });
       }
 
     }
 
-
-    $scope.cr_url = $location.url().replace('/http://', 'http://');
-
-    $scope.reset = function(e) {
+    $scope.reset = function() {
       $scope.cr_url = '';
       $scope.import_step2 = false;
       $scope.import_step3 = false;
-      $scope.table = [];
+
+			$scope.import_searchKO = 1; // 1 no search, 2 search games OK, 3 search games KO (pas de resultats)
+			$scope.manualname = '';
+			$scope.manualimage = '';
+
+			$scope.selectedType = 1;
+			$scope.selectedFormat = 1;
+			$scope.selectedComment = '';
+
+			$scope.table = [];
+			$scope.tableGames = [];
     }
+
+		$scope.reset();
+		$scope.cr_url = $location.url().replace('/http://', 'http://');
+
     $scope.resetMSG  = function(e) {
       $scope.import_stepKO = false;
       $scope.messageKO = '';
@@ -117,7 +130,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
             $scope.setKO(data);
 
             if (status == 405) { //déjà en base
-              $scope.reset(e);
+              $scope.reset();
             }
         });
       }
@@ -127,9 +140,11 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
     $scope.addGame = function(game) {
 
         if ($filter('exist')($scope.table, game) == -1) {
+					console.log(game);
           $scope.table.push( game );
           $scope.searchterm = '';
           $scope.tableGames = [];
+					$scope.import_searchKO = 1;
         }
         else
           {
@@ -139,14 +154,39 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 
     };
 
+		$scope.forceManualGame = function() {
+			$scope.searchterm = '';
+			$scope.tableGames = [];
+			$scope.import_searchKO = 3;
+		}
+
+		$scope.addManualGame = function() {
+
+			if ($scope.manualname && $scope.manualimage) {
+				var game = new Game();
+				game.name = $scope.manualname;
+				game.image['super_url'] = $scope.manualimage;
+
+
+				$scope.table.push( game  );
+				$scope.manualname = '';
+				$scope.manualimage = '';
+				$scope.searchterm = '';
+				$scope.tableGames = [];
+				$scope.import_searchKO = 1;
+			}
+
+		};
+
     $scope.validateCR = function(e) {
-      $http({method: 'POST', url: '/api/cr/import/', data : { 'cr_url' : $scope.cr_url, 'games' : $scope.table } })
+      $http({method: 'POST', url: '/api/cr/import/', data :
+						{ 'cr_url' : $scope.cr_url, 'games' : $scope.table, 'type' : $scope.selectedType, 'format' : $scope.selectedFormat, 'comment' : $scope.selectedComment } })
         .success(function(data, status, headers, config) {
           $scope.message = data;
           $scope.import_stepOK = true;
           $scope.import_stepKO = false;
-          $scope.messageKO = '';          
-          $scope.reset(e);
+          $scope.messageKO = '';
+          $scope.reset();
           //console.log(data);
           // this callback will be called asynchronously
           // when the response is available
@@ -154,7 +194,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
           $scope.setKO(data);
 
           if (status == 405) { //déjà en base
-            $scope.reset(e);
+            $scope.reset();
           }
 
           // called asynchronously if an error occurs
