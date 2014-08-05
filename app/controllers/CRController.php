@@ -35,4 +35,13 @@ class CRController extends Controller {
 		$this->f3->set('view','cr/index.htm');
 	}
 
+	public function byAlpha()
+	{
+		$CRs = new CR($this->db);
+		$this->f3->set('list',$CRs->byAlpha());
+
+		$this->f3->set('view','cr/index.htm');
+	}
+
+
 }

@@ -37,7 +37,20 @@ class CR extends DB\SQL\Mapper {
         ' ON g.id = cg.game_id'.
         ' WHERE g.id = "'.$idGame.'"'.
         ' GROUP BY cr.id'.
-        ' ORDER BY cr.id DESC'
+        ' ORDER BY cr.date_posted DESC'
+      );
+    }
+
+    public function byAlpha() {
+      return $this->db->exec(
+        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
+        ' FROM cr as cr'.
+        ' INNER JOIN cr_game as cg'.
+        ' ON cr.id = cg.cr_id'.
+        ' INNER JOIN game as g'.
+        ' ON g.id = cg.game_id'.
+        ' GROUP BY cr.id'.
+        ' ORDER BY g.name ASC'
       );
     }
 
