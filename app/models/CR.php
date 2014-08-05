@@ -124,6 +124,7 @@ class CR extends DB\SQL\Mapper {
 
       $processHTMLfinal = str_replace("\n", '', $processHTMLfinal);
       $processHTMLfinal = str_replace("\r", '', $processHTMLfinal);
+      $processHTMLfinal = htmlentities(str_replace('href="/hfr/', 'target="_blank" href="http://forum.hardware.fr/hfr/', html_entity_decode($processHTMLfinal)));
       $processHTMLfinal = htmlentities(str_replace("<p><br></p>", '', html_entity_decode($processHTMLfinal)));
       $processHTMLfinal = str_replace("/hfr/", 'http://forum.hardware.fr/hfr/', $processHTMLfinal);
 
