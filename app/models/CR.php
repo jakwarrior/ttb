@@ -69,8 +69,16 @@ class CR extends DB\SQL\Mapper {
       $processCR['content_raw'] = $cr['content_raw'];
 
       //userID :
-      $processCR['hfr_user_id'] = $xpath->query('//td[@class = "messCase2"]//a[contains(@href, "profil-")]')->item(0)->getAttribute('href');
-      $processCR['hfr_user_id'] = preg_replace("/[^0-9]+/", "", $processCR['hfr_user_id']);
+      $divProfil = $xpath->query('//td[@class = "messCase2"]//a[contains(@href, "profil-")]');
+
+      if($divProfil->length == 0) { //pas de profil
+        $processCR['hfr_user_id'] = 1;
+      }
+      else {
+        $processCR['hfr_user_id'] = $divProfil->item(0)->getAttribute('href');
+        $processCR['hfr_user_id'] = preg_replace("/[^0-9]+/", "", $processCR['hfr_user_id']);
+      }
+
       //echo $processActu['hfr_user_id']."<br>";
 
       //post ID
