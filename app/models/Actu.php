@@ -7,17 +7,17 @@ class Actu extends DB\SQL\Mapper {
     }
 
     public function all($limit = 0) {
-		$request =
-			'SELECT *'.
-			' FROM actu as a'.
-      ' WHERE active = 1'.
-			' ORDER by a.date_posted DESC, a.id DESC';
+  		$request =
+  			'SELECT *'.
+  			' FROM actu as a'.
+        ' WHERE active = 1'.
+  			' ORDER by a.date_posted DESC, a.id DESC';
 
-		if ($limit > 0) {
-			$request .= ' LIMIT '.$limit;
-		}
+  		if ($limit > 0) {
+  			$request .= ' LIMIT '.$limit;
+  		}
 
-		return $this->db->exec($request);
+		  return $this->db->exec($request);
     }
 
 }

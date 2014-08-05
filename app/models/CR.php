@@ -6,17 +6,23 @@ class CR extends DB\SQL\Mapper {
         parent::__construct($db,'cr');
     }
 
-    public function all() {
-  		return $this->db->exec(
-  			'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
-  			' FROM cr as cr'.
-  			' INNER JOIN cr_game as cg'.
-  			' ON cr.id = cg.cr_id'.
-  			' INNER JOIN game as g'.
-  			' ON g.id = cg.game_id'.
-  			' GROUP BY cr.id'.
-  			' ORDER BY cr.id DESC'
-  		);
+    public function all($limit = 0) {
+      $request =
+        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
+        ' FROM cr as cr'.
+        ' INNER JOIN cr_game as cg'.
+        ' ON cr.id = cg.cr_id'.
+        ' INNER JOIN game as g'.
+        ' ON g.id = cg.game_id'.
+        ' GROUP BY cr.id'.
+        ' ORDER BY cr.date_posted DESC';
+
+      if ($limit > 0) {
+        $request .= ' LIMIT '.$limit;
+      }
+
+      return $this->db->exec($request);
+
     }
 
 
