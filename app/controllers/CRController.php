@@ -5,7 +5,7 @@ class CRController extends Controller {
 	public function index()
   {
 	  $CRs = new CR($this->db);
-	  $this->f3->set('list',$CRs->all());
+	  $this->f3->set('list',$CRs->all(30));
 
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->all());
