@@ -9,3 +9,11 @@ function swap_spoiler_states(obj){
     }
   }
 }
+
+$(window).scroll(function(e){
+  parallax();
+});
+function parallax(){
+  var scrolled = $(window).scrollTop();
+  $('h3.game').css('background-position-y',50-(scrolled*0.11)+'%');
+}

@@ -188,6 +188,7 @@ a {
 table.spoiler, table.quote, table.citation {
   border: 1px dashed lightslategray;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 #hfrtv, .header li.hfrtv {
@@ -367,7 +368,7 @@ ul {
 	margin:0 !important;
 }
 
-#crotypedia.catbox img[onload], .gibbactus table img[onload] {
+#crotypedia.catbox img[onload], .gibbactus table img[onload], .gibbactus img[onload] {
   max-width:100%;
   display:block;
   margin:5px auto !important;
@@ -431,10 +432,10 @@ ul {
 }
 
 h3.game {
-height: 120px;
+height: 200px;
 background-size: cover;
 background-position: center center;
-line-height: 120px;
+line-height: 200px;
 color: white;
 text-align: center;
 font-size: 2em;
