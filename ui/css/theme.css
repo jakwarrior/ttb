@@ -456,7 +456,7 @@ margin: 0.5em 0;
 #crotypedia span.format_standard {
   display:none;
 }
-#crotypedia span.format_mini, #crotypedia span.format_nano, #crotypedia span.format_micro {
+#crotypedia span.format_mini, #crotypedia span.format_nano, #crotypedia span.format_micro, #crotypedia span.type_aar, #crotypedia span.format_hands-on {
 text-transform: uppercase;
 border: 1px solid black;
 padding: 0 10px;
@@ -464,6 +464,7 @@ text-align: center;
 font-size: 0.65em;
 height: 20px;
 line-height: 20px;
+display:inline-block !important;
 }
 #crotypedia span.date {
   float:right;
