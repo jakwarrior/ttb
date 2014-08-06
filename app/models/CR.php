@@ -125,6 +125,11 @@ class CR extends DB\SQL\Mapper {
       $processHTMLfinal = str_replace("\n", '', $processHTMLfinal);
       $processHTMLfinal = str_replace("\r", '', $processHTMLfinal);
       $processHTMLfinal = htmlentities(str_replace('href="/hfr/', 'target="_blank" href="http://forum.hardware.fr/hfr/', html_entity_decode($processHTMLfinal)));
+      $processHTMLfinal = htmlentities(preg_replace('/style="[a-zA-Z0-9:;\.\s\(\)\-\,]*"/i', '', html_entity_decode($processHTMLfinal)));
+      $processHTMLfinal = htmlentities(preg_replace('/onload="[^\"]+"/i', 'onload="return;"', html_entity_decode($processHTMLfinal)));
+      $processHTMLfinal = htmlentities(preg_replace('/title="[^\"]+"/i', '', html_entity_decode($processHTMLfinal)));
+
+
       $processHTMLfinal = str_replace("hfr-rehost.net/", 'reho.st/', $processHTMLfinal);
       $processHTMLfinal = htmlentities(str_replace("<p><br></p>", '', html_entity_decode($processHTMLfinal)));
 
