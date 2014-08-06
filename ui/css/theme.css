@@ -452,8 +452,7 @@ margin: 0.5em 0;
 #crotypedia span.format_standard {
   display:none;
 }
-#crotypedia span.format_mini {
-font-family: 'Audiowide', cursive;
+#crotypedia span.format_mini, #crotypedia span.format_nano {
 text-transform: uppercase;
 border: 1px solid black;
 padding: 0 10px;
