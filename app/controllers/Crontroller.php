@@ -116,9 +116,9 @@ class Crontroller extends Controller {
 			$processActu['username'] = $xpath->query('//td[@class = "messCase1"]//b[@class = "s2"]')->item(0)->textContent;
 			//echo $processActu['username']."<br>";
 
-			if ($processActu['username'] <> 'roswellent​ongues') {
+			//if ($processActu['username'] <> 'roswellent​ongues') {
 				//continue;
-			}
+			//}
 
 			//Check si le smiley est bien directement dans le message
 			$checkSmileyGAParent = $xpath->query('//img[contains(@title, "[:gibbactu]")]//..//..//..//div[starts-with(@id, "para")]');
@@ -134,9 +134,9 @@ class Crontroller extends Controller {
 			$processActu["hfr_post_id"] = $xpath->query('//a[contains(@href, "#t")]')->item(0)->getAttribute('href');
 			$processActu['hfr_post_id'] = str_replace("#t", "", $processActu["hfr_post_id"]);
 			//echo $processActu['hfr_post_id'];
-			if ($processActu['hfr_post_id'] <> '10753965') {
-				//continue;
-			}
+			//if ($processActu['hfr_post_id'] <> '10764130') {
+			//	continue;
+			//}
 
 			//date posted
 			$divDate = $xpath->query('//div[@class="toolbar"]/div[@class="left"]');
@@ -144,7 +144,7 @@ class Crontroller extends Controller {
 			$processActu['date_posted'] = date('Y-m-d H:i', strtotime($oldate));
 			//echo $crDatePosted.' ';
 
-			echo $processActu['username']."\n";
+			//echo $processActu['username']."\n";
 			//le contenu au même niveau que le smiley
 			$actuNodesZero = $xpath->query('//img[contains(@title, "[:gibbactu]")]/../node()');
 
@@ -158,7 +158,7 @@ class Crontroller extends Controller {
 					continue;
 				}
 
-				if ($actuNodeZ->nodeType == XML_ELEMENT_NODE && !strcasecmp($actuNodeZ->nodeValue, 'gibbactu')) {
+				if ($actuNodeZ->nodeType == XML_ELEMENT_NODE && !strcasecmp(trim($actuNodeZ->nodeValue), 'gibbactu')) {
 					continue;
 				}
 
@@ -166,21 +166,29 @@ class Crontroller extends Controller {
 					continue;
 				}
 
-				echo "len    =".strlen(trim($actuNodeZ->nodeValue))."\n";
-				echo "htmlen =".strlen(trim($processHTMLstep0))."\n";
-				echo "html   =".htmlentities($dom->saveHTML($actuNodeZ))."\n";
-				if($actuNodeZ->nodeType == XML_ELEMENT_NODE) echo "tag    =".$actuNodeZ->tagName."\n";
-				else echo "tag    =pasnode\n";
+				//echo "len    =".strlen(trim($actuNodeZ->nodeValue))."\n";
+				//echo "htmlen =".strlen(trim($processHTMLstep0))."\n";
+				//echo "html   =".($dom->saveHTML($actuNodeZ))."\n";
+				if($actuNodeZ->nodeType == XML_ELEMENT_NODE) {
+					//echo "tag    =".$actuNodeZ->tagName."\n";
+				}
+				else {
+					//echo "tag    =pasnoded\n";
+					if (!strcasecmp(trim(htmlentities($dom->saveHTML($actuNodeZ))), 'gibbactu')) {
+						//echo "== gibbactu\n";
+						continue;
+					}
+				}
 				if (trim(htmlentities($dom->saveHTML($actuNodeZ))) == '&nbsp;') {
-					echo ">> on skip\n";
+					//echo ">> on skip\n";
 					continue;
 				}
 
 				if (!strlen(trim($processHTMLstep0)) && $actuNodeZ->nodeType == XML_ELEMENT_NODE && $actuNodeZ->tagName == 'br') {
-					echo ">> on skip\n";
+					//echo ">> on skip\n";
 					continue;
 				}
-				echo "==\nNew HTML:\n".htmlentities($processHTMLstep0)."\n============\n";
+				//echo "==\nNew HTML:\n".htmlentities($processHTMLstep0)."\n============\n";
 
 				//var_dump($actuNodeZ);
 				$processHTMLstep0.=htmlentities($dom->saveHTML($actuNodeZ));
@@ -196,10 +204,10 @@ class Crontroller extends Controller {
 
 			foreach ($actuNodes as $actuNode)
 			{
-				//var_dump($actuNode);
-				//echo $dom->saveHTML($actuNode)."\n";
-				//echo $actuNode->tagName."<br/>".$actuNode->getAttribute('class')."<br/>"."<br/>";
 
+				//echo $dom->saveHTML($actuNode)."\n";
+				//echo "===\n".$actuNode->tagName." = ".$actuNode->getAttribute('class')."\n\n";
+				//var_dump($actuNode);
 				if ($actuNode->getAttribute('class') == 'edited' ||
 						$actuNode->getAttribute('class') == 'signature' ||
 						$actuNode->getAttribute('style') == 'clear: both;'
@@ -207,9 +215,14 @@ class Crontroller extends Controller {
 					continue;
 				}
 
-				if ($actuNode->nodeValue) {
+				if ($actuNode->nodeValue || $actuNode->childNodes) {
 					$processHTMLstep1.=htmlentities($dom->saveHTML($actuNode));
 				}
+				else {
+					var_dump($actuNode->childNodes);
+					echo "noNodeValue=".$dom->saveHTML($actuNode)."\n\n";
+				}
+
 			}
 
 			$processHTMLfinal = $processHTMLstep1;
