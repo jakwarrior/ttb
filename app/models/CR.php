@@ -18,8 +18,8 @@ class CR extends DB\SQL\Mapper {
         ' ON ct.id = cr.type_id'.
         ' INNER JOIN cr_format as cf'.
         ' ON cf.id = cr.format_id'.
-        ' GROUP BY g.id'.
-        ' ORDER BY cr.date_posted ASC'.
+        ' GROUP BY cr.id, g.id'.
+        ' ORDER BY cr.date_posted DESC'.
         ' LIMIT :limit';
 
       return $this->db->exec($request, array(':limit'=> $limit));
@@ -40,7 +40,7 @@ class CR extends DB\SQL\Mapper {
       ' INNER JOIN cr_format as cf'.
       ' ON cf.id = cr.format_id'.
       ' WHERE g.id = ?'.
-      ' GROUP BY cr.id'.
+      ' GROUP BY cr.id, g.id'.
       ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
 
 
@@ -79,7 +79,7 @@ class CR extends DB\SQL\Mapper {
         ' ON ct.id = cr.type_id'.
         ' INNER JOIN cr_format as cf'.
         ' ON cf.id = cr.format_id'.
-        ' GROUP BY g.id'.
+        ' GROUP BY cr.id, g.id'.
         ' ORDER BY g.name ASC, cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC'
       );
     }
