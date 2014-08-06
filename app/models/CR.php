@@ -80,7 +80,7 @@ class CR extends DB\SQL\Mapper {
         ' INNER JOIN cr_format as cf'.
         ' ON cf.id = cr.format_id'.
         ' GROUP BY cr.id, g.id'.
-        ' ORDER BY g.name ASC, cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC'
+        ' ORDER BY g.name ASC, cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC', NULL, 86400
       );
     }
 

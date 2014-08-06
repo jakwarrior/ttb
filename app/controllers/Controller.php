@@ -4,6 +4,7 @@ class Controller {
 
     protected $f3;
     protected $db;
+    protected $cache;
 
     function beforeroute() {
     }
@@ -15,6 +16,7 @@ class Controller {
     function __construct() {
 
         $f3=Base::instance();
+        $cache=Cache::instance();
 
         $db=new DB\SQL(
             $f3->get('db_dns') . $f3->get('db_name'),
@@ -24,5 +26,6 @@ class Controller {
 
     $this->f3=$f3;
     $this->db=$db;
+    $this->cache=$cache;
     }
 }
