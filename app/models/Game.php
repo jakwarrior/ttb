@@ -34,7 +34,7 @@ class Game extends DB\SQL\Mapper {
     public function allAPI($term) {
       $res = $this->db->exec(
 
-          'SELECT IF(g.api_uid = 99999999, g.id, g.api_uid) AS id, g.name AS name, g.api_image AS api_image, g.api_date AS date, "bdd" AS origin '.
+          'SELECT g.id AS id, g.name AS name, g.api_image AS api_image, g.api_date AS date, "bdd" AS origin '.
           ' FROM game as g'.
           " WHERE g.name LIKE ?".
           ' ORDER BY g.name ASC',
@@ -46,7 +46,7 @@ class Game extends DB\SQL\Mapper {
     }
 
     public function byCR($idCR) {
-      
+
       return $this->db->exec(
         'SELECT g.id AS id, g.name AS name, g.api_image AS api_image, COUNT(cg.cr_id) as nombre_cr'.
         ' FROM game as g'.
