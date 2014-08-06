@@ -12,18 +12,37 @@ class Game extends DB\SQL\Mapper {
         ' FROM game as g'.
         ' INNER JOIN cr_game as cg'.
         ' ON g.id = cg.game_id'.
+        ' WHERE g.type_id = 1'.
+        ' GROUP BY g.id'.
+        ' ORDER BY g.name ASC'
+      );
+    }
+
+
+    public function allOther() {
+      return $this->db->exec(
+        'SELECT g.id AS id, g.name AS name, g.api_image AS api_image, COUNT(cg.cr_id) as nombre_cr'.
+        ' FROM game as g'.
+        ' INNER JOIN cr_game as cg'.
+        ' ON g.id = cg.game_id'.
+        ' WHERE g.type_id = 2'.
         ' GROUP BY g.id'.
         ' ORDER BY g.name ASC'
       );
     }
 
     public function allAPI($term) {
-      return $this->db->exec(
-        'SELECT IF(g.api_uid = 99999999, -1, g.api_uid) AS id, g.name AS name, g.api_image AS api_image, g.api_date AS date, "[TTB]" AS origin '.
-        ' FROM game as g'.
-        " WHERE g.name LIKE '%".mysql_real_escape_string($term)."%'".
-        ' ORDER BY g.name ASC'
+      $res = $this->db->exec(
+
+          'SELECT IF(g.api_uid = 99999999, g.id, g.api_uid) AS id, g.name AS name, g.api_image AS api_image, g.api_date AS date, "bdd" AS origin '.
+          ' FROM game as g'.
+          " WHERE g.name LIKE ?".
+          ' ORDER BY g.name ASC',
+        '%'.$term.'%'
+
       );
+
+      return $res;
     }
 
     public function byCR($idCR) {

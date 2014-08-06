@@ -10,6 +10,9 @@ class CRController extends Controller {
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->all());
 
+		$Game = new Game($this->db);
+		$this->f3->set('gamesother',$Game->allOther());
+
 	  $this->f3->set('view','cr/index.htm');
 	}
 

@@ -56,6 +56,9 @@ class AdminController extends Controller {
       if ($value['id'] == -1) {
 
       }
+      else if (isset($value['origin']) && $value['origin'] == 'bdd') { // origin = bdd
+        $games->load(array('id = ?', $value['id']));
+      }
       else
       {
         $games->load(array('api_uid = ?', $value['id']));
@@ -212,7 +215,7 @@ class AdminController extends Controller {
 
     $query = $request['term'];
 //,platforms:94
-    $url = 'http://www.giantbomb.com/api/games/?api_key='.$this->f3->get('giantbombAPI').'&format=json&filter=name:'.$query.',platforms:94&field_list=id,name,image,original_release_date,expected_release_year&sort=name:asc';
+    $url = 'http://www.giantbomb.com/api/games/?api_key='.$this->f3->get('giantbombAPI').'&format=json&filter=name:'.urlencode($query).',platforms:94&field_list=id,name,image,original_release_date,expected_release_year&sort=name:asc';
 
     //echo $url;
 
@@ -245,8 +248,18 @@ class AdminController extends Controller {
     $Game = new Game($this->db);
 
     //print_r(array_values($manage['results']));
+    //var_dump($Game->allAPI($query));
 
-    $return['games'] = array_merge($Game->allAPI($query), array_values($manage['results']));
+    $arrfromDB = $Game->allAPI($query);
+
+    foreach($arrfromDB as $k => $result) {
+
+      $arrfromDB[$k]['image']['super_url'] = $result['api_image'];
+    }
+
+
+
+    $return['games'] = array_merge($arrfromDB, array_values($manage['results']));
     //$return['index'] = $request['index'];
     //print_r($manage);
 

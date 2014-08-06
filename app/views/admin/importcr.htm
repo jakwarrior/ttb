@@ -37,7 +37,7 @@
       <div class="gamelist">
         <div class="games2" ng-repeat="game in tableGames">
           <ignore>
-            {{game.origin}} {{game.name}} ({{game.date}})
+            <span ng-show="game.origin">[bdd]</span> {{game.name}} ({{game.date}})
             <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
             <img ng-src="{{game.image.thumb_url}}">
           </ignore>
