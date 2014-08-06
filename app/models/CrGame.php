@@ -7,9 +7,9 @@ class CrGame extends DB\SQL\Mapper {
     }
 
     public function insertCG($cr, $game) {
-        $request = "INSERT INTO 'cr_game' ('cr_id', 'game_id') VALUES ($cr, $game)";
+        $request = "INSERT INTO 'cr_game' ('cr_id', 'game_id') VALUES (:cr, :game)";
 
-        return $this->db->exec($request);
+        return $this->db->exec($request, array(':cr' => $cr, ':game' => $game));
     }
 
 }

@@ -19,10 +19,10 @@ class CRController extends Controller {
 	public function view()
 	{
 		$CRs = new CR($this->db);
-		$this->f3->set('cr',$CRs->load(array('id=?',$this->f3->get('PARAMS.id'))));
+		$this->f3->set('cr',$myCR = $CRs->byId($this->f3->get('PARAMS.id'))[0]);
 
 		$Game = new Game($this->db);
-		$this->f3->set('game',$Game->byCR($CRs->id)[0]);
+		$this->f3->set('game',$Game->byCR($myCR['id'])[0]);
 
 		$this->f3->set('view','cr/view.htm');
 	}

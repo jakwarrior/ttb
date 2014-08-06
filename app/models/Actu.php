@@ -11,13 +11,10 @@ class Actu extends DB\SQL\Mapper {
   			'SELECT *'.
   			' FROM actu as a'.
         ' WHERE active = 1'.
-  			' ORDER by a.date_posted DESC, a.id DESC';
+  			' ORDER by a.date_posted DESC, a.id DESC'.
+        ' LIMIT :limit';
 
-  		if ($limit > 0) {
-  			$request .= ' LIMIT '.$limit;
-  		}
-
-		  return $this->db->exec($request);
+		  return $this->db->exec($request, array(':limit' => $limit));
     }
 
 }
