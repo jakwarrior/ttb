@@ -45,7 +45,7 @@ class CR extends DB\SQL\Mapper {
         ' ON cf.id = cr.format_id'.
         ' WHERE g.id = "'.$idGame.'"'.
         ' GROUP BY cr.id'.
-        ' ORDER BY cr.date_posted DESC'
+        ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC'
       );
     }
 
@@ -62,7 +62,7 @@ class CR extends DB\SQL\Mapper {
         ' INNER JOIN cr_format as cf'.
         ' ON cf.id = cr.format_id'.
         ' GROUP BY cr.id'.
-        ' ORDER BY g.name ASC, cr.username ASC, cr.comment ASC, ct.id ASC, cf.id ASC'
+        ' ORDER BY g.name ASC, cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC'
       );
     }
 
