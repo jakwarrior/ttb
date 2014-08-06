@@ -40,7 +40,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 
 		function Game(){
 		  this.name = '';
-		  this.id = 99999999;
+		  this.id = -1;
 		  this.image = { 'super_url' : '' };
 		  this.date = "1";
 		}

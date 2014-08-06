@@ -37,10 +37,10 @@
       <div class="gamelist">
         <div class="games2" ng-repeat="game in tableGames">
           <ignore>
-              {{game.name}} ({{game.date}})
-              <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
-              <img ng-src="{{game.image.thumb_url}}">
-            </ignore>
+            {{game.origin}} {{game.name}} ({{game.date}})
+            <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
+            <img ng-src="{{game.image.thumb_url}}">
+          </ignore>
         </div>
         <input type="button" ng-click="forceManualGame()" ng-show="tableGames && import_searchKO == 2" value="Pas dans la liste > passage en manuel"/>
       </div>

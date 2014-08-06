@@ -52,7 +52,15 @@ class AdminController extends Controller {
     {
     //  print_r($value);
 
-      $games->load(array('api_uid = ?', $value['id']));
+      //si ID == -1 = saisie manuelle
+      if ($value['id'] == -1) {
+
+      }
+      else
+      {
+        $games->load(array('api_uid = ?', $value['id']));
+      }
+
 
       if($games->id) {
         $GamesID[] = $games->id;
@@ -60,6 +68,9 @@ class AdminController extends Controller {
       }
       else
       {
+
+        if ($value['id'] == -1) { $value['id'] = 99999999; }
+
         //on doit l'ajouter
         $games->reset();
         $games->name = $value['name'];
@@ -231,9 +242,11 @@ class AdminController extends Controller {
 
     }
 
+    $Game = new Game($this->db);
+
     //print_r(array_values($manage['results']));
 
-    $return['games'] = array_values($manage['results']);
+    $return['games'] = array_merge($Game->allAPI($query), array_values($manage['results']));
     //$return['index'] = $request['index'];
     //print_r($manage);
 
