@@ -8,12 +8,16 @@ class CR extends DB\SQL\Mapper {
 
     public function all($limit = 0) {
       $request =
-        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
+        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, cr.comment as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.
         ' INNER JOIN game as g'.
         ' ON g.id = cg.game_id'.
+        ' INNER JOIN cr_type as ct'.
+        ' ON ct.id = cr.type_id'.
+        ' INNER JOIN cr_format as cf'.
+        ' ON cf.id = cr.format_id'.
         ' GROUP BY cr.id'.
         ' ORDER BY cr.date_posted DESC';
 
@@ -29,12 +33,16 @@ class CR extends DB\SQL\Mapper {
 
     public function byGame($idGame) {
       return $this->db->exec(
-        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
+        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, cr.comment as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.
         ' INNER JOIN game as g'.
         ' ON g.id = cg.game_id'.
+        ' INNER JOIN cr_type as ct'.
+        ' ON ct.id = cr.type_id'.
+        ' INNER JOIN cr_format as cf'.
+        ' ON cf.id = cr.format_id'.
         ' WHERE g.id = "'.$idGame.'"'.
         ' GROUP BY cr.id'.
         ' ORDER BY cr.date_posted DESC'
@@ -43,14 +51,18 @@ class CR extends DB\SQL\Mapper {
 
     public function byAlpha() {
       return $this->db->exec(
-        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games'.
+        'SELECT cr.id AS id, username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, cr.comment as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.
         ' INNER JOIN game as g'.
         ' ON g.id = cg.game_id'.
+        ' INNER JOIN cr_type as ct'.
+        ' ON ct.id = cr.type_id'.
+        ' INNER JOIN cr_format as cf'.
+        ' ON cf.id = cr.format_id'.
         ' GROUP BY cr.id'.
-        ' ORDER BY g.name ASC'
+        ' ORDER BY g.name ASC, cr.username ASC, cr.comment ASC, ct.id ASC, cf.id ASC'
       );
     }
 

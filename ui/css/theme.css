@@ -233,7 +233,15 @@ table.spoiler, table.quote, table.citation {
   padding-left:65px;
 }
 #crotypedia li {
-	line-height: 35px;
+line-height: 35px;
+}
+#crotypedia li * {
+  vertical-align: middle;
+  line-height: 35px;
+  display: inline-block;
+}
+#crotypedia li span {
+  margin-left: 5px;
 }
 #crotypedia li a {
 	color:#0645ad;
@@ -440,4 +448,20 @@ color: white;
 text-align: center;
 font-size: 2em;
 margin: 0.5em 0;
+}
+#crotypedia span.format_standard {
+  display:none;
+}
+#crotypedia span.format_mini {
+font-family: 'Audiowide', cursive;
+text-transform: uppercase;
+border: 1px solid black;
+padding: 0 10px;
+text-align: center;
+font-size: 0.65em;
+height: 20px;
+line-height: 20px;
+}
+#crotypedia span.date {
+  float:right;
 }

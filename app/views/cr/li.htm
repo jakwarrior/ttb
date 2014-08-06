@@ -1,3 +1,8 @@
 <li>
-	<a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}">{{ trim(@item['games']) }}</a> par {{ @item['username'] }}
+	<a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}">
+		{{ trim(@item['games']) }} <check if="{{ @item['comment'] }}">&ndash; {{@item['comment']}} </check>
+	</a>
+	<span>par {{ @item['username'] }}</span>
+	<span class="format_{{ toAscii(@item['format']) }}">{{ @item['format'] }} {{ @item['type'] }}</span>
+	<span class="date">{{ date('d/m/y', strtotime(@item['date_posted']) ) }}</span>
 </li>
