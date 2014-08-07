@@ -17,7 +17,7 @@
 		<br/>
 		<ul class="cr_games">
 			<repeat group="{{ @gamesother }}" value="{{ @item }}">
-				<style>li.game{{ @item['id'] }}:after { background-image:url('{{ @item['api_image'] }}');}</style>
+				<style>li.game{{ @item['id'] }}:after { background-image:url('{{ @static }}small/{{ @item['api_image'] }}');}</style>
 				<li class="game{{ @item['id'] }}">
 					<a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
 				</li>
@@ -34,7 +34,7 @@
 		<br/>
 		<ul class="cr_games">
 			<repeat group="{{ @games }}" value="{{ @item }}">
-				<style>li.game{{ @item['id'] }}:after { background-image:url('{{ @item['api_image'] }}');}</style>
+				<style>li.game{{ @item['id'] }}:after { background-image:url('{{ @static }}small/{{ @item['api_image'] }}');}</style>
 				<li class="game{{ @item['id'] }}">
 					<a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
 				</li>
