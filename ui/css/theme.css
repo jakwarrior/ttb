@@ -463,6 +463,19 @@ color: white;
 text-align: center;
 font-size: 2em;
 margin: 0.5em 0;
+text-shadow:
+-1px -1px 0 #000,
+1px -1px 0 #000,
+-1px 1px 0 #000,
+1px 1px 0 #000;
+}
+h3.game.total2 {
+height: 100px;
+line-height: 100px;
+}
+h3.game.total3 {
+height: 60px;
+line-height: 60px;
 }
 h3.game.total4 {
 height: 50px;
