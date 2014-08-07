@@ -359,14 +359,14 @@ ul {
 	padding:0;
 }
 
-#crotypedia.catbox .innercontent a {
+#crotypedia.catbox .innercontent a, .cr_details a {
 
 	color:#0645ad;
 	text-decoration: none;
 	display:inline;
   font-weight:bold;
 }
-#crotypedia li a:hover, #crotypedia.catbox p a:hover, #crotypedia.catbox .innercontent a:hover {
+#crotypedia li a:hover, #crotypedia.catbox p a:hover, #crotypedia.catbox .innercontent a:hover, .cr_details a:hover {
   color:#000;
   background-color:#fff;
 }
@@ -412,9 +412,20 @@ ul {
   text-align:center;
 }
 .version {
-	color:grey;
-	font-size:10px;
-	text-decoration: none;
+  color: black;
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+.disclaimer {
+    font-size: 0.6em;
+    text-align: center;
+    color: darkgrey;
+}
+
+.disclaimer a {
+    color: darkgrey;
+    text-decoration: underline;
 }
 /*
 .signature, .edited {
@@ -453,6 +464,10 @@ text-align: center;
 font-size: 2em;
 margin: 0.5em 0;
 }
+h3.game.total4 {
+height: 50px;
+line-height: 50px;
+}
 #crotypedia span.format_standard {
   display:none;
 }
@@ -468,4 +483,30 @@ display:inline-block !important;
 }
 #crotypedia span.date {
   float:right;
+}
+
+.cr_details {
+  background-color:white;
+  padding:15px;
+}
+
+.cr_details span.games {
+    float: left;
+    width: 45%;
+}
+.cr_details span.username {
+    float: right;
+    width: 45%;
+    text-align: right;
+}
+.cr_details span.date {
+    float: right;
+    width: 45%;
+    text-align: right;
+}
+.cr_details span.out_link {
+    clear: both;
+    /* float: right; */
+    display: block;
+    text-align: center;
 }

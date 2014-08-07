@@ -8,7 +8,7 @@ class CR extends DB\SQL\Mapper {
 
     public function all($limit = 0) {
       $request =
-        'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted'.
+        'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.
@@ -29,7 +29,7 @@ class CR extends DB\SQL\Mapper {
 
 
     public function byGame($idGame) {
-      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted'.
+      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
       ' FROM cr as cr'.
       ' INNER JOIN cr_game as cg'.
       ' ON cr.id = cg.cr_id'.
@@ -49,7 +49,7 @@ class CR extends DB\SQL\Mapper {
 
     public function byId($idCR) {
 
-      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.content as content'.
+      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.content as content, cr.hfr_post_id'.
       ' FROM cr as cr'.
       ' INNER JOIN cr_game as cg'.
       ' ON cr.id = cg.cr_id'.
@@ -69,7 +69,7 @@ class CR extends DB\SQL\Mapper {
 
     public function byAlpha() {
       return $this->db->exec(
-        'SELECT  cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment) AS comment, ct.name as type, cf.name as format, cr.date_posted as date_posted'.
+        'SELECT  cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment) AS comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.

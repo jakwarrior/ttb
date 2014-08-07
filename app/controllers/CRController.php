@@ -22,7 +22,7 @@ class CRController extends Controller {
 		$this->f3->set('cr',$myCR = $CRs->byId($this->f3->get('PARAMS.id'))[0]);
 
 		$Game = new Game($this->db);
-		$this->f3->set('game',$Game->byCR($myCR['id'])[0]);
+		$this->f3->set('games',$Game->byCR($myCR['id']));
 
 		$this->f3->set('view','cr/view.htm');
 	}
