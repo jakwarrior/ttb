@@ -57,7 +57,7 @@ a {
 
 }
 .header h3 {
-  margin:0.3em 0;
+  margin:0.3em 15px;
   font-size:0.7em;
   color:#262626;
   font-weight: 400;
@@ -72,7 +72,7 @@ a {
  .header {
 
 }
-.header li {
+.header .menu li {
 	width: 310px;
 	float:right;
 	font-weight:bold;
@@ -81,29 +81,29 @@ a {
 
 
 }
-.header li a {
+.header .menu li a {
 	transition: font-size .05s linear;
 }
 
-.header li:hover {
+.header .menu li:hover {
 	opacity:0.8;
 	background-size:100px !important;
 }
-.header li:hover a {
+.header .menu li:hover a {
   padding-left:110px !important;
 }
-.header li.hfrtv:hover a {
+.header .menu li.hfrtv:hover a {
   padding-left:0px !important;
   padding-right:110px !important;
 }
-.header li:hover a {
+.header .menu li:hover a {
 	font-size:24px;
 }
 
-.header ul li {
+.header .menu  li {
 	margin-left:5px;
 }
-.header ul li:first-child {
+.header .menu  li:first-child {
 	margin-left:0 !important;
 }
 .homebox {
@@ -112,7 +112,7 @@ a {
 	margin-bottom:25px;
 }
 
-.homebox h2, .homebox h2 a, .header li, .header li a {
+.homebox h2, .homebox h2 a, .header .menu li, .header .menu li a {
 	height:50px;
 	line-height: 50px;
 	font-size: 20px;
@@ -522,4 +522,31 @@ display:inline-block !important;
     /* float: right; */
     display: block;
     text-align: center;
+}
+
+.header .rss {
+  float: left;
+width: 60%;
+margin: 14px 0 0 0;
+padding: 0 0 0 15px;
+}
+
+.header .rss li {
+/* width: 108px; */
+font-size: 0.7em;
+float: left;
+/* height: 20px; */
+}
+
+.header .rss li a {
+background: transparent url(/ui/images/rss.png) no-repeat left center;
+background-size: contain;
+padding-left: 30px;
+padding-right: 10px;
+color: black;
+line-height: 20px;
+}
+
+.header .rss li a:hover {
+  text-decoration:underline;
 }
