@@ -1,13 +1,16 @@
 <div id="crotypedia" class="homebox catbox">
 	<h2><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
 
-	<repeat group="{{ @games }}" value="{{ @item }}">
-		<style>h3.game{{ @item['id'] }} { background-image:url('{{ @static }}large/{{ @item['api_image'] }}');}</style>
-		<h3 class="game game{{ @item['id'] }} total{{count(@games)}}">
-			{{ @item.name }}
-		</h3>
-	</repeat>
+	<check if="{{ isset(@games) }}">
+		<repeat group="{{ @games }}" value="{{ @item }}">
+			<style>h3.game{{ @item['id'] }} { background-image:url('{{ @static }}large/{{ @item['api_image'] }}');}</style>
+			<h3 class="game game{{ @item['id'] }} total{{count(@games)}}">
+				{{ @item.name }}
+			</h3>
+		</repeat>
+	</check>
 
+<check if="{{ isset(@games) }}">
 	<div class="cr_details">
 		<span class="games">Jeu<check if="{{count(@games) > 1}}">x</check>
 		<repeat group="{{ @games }}" value="{{ @item }}">
@@ -20,11 +23,13 @@
 			voir sur HFR &rsaquo;
 		</a></span>
 	</div>
+</check>
 
 	<div class="innercontent">
 		{{ @cr['content'] | raw }}
 	</div>
 
+<check if="{{ isset(@games) }}">
 	<div class="cr_details">
 		<span class="games">Jeu<check if="{{count(@games) > 1}}">x</check>
 		<repeat group="{{ @games }}" value="{{ @item }}">
@@ -37,6 +42,7 @@
 			voir sur HFR &rsaquo;
 		</a></span>
 	</div>
+</check>
 
 	<a class="allinks" href="{{@ALIASES.crs_list}}" title="CROTYpedia">tous les CRs &rsaquo;</a>
 </div><!-- #crotypedia -->
