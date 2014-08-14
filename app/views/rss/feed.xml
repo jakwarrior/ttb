@@ -1,35 +1,35 @@
 <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
 <channel>
   <title>thetartuffebay.org - {{ @feed_title}}</title>
-  <atom:link href="http://{{ @feed_url}}" rel="self" type="application/rss+xml"/>
+  <atom:link href="http://www.{{ @feed_url}}" rel="self" type="application/rss+xml"/>
   <link>http://{{ @site }}</link>
   <description>Le sanctuaire des tartuffes</description>
   <language>fr-fr</language>
   <sy:updatePeriod>hourly</sy:updatePeriod>
-  <sy:updateFrequency>1</sy:updateFrequency>
+  <sy:updateFrequency>3</sy:updateFrequency>
   <category>Video Games</category>
   <ttl>60</ttl>
   <repeat group="{{ @feeds }}" value="{{ @item }}">
     <item>
       <title>
         <check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }}</check>
-        <check if="{{ @item['type'] == 'cr'}}">CR {{ @item['games'] }}</check>
+        <check if="{{ @item['type'] == 'cr'}}">CR {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }}</check>
       </title>
       <link>
   http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}
       </link>
-      <pubDate>{{ date('D, d M Y H:i:s T', strtotime(@item['date_posted']) ) }}</pubDate>
+      <pubDate>{{ date(DATE_RSS, strtotime(@item['date_posted'])-(60*60*2) ) }}</pubDate>
       <dc:creator>
-      <![CDATA[ {{ @item['username'] }} ]]>
+      <![CDATA[ {{ htmlspecialchars(@item['username'], ENT_QUOTES) }} ]]>
       </dc:creator>
       <description>
-<check if="{{ @item['type'] == 'actu'}}"><![CDATA[ {{ htmlspecialchars(html_entity_decode(@item['content']), ENT_QUOTES) }} ]]></check>
-<check if="{{ @item['type'] == 'cr'}}"><![CDATA[ {{ truncate(htmlspecialchars(html_entity_decode(@item['content']),ENT_QUOTES), 1000) }} ]]></check>
+<check if="{{ @item['type'] == 'actu'}}"><![CDATA[ {{ html_entity_decode(@item['content']) }} ]]></check>
+<check if="{{ @item['type'] == 'cr'}}"><![CDATA[ {{ truncate(html_entity_decode(@item['content']), 1000) }} ]]></check>
       </description>
 
       <content:encoded>
-        <check if="{{ @item['type'] == 'actu'}}"><![CDATA[ {{ htmlspecialchars(html_entity_decode(@item['content']),ENT_QUOTES) }} ]]></check>
-        <check if="{{ @item['type'] == 'cr'}}"><![CDATA[ {{ truncate(htmlspecialchars(html_entity_decode(@item['content']),ENT_QUOTES), 1000) }} ]]></check>
+        <check if="{{ @item['type'] == 'actu'}}"><![CDATA[ {{ html_entity_decode(@item['content']) }} ]]></check>
+        <check if="{{ @item['type'] == 'cr'}}"><![CDATA[ {{ truncate(html_entity_decode(@item['content']), 1000) }} ]]></check>
       </content:encoded>
       <guid isPermaLink="false">{{ @item['type'] }}-{{ @item['id'] }}</guid>
     </item>
