@@ -9,7 +9,7 @@ class HomeController extends Controller {
         $Streams = new Stream($this->db);
 
         $this->f3->set('actus',$Actus->all(10));
-        $this->f3->set('streams',$Streams->find());
+				$this->f3->set('streams',$Streams->find(NULL, array('order'=>'twitch_username ASC')));
         $this->f3->set('crs',$CRs->all(10));
 
 
