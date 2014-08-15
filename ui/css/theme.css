@@ -1,8 +1,15 @@
+*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;max-width:100%}
+
 html {
     font-size: 20px;
 }
 
-body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.2em;color:#262626;background:#F1F1F1;padding-bottom:15px}
+body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.2em;color:#262626;background:#F1F1F1;padding-bottom:15px;
+margin: 0;}
+
+div {
+overflow: hidden;
+}
 
 @media(max-width: 800px) {
   html {
@@ -18,6 +25,13 @@ body{font-family: 'PT Sans', Helvetica, Arial, sans-serif;font-size:1.2em;color:
 a {
   text-decoration: none;
 }
+h3 {
+  line-height: 1em;
+}
+h1 {
+  line-height: 1.25em;
+}
+
 .container {
 	padding: 15px 0;
 }
@@ -110,6 +124,7 @@ a {
 	border: 1px solid #000;
 	background:#F1F1F1;
 	margin-bottom:25px;
+
 }
 
 .homebox h2, .homebox h2 a, .header .menu li, .header .menu li a {
@@ -185,7 +200,7 @@ a {
   font-size:0.9em;
 }
 
-table.spoiler, table.quote, table.citation {
+table.spoiler, table.quote, table.citation, table.fixed {
   border: 1px dashed lightslategray;
   margin-bottom: 10px;
   width: 100%;
@@ -442,7 +457,7 @@ ul {
   display: block;
   display:none;
 }
-.spoiler td, .quote td, .citation td {
+.spoiler td, .quote td, .citation td, .fixed td {
   padding: 10px;
 }
 
