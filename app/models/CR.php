@@ -117,7 +117,7 @@ class CR extends DB\SQL\Mapper {
 
       //pseudo :
       $processCR['username'] = $xpath->query('//td[@class = "messCase1"]//b[@class = "s2"]')->item(0)->textContent;
-      //echo $processActu['username']."<br>";
+      //echo htmlentities($processCR['username'])."<br>";
 
 
       //date posted
@@ -144,9 +144,10 @@ class CR extends DB\SQL\Mapper {
           continue;
         }
 
-        if ($node->nodeValue) {
+        if ($node->nodeValue || $node->childNodes) {
           $processHTMLstep1.=htmlentities($dom->saveHTML($node));
         }
+
       }
 
       $processHTMLfinal = $processHTMLstep1;
