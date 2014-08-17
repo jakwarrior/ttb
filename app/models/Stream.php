@@ -6,4 +6,13 @@ class Stream extends DB\SQL\Mapper {
         parent::__construct($db,'stream');
     }
 
+    public function byUserName($userName) {
+
+      return $this->db->exec(
+        'SELECT *'.
+        ' FROM stream s'.
+        ' WHERE s.username = ?',
+        $userName
+      );
+    }
 }

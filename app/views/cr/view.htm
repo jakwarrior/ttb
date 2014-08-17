@@ -10,39 +10,13 @@
 		</repeat>
 	</check>
 
-<check if="{{ isset(@games) }}">
-	<div class="cr_details">
-		<span class="games">Jeu<check if="{{count(@games) > 1}}">x</check>
-		<repeat group="{{ @games }}" value="{{ @item }}">
-			<br/><a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
-		</repeat>
-		</span>
-		<span class="username">Par {{ @cr['username'] }}</span>
-		<span class="date">Le {{ date('d/m/y', strtotime(@cr['date_posted']) ) }}</span>
-		<span class="out_link"><a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@cr['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@cr['hfr_post_id']}}" class="date" target="_blank">
-			voir sur HFR &rsaquo;
-		</a></span>
-	</div>
-</check>
+	<include href="cr/view_cr_details.htm" />
 
 	<div class="innercontent">
 		{{ @cr['content'] | raw }}
 	</div>
 
-<check if="{{ isset(@games) }}">
-	<div class="cr_details">
-		<span class="games">Jeu<check if="{{count(@games) > 1}}">x</check>
-		<repeat group="{{ @games }}" value="{{ @item }}">
-			<br/><a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
-		</repeat>
-		</span>
-		<span class="username">Par {{ @cr['username'] }}</span>
-		<span class="date">Le {{ date('d/m/y', strtotime(@cr['date_posted']) ) }}</span>
-		<span class="out_link"><a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@cr['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@cr['hfr_post_id']}}" class="date" target="_blank">
-			voir sur HFR &rsaquo;
-		</a></span>
-	</div>
-</check>
+	<include href="cr/view_cr_details.htm" />
 
 	<a class="allinks" href="{{@ALIASES.crs_list}}" title="CROTYpedia">tous les CRs &rsaquo;</a>
 </div><!-- #crotypedia -->

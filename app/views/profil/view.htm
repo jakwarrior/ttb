@@ -1,0 +1,51 @@
+<div id="crotypedia" class="homebox profilbox">
+  <check if="{{ !@list_cr }}">
+    <h2><a href="#stream">{{@PARAMS.name}} n'a publié aucun CR :(</a></h2>
+  </check>
+  <check if="{{ @list_cr }}">
+    <h2><a href="#cr">Les CRs de {{@PARAMS.name}}</a></h2>
+
+    <ul>
+      <repeat group="{{ @list_cr }}" value="{{ @item }}">
+        <include href="cr/li.htm" />
+      </repeat>
+    </ul>
+  </check>
+
+  <check if="{{ !@list_cr }}">
+    <a class="allinks" href="{{@ALIASES.crs_list}}" title="CROTYpedia">voir tous les CRs &rsaquo;</a>
+  </check>
+  <check if="{{ @list_cr }}">
+    <a class="allinks" href="{{@ALIASES.crs_list}}" title="CROTYpedia">tous les autres CRs &rsaquo;</a>
+  </check>
+
+</div><!-- #crotypedia -->
+
+<div id="hfrtv" class="homebox profilbox">
+  <check if="{{ !@list_stream }}">
+    <h2><a href="#stream">{{@PARAMS.name}} ne stream pas... encore?!</a></h2>
+  </check>
+  <check if="{{ @list_stream }}">
+    <h2><a href="#stream">Le Stream de {{@PARAMS.name}}</a></h2>
+
+    <check if="{{ !@list_stream }}">
+        <img src="/ui/images/daique.gif" alt="Pas de stream" class="nostream"/>
+    </check>
+    <check if="{{ @list_stream }}">
+      <ul class="name">
+
+        <repeat group="{{ @list_stream }}" value="{{ @item }}">
+          <include href="stream/li.htm" />
+        </repeat>
+      </ul>
+    </check>
+  </check>
+
+  <check if="{{ !@list_stream }}">
+    <a class="allinks" href="{{@ALIASES.streams_list}}" title="HFR.tv">voir tous les streams &rsaquo;</a>
+  </check>
+  <check if="{{ @list_stream }}">
+    <a class="allinks" href="{{@ALIASES.streams_list}}" title="HFR.tv">tous les autres streams &rsaquo;</a>
+  </check>
+
+</div><!-- #hfrtv -->

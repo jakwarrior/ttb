@@ -306,6 +306,9 @@ ul {
 
 }
 
+#hfrtv.profilbox ul li {
+  width: 100%;
+}
 #crotypedia ul.cr_games li {
   width:25%;
 }
@@ -564,4 +567,9 @@ line-height: 20px;
 
 .header .rss li a:hover {
   text-decoration:underline;
+}
+
+.nostream {
+  display:block;
+  margin: 20px auto;
 }
