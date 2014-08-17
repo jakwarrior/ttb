@@ -8,21 +8,6 @@ function toAscii($str) {
 	return $clean;
 }
 
-function csubstr($string, $start, $length=false) {
-    $pattern = '/(\[\w+[^\]]*?\]|\[\/\w+\]|<\w+[^>]*?>|<\/\w+>)/i';
-    $clean = preg_replace($pattern, chr(1), $string);
-    if(!$length)
-        $str = substr($clean, $start);
-    else {
-        $str = substr($clean, $start, $length);
-        $str = substr($clean, $start, $length + substr_count($str, chr(1)));
-    }
-    $pattern = str_replace(chr(1),'(.*?)',preg_quote($str));
-    if(preg_match('/'.$pattern.'/is', $string, $matched))
-        return $matched[0];
-    return $string;
-}
-
 function truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true) {
 	if ($considerHtml) {
 		// if the plain text is shorter than the maximum length, return the whole text
@@ -113,13 +98,20 @@ function truncate($text, $length = 100, $ending = '...', $exact = false, $consid
 	return $truncate;
 }
 
-
 $f3=require('lib/base.php');
 $f3->config('config.ini');
 $f3->config('routes.ini');
 $f3->set('LANGUAGE', 'fr-FR');
 $f3->set('ONERROR',function($f3){
-  echo \Template::instance()->render('error.html');
+	if($f3->get('ERROR')['code'] == 404)
+	{
+		$f3->set('view','error.html');
+		$f3->set('site_title','404');
+  	echo \Template::instance()->render('layout.htm');
+	}
+	else {
+		echo "Error :o";
+	}
 });
 $f3->run();
 
