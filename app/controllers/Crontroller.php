@@ -114,6 +114,7 @@ class Crontroller extends Controller {
 
 			//pseudo :
 			$processActu['username'] = $xpath->query('//td[@class = "messCase1"]//b[@class = "s2"]')->item(0)->textContent;
+			$processActu['username'] = preg_replace('/[^(\x20-\x7F)]*/','', htmlentities($processActu['username']));
 			//echo $processActu['username']."<br>";
 
 			//if ($processActu['username'] <> 'roswellent​ongues') {

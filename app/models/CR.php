@@ -117,8 +117,7 @@ class CR extends DB\SQL\Mapper {
 
       //pseudo :
       $processCR['username'] = $xpath->query('//td[@class = "messCase1"]//b[@class = "s2"]')->item(0)->textContent;
-      //echo htmlentities($processCR['username'])."<br>";
-
+      $processCR['username'] = preg_replace('/[^(\x20-\x7F)]*/','', htmlentities($processCR['username']));
 
       //date posted
       $divDate = $xpath->query('//div[@class="toolbar"]/div[@class="left"]');
