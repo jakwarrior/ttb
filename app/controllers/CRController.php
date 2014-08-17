@@ -13,7 +13,9 @@ class CRController extends Controller {
 		$Game = new Game($this->db);
 		$this->f3->set('gamesother',$Game->allOther());
 
+		$this->f3->set('site_title','CR, Tests, Reviews 100% Tartuffe | CROTYpedia');
 	  $this->f3->set('view','cr/index.htm');
+
 	}
 
 	public function view()
@@ -24,6 +26,9 @@ class CRController extends Controller {
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->byCR($myCR['id']));
 
+		//print_r($myCR);
+
+		$this->f3->set('site_title','CR de '.$myCR['games'].' par '.$myCR['username'].' | CROTYpedia');
 		$this->f3->set('view','cr/view.htm');
 	}
 
@@ -34,7 +39,9 @@ class CRController extends Controller {
 
 		$Game = new Game($this->db);
 
-		$this->f3->set('game',$Game->load(array('id=?',$this->f3->get('PARAMS.id'))));
+		$this->f3->set('game',$myGame = $Game->load(array('id=?',$this->f3->get('PARAMS.id'))));
+
+		$this->f3->set('site_title','CRs de '.$myGame['name'].' | CROTYpedia');
 		$this->f3->set('view','cr/index.htm');
 	}
 
@@ -43,6 +50,7 @@ class CRController extends Controller {
 		$CRs = new CR($this->db);
 		$this->f3->set('list',$CRs->byAlpha(), 86400);
 
+		$this->f3->set('site_title','Tous les CRs | CROTYpedia');
 		$this->f3->set('view','cr/index.htm', 86400);
 	}
 
