@@ -13,6 +13,7 @@ class HomeController extends Controller {
         $this->f3->set('crs',$CRs->all(10));
 
 
+				$this->f3->set('site_title','Un torrent d\'informations — thetartuffebay.org');
 
         $this->f3->set('page_head','Le premier site d\'information des tartuffes :o');
         $this->f3->set('view','home.htm');
