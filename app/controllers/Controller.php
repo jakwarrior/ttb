@@ -7,10 +7,14 @@ class Controller {
     protected $cache;
 
     function beforeroute() {
+        //Header
+        
+
+        //Header
     }
 
     function afterroute() {
-		echo Template::instance()->render('layout.htm');
+        echo Template::instance()->render('layout.htm');
     }
 
     function __construct() {

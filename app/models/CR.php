@@ -9,6 +9,7 @@ class CR extends DB\SQL\Mapper {
     public function all($limit = 0) {
       $request =
         'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
+        ', g.name AS name, g.api_image AS api_image'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.

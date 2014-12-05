@@ -1,0 +1,78 @@
+.gibbactu h2, #gibbactu h2 {
+	background:  rgb(3, 37, 74)  url(/ui/images/gibbactu.jpg) no-repeat center left;
+	background-size: contain;
+
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#gibbactu {
+    h2 a {
+        color: #ccff33;
+        text-decoration:none;
+        display: block;
+        padding-left:65px;
+    }
+
+    .gibbactus {
+        border-bottom: 10px solid rgb(3, 37, 74);
+        padding: 5px 0 30px 15px;
+        margin: 15px 0 30px 0;
+        text-align: justify;
+        position: relative;
+
+        p {
+            margin:10px 0;
+        }
+        ul {
+            border:none;
+            padding: 0 0 0 15px;
+            margin:0;
+            list-style-type: disc;
+        }
+
+        li {
+          margin-bottom:15px;
+        }
+
+        a
+        {
+          color:rgb(3, 37, 74);
+          font-weight:bold;
+        }
+
+        .container, .container p {
+          padding:0;
+          margin:0;
+        }
+
+        .s1Topic {
+          font-size:0.9em;
+        }
+
+        a:hover {
+          color:#ccff33;
+          background-color:rgba(3, 37, 74, 1);
+          text-decoration:none;
+        }
+
+        a.date {
+            font-size:15px;
+            font-style:italic;
+            text-align:right;
+            position: absolute;
+            bottom: 5px;
+            right: 2px;
+            font-weight: normal;
+        }
+        a.date:hover {
+          background:none;
+          color:inherit;
+        }
+    }
+
+
+}

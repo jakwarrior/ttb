@@ -1,0 +1,19 @@
+.hfrtv h2 {
+    background: url(/ui/images/hfrtv.png) rgb(100, 65, 165) no-repeat center right;
+	background-size: contain;
+
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	padding-right:55px;
+	margin-bottom:10px;
+
+    text-align:right;
+}
+
+a.hfrtv.all {
+    background:rgb(100, 65, 165);
+    display: block;
+    padding:5px;
+    text-align:right;
+}

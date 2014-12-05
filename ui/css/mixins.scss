@@ -1,0 +1,19 @@
+@mixin background-size($size) {
+  -webkit-background-size: $size;
+     -moz-background-size: $size;
+      -ms-background-size: $size;
+       -o-background-size: $size;
+          background-size: $size;
+}
+
+@mixin box-shadow($size) {
+  -webkit-box-shadow: $size;
+     -moz-box-shadow: $size;
+      -ms-box-shadow: $size;
+       -o-box-shadow: $size;
+          box-shadow: $size;
+}
+
+@mixin text-shadow ($string: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000") {
+	text-shadow: unquote($string);
+}

@@ -27,38 +27,78 @@
 
 	</head>
 	<body>
+		<div id="header">
+			<div class="wrapper">
+				<a id="title" href="">TTB 10</a>
 
-		<div class="container header">
-			<div class="wrap">
-				<div class="header">
-					<h1><a href="/" title="{{ @site }}">{{ @site }}</a></h1>
-					<h3>&laquo; Seulement -80% ? J'attendrai les soldes. &raquo;
-						<br>&ndash;<i> Un Maitre Tartuffe</i></h3>
-				</div>
-
-
-				<ul class="menu">
-						<li class="gibbactu"><a href="/gibbactu" title="Gibb'Actu">Gibb'Actu</a></li>
-						<li class="hfrtv"><a href="/hfrtv" title="HFRtv">HFR.tv</a></li>
-						<li class="crotypedia"><a href="/crotypedia" title="CROTYpedia">CROTYpedia</a></li>
+				<ul id="toolbar_up">
+					<li class="rss"><a href="/">Le RSS 100% tartuffe</a></li>
 				</ul>
 
-				<ul class="rss">
-					<li><a href="{{ @ALIASES.rss_all }}">Le RSS 100% tartuffe</a></li>
+				<ul id="toolbar_down">
+					<li><a href="/">Mon Compte</a></li>
+					<li class="first"><input type="text" placeholder="Recherche"></li>
 				</ul>
-
 			</div>
-
 		</div>
 
-		<div class="container data">
-			<div class="wrap">
+
+		<div id="event">
+			<div class="wrapper">
+				blabla
+			</div>
+		</div>
+
+		<div id="promote">
+			<div class="wrapper">
+				<div class="crotypedia">
+					<h2 class="categories"><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
+					<ul>
+						<repeat group="{{ @crs }}" value="{{ @item }}">
+							<include href="cr/li_header.htm" />
+						</repeat>
+					</ul>
+				</div>
+
+				<div class="hfrtv">
+					<h2 class="categories">HFR.tv</h2>
+					<ul>
+						<repeat group="{{ @streams }}" value="{{ @item }}">
+							<li>
+								<p>{{ trim(@item['games']) }} avec {{ @item['username'] }} le {{@item['date']}}</p>
+								<blockquote>
+									<p>{{@item['description']}}</p>
+								</blockquote>
+							</li>
+						</repeat>
+					</ul>
+
+					<a class="hfrtv all" href="">Planning complet ></a>
+				</div>
+			</div>
+		</div>
+
+		<div id="real_content">
+			<div class="header_menu">
+				<div class="wrapper">
+					<ul>
+						<li class="selected"><a href="/">Home</a></li>
+						<li><a href="/">Gibbactus</a></li>
+						<li><a href="/">HFR.tv</a></li>
+						<li><a href="/">CROTYpedia</a></li>
+						<li><a href="/">Mods</a></li>
+						<li><a href="/">Wiki</a></li>
+						<li><a href="/">TU PC</a></li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="wrapper">
 				<include href="{{ @view }}" />
 			</div>
 		</div>
 
 		<include href="footer.htm" />
-
 
 	</body>
 </html>
