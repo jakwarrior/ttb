@@ -17,265 +17,226 @@ p {
   margin: 0;
   padding: 0; }
 
-.overflow, .wrapper, #promote {
+.overflow {
   overflow: hidden; }
 
-.link_header a, #header a, .header_menu a, #footer a {
+.link_header a {
   color: white;
   text-decoration: none; }
-.link_header a:hover, #header a:hover, .header_menu a:hover, #footer a:hover {
+.link_header a:hover {
   text-decoration: underline; }
 
 body {
   font: 100% "PT Sans", Helvetica, Arial, sans-serif;
   background: #F1F1F1; }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 1280px;
-  padding: 0 25px;
-  height: 100%; }
-
-h2 {
-  margin: 0; }
-
 a {
-  text-decoration: none;
-  color: white; }
+  color: white;
+  text-decoration: none; }
   a:hover {
     text-decoration: underline; }
 
-/*blocks*/
-#header {
-  background: #087cc9;
-  height: 110px;
-  z-index: 15;
+#background {
   position: fixed;
-  top: 0;
-  width: 100%;
-  -webkit-box-shadow: 0px 1px 20px 1px #000;
-  -moz-box-shadow: 0px 1px 20px 1px #000;
-  -ms-box-shadow: 0px 1px 20px 1px #000;
-  -o-box-shadow: 0px 1px 20px 1px #000;
-  box-shadow: 0px 1px 20px 1px #000; }
-  #header.noshadow {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none; }
-  #header .wrapper {
-    position: relative;
-    height: 100%; }
-  #header ul {
-    list-style-type: none; }
-    #header ul li {
-      float: right; }
-  #header #title {
-    position: absolute;
-    text-decoration: none;
-    color: #FFF;
-    font-size: 6em;
-    font-weight: bold; }
-  #header #toolbar_up {
-    position: absolute;
-    right: 25px;
-    top: 20px; }
-    #header #toolbar_up .rss {
-      background: transparent url(/ui/images/rss.png) no-repeat left center;
-      background-size: contain;
-      padding-left: 25px; }
-  #header #toolbar_down {
-    position: absolute;
-    right: 25px;
-    bottom: 20px; }
-    #header #toolbar_down li {
-      margin-left: 10px;
-      padding-left: 10px;
-      line-height: 27px;
-      border-left: 3px solid white; }
-      #header #toolbar_down li.first {
-        border: none; }
-    #header #toolbar_down input {
-      padding: 5px 10px; }
-
-#header .wrapper, .header_menu .wrapper, #footer .wrapper {
-  background-color: rgba(255, 255, 255, 0.2); }
-
-#event {
-  display: none; }
-
-#promote {
-  background: #262626;
-  width: 100%;
-  height: 470px;
-  color: white;
-  padding: 25px 0;
-  position: absolute;
-  top: 105px;
+  top: 0px;
   left: 0px;
-  z-index: 10; }
-  #promote .wrapper {
-    height: 420px; }
-  #promote div.crotypedia {
-    height: inherit;
-    float: left;
-    width: 70%; }
-    #promote div.crotypedia ul {
-      position: relative;
-      padding: 0; }
-      #promote div.crotypedia ul li {
-        display: block;
-        position: relative;
-        float: left;
-        width: 270px;
-        height: 177px;
-        margin: 0 15px 15px 0; }
-        #promote div.crotypedia ul li a {
-          display: block;
-          height: inherit;
-          width: inherit;
-          border: 2px solid black;
-          text-decoration: none;
-          color: white;
-          text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-          display: table-cell;
-          vertical-align: middle; }
-          #promote div.crotypedia ul li a:hover {
-            border: 2px solid white; }
-            #promote div.crotypedia ul li a:hover:after {
-              opacity: .7; }
-            #promote div.crotypedia ul li a:hover span.format {
-              display: inline-block !important; }
-          #promote div.crotypedia ul li a:after {
-            -webkit-background-size: 115%;
-            -moz-background-size: 115%;
-            -ms-background-size: 115%;
-            -o-background-size: 115%;
-            background-size: 115%;
-            background-position: center center;
-            top: 0;
-            left: 0;
-            content: "";
-            bottom: 0;
-            right: 0;
-            position: absolute;
-            z-index: -1;
-            background-repeat: no-repeat; }
-          #promote div.crotypedia ul li a p.gamename {
-            text-align: center;
-            width: 100%;
-            display: block; }
-          #promote div.crotypedia ul li a span.username {
-            position: absolute;
-            bottom: 10px;
-            left: 10px; }
-          #promote div.crotypedia ul li a span.format {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: none !important; }
-      #promote div.crotypedia ul :nth-of-type(3n+3) {
-        margin-right: 0; }
-      #promote div.crotypedia ul :nth-of-type(n+4) {
-        margin-bottom: 0;
-        margin-top: 2px; }
-  #promote div.hfrtv {
-    float: right;
-    width: 30%;
-    height: inherit;
-    position: relative;
-    background-color: rgba(100, 65, 165, 0.1); }
-    #promote div.hfrtv ul li {
-      text-align: right;
-      font-size: 13px;
-      padding-right: 10px; }
-    #promote div.hfrtv a {
-      position: absolute;
-      width: 100%;
-      bottom: 0; }
+  width: 250px;
+  height: 100%;
+  background-color: #262626;
+  z-index: -3; }
 
-.header_menu {
-  background: #087cc9;
-  text-align: center;
-  height: 45px;
-  margin-bottom: 20px;
-  border-bottom: 5px solid #262626; }
-  .header_menu.cloned {
-    position: fixed;
-    top: 110px;
-    width: 100%;
-    z-index: 10; }
-  .header_menu li {
-    float: left;
-    padding: 5px 15px 2px 15px;
-    border-bottom: 3px solid transparent;
-    line-height: 30px;
+#menu {
+  width: 250px;
+  background: #262626;
+  color: white;
+  float: left; }
+  #menu #title {
+    color: white;
+    text-decoration: none;
+    font-size: 4em;
+    font-weight: bolder;
+    text-align: center;
+    display: block; }
+  #menu h3 {
     margin: 0;
-    float: left;
-    color: #777777; }
-  .header_menu li.selected {
-    border-bottom: 3px solid #F1F1F1; }
-  .header_menu li:hover {
-    border-bottom: 3px solid #F1F1F1; }
-  .header_menu a:hover {
-    text-decoration: none; }
+    font-size: 1em;
+    padding: 0 10px; }
+  #menu #toolbar_up {
+    padding: 10px; }
+    #menu #toolbar_up .rss {
+      height: 30px;
+      line-height: 30px;
+      background: transparent url(/ui/images/1418066385_rss.png) no-repeat right center;
+      background-size: contain;
+      padding-left: 0px; }
+  #menu blockquote {
+    display: none; }
+  #menu .categories {
+    margin: 10px 0; }
+    #menu .categories li a {
+      display: block;
+      padding: 0 10px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 30px;
+      background: transparent url(/ui/images/1418066385_rss.png) no-repeat right 10px center;
+      background-size: 30px;
+      text-decoration: none;
+      border-right: 10px solid green; }
+    #menu .categories li.mods a {
+      background: none;
+      border-color: #3F4C6C; }
+      #menu .categories li.mods a:hover {
+        background-color: #3F4C6C; }
+    #menu .categories li.account a {
+      background-image: none;
+      border-color: #B02C2B; }
+      #menu .categories li.account a:hover {
+        color: white;
+        background-color: #B02C2B;
+        background-image: none; }
+    #menu .categories li.gibbactu a {
+      background-image: none;
+      border-color: #03254a; }
+      #menu .categories li.gibbactu a:hover {
+        color: #ccff33;
+        background-color: #03254a;
+        background-image: url(/ui/images/gibbactu.jpg); }
+    #menu .categories li.hfrtv a {
+      background-image: none;
+      border-color: #6441a5; }
+      #menu .categories li.hfrtv a:hover {
+        color: white;
+        background-color: #6441a5;
+        background-image: url(/ui/images/hfrtv.png); }
+    #menu .categories li.crotypedia a {
+      background-image: none;
+      border-color: white; }
+      #menu .categories li.crotypedia a:hover {
+        color: #000;
+        background-color: white;
+        background-image: url(/ui/images/crotypedia.png); }
+    #menu .categories li.home a {
+      background-image: none;
+      border-color: #EEEEEE; }
+      #menu .categories li.home a:hover, #menu .categories li.home a.selected {
+        color: black;
+        background-color: #EEEEEE;
+        background-image: url(/favicon.ico);
+        background-size: auto; }
+    #menu .categories li.tupc a {
+      background: none;
+      border-color: #f18f18; }
+      #menu .categories li.tupc a:hover {
+        color: #FFF;
+        background-color: #f18f18;
+        background-image: none; }
+
+#content {
+  width: calc(100% - 250px);
+  float: left; }
+  #content #search_box {
+    padding: 10px 10px 0 10px; }
+    #content #search_box input {
+      width: 100%;
+      padding: 10px;
+      font-size: 20px; }
 
 #real_content {
-  margin-top: 572px;
-  z-index: 12;
-  position: relative;
-  background: #F1F1F1; }
-
-#footer {
-  border-top: 5px solid #262626;
-  background: #087cc9;
-  text-align: center; }
-  #footer .wrapper {
-    padding: 20px; }
-  #footer img {
-    background: #F1F1F1;
+  width: 70%;
+  float: left; }
+  #real_content img {
+    max-width: 90%; }
+  #real_content #gibbactu {
     margin: 5px; }
+  #real_content .gibbactus {
+    background: white;
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 5px;
+    width: calc(50% - 10px); }
+  @media screen and (max-width: 1000px) {
+    #real_content .gibbactus {
+      width: calc(100% - 10px); } }
+  @media screen and (min-width: 1980px) {
+    #real_content .gibbactus {
+      width: calc(33% - 10px); } }
+  @media screen and (min-width: 2400px) {
+    #real_content .gibbactus {
+      width: calc(25% - 10px); } }
 
-table.spoiler, table.quote, table.citation, table.fixed {
-  border: 1px solid lightslategray;
-  margin-bottom: 10px;
-  width: 100%; }
+#side_content {
+  width: 30%;
+  max-width: 1024px;
+  float: left; }
 
-table.quote {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAECUlEQVRoQ+2ZfWhOURzHd58sIZGkvDXlD8lLImWRprwUpqVYytuspYjYU8giav4x1tb+kLHR/liGknn7w1tYikkm8prlD7UU5Q/vPI/P7+k+ubu755577vNoLffUr+fpnN/v+/29nHPPuedaOX28WX3c/5wogN6uYDYqMIIgCmOxWF4ikXjM/3PI7ywFNg2c+Ugucg1pd+NmEkAeTsdxutSyrIFp4GQyedcm/ZpBEPOw3QXuQgdukv97kUonbpgAcnF8D44LgWSmR6N/P+P7QgQwFptj2C/ysiU5CfqnIx3pcdMApmDYBIGUVtnsKsw2DGAd+rVgD9FgxxmvDhNAAUatEAzWOUYA99CZpdNLj1PRA9jsDqKP3g70qkwDWIrBaZwfEIbExwbfY3U4tSkgrjwcJiKvTALIR/kmzvcPQoJeC/N/Dbo/dfo4X4nzFTo9GUfvGz8S6Amnvm4NjEa5HadG6kgguILOYeS6TtceX8FvC9i+PoD7mUAbSEoN+p1ubD/jGMq3wfddjBA8RW8zciug46I2HukAe5CfDePNOC5z/p1Kzy+AEgAaNQSSmS3omD7zL4At68qz2dOllMFmXVJUAQzF8AUksst6NsZqcL6cQdlgTNoSbC9qnF/G+NUgoKoAKiDptuM5wezSrg7hvMA8wH6Gl3NkXpJRjJwJ4rzoeAXQj/5OSMYoSF7TPxUxnTYClw+uHDVUVa2jqluDOq8KoBCSVp8SFzF23oQkrcvTpJEklygS84F+WdyfTLB7VACSekjKFCRGO6wLQ7jek5zhCuyd9B80cV5VgeeQTFCQbKC/20ZiQDgJ3CcK3B/0y17z0QAvpequgGRHsuS5uKmMkHSZktj6ZcDWKwKQdWF6+PMMYA4kd3zmv5AoF6FfYEzNahKwXRHAW/ql6t9Nk+POdBEByBuVZ8OBLhw5ypPC6wkki+8+8tDLGLsm7OWMpMJuY+AyImd+d5MAJbE9dmR3APJ2ddw0C059e49YS5/7tfISY4vDYhP8F2zlyHKyG58LsBwSOZBl1CDbBkCtC6RNd67SkYIrU2wyIntRqrkrEIfkkA5INw6RlHtutgMQPHsdycn0nwbwBnTZlJwt4wqkMm5ZVfYJNQpAOZMoc1QBVXaiKaR7AtlPimgKRVMoyFRR6URPIZ/sRU+hIFMrmkL/8xQqZpGcCjJN/HSYQnJPWuDU4Y2shf6VWcCWe6M61XF6FANyK6H9iKEJwOuKZD24YW80UnQkQG4v5OvQM1UA0r8ckc9IvjfHPnvAWcZWIb9cOhZVOIITG8NUwX4bk1fKBqe96m50HEoLkGEGZPJB4xFyQ2MjNxszkUAfTGwsuTAQ3JdubN0HDgP/e0c1CqB38v6Xtc9X4A9oTdRAiwk4WAAAAABJRU5ErkJggg==);
-  background-repeat: no-repeat;
-  padding: 0px 20px 10px 50px;
-  width: auto;
-  background-color: white; }
-  table.quote b.s1 {
-    display: none; }
-
-#crotypedia.catbox img[onload], .gibbactus table img[onload], .gibbactus img[onload] {
-  max-width: 100%;
+ul.imagelist li {
   display: block;
-  margin: 5px auto !important; }
-
-blockquote {
   position: relative;
-  padding: 5px 15px;
-  margin: 5px 0 0.5em;
-  color: #333;
-  background: #eee;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  font-size: 12px;
-  display: inline-table; }
-  blockquote:after {
-    content: "";
-    position: absolute;
-    top: -12px;
-    right: 15px;
-    border: 6px solid transparent;
-    border-bottom-color: #eee;
+  width: 100%;
+  height: 200px;
+  margin: 0 15px 15px 0; }
+  ul.imagelist li a {
     display: block;
-    width: 0; }
+    width: 100%;
+    height: inherit;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    vertical-align: middle; }
+    ul.imagelist li a:hover .gameinfo {
+      background-color: rgba(38, 38, 38, 0.3); }
+    ul.imagelist li a:hover span.format {
+      display: inline-block !important; }
+    ul.imagelist li a .gameinfo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      background-color: rgba(38, 38, 38, 0.7); }
+    ul.imagelist li a img {
+      width: 100%;
+      height: 200px; }
+    ul.imagelist li a p.gamename {
+      text-align: center;
+      width: 100%;
+      display: block; }
+    ul.imagelist li a span.username {
+      position: absolute;
+      bottom: 10px;
+      left: 10px; }
+    ul.imagelist li a span.format {
+      display: inline-block !important; }
+
+#footer h4 {
+  background: transparent url(/ui/images/cac30.gif) no-repeat right 10px center;
+  background-size: contain;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 30px;
+  text-decoration: underline; }
+#footer a {
+  text-decoration: underline; }
+#footer img {
+  background: #F1F1F1;
+  margin: 10px auto;
+  display: block; }
+#footer div.copyr, #footer div.disclaimer {
+  padding: 10px;
+  font-size: .8em; }
+
+#side_content .crotypedia {
+  margin: 10px 10px 10px 0; }
+
+#side_content ul.imagelist li {
+  margin: 0 0 5px 0px; }
+@media screen and (min-width: 1910px) {
+  #side_content ul.imagelist li {
+    width: calc(50% - 0px);
+    float: left; }
+    #side_content ul.imagelist li a img {
+      width: 100%; } }
 
 span.format_mini, span.format_nano, span.format_micro, span.type_aar,
 span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard {
@@ -293,7 +254,7 @@ span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard
 
 /*
 span.format_standard {
-	display:none;
+display:none;
 }
 */
 .crotypedia h2 {
@@ -307,14 +268,14 @@ span.format_standard {
   .crotypedia h2 a {
     text-decoration: none; }
 
-.hfrtv h2 {
-  background: url(/ui/images/hfrtv.png) #6441a5 no-repeat center right;
-  background-size: contain;
+.hfrtv h2, h2.hfrtv {
+  background: url(/ui/images/hfrtv.png) #6441a5 no-repeat right 10px center;
+  background-size: 30px;
   height: 40px;
   line-height: 40px;
   font-size: 20px;
-  padding-right: 55px;
-  margin-bottom: 10px;
+  margin: 0px;
+  padding-right: 50px;
   text-align: right; }
 
 a.hfrtv.all {
@@ -322,6 +283,18 @@ a.hfrtv.all {
   display: block;
   padding: 5px;
   text-align: right; }
+
+#menu ul.imagelist li {
+  height: 80px;
+  margin: 0; }
+  #menu ul.imagelist li a {
+    font-size: .8em;
+    text-align: center; }
+    #menu ul.imagelist li a .gameinfo {
+      height: 30px;
+      line-height: 30px; }
+    #menu ul.imagelist li a img {
+      height: 80px; }
 
 .gibbactu h2, #gibbactu h2 {
   background: #03254a url(/ui/images/gibbactu.jpg) no-repeat center left;
@@ -338,18 +311,15 @@ a.hfrtv.all {
   display: block;
   padding-left: 65px; }
 #gibbactu .gibbactus {
-  border-bottom: 10px solid #03254a;
-  padding: 5px 0 30px 15px;
-  margin: 15px 0 30px 0;
   text-align: justify;
-  position: relative; }
+  padding: 10px; }
   #gibbactu .gibbactus p {
     margin: 10px 0; }
   #gibbactu .gibbactus ul {
     border: none;
-    padding: 0 0 0 15px;
+    padding: 0;
     margin: 0;
-    list-style-type: disc; }
+    list-style-type: none; }
   #gibbactu .gibbactus li {
     margin-bottom: 15px; }
   #gibbactu .gibbactus a {
@@ -368,10 +338,13 @@ a.hfrtv.all {
     font-size: 15px;
     font-style: italic;
     text-align: right;
-    position: absolute;
     bottom: 5px;
     right: 2px;
     font-weight: normal; }
   #gibbactu .gibbactus a.date:hover {
     background: none;
     color: inherit; }
+
+.gibbactus img[onload] {
+  display: block;
+  margin: 5px auto !important; }

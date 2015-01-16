@@ -1,13 +1,13 @@
-.hfrtv h2 {
-    background: url(/ui/images/hfrtv.png) rgb(100, 65, 165) no-repeat center right;
-	background-size: contain;
+.hfrtv h2, h2.hfrtv {
+    background: url(/ui/images/hfrtv.png) rgb(100, 65, 165) no-repeat right 10px center;
+	background-size: 30px;
 
 	height: 40px;
 	line-height: 40px;
 	font-size: 20px;
-	padding-right:55px;
-	margin-bottom:10px;
 
+	margin:0px;
+    padding-right:50px;
     text-align:right;
 }
 
@@ -16,4 +16,27 @@ a.hfrtv.all {
     display: block;
     padding:5px;
     text-align:right;
+}
+
+#menu ul.imagelist {
+    li {
+        $liheight: 80px;
+
+        height: $liheight;
+        margin:0;
+        a {
+            font-size:.8em;
+            text-align: center;
+
+            .gameinfo {
+                height: 30px;
+                line-height: 30px;
+            }
+
+            img {
+
+                height: $liheight;
+            }
+        }
+    }
 }

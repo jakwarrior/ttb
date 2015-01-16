@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18027",
+"creatorBuild": "18270",
 "files": {
 	"\/app\/controllers\/ActuController.php": {
 		"fileType": 8192,
@@ -160,6 +160,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/app\/models\/Stream.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/app\/models\/User.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/app\/models\/User.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2676,92 +2685,92 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/Cursor.php": {
+	"\/lib\/DB\/Cursor.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/Cursor.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/Cursor.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/jig.php": {
+	"\/lib\/DB\/jig.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/jig.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/jig.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/jig\/mapper.php": {
+	"\/lib\/DB\/jig\/mapper.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/jig\/mapper.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/jig\/mapper.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/jig\/session.php": {
+	"\/lib\/DB\/jig\/session.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/jig\/session.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/jig\/session.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/mongo.php": {
+	"\/lib\/DB\/mongo.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/mongo.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/mongo.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/mongo\/mapper.php": {
+	"\/lib\/DB\/mongo\/mapper.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/mongo\/mapper.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/mongo\/mapper.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/mongo\/session.php": {
+	"\/lib\/DB\/mongo\/session.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/mongo\/session.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/mongo\/session.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/SQL.php": {
+	"\/lib\/DB\/SQL.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/SQL.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/SQL.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/sql\/Mapper.php": {
+	"\/lib\/DB\/SQL\/Mapper.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/sql\/Mapper.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/SQL\/Mapper.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/sql\/session.php": {
+	"\/lib\/DB\/SQL\/session.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/sql\/session.php",
+		"inputAbbreviatedPath": "\/lib\/DB\/SQL\/session.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2793,11 +2802,11 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/magic.php": {
+	"\/lib\/Magic.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/magic.php",
+		"inputAbbreviatedPath": "\/lib\/Magic.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -3187,6 +3196,39 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/ui\/images\/1418066584_user-128.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2496,
+		"inputAbbreviatedPath": "\/ui\/images\/1418066584_user-128.png",
+		"outputAbbreviatedPath": "\/ui\/images\/1418066584_user-128.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ui\/images\/1418066587_cog-128.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4123,
+		"inputAbbreviatedPath": "\/ui\/images\/1418066587_cog-128.png",
+		"outputAbbreviatedPath": "\/ui\/images\/1418066587_cog-128.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ui\/images\/1418066589_home-128.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1553,
+		"inputAbbreviatedPath": "\/ui\/images\/1418066589_home-128.png",
+		"outputAbbreviatedPath": "\/ui\/images\/1418066589_home-128.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/ui\/images\/crotypedia.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3259,6 +3301,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/ui\/js\/admin\/loading-bar.js",
 		"outputAbbreviatedPath": "\/ui\/js\/admin\/min\/loading-bar-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/ui\/js\/isotope.pkgd.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ui\/js\/isotope.pkgd.min.js",
+		"outputAbbreviatedPath": "\/ui\/js\/min\/isotope.pkgd.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -3740,6 +3793,10 @@
 			"flagValue": -1
 			},
 		"shelljs": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"singleGroups": {
 			"active": 0,
 			"flagValue": -1
 			},

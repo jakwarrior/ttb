@@ -1,36 +1,75 @@
+
+#side_content .crotypedia {
+    margin: 10px 10px 10px 0;
+}
+
+#side_content ul.imagelist {
+
+    li {
+        margin:0 0 5px 0px;
+    }
+    @media screen and (min-width: 1910px) {
+        li {
+            $liwidth: calc(50% - 0px);
+
+            width: $liwidth;
+
+
+            float:left;
+            a {
+                //font-size:.8em;
+                //text-align: center;
+
+                .gameinfo {
+                    //height: 30px;
+                    //line-height: 30px;
+                }
+
+                img {
+
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+
+
+}
+
 span.format_mini, span.format_nano, span.format_micro, span.type_aar,
- span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard {
-	text-transform: uppercase;
-	border: 1px solid black;
-	padding: 0 10px;
-	text-align: center;
-	font-size: 0.65em;
-	height: 20px;
-	line-height: 20px;
-	display:inline-block !important;
-	background: transparentize(#FFF, .1);
-	color: black;
-	@include text-shadow("none");
+span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard {
+    text-transform: uppercase;
+    border: 1px solid black;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 0.65em;
+    height: 20px;
+    line-height: 20px;
+    display:inline-block !important;
+    background: transparentize(#FFF, .1);
+    color: black;
+    @include text-shadow("none");
 }
 /*
 span.format_standard {
-	display:none;
+display:none;
 }
 */
 
 
 
 .crotypedia h2 {
-	background: url(/ui/images/crotypedia.png) transparent no-repeat center left;
-	background-size: contain;
+    background: url(/ui/images/crotypedia.png) transparent no-repeat center left;
+    background-size: contain;
 
-	height: 40px;
-	line-height: 40px;
-	font-size: 20px;
-	padding-left:55px;
-	margin-bottom:10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    padding-left:55px;
+    margin-bottom:10px;
 
-	a {
-		text-decoration:none;
-	}
+    a {
+        text-decoration:none;
+    }
 }

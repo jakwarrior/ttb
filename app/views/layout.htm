@@ -27,78 +27,93 @@
 
 	</head>
 	<body>
-		<div id="header">
-			<div class="wrapper">
-				<a id="title" href="">TTB 10</a>
+		<div id="background">
+		</div>
 
-				<ul id="toolbar_up">
-					<li class="rss"><a href="/">Le RSS 100% tartuffe</a></li>
+		<div id="menu">
+			<!-- LOGO -->
+			<a id="title" href="">TTB 10</a>
+			<h3>« Seulement -80% ? J'attendrai les soldes. »
+				<br>–<i> Un Maitre Tartuffe</i></h3>
+			<!-- TOOLBAR -->
+			<ul id="toolbar_up">
+				<li class="rss"><a href="/">Le RSS 100% tartuffe</a></li>
+
+
+			</ul>
+
+			<!-- TV -->
+			<div id="event">
+				<h2 class="hfrtv">HFR.tv</h2>
+				<ul class="imagelist">
+					<repeat group="{{ @streams }}" value="{{ @item }}">
+						<li>
+							<a href="http://twitch.com/" target="_blank">
+								<img src="http://static.thetartuffebay.org/medium/{{ @item['image'] }}"/>
+								<div class="gameinfo">
+									<p>{{ @item['username'] }} le {{@item['date']}}</p>
+									<blockquote>
+										<p>{{@item['description']}}</p>
+									</blockquote>
+								</div>
+							</a>
+
+						</li>
+					</repeat>
 				</ul>
 
-				<ul id="toolbar_down">
-					<li><a href="/">Mon Compte</a></li>
-					<li class="first"><input type="text" placeholder="Recherche"></li>
-				</ul>
+				<a class="hfrtv all" href="">Planning complet ></a>
+
+			</div>
+
+			<!-- MENU -->
+			<ul class="categories">
+				<li class="account"><a href="/">Mon Compte</a></li>
+				<li class="home"><a class="selected" href="/">Home</a></li>
+				<li class="gibbactu"><a href="/">Gibbactus</a></li>
+				<li class="hfrtv"><a href="/">HFR.tv</a></li>
+				<li class="crotypedia"><a href="/">CROTYpedia</a></li>
+				<li class="mods"><a href="/">Mods</a></li>
+				<!--<li><a href="/">Wiki</a></li>-->
+				<li class="tupc"><a href="/">TU PC</a></li>
+
+			</ul>
+
+			<div id="footer">
+				<!-- FOOTER -->
+				<include href="footer.htm" />
 			</div>
 		</div>
 
-
-		<div id="event">
-			<div class="wrapper">
-				blabla
+		<div id="content">
+			<!-- SEARCHBOX -->
+			<div id="search_box">
+				<input type="text" placeholder="Recherche">
 			</div>
-		</div>
 
-		<div id="promote">
-			<div class="wrapper">
+
+			<!-- CONTENT -->
+			<div id="real_content">
+				<include href="{{ @view }}" />
+			</div>
+			<!-- ./CONTENT -->
+
+
+			<!-- CR -->
+			<div id="side_content">
 				<div class="crotypedia">
-					<h2 class="categories"><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
-					<ul>
+					<!--<h2 class="categories"><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>-->
+					<ul class="imagelist">
 						<repeat group="{{ @crs }}" value="{{ @item }}">
 							<include href="cr/li_header.htm" />
 						</repeat>
 					</ul>
 				</div>
-
-				<div class="hfrtv">
-					<h2 class="categories">HFR.tv</h2>
-					<ul>
-						<repeat group="{{ @streams }}" value="{{ @item }}">
-							<li>
-								<p>{{ trim(@item['games']) }} avec {{ @item['username'] }} le {{@item['date']}}</p>
-								<blockquote>
-									<p>{{@item['description']}}</p>
-								</blockquote>
-							</li>
-						</repeat>
-					</ul>
-
-					<a class="hfrtv all" href="">Planning complet ></a>
-				</div>
 			</div>
+
 		</div>
 
-		<div id="real_content">
-			<div class="header_menu">
-				<div class="wrapper">
-					<ul>
-						<li class="selected"><a href="/">Home</a></li>
-						<li><a href="/">Gibbactus</a></li>
-						<li><a href="/">HFR.tv</a></li>
-						<li><a href="/">CROTYpedia</a></li>
-						<li><a href="/">Mods</a></li>
-						<li><a href="/">Wiki</a></li>
-						<li><a href="/">TU PC</a></li>
 
-					</ul>
-				</div>
-			</div>
-			<div class="wrapper">
-				<include href="{{ @view }}" />
-			</div>
-		</div>
-
-		<include href="footer.htm" />
 
 	</body>
 </html>
