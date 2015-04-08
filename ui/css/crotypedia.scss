@@ -1,53 +1,60 @@
 
 #side_content .crotypedia {
-    margin: 10px 10px 10px 0;
+    margin: 0;
 }
 
 #side_content ul.imagelist {
 
     li {
-        margin:0 0 5px 0px;
-    }
-    @media screen and (min-width: 1910px) {
-        li {
-            $liwidth: calc(50% - 0px);
-
-            width: $liwidth;
-
-
-            float:left;
-            a {
-                //font-size:.8em;
-                //text-align: center;
-
-                .gameinfo {
-                    //height: 30px;
-                    //line-height: 30px;
-                }
-
-                img {
-
-                    width: 100%;
-                }
-            }
+        &:after {
+            padding-top: 80%;
         }
-
     }
 
 
+
+
+}
+
+#crotypedia.homebox ul.imagelist  {
+
+    li {
+        border-bottom:5px solid white;
+        border-left:3px solid white;
+
+        width:50%;
+        float:left;
+
+        &:after {
+            padding-top: 30%;
+        }
+    }
+
+    li:nth-child(2n+1) {
+        border-right:3px solid white;
+        border-left:none;
+    }
+}
+
+span.format {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: white;
+    height: 30px;
+    line-height: 30px;
+//    opacity:0.9;
 }
 
 span.format_mini, span.format_nano, span.format_micro, span.type_aar,
 span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard {
     text-transform: uppercase;
-    border: 1px solid black;
     padding: 0 10px;
     text-align: center;
     font-size: 0.65em;
-    height: 20px;
-    line-height: 20px;
     display:inline-block !important;
-    background: transparentize(#FFF, .1);
+    background: transparentize(#FFF, .2);
     color: black;
     @include text-shadow("none");
 }
@@ -59,17 +66,110 @@ display:none;
 
 
 
-.crotypedia h2 {
-    background: url(/ui/images/crotypedia.png) transparent no-repeat center left;
+#crotypedia h2, .crotypedia h2 {
+    background:white url(/ui/images/crotypedia.png) no-repeat center left;
     background-size: contain;
 
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     font-size: 20px;
-    padding-left:55px;
-    margin-bottom:10px;
+    padding-left:65px;
 
+    margin: 0px 0 5px 0;
+    
     a {
         text-decoration:none;
+        color: #000;
     }
+}
+
+#crotypedia.catbox .innercontent {
+    padding:15px 0;
+    text-align:justify;
+
+}
+
+#crotypedia.catbox .innercontent p {
+    margin:0;
+    padding:0 10px;
+}
+
+#crotypedia.catbox .innercontent a, .cr_details a {
+
+    color:#0645ad;
+    text-decoration: none;
+    display:inline;
+    font-weight:bold;
+}
+
+#crotypedia.catbox img {
+    max-width:100%;
+    margin:0 !important;
+}
+
+#crotypedia.catbox img[onload], .gibbactus table img[onload], .gibbactus img[onload] {
+    width:100%;
+    display:block;
+    margin:5px auto !important;
+}
+
+
+
+#crotypedia.catbox ul {
+    list-style-type: disc;
+    padding: 0 30px;
+}
+
+.cr_details {
+    background-color:white;
+    padding:15px;
+}
+
+.cr_details span.games {
+    float: left;
+    width: 45%;
+}
+.cr_details span.username {
+    float: right;
+    width: 45%;
+    text-align: right;
+}
+.cr_details span.date {
+    float: right;
+    width: 45%;
+    text-align: right;
+}
+.cr_details span.out_link {
+    clear: both;
+    /* float: right; */
+    display: block;
+    text-align: center;
+}
+
+h3.game {
+    height: 200px;
+    background-size: cover;
+    background-position: center center;
+    line-height: 200px;
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    margin: 5px 0;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+h3.game.total2 {
+    height: 100px;
+    line-height: 100px;
+}
+h3.game.total3 {
+    height: 60px;
+    line-height: 60px;
+}
+h3.game.total4 {
+    height: 50px;
+    line-height: 50px;
 }

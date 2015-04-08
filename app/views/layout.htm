@@ -27,92 +27,94 @@
 
 	</head>
 	<body>
-		<div id="background">
-		</div>
-
-		<div id="menu">
-			<!-- LOGO -->
-			<a id="title" href="">TTB 10</a>
-			<h3>« Seulement -80% ? J'attendrai les soldes. »
-				<br>–<i> Un Maitre Tartuffe</i></h3>
-			<!-- TOOLBAR -->
-			<ul id="toolbar_up">
-				<li class="rss"><a href="/">Le RSS 100% tartuffe</a></li>
+		<div id="outter">
+			<div id="menu">
+				<!-- LOGO -->
+				<a id="title" href="">TTB 10</a>
+				<h3>« Seulement -80% ? J'attendrai les soldes. »
+					<br>–<i> Un Maitre Tartuffe</i></h3>
+				<!-- TOOLBAR -->
+				<ul id="toolbar_up">
+					<li class="rss"><a href="/">Le RSS 100% tartuffe</a></li>
 
 
-			</ul>
-
-			<!-- TV -->
-			<div id="event">
-				<h2 class="hfrtv">HFR.tv</h2>
-				<ul class="imagelist">
-					<repeat group="{{ @streams }}" value="{{ @item }}">
-						<li>
-							<a href="http://twitch.com/" target="_blank">
-								<img src="http://static.thetartuffebay.org/medium/{{ @item['image'] }}"/>
-								<div class="gameinfo">
-									<p>{{ @item['username'] }} le {{@item['date']}}</p>
-									<blockquote>
-										<p>{{@item['description']}}</p>
-									</blockquote>
-								</div>
-							</a>
-
-						</li>
-					</repeat>
 				</ul>
 
-				<a class="hfrtv all" href="">Planning complet ></a>
-
-			</div>
-
-			<!-- MENU -->
-			<ul class="categories">
-				<li class="account"><a href="/">Mon Compte</a></li>
-				<li class="home"><a class="selected" href="/">Home</a></li>
-				<li class="gibbactu"><a href="/">Gibbactus</a></li>
-				<li class="hfrtv"><a href="/">HFR.tv</a></li>
-				<li class="crotypedia"><a href="/">CROTYpedia</a></li>
-				<li class="mods"><a href="/">Mods</a></li>
-				<!--<li><a href="/">Wiki</a></li>-->
-				<li class="tupc"><a href="/">TU PC</a></li>
-
-			</ul>
-
-			<div id="footer">
-				<!-- FOOTER -->
-				<include href="footer.htm" />
-			</div>
-		</div>
-
-		<div id="content">
-			<!-- SEARCHBOX -->
-			<div id="search_box">
-				<input type="text" placeholder="Recherche">
-			</div>
-
-
-			<!-- CONTENT -->
-			<div id="real_content">
-				<include href="{{ @view }}" />
-			</div>
-			<!-- ./CONTENT -->
-
-
-			<!-- CR -->
-			<div id="side_content">
-				<div class="crotypedia">
-					<!--<h2 class="categories"><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>-->
+				<!-- TV -->
+				<div id="event">
+					<h2 class="hfrtv">HFR.tv</h2>
 					<ul class="imagelist">
-						<repeat group="{{ @crs }}" value="{{ @item }}">
-							<include href="cr/li_header.htm" />
+						<repeat group="{{ @inc_streams }}" value="{{ @item }}">
+							<li>
+								<a href="http://twitch.com/" target="_blank">
+									<img src="http://static.thetartuffebay.org/center/33/{{ @item['image'] }}"/>
+									<div class="gameinfo">
+										<p>{{ @item['username'] }} le {{@item['date']}}</p>
+										<blockquote>
+											<p>{{@item['description']}}</p>
+										</blockquote>
+									</div>
+								</a>
+
+							</li>
 						</repeat>
 					</ul>
+
+					<a class="hfrtv all" href="">Planning complet ></a>
+
+				</div>
+
+				<!-- MENU -->
+				<ul class="categories">
+					<repeat group="{{ @menu }}" value="{{ @item }}">
+						<li class="{{ toAscii(@item['title']) }}"><a class="<check if="{{ @item['selected'] == 'selected' }}"> selected</check>" href="{{ @item['url'] }}">{{ @item['title'] }}</a></li>
+
+					</repeat>
+
+				</ul>
+
+				<style>
+					<repeat group="{{ @menu }}" value="{{ @item }}">
+						li.{{ toAscii(@item['title']) }} a {
+							background-image:none !important;
+							border-color:{{ @item['color'] }} !important;
+							border-left:5px solid;
+						}
+
+						li.{{ toAscii(@item['title']) }} a:hover,  li.{{ toAscii(@item['title']) }} a.selected {
+							color:{{ @item['tcolor'] }} !important;
+							background-color:{{ @item['color'] }} !important;
+							<!-- background-image:{{ @item['icon'] }} !important; -->
+
+						}
+
+						<check if="{{ @item['selected'] == 'selected' }}">
+						#menu {
+							border-color:{{ @item['color'] }} !important;
+						}
+
+						</check>
+
+					</repeat>
+				</style>
+
+
+				<div id="footer">
+					<!-- FOOTER -->
+					<include href="footer.htm" />
 				</div>
 			</div>
 
-		</div>
+			<div id="content">
+				<!-- SEARCHBOX -->
+				<div id="search_box">
+					<input type="text" placeholder="Recherche">
+				</div>
 
+				<include href="{{ @view }}" />
+				
+			</div>
+		</div>
 
 
 	</body>

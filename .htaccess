@@ -1,11 +1,11 @@
-AuthName "Restricted"
-AuthType Basic
-AuthUserFile /Users/FLK/Dev/www/ttb/.htpasswd
-AuthGroupFile /dev/null
-require valid-user
-Satisfy     any
-Order       allow,deny
-Allow from  all
+#AuthName "Restricted"
+#AuthType Basic
+#AuthUserFile /Users/FLK/Dev/www/ttb/.htpasswd
+#AuthGroupFile /dev/null
+#require valid-user
+#Satisfy     any
+#Order       allow,deny
+#Allow from  all
 
 # Enable rewrite engine and route requests to framework
 RewriteEngine On
@@ -24,4 +24,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L,QSA]
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
-

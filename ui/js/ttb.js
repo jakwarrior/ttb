@@ -1,5 +1,5 @@
 function swap_spoiler_states(obj){
-  var div=obj.getElementsByTagName('div');
+  var div=obj.getElementsByTagName('tbody');
   if(div[0]){
     if(div[0].style.visibility === "visible"){
       div[0].style.visibility = 'hidden';

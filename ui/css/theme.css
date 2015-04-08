@@ -27,8 +27,11 @@ p {
   text-decoration: underline; }
 
 body {
-  font: 100% "PT Sans", Helvetica, Arial, sans-serif;
-  background: #F1F1F1; }
+  font: 18px "PT Sans", Helvetica, Arial, sans-serif;
+  background: #EEEEEE; }
+
+html, body {
+  height: 100%; }
 
 a {
   color: white;
@@ -36,20 +39,22 @@ a {
   a:hover {
     text-decoration: underline; }
 
-#background {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 250px;
-  height: 100%;
-  background-color: #262626;
-  z-index: -3; }
+#outter {
+  width: 100%;
+  max-width: 1280px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  border-bottom: 10px solid #1a1a1a;
+  border-top: 10px solid #1a1a1a; }
 
 #menu {
-  width: 250px;
-  background: #262626;
-  color: white;
-  float: left; }
+  height: 100%;
+  width: 255px;
+  font-size: 0.9em;
+  position: absolute;
+  background: #1a1a1a;
+  color: white; }
   #menu #title {
     color: white;
     text-decoration: none;
@@ -72,142 +77,207 @@ a {
   #menu blockquote {
     display: none; }
   #menu .categories {
-    margin: 10px 0; }
+    margin: 10px 0;
+    /*
+            li.mon-compte a {
+                &:hover,  &.selected {
+                    color:white;
+                    background-color:#B02C2B;
+                    background-image:none;
+    
+                }
+                background-image:none;
+                border-color:#B02C2B;
+            }
+    
+            li.home a {
+                &:hover,  &.selected {
+                    color:black;
+                    background-color:$color_home;
+                    background-image:url(/favicon.ico);
+                    background-size:auto;
+    
+                }
+                background-image:none;
+                border-color:$color_home;
+    
+            }
+    
+            li.gibbactus a {
+                &:hover,  &.selected {
+                    color:#ccff33;
+                    background-color:rgb(3, 37, 74);
+                    background-image:url(/ui/images/gibbactu.jpg);
+    
+                }
+                background-image:none;
+                border-color:rgb(3, 37, 74);
+    
+            }
+            li.hfrtv a {
+                &:hover,  &.selected {
+                    color:white;
+                    background-color:rgb(100, 65, 165);
+                    background-image:url(/ui/images/hfrtv.png);
+    
+                }
+                background-image:none;
+                border-color:rgb(100, 65, 165);
+    
+    
+            }
+            li.crotypedia a {
+                &:hover,  &.selected {
+                    color:#000;
+                    background-color:white;
+                    background-image:url(/ui/images/crotypedia.png);
+    
+                }
+                background-image:none;
+                border-color:white;
+            }
+    
+            li.mods a {
+                background:none;
+                //background-image:url(/ui/images/1418066589_home-128.png);
+                &:hover,  &.selected {
+                    background-color:#3F4C6C;
+                }
+                border-color:#3F4C6C;
+            }
+    
+            li.tu-pc a {
+                &:hover,  &.selected {
+                    color:#FFF;
+                    background-color:#f18f18;
+                    background-image:none;
+    
+                }
+                background:none;
+                border-color:#f18f18;
+    
+            }
+    
+            */ }
     #menu .categories li a {
+      transition: background-color .2s linear, color .2s linear;
       display: block;
       padding: 0 10px;
       height: 40px;
       line-height: 40px;
       padding-left: 30px;
-      background: transparent url(/ui/images/1418066385_rss.png) no-repeat right 10px center;
+      background: transparent no-repeat right 10px center;
       background-size: 30px;
-      text-decoration: none;
-      border-right: 10px solid green; }
-    #menu .categories li.mods a {
-      background: none;
-      border-color: #3F4C6C; }
-      #menu .categories li.mods a:hover {
-        background-color: #3F4C6C; }
-    #menu .categories li.account a {
-      background-image: none;
-      border-color: #B02C2B; }
-      #menu .categories li.account a:hover {
-        color: white;
-        background-color: #B02C2B;
-        background-image: none; }
-    #menu .categories li.gibbactu a {
-      background-image: none;
-      border-color: #03254a; }
-      #menu .categories li.gibbactu a:hover {
-        color: #ccff33;
-        background-color: #03254a;
-        background-image: url(/ui/images/gibbactu.jpg); }
-    #menu .categories li.hfrtv a {
-      background-image: none;
-      border-color: #6441a5; }
-      #menu .categories li.hfrtv a:hover {
-        color: white;
-        background-color: #6441a5;
-        background-image: url(/ui/images/hfrtv.png); }
-    #menu .categories li.crotypedia a {
-      background-image: none;
-      border-color: white; }
-      #menu .categories li.crotypedia a:hover {
-        color: #000;
-        background-color: white;
-        background-image: url(/ui/images/crotypedia.png); }
-    #menu .categories li.home a {
-      background-image: none;
-      border-color: #EEEEEE; }
-      #menu .categories li.home a:hover, #menu .categories li.home a.selected {
-        color: black;
-        background-color: #EEEEEE;
-        background-image: url(/favicon.ico);
-        background-size: auto; }
-    #menu .categories li.tupc a {
-      background: none;
-      border-color: #f18f18; }
-      #menu .categories li.tupc a:hover {
-        color: #FFF;
-        background-color: #f18f18;
-        background-image: none; }
+      text-decoration: none; }
 
 #content {
-  width: calc(100% - 250px);
-  float: left; }
+  margin-left: 260px;
+  height: 100%;
+  min-height: 1400px; }
   #content #search_box {
-    padding: 10px 10px 0 10px; }
+    padding: 5px 0; }
     #content #search_box input {
       width: 100%;
       padding: 10px;
       font-size: 20px; }
 
 #real_content {
-  width: 70%;
-  float: left; }
-  #real_content img {
-    max-width: 90%; }
-  #real_content #gibbactu {
-    margin: 5px; }
-  #real_content .gibbactus {
-    background: white;
-    border: 1px solid lightgrey;
-    margin: 5px;
-    padding: 5px;
-    width: calc(50% - 10px); }
-  @media screen and (max-width: 1000px) {
-    #real_content .gibbactus {
-      width: calc(100% - 10px); } }
-  @media screen and (min-width: 1980px) {
-    #real_content .gibbactus {
-      width: calc(33% - 10px); } }
-  @media screen and (min-width: 2400px) {
-    #real_content .gibbactus {
-      width: calc(25% - 10px); } }
+  width: 75%;
+  border-right: 5px solid #EEEEEE;
+  float: left;
+  /*
+      @media screen and (max-width: 1000px) {
+          .gibbactus {
+              width: calc(100% - 10px);
+          }
+      }
+  
+      @media screen and (min-width: 1980px) {
+          .gibbactus {
+              width: calc(33% - 10px);
+          }
+      }
+  
+      @media screen and (min-width: 2400px) {
+          .gibbactus {
+              width: calc(25% - 10px);
+          }
+      }
+      */ }
 
 #side_content {
-  width: 30%;
+  width: 25%;
   max-width: 1024px;
-  float: left; }
+  float: left;
+  font-size: 0.9em; }
 
-ul.imagelist li {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 200px;
-  margin: 0 15px 15px 0; }
-  ul.imagelist li a {
-    display: block;
-    width: 100%;
-    height: inherit;
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    vertical-align: middle; }
-    ul.imagelist li a:hover .gameinfo {
-      background-color: rgba(38, 38, 38, 0.3); }
-    ul.imagelist li a:hover span.format {
-      display: inline-block !important; }
-    ul.imagelist li a .gameinfo {
+ul.imagelist {
+  overflow: hidden; }
+  ul.imagelist li {
+    display: inline-block;
+    position: relative;
+    width: 100%; }
+    ul.imagelist li:after {
+      padding-top: 50%;
+      display: block;
+      content: ''; }
+    ul.imagelist li a {
       position: absolute;
+      top: 0;
       bottom: 0;
+      right: 0;
       left: 0;
-      width: 100%;
-      height: 40px;
-      line-height: 40px;
-      background-color: rgba(38, 38, 38, 0.7); }
-    ul.imagelist li a img {
-      width: 100%;
-      height: 200px; }
-    ul.imagelist li a p.gamename {
-      text-align: center;
-      width: 100%;
-      display: block; }
-    ul.imagelist li a span.username {
-      position: absolute;
-      bottom: 10px;
-      left: 10px; }
-    ul.imagelist li a span.format {
-      display: inline-block !important; }
+      color: white;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      vertical-align: middle; }
+      ul.imagelist li a:hover .gameinfo {
+        background-color: rgba(26, 26, 26, 0.3); }
+      ul.imagelist li a:hover span.format {
+        display: inline-block !important; }
+      ul.imagelist li a .gameinfo {
+        transition: background-color .1s linear;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        background-color: rgba(26, 26, 26, 0.7); }
+      ul.imagelist li a img {
+        width: 100%;
+        height: 100%; }
+      ul.imagelist li a p.gamename {
+        text-align: center;
+        width: 100%;
+        display: block; }
+      ul.imagelist li a span.username {
+        position: absolute;
+        bottom: 10px;
+        left: 10px; }
+      ul.imagelist li a span.format {
+        display: inline-block !important; }
+
+.spoiler {
+  cursor: pointer;
+  border-collapse: collapse;
+  background: transparent url(/ui/images/warning.png) no-repeat 50% 50%; }
+  .spoiler tbody {
+    background: white;
+    visibility: hidden; }
+  .spoiler td {
+    padding: 0;
+    width: 100%; }
+
+.quote {
+  border-collapse: collapse;
+  background: transparent url(/ui/images/quote.png) no-repeat top left;
+  width: 95%;
+  margin: 0 auto;
+  background-color: #EEEEEE; }
+  .quote tr.none td {
+    padding: 0 10px 25px 10px; }
+  .quote tbody {
+    background: transparent url(/ui/images/quote.png) no-repeat bottom right; }
 
 #footer h4 {
   background: transparent url(/ui/images/cac30.gif) no-repeat right 10px center;
@@ -227,28 +297,39 @@ ul.imagelist li {
   font-size: .8em; }
 
 #side_content .crotypedia {
-  margin: 10px 10px 10px 0; }
+  margin: 0; }
 
-#side_content ul.imagelist li {
-  margin: 0 0 5px 0px; }
-@media screen and (min-width: 1910px) {
-  #side_content ul.imagelist li {
-    width: calc(50% - 0px);
-    float: left; }
-    #side_content ul.imagelist li a img {
-      width: 100%; } }
+#side_content ul.imagelist li:after {
+  padding-top: 80%; }
+
+#crotypedia.homebox ul.imagelist li {
+  border-bottom: 5px solid white;
+  border-left: 3px solid white;
+  width: 50%;
+  float: left; }
+  #crotypedia.homebox ul.imagelist li:after {
+    padding-top: 30%; }
+#crotypedia.homebox ul.imagelist li:nth-child(2n+1) {
+  border-right: 3px solid white;
+  border-left: none; }
+
+span.format {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background: white;
+  height: 30px;
+  line-height: 30px; }
 
 span.format_mini, span.format_nano, span.format_micro, span.type_aar,
 span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard {
   text-transform: uppercase;
-  border: 1px solid black;
   padding: 0 10px;
   text-align: center;
   font-size: 0.65em;
-  height: 20px;
-  line-height: 20px;
   display: inline-block !important;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   color: black;
   text-shadow: none; }
 
@@ -257,16 +338,91 @@ span.format_standard {
 display:none;
 }
 */
-.crotypedia h2 {
-  background: url(/ui/images/crotypedia.png) transparent no-repeat center left;
+#crotypedia h2, .crotypedia h2 {
+  background: white url(/ui/images/crotypedia.png) no-repeat center left;
   background-size: contain;
-  height: 40px;
-  line-height: 40px;
+  height: 50px;
+  line-height: 50px;
   font-size: 20px;
-  padding-left: 55px;
-  margin-bottom: 10px; }
-  .crotypedia h2 a {
-    text-decoration: none; }
+  padding-left: 65px;
+  margin: 0px 0 5px 0; }
+  #crotypedia h2 a, .crotypedia h2 a {
+    text-decoration: none;
+    color: #000; }
+
+#crotypedia.catbox .innercontent {
+  padding: 15px 0;
+  text-align: justify; }
+
+#crotypedia.catbox .innercontent p {
+  margin: 0;
+  padding: 0 10px; }
+
+#crotypedia.catbox .innercontent a, .cr_details a {
+  color: #0645ad;
+  text-decoration: none;
+  display: inline;
+  font-weight: bold; }
+
+#crotypedia.catbox img {
+  max-width: 100%;
+  margin: 0 !important; }
+
+#crotypedia.catbox img[onload], .gibbactus table img[onload], .gibbactus img[onload] {
+  width: 100%;
+  display: block;
+  margin: 5px auto !important; }
+
+#crotypedia.catbox ul {
+  list-style-type: disc;
+  padding: 0 30px; }
+
+.cr_details {
+  background-color: white;
+  padding: 15px; }
+
+.cr_details span.games {
+  float: left;
+  width: 45%; }
+
+.cr_details span.username {
+  float: right;
+  width: 45%;
+  text-align: right; }
+
+.cr_details span.date {
+  float: right;
+  width: 45%;
+  text-align: right; }
+
+.cr_details span.out_link {
+  clear: both;
+  /* float: right; */
+  display: block;
+  text-align: center; }
+
+h3.game {
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  line-height: 200px;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+  margin: 5px 0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+
+h3.game.total2 {
+  height: 100px;
+  line-height: 100px; }
+
+h3.game.total3 {
+  height: 60px;
+  line-height: 60px; }
+
+h3.game.total4 {
+  height: 50px;
+  line-height: 50px; }
 
 .hfrtv h2, h2.hfrtv {
   background: url(/ui/images/hfrtv.png) #6441a5 no-repeat right 10px center;
@@ -285,16 +441,17 @@ a.hfrtv.all {
   text-align: right; }
 
 #menu ul.imagelist li {
-  height: 80px;
   margin: 0; }
+  #menu ul.imagelist li:after {
+    padding-top: 33%;
+    display: block;
+    content: ''; }
   #menu ul.imagelist li a {
     font-size: .8em;
     text-align: center; }
     #menu ul.imagelist li a .gameinfo {
       height: 30px;
       line-height: 30px; }
-    #menu ul.imagelist li a img {
-      height: 80px; }
 
 .gibbactu h2, #gibbactu h2 {
   background: #03254a url(/ui/images/gibbactu.jpg) no-repeat center left;
@@ -305,46 +462,52 @@ a.hfrtv.all {
   margin: 0;
   padding: 0; }
 
-#gibbactu h2 a {
-  color: #ccff33;
-  text-decoration: none;
-  display: block;
-  padding-left: 65px; }
+#gibbactu h2 {
+  margin-bottom: 5px; }
+  #gibbactu h2 a {
+    color: #ccff33;
+    text-decoration: none;
+    display: block;
+    padding-left: 65px; }
 #gibbactu .gibbactus {
   text-align: justify;
-  padding: 10px; }
+  position: relative;
+  padding-top: 25px; }
   #gibbactu .gibbactus p {
     margin: 10px 0; }
   #gibbactu .gibbactus ul {
     border: none;
-    padding: 0;
-    margin: 0;
-    list-style-type: none; }
-  #gibbactu .gibbactus li {
-    margin-bottom: 15px; }
+    padding: 10px;
+    margin: 0 15px;
+    list-style-type: disc; }
   #gibbactu .gibbactus a {
     color: #03254a;
-    font-weight: bold; }
+    font-weight: bold;
+    padding: 0 3px; }
   #gibbactu .gibbactus .container, #gibbactu .gibbactus .container p {
     padding: 0;
-    margin: 0; }
-  #gibbactu .gibbactus .s1Topic {
-    font-size: 0.9em; }
+    margin: 0 0 5px 0; }
+  #gibbactu .gibbactus .s1, #gibbactu .gibbactus .s1Topic {
+    display: none; }
   #gibbactu .gibbactus a:hover {
     color: #ccff33;
     background-color: #03254a;
     text-decoration: none; }
   #gibbactu .gibbactus a.date {
+    padding: 5px;
     font-size: 15px;
-    font-style: italic;
-    text-align: right;
-    bottom: 5px;
-    right: 2px;
-    font-weight: normal; }
-  #gibbactu .gibbactus a.date:hover {
-    background: none;
-    color: inherit; }
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: normal;
+    color: #ccff33;
+    background-color: #03254a;
+    text-decoration: none; }
+    #gibbactu .gibbactus a.date * {
+      vertical-align: middle; }
 
 .gibbactus img[onload] {
   display: block;
+  width: 100%;
   margin: 5px auto !important; }

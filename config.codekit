@@ -2,6 +2,15 @@
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
 "creatorBuild": "18270",
 "files": {
+	"\/app\/controllers\/AccountController.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/app\/controllers\/AccountController.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/app\/controllers\/ActuController.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -56,6 +65,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/app\/controllers\/ModsController.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/app\/controllers\/ModsController.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/app\/controllers\/ProfilController.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -79,6 +97,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/app\/controllers\/StreamController.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/app\/controllers\/TUPCController.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/app\/controllers\/TUPCController.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -3057,6 +3084,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/tmp\/y9bzz7r4lbfs.yehdr261dn20.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.yehdr261dn20.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/ui\/css\/admin.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -3196,6 +3232,17 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/ui\/images\/1418066385_rss.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 15179,
+		"inputAbbreviatedPath": "\/ui\/images\/1418066385_rss.png",
+		"outputAbbreviatedPath": "\/ui\/images\/1418066385_rss.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/ui\/images\/1418066584_user-128.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3251,6 +3298,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/ui\/images\/hfr.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1037,
+		"inputAbbreviatedPath": "\/ui\/images\/hfr.jpg",
+		"outputAbbreviatedPath": "\/ui\/images\/hfr.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/ui\/images\/hfrtv.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3262,6 +3320,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/ui\/images\/quote.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 321,
+		"inputAbbreviatedPath": "\/ui\/images\/quote.png",
+		"outputAbbreviatedPath": "\/ui\/images\/quote.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/ui\/images\/rss.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -3269,6 +3338,17 @@
 		"initialSize": 1228,
 		"inputAbbreviatedPath": "\/ui\/images\/rss.png",
 		"outputAbbreviatedPath": "\/ui\/images\/rss.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/ui\/images\/warning.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1545,
+		"inputAbbreviatedPath": "\/ui\/images\/warning.png",
+		"outputAbbreviatedPath": "\/ui\/images\/warning.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

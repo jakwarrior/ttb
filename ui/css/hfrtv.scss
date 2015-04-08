@@ -20,10 +20,14 @@ a.hfrtv.all {
 
 #menu ul.imagelist {
     li {
-        $liheight: 80px;
-
-        height: $liheight;
         margin:0;
+
+        &:after {
+            padding-top: 33%;
+            display: block;
+            content: '';
+        }
+
         a {
             font-size:.8em;
             text-align: center;
@@ -33,10 +37,6 @@ a.hfrtv.all {
                 line-height: 30px;
             }
 
-            img {
-
-                height: $liheight;
-            }
         }
     }
 }

@@ -9,14 +9,24 @@
 @import 'extend';
 
 $font_base:    'PT Sans', Helvetica, Arial, sans-serif;
-$color_background: lighten(black, 15%);
+$color_background: lighten(black, 10%);
 $color_contentbg:#F1F1F1;
-$color_headerbg: #087cc9;
+
+$color_home:#EEEEEE;
+
 $padding_base: 25px;
 
+$spacer_base:5px;
+
+$width_menu: 250px + $spacer_base;
+
 body {
-    font: 100% $font_base;
-    background:#F1F1F1;
+    font: 18px $font_base;
+    background:$color_home;
+}
+
+html, body {
+    height: 100%;
 }
 
 a {
@@ -28,22 +38,26 @@ a {
     }
 }
 
-#background {
-    position:fixed;
-    top: 0px;
-    left: 0px;
-    width: 250px;
-    height: 100%;
-    background-color: $color_background;
-    z-index:-3;
+#outter {
+    width: 100%;
+    max-width:1280px;
+    overflow: hidden;
+    position: relative;
+    margin:0 auto;
+    border-bottom:10px solid $color_background;
+    border-top:10px solid $color_background;
 }
 
 #menu {
-    width: 250px;
+    height: 100%;
+    width: $width_menu;
+    font-size:0.9em;
+
+    position: absolute;
+
     background: $color_background;
     color: white;
-    float: left;
-
+    //border-right:$spacer_base solid $color_home;
 
     #title {
         color:white;
@@ -82,34 +96,25 @@ a {
         li {
 
             a {
+                transition:background-color .2s linear, color .2s linear;
+
                 display:block;
                 padding:0 10px;
                 height: 40px;
                 line-height: 40px;
 
                 padding-left:30px;
-                background: transparent url(/ui/images/1418066385_rss.png) no-repeat right 10px center;
+                background: transparent no-repeat right 10px center;
                 background-size: 30px;
                 text-decoration:none;
-                border-right:10px solid green;
+                //border-right:10px solid green;
             }
             //margin:10px 0;
 
-
-
-
-
         }
-        li.mods a {
-            background:none;
-            //background-image:url(/ui/images/1418066589_home-128.png);
-            &:hover {
-                background-color:#3F4C6C;
-            }
-            border-color:#3F4C6C;
-        }
-        li.account a {
-            &:hover {
+/*
+        li.mon-compte a {
+            &:hover,  &.selected {
                 color:white;
                 background-color:#B02C2B;
                 background-image:none;
@@ -118,8 +123,22 @@ a {
             background-image:none;
             border-color:#B02C2B;
         }
-        li.gibbactu a {
-            &:hover {
+
+        li.home a {
+            &:hover,  &.selected {
+                color:black;
+                background-color:$color_home;
+                background-image:url(/favicon.ico);
+                background-size:auto;
+
+            }
+            background-image:none;
+            border-color:$color_home;
+
+        }
+
+        li.gibbactus a {
+            &:hover,  &.selected {
                 color:#ccff33;
                 background-color:rgb(3, 37, 74);
                 background-image:url(/ui/images/gibbactu.jpg);
@@ -130,7 +149,7 @@ a {
 
         }
         li.hfrtv a {
-            &:hover {
+            &:hover,  &.selected {
                 color:white;
                 background-color:rgb(100, 65, 165);
                 background-image:url(/ui/images/hfrtv.png);
@@ -142,7 +161,7 @@ a {
 
         }
         li.crotypedia a {
-            &:hover {
+            &:hover,  &.selected {
                 color:#000;
                 background-color:white;
                 background-image:url(/ui/images/crotypedia.png);
@@ -150,23 +169,19 @@ a {
             }
             background-image:none;
             border-color:white;
-
-
         }
-        li.home a {
+
+        li.mods a {
+            background:none;
+            //background-image:url(/ui/images/1418066589_home-128.png);
             &:hover,  &.selected {
-                color:black;
-                background-color:#EEEEEE;
-                background-image:url(/favicon.ico);
-                background-size:auto;
-
+                background-color:#3F4C6C;
             }
-            background-image:none;
-            border-color:#EEEEEE;
-
+            border-color:#3F4C6C;
         }
-        li.tupc a {
-            &:hover {
+
+        li.tu-pc a {
+            &:hover,  &.selected {
                 color:#FFF;
                 background-color:#f18f18;
                 background-image:none;
@@ -176,16 +191,19 @@ a {
             border-color:#f18f18;
 
         }
+
+        */
     }
 }
 
 #content {
-    width: calc(100% - 250px);
-    float: left;
+    margin-left: $width_menu + 5px;
+    height: 100%;
+    min-height: 1400px;
     //background:blue;
 
     #search_box {
-        padding: 10px 10px 0 10px;
+        padding: $spacer_base 0;
 
         input {
             width: 100%;
@@ -196,36 +214,17 @@ a {
 }
 
 #real_content {
-    width: 70%;
-
+    width: 75%;
+    border-right:$spacer_base solid $color_home;
     float:left;
     //background:green;
 
 
 
-    img {
-        max-width: 90%;
-    }
-
-    .gibbactus:nth-child(2n+1) {
-        //background: pink;
-    }
-
-    #gibbactu {
-
-        margin: 5px;
-    }
 
 
-    .gibbactus {
-        background: white;
-        border: 1px solid lightgrey;
-        margin:5px;
-        padding:5px;
-        width: calc(50% - 10px);
 
-    }
-
+/*
     @media screen and (max-width: 1000px) {
         .gibbactus {
             width: calc(100% - 10px);
@@ -243,12 +242,15 @@ a {
             width: calc(25% - 10px);
         }
     }
+    */
 }
 
 #side_content {
-    width: 30%;
+    width: 25%;
     max-width: 1024px;
     float:left;
+    font-size:0.9em;
+
     //background:red;
     //padding:10px 10px 10px 0;
 }
@@ -260,23 +262,29 @@ a {
 
 ul.imagelist {
 
+
+    overflow: hidden;
+
     li {
         $liwidth: 100%;
-        $liheight: 200px;
 
-        display: block;
+        display: inline-block;
         position: relative;
 
         width:$liwidth;
-        height: $liheight;
 
-        margin:0 $padding_base - 10 $padding_base - 10 0;
+        &:after {
+            padding-top: 50%;
+            display: block;
+            content: '';
+        }
 
         a {
-            display:block;
-            width:100%;
-            height:inherit;
-
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
 
             &:hover {
 
@@ -299,6 +307,8 @@ ul.imagelist {
             vertical-align: middle;
 
             .gameinfo {
+                transition:background-color .1s linear;
+
                 position: absolute;
                 bottom:0;
                 left:0;
@@ -310,8 +320,8 @@ ul.imagelist {
 
             img {
 
-                width:$liwidth;
-                height: $liheight;
+                width:100%;
+                height:100%;
             }
 
             p.gamename {
@@ -338,6 +348,43 @@ ul.imagelist {
     }
 
 }
+
+//HFR
+.spoiler {
+    cursor:pointer;
+    border-collapse: collapse;
+
+    background:transparent url(/ui/images/warning.png) no-repeat 50% 50%;
+
+    tbody {
+        background:white;
+        visibility:hidden;
+    }
+    td {
+        padding:0;
+        width:100%;
+    }
+}
+
+.quote {
+    border-collapse: collapse;
+
+    background:transparent url(/ui/images/quote.png) no-repeat top left;
+
+    width: 95%;
+    margin: 0 auto;
+    background-color: $color_home;
+
+    tr.none td {
+        padding:0 10px 25px 10px;
+    }
+
+    tbody {
+        background:transparent url(/ui/images/quote.png) no-repeat bottom right;
+    }
+
+}
+//
 
 #footer {
     h4 {

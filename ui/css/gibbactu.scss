@@ -9,46 +9,59 @@
     padding: 0;
 }
 
+
+.gibbactus:nth-child(2n+1) {
+	//background: pink;
+}
+
 #gibbactu {
-    h2 a {
-        color: #ccff33;
-        text-decoration:none;
-        display: block;
-        padding-left:65px;
+    h2 {
+		margin-bottom:5px;
+		
+		a {
+	        color: #ccff33;
+	        text-decoration:none;
+	        display: block;
+	        padding-left:65px;
+		}
     }
 
     .gibbactus {
         text-align: justify;
-		padding:10px;
-
+		//background:white;
+		//border:1px solid rgb(3, 37, 74);
+		//margin-bottom:10px;
+		position:relative;
+		padding-top: 25px;
 
         p {
             margin:10px 0;
         }
         ul {
             border:none;
-            padding: 0;
-            margin:0;
-            list-style-type: none;
+            padding: 10px;
+			margin: 0 15px;
+            list-style-type: disc;
         }
 
         li {
-          margin-bottom:15px;
+          //margin-bottom:15px;
         }
 
         a
         {
-          color:rgb(3, 37, 74);
-          font-weight:bold;
+			color:rgb(3, 37, 74);
+         	font-weight:bold;
+			padding:0 3px;
         }
 
         .container, .container p {
           padding:0;
-          margin:0;
+          margin:0 0 5px 0;
         }
 
-        .s1Topic {
-          font-size:0.9em;
+		.s1, .s1Topic {
+			display:none;
         }
 
         a:hover {
@@ -58,18 +71,25 @@
         }
 
         a.date {
+			padding:5px;
             font-size:15px;
-            font-style:italic;
-            text-align:right;
-            //position: absolute;
-            bottom: 5px;
-            right: 2px;
+
+            text-align:center;
+            position: absolute;
+			right:0;
+			top:0;
             font-weight: normal;
+			//display:block;
+
+			color:#ccff33;
+			background-color:rgba(3, 37, 74, 1);
+			text-decoration:none;
+
+			* {
+				vertical-align:middle;
+			}
         }
-        a.date:hover {
-          background:none;
-          color:inherit;
-        }
+
     }
 
 
@@ -77,5 +97,6 @@
 
 .gibbactus  img[onload] {
 	display:block;
+	width:100%;
 	margin:5px auto !important;
 }

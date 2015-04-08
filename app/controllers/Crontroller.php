@@ -135,7 +135,7 @@ class Crontroller extends Controller {
 			$processActu["hfr_post_id"] = $xpath->query('//a[contains(@href, "#t")]')->item(0)->getAttribute('href');
 			$processActu['hfr_post_id'] = str_replace("#t", "", $processActu["hfr_post_id"]);
 			//echo $processActu['hfr_post_id'];
-			//if ($processActu['hfr_post_id'] <> '10764130') {
+			//if ($processActu['hfr_post_id'] <> '11231611') {
 			//	continue;
 			//}
 
@@ -231,12 +231,20 @@ class Crontroller extends Controller {
 
 			$processHTMLfinal = str_replace("\n", '', $processHTMLfinal);
 			$processHTMLfinal = str_replace("\r", '', $processHTMLfinal);
+
+			//HFR HTML fix
 			$processHTMLfinal = htmlentities(str_replace("<p><br></p>", '', html_entity_decode($processHTMLfinal)));
+			$processHTMLfinal = str_replace("&lt;p&gt;&lt;br&gt;&nbsp;&lt;br&gt;&lt;/p&gt;", '', $processHTMLfinal);
+			$processHTMLfinal = str_replace("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ", '', $processHTMLfinal);
+			$processHTMLfinal = htmlentities(str_replace("<p><br>", '<p>', html_entity_decode($processHTMLfinal)));
+			//
+
 			$processHTMLfinal = htmlentities(str_replace('href="/hfr/', 'target="_blank" href="http://forum.hardware.fr/hfr/', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/style="[a-zA-Z0-9:;\.\s\(\)\-\,]*"/i', '', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/onload="[^\"]+"/i', 'onload="return;"', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/title="[^\"]+"/i', '', html_entity_decode($processHTMLfinal)));
 
+			//echo $processHTMLfinal;
 
 			if (!$processHTMLfinal) {
 				echo "aucun contenu<br/><br/><br/>";

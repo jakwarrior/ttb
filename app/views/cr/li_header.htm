@@ -1,15 +1,19 @@
 <li class="game{{ @item['id'] }}">
-	<a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">
-		<img src="http://static.thetartuffebay.org/medium/{{ @item['api_image'] }}">
+	<a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}" title="">
+		<img src="http://static.thetartuffebay.org/center/80/{{ @item['api_image'] }}">
 		<div class="gameinfo">
 			<p class="gamename">{{ trim(@item['games']) }} <check if="{{ @item['comment'] }}">&ndash; {{@item['comment']}} </check>
-				<span class="format format_{{ toAscii(@item['format']) }} type_{{ toAscii(@item['type']) }}">
-					<check if="{{ @item['format'] <> 'Standard' }}">{{ @item['format'] }}</check> {{ @item['type'] }}
-				</span>
+
 			</p>
+
+
 			<!--<span class="username">{{ @item['username'] }}</span>-->
 
 			<!-- <span class="date">{{ date('d/m', strtotime(@item['date_posted']) ) }}</span> -->
 		</div>
+
+		<span class="format format_{{ toAscii(@item['format']) }} type_{{ toAscii(@item['type']) }}">
+			<check if="{{ @item['format'] <> 'Standard' }}">{{ @item['format'] }}</check> {{ @item['type'] }}
+		</span>
 	</a>
 </li>

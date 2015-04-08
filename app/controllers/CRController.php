@@ -5,7 +5,7 @@ class CRController extends Controller {
 	public function index()
   {
 	  $CRs = new CR($this->db);
-	  $this->f3->set('list',$CRs->all(30));
+	  $this->f3->set('list',$CRs->all(12));
 
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->all());
@@ -20,13 +20,12 @@ class CRController extends Controller {
 
 	public function view()
 	{
+
 		$CRs = new CR($this->db);
 		$this->f3->set('cr',$myCR = $CRs->byId($this->f3->get('PARAMS.id'))[0]);
 
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->byCR($myCR['id']));
-
-		//print_r($myCR);
 
 		$this->f3->set('site_title','CR de '.$myCR['games'].' par '.$myCR['username'].' | CROTYpedia');
 		$this->f3->set('view','cr/view.htm');
