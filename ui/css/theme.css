@@ -505,7 +505,7 @@ line-height: 50px;
 #crotypedia span.format_standard {
   display:none;
 }
-#crotypedia span.format_mini, #crotypedia span.format_nano, #crotypedia span.format_micro, #crotypedia span.type_aar, #crotypedia span.format_hands-on, #crotypedia span.type_tutoriel, #crotypedia span.format_joke {
+#crotypedia span.format_mini, #crotypedia span.format_nano, #crotypedia span.format_micro, #crotypedia span.type_aar, #crotypedia span.format_hands-on, #crotypedia span.type_tutoriel, #crotypedia span.format_joke, #crotypedia span.format_santa {
 text-transform: uppercase;
 border: 1px solid black;
 padding: 0 10px;
@@ -515,6 +515,14 @@ height: 20px;
 line-height: 20px;
 display:inline-block !important;
 }
+
+span.format.format_santa.type_cr {
+background: url(http://forum-images.hardware.fr/images/perso/2/hellomard.gif) #fff no-repeat center left;
+padding-left: 53px !important;
+color: rgb(90, 141, 62);
+border-color: rgb(204, 0, 0) !important;
+}
+
 #crotypedia span.date {
   float:right;
 }

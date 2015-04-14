@@ -11,13 +11,7 @@
   <ttl>60</ttl>
   <repeat group="{{ @feeds }}" value="{{ @item }}">
     <item>
-      <title>
-        <check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }}</check>
-        <check if="{{ @item['type'] == 'cr'}}">CR {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }}</check>
-      </title>
-      <link>
-  http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}
-      </link>
+      <title><check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }}</check><check if="{{ @item['type'] == 'cr'}}">CR {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }}</check></title> <link>http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}</link>
       <pubDate>{{ date(DATE_RSS, strtotime(@item['date_posted']) ) }}</pubDate>
       <dc:creator>
       <![CDATA[ {{ htmlspecialchars(@item['username'], ENT_QUOTES) }} ]]>

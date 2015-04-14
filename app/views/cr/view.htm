@@ -3,7 +3,7 @@
 
 	<check if="{{ isset(@games) }}">
 		<repeat group="{{ @games }}" value="{{ @item }}">
-			<style>h3.game{{ @item['id'] }} { background-image:url('{{ @static }}large/{{ @item['api_image'] }}');}</style>
+			<style>h3.game{{ @item['id'] }} { background-image:url('{{ @media }}/large/{{ @item['api_image'] }}');}</style>
 			<h3 class="game game{{ @item['id'] }} total{{count(@games)}}">
 				{{ @item.name }}
 			</h3>
