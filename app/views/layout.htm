@@ -47,7 +47,7 @@
 						<repeat group="{{ @inc_streams }}" value="{{ @item }}">
 							<li>
 								<a href="http://twitch.com/" target="_blank">
-									<img src="http://static.thetartuffebay.org/center/33/{{ @item['image'] }}"/>
+									<img src="{{ @media }}/center/33/{{ @item['image'] }}"/>
 									<div class="gameinfo">
 										<p>{{ @item['username'] }} le {{@item['date']}}</p>
 										<blockquote>

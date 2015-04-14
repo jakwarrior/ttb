@@ -1,6 +1,6 @@
 <li class="game{{ @item['id'] }}">
 	<a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}" title="">
-		<img src="http://static.thetartuffebay.org/center/80/{{ @item['api_image'] }}">
+		<img src="{{ @media }}/center/80/{{ @item['api_image'] }}">
 		<div class="gameinfo">
 			<p class="gamename">{{ trim(@item['games']) }} <check if="{{ @item['comment'] }}">&ndash; {{@item['comment']}} </check>
 
