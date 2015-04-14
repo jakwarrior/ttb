@@ -267,6 +267,7 @@ class Crontroller extends Controller {
 
 			$NPA->content=$processHTMLfinal;
 			$NPA->active = 1;
+			$NPA->processed = 1;
 			$NPA->save();
 			echo "\n\n\n\n\n";
 

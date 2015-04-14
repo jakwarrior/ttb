@@ -84,59 +84,59 @@ a {
                     color:white;
                     background-color:#B02C2B;
                     background-image:none;
-    
+
                 }
                 background-image:none;
                 border-color:#B02C2B;
             }
-    
+
             li.home a {
                 &:hover,  &.selected {
                     color:black;
                     background-color:$color_home;
                     background-image:url(/favicon.ico);
                     background-size:auto;
-    
+
                 }
                 background-image:none;
                 border-color:$color_home;
-    
+
             }
-    
+
             li.gibbactus a {
                 &:hover,  &.selected {
                     color:#ccff33;
                     background-color:rgb(3, 37, 74);
                     background-image:url(/ui/images/gibbactu.jpg);
-    
+
                 }
                 background-image:none;
                 border-color:rgb(3, 37, 74);
-    
+
             }
             li.hfrtv a {
                 &:hover,  &.selected {
                     color:white;
                     background-color:rgb(100, 65, 165);
                     background-image:url(/ui/images/hfrtv.png);
-    
+
                 }
                 background-image:none;
                 border-color:rgb(100, 65, 165);
-    
-    
+
+
             }
             li.crotypedia a {
                 &:hover,  &.selected {
                     color:#000;
                     background-color:white;
                     background-image:url(/ui/images/crotypedia.png);
-    
+
                 }
                 background-image:none;
                 border-color:white;
             }
-    
+
             li.mods a {
                 background:none;
                 //background-image:url(/ui/images/1418066589_home-128.png);
@@ -145,19 +145,19 @@ a {
                 }
                 border-color:#3F4C6C;
             }
-    
+
             li.tu-pc a {
                 &:hover,  &.selected {
                     color:#FFF;
                     background-color:#f18f18;
                     background-image:none;
-    
+
                 }
                 background:none;
                 border-color:#f18f18;
-    
+
             }
-    
+
             */ }
     #menu .categories li a {
       transition: background-color .2s linear, color .2s linear;
@@ -191,13 +191,13 @@ a {
               width: calc(100% - 10px);
           }
       }
-  
+
       @media screen and (min-width: 1980px) {
           .gibbactus {
               width: calc(33% - 10px);
           }
       }
-  
+
       @media screen and (min-width: 2400px) {
           .gibbactus {
               width: calc(25% - 10px);
