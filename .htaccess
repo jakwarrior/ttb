@@ -12,8 +12,8 @@ RewriteEngine On
 #
 #RewriteBase /
 
-RewriteCond %{HTTP_HOST} !^www\.thetartuffebay\.org [NC]
-RewriteRule (.*) http://www.thetartuffebay.org/$1 [QSA,R=301,L]
+#RewriteCond %{HTTP_HOST} !^www\.thetartuffebay\.org [NC]
+#RewriteRule (.*) http://www.thetartuffebay.org/$1 [QSA,R=301,L]
 
 RewriteCond %{REQUEST_URI} \.ini$
 RewriteRule \.ini$ - [R=404]
