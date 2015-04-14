@@ -103,8 +103,8 @@ class Crontroller extends Controller {
 			//Raw HTML to DOM/XPATH
 			$dom = new DOMDocument();
 
-    	$searchPage = mb_convert_encoding($NPA->content_raw, 'HTML-ENTITIES', "UTF-8");
-    	@$dom->loadHTML($searchPage);
+			$searchPage = mb_convert_encoding($NPA->content_raw, 'HTML-ENTITIES', "UTF-8");
+			@$dom->loadHTML($searchPage);
 			@$xpath = new DomXpath($dom);
 
 			//userID :
@@ -209,10 +209,14 @@ class Crontroller extends Controller {
 				//echo $dom->saveHTML($actuNode)."\n";
 				//echo "===\n".$actuNode->tagName." = ".$actuNode->getAttribute('class')."\n\n";
 				//var_dump($actuNode);
-				if ($actuNode->getAttribute('class') == 'edited' ||
-						$actuNode->getAttribute('class') == 'signature' ||
-						$actuNode->getAttribute('style') == 'clear: both;'
-						) {
+				if ($actuNode->getAttribute('class') == 'edited') {
+							//echo "skip";
+					break;
+				}
+
+				if ($actuNode->getAttribute('class') == 'signature' ||
+					$actuNode->getAttribute('style') == 'clear: both;') {
+							//echo "skip";
 					continue;
 				}
 
@@ -220,8 +224,8 @@ class Crontroller extends Controller {
 					$processHTMLstep1.=htmlentities($dom->saveHTML($actuNode));
 				}
 				else {
-					var_dump($actuNode->childNodes);
-					echo "noNodeValue=".$dom->saveHTML($actuNode)."\n\n";
+					//var_dump($actuNode->childNodes);
+					//echo "noNodeValue=".$dom->saveHTML($actuNode)."\n\n";
 				}
 
 			}
@@ -247,8 +251,9 @@ class Crontroller extends Controller {
 			//echo $processHTMLfinal;
 
 			if (!$processHTMLfinal) {
-				echo "aucun contenu<br/><br/><br/>";
+				echo "aucun contenu = ".$NPA->id."<br/><br/><br/>";
 				$NPA->active = 0;
+				$NPA->processed = 1;
 				$NPA->save();
 				continue;
 			}
