@@ -308,15 +308,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/app\/views\/footer.htm": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/app\/views\/footer.htm",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/app\/views\/home.htm": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -1476,8 +1467,8 @@
 		"outputAbbreviatedPath": "\/lib\/api\/min\/dynsections-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/lib\/api\/ftv2blank.png": {
 		"fileType": 32768,
@@ -2536,8 +2527,8 @@
 		"outputAbbreviatedPath": "\/lib\/api\/min\/jquery-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/lib\/api\/nav_f.png": {
 		"fileType": 32768,
@@ -2958,15 +2949,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/tmp\/y9bzz7r4lbfs.0cozdqba6fr.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.0cozdqba6fr.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/tmp\/y9bzz7r4lbfs.0dd4bl9i9gf.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -3280,8 +3262,8 @@
 		"outputAbbreviatedPath": "\/ui\/js\/admin\/min\/angular-sanitize.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/ui\/js\/admin\/importcrHelperController.js": {
 		"fileType": 64,
@@ -3291,8 +3273,8 @@
 		"outputAbbreviatedPath": "\/ui\/js\/admin\/min\/importcrHelperController-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/ui\/js\/admin\/loading-bar.js": {
 		"fileType": 64,
@@ -3302,8 +3284,8 @@
 		"outputAbbreviatedPath": "\/ui\/js\/admin\/min\/loading-bar-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/ui\/js\/isotope.pkgd.min.js": {
 		"fileType": 64,
@@ -3313,8 +3295,8 @@
 		"outputAbbreviatedPath": "\/ui\/js\/min\/isotope.pkgd.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/ui\/js\/min\/ttb-min.js": {
 		"fileType": 64,
@@ -3324,19 +3306,8 @@
 		"outputAbbreviatedPath": "\/ui\/js\/min\/min\/ttb-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/ui\/js\/ttb.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/ui\/js\/ttb.js",
-		"outputAbbreviatedPath": "\/ui\/js\/min\/ttb-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
 		},
 	"\/ui\/sponsor\/bra.png": {
 		"fileType": 32768,
@@ -3575,8 +3546,8 @@
 	"javascriptAutoOutputPathReplace2": "",
 	"javascriptAutoOutputPathStyle": 2,
 	"javascriptCreateSourceMap": 1,
-	"javascriptOutputStyle": 1,
-	"javascriptSyntaxCheckerStyle": 1,
+	"javascriptOutputStyle": 0,
+	"javascriptSyntaxCheckerStyle": 0,
 	"jsCheckerReservedNamesString": "",
 	"jsHintFlags2": {
 		"asi": {
