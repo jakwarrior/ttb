@@ -316,6 +316,7 @@ class Crontroller extends Controller {
 
 			$NP->content = $process['content'];
 			$NP->active = 1;
+			$NP->processed = 1;
 			$NP->save();
 			echo "\n\n\n\n\n";
 
