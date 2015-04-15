@@ -1,0 +1,6 @@
+# Enable rewrite
+RewriteEngine On
+RewriteRule ^small/(.+)$ thumb.php?format=small&url=$1
+RewriteRule ^large/(.+)$ thumb.php?format=large&url=$1
+RewriteRule ^medium/(.+)$ thumb.php?format=medium&url=$1
+RewriteRule ^center/([0-9]+)/(.+)$ thumbc.php?format=center&height=$1&url=$2
