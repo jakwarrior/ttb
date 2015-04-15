@@ -247,6 +247,7 @@ class Crontroller extends Controller {
 			$processHTMLfinal = htmlentities(preg_replace('/style="[a-zA-Z0-9:;\.\s\(\)\-\,]*"/i', '', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/onload="[^\"]+"/i', 'onload="return;"', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/title="[^\"]+"/i', '', html_entity_decode($processHTMLfinal)));
+			$processHTMLfinal = html_entity_decode($processHTMLfinal);
 
 			//echo $processHTMLfinal;
 

@@ -416,6 +416,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/lib\/api\/arrowdown.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 241,
+		"inputAbbreviatedPath": "\/lib\/api\/arrowdown.png",
+		"outputAbbreviatedPath": "\/lib\/api\/arrowdown.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lib\/api\/arrowright.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 227,
+		"inputAbbreviatedPath": "\/lib\/api\/arrowright.png",
+		"outputAbbreviatedPath": "\/lib\/api\/arrowright.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/lib\/api\/bc_s.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -531,6 +553,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/lib\/api\/classBasket.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 559,
+		"inputAbbreviatedPath": "\/lib\/api\/classBasket.png",
+		"outputAbbreviatedPath": "\/lib\/api\/classBasket.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/lib\/api\/classBcrypt-members.html": {
 		"fileType": 8192,
@@ -1475,6 +1508,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/lib\/api\/doc.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 652,
+		"inputAbbreviatedPath": "\/lib\/api\/doc.png",
+		"outputAbbreviatedPath": "\/lib\/api\/doc.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/lib\/api\/doxygen.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -1514,6 +1558,28 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 0
+		},
+	"\/lib\/api\/folderclosed.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 493,
+		"inputAbbreviatedPath": "\/lib\/api\/folderclosed.png",
+		"outputAbbreviatedPath": "\/lib\/api\/folderclosed.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lib\/api\/folderopen.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 505,
+		"inputAbbreviatedPath": "\/lib\/api\/folderopen.png",
+		"outputAbbreviatedPath": "\/lib\/api\/folderopen.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/lib\/api\/ftv2blank.png": {
 		"fileType": 32768,
@@ -2285,6 +2351,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/lib\/api\/functions_func_k.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/api\/functions_func_k.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/lib\/api\/functions_func_l.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -2425,6 +2500,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/lib\/api\/functions_j.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/lib\/api\/functions_k.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/lib\/api\/functions_k.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2615,6 +2699,17 @@
 		"initialSize": 115,
 		"inputAbbreviatedPath": "\/lib\/api\/open.png",
 		"outputAbbreviatedPath": "\/lib\/api\/open.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/lib\/api\/splitbar.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 282,
+		"inputAbbreviatedPath": "\/lib\/api\/splitbar.png",
+		"outputAbbreviatedPath": "\/lib\/api\/splitbar.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -2811,29 +2906,29 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/SQL.php": {
+	"\/lib\/db\/sql.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/SQL.php",
+		"inputAbbreviatedPath": "\/lib\/db\/sql.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/SQL\/mapper.php": {
+	"\/lib\/db\/sql\/mapper.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/SQL\/mapper.php",
+		"inputAbbreviatedPath": "\/lib\/db\/sql\/mapper.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/lib\/db\/SQL\/session.php": {
+	"\/lib\/db\/sql\/session.php": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/lib\/db\/SQL\/session.php",
+		"inputAbbreviatedPath": "\/lib\/db\/sql\/session.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -2991,60 +3086,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/README.md",
 		"outputAbbreviatedPath": "\/README.html",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/tmp\/y9bzz7r4lbfs.0cozdqba6fr.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.0cozdqba6fr.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/tmp\/y9bzz7r4lbfs.0dd4bl9i9gf.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.0dd4bl9i9gf.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/tmp\/y9bzz7r4lbfs.0g7leqkrxfz.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.0g7leqkrxfz.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/tmp\/y9bzz7r4lbfs.fukamijyupth.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.fukamijyupth.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/tmp\/y9bzz7r4lbfs.laaa7rm999i6.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.laaa7rm999i6.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/tmp\/y9bzz7r4lbfs.skyy7bupd9ii.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/tmp\/y9bzz7r4lbfs.skyy7bupd9ii.php",
-		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
@@ -3347,6 +3388,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/ui\/js\/isotope.pkgd.min.js",
 		"outputAbbreviatedPath": "\/ui\/js\/min\/isotope.pkgd.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/ui\/js\/ttb.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/ui\/js\/ttb.js",
+		"outputAbbreviatedPath": "\/ui\/js\/min\/ttb-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -4032,7 +4084,7 @@
 	"sassUseLibsass": 0,
 	"shouldRunAutoprefixer": 0,
 	"shouldRunBless": 0,
-	"skippedItemsString": ".svn, .git, .hg, log, _logs, _cache, cache, logs, node_modules",
+	"skippedItemsString": ".svn, .git, .hg, log, _logs, _cache, cache, logs, node_modules, \/tmp\/*",
 	"slimAutoOutputPathEnabled": 1,
 	"slimAutoOutputPathFilenamePattern": "*.html",
 	"slimAutoOutputPathRelativePath": "",
