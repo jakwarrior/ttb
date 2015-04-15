@@ -1,1 +1,0 @@
-function swap_spoiler_states(i){var l=i.getElementsByTagName("tbody");l[0]&&("visible"===l[0].style.visibility?l[0].style.visibility="hidden":"hidden"!==l[0].style.visibility&&l[0].style.visibility||(l[0].style.visibility="visible"))}function parallax(){var i=$(window).scrollTop();$("h3.game").css("background-position-y",50-.11*i+"%")}$(window).scroll(function(i){parallax()});
