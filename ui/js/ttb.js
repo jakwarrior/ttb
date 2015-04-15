@@ -32,7 +32,7 @@ function imgur() {
 
             var video = document.createElement('video');
             video.src = a.src.replace("gif", "mp4");
-            video.autoplay = false;
+            video.autoplay = true;
             video.loop = true;
             video.muted = true;
             video.controls= false;
