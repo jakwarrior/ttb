@@ -8,7 +8,7 @@ class CR extends DB\SQL\Mapper {
 
     public function all($limit = 0) {
       $request =
-        'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
+        'SELECT cr.id AS id, IF(cr.hfr_user_id = 1 AND cr.comment != "Taxalot", cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.
@@ -29,7 +29,7 @@ class CR extends DB\SQL\Mapper {
 
 
     public function byGame($idGame) {
-      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
+      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1 AND cr.comment != "Taxalot", cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
       ' FROM cr as cr'.
       ' INNER JOIN cr_game as cg'.
       ' ON cr.id = cg.cr_id'.
@@ -48,26 +48,26 @@ class CR extends DB\SQL\Mapper {
     }
 
     public function byUserName($userName) {
-      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
-      ' FROM cr as cr'.
-      ' INNER JOIN cr_game as cg'.
-      ' ON cr.id = cg.cr_id'.
-      ' INNER JOIN game as g'.
-      ' ON g.id = cg.game_id'.
-      ' INNER JOIN cr_type as ct'.
-      ' ON ct.id = cr.type_id'.
-      ' INNER JOIN cr_format as cf'.
-      ' ON cf.id = cr.format_id'.
-      ' WHERE (cr.username = :userName OR cr.comment = :userName)'.
-      ' GROUP BY cr.id, g.id'.
-      ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
+        $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1 AND cr.comment != "Taxalot", cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
+            ' FROM cr as cr'.
+            ' INNER JOIN cr_game as cg'.
+            ' ON cr.id = cg.cr_id'.
+            ' INNER JOIN game as g'.
+            ' ON g.id = cg.game_id'.
+            ' INNER JOIN cr_type as ct'.
+            ' ON ct.id = cr.type_id'.
+            ' INNER JOIN cr_format as cf'.
+            ' ON cf.id = cr.format_id'.
+            ' WHERE (cr.username = :userName OR cr.comment = :userName)'.
+            ' GROUP BY cr.id, g.id'.
+            ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
 
-      return $this->db->exec($Res, array(':userName'=> htmlentities($userName)));
+        return $this->db->exec($Res, array(':userName'=> htmlentities($userName)));
     }
 
     public function byId($idCR) {
 
-      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.content as content, cr.hfr_post_id'.
+      $Res = 'SELECT cr.id AS id, IF(cr.hfr_user_id = 1 AND cr.comment != "Taxalot", cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.content as content, cr.hfr_post_id'.
       ' FROM cr as cr'.
       ' INNER JOIN cr_game as cg'.
       ' ON cr.id = cg.cr_id'.
@@ -81,13 +81,12 @@ class CR extends DB\SQL\Mapper {
       ' GROUP BY cr.id'.
       ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
 
-
       return $this->db->exec($Res, $idCR);
     }
 
     public function byAlpha() {
       return $this->db->exec(
-        'SELECT  cr.id AS id, IF(cr.hfr_user_id = 1, cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment) AS comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
+        'SELECT  cr.id AS id, IF(cr.hfr_user_id = 1 AND cr.comment != "Taxalot", cr.comment, cr.username) AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment) AS comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id'.
         ' FROM cr as cr'.
         ' INNER JOIN cr_game as cg'.
         ' ON cr.id = cg.cr_id'.

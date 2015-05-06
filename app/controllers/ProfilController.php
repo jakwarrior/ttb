@@ -4,9 +4,16 @@ class ProfilController extends Controller {
 
   public function view()
     {
-      //echo "lol";
         $CR = new CR($this->db);
-        $this->f3->set('list_cr', $myCr = $CR->byUserName($this->f3->get('PARAMS.name')));
+        $myCr = $CR->byUserName($this->f3->get('PARAMS.name'));
+
+        foreach ($myCr as $subKey  => $subArray) {
+            if ($subArray["username"] != htmlentities("Profil supprimé")) {
+                unset($myCr[$subKey ]);
+            }
+        }
+
+        $this->f3->set('list_cr', $myCr);
 
         $Stream = new Stream($this->db);
         $this->f3->set('list_stream', $myStream = $Stream->byUserName($this->f3->get('PARAMS.name')));
