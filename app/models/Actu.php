@@ -14,7 +14,16 @@ class Actu extends DB\SQL\Mapper {
   			' ORDER by a.date_posted DESC, a.id DESC'.
         ' LIMIT :limit';
 
-		  return $this->db->exec($request, array(':limit' => $limit));
+		  return $this->convert($this->db->exec($request, array(':limit' => $limit)));
+    }
+
+    private function convert($actus) {
+        foreach ($actus as $subKey  => $subArray) {
+            $subArray['content'] = html_entity_decode($subArray['content']);
+            $actus[$subKey] = $subArray;
+        }
+
+        return $actus;
     }
 
 }
