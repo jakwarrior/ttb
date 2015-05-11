@@ -322,7 +322,7 @@ span.format {
   height: 30px;
   line-height: 30px; }
 
-span.format_mini, span.format_nano, span.format_micro, span.type_aar,
+span.format_mini, span.format_nano, span.format_micro, span.type_aar, span.format_santa,
 span.format_hands-on, span.type_tutoriel, span.format_joke, span.format_standard {
   text-transform: uppercase;
   padding: 0 10px;
@@ -472,7 +472,7 @@ a.hfrtv.all {
 #gibbactu .gibbactus {
   text-align: justify;
   position: relative;
-  padding-top: 25px; }
+  padding-top: 35px; }
   #gibbactu .gibbactus p {
     margin: 10px 0; }
   #gibbactu .gibbactus ul {
