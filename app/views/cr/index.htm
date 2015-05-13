@@ -1,5 +1,5 @@
 <div id="crotypedia" class="homebox">
-	<h2><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
+	<h2><a href="{{@ALIASES.crs_list}}">Les derniers CRs</a></h2>
 
 	<check if="{{ isset(@game) }}">
 		<style>h3.game{{ @game['id'] }} { background-image:url('{{ @media }}/large/{{ @game['api_image'] }}');}</style>
@@ -11,17 +11,25 @@
 			<include href="cr/li.htm" />
 		</repeat>
 	</ul>
+    <div class="cleaner"></div>
+    <br/>
 
 	<check if="{{ isset(@gamesother) && @gamesother }}">
 		<h2><a href="{{@ALIASES.crs_list}}">Hors-catégorie</a></h2>
 		<br/>
 		<ul class="cr_games">
-			<repeat group="{{ @gamesother }}" value="{{ @item }}">
-				<style>li.game{{ @item['id'] }}:after { background-image:url('{{ @media }}/small/{{ @item['api_image'] }}');}</style>
-				<li class="game{{ @item['id'] }}">
-					<a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
-				</li>
-			</repeat>
+            <repeat group="{{ @gamesother }}" value="{{ @item }}">
+                <li class="game{{ @item['id'] }}">
+                    <a href="{{ @ALIASES.crs_list_by_game }}/{{ @item['id'] }}" title="">
+                        <img src="{{ @media }}/center/30/{{ @item['api_image'] }}">
+                        <div class="gameinfo">
+                            <p class="gamename">{{ trim(@item['name']) }}
+                            </p>
+                        </div>
+
+                    </a>
+                </li>
+            </repeat>
 		</ul>
 		<div class="cleaner"></div>
 		<br/>
@@ -33,12 +41,18 @@
 		<h2><a href="{{@ALIASES.crs_list}}">Tous les jeux</a></h2>
 		<br/>
 		<ul class="cr_games">
-			<repeat group="{{ @games }}" value="{{ @item }}">
-				<style>li.game{{ @item['id'] }}:after { background-image:url('{{ @media }}/small/{{ @item['api_image'] }}');}</style>
-				<li class="game{{ @item['id'] }}">
-					<a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
-				</li>
-			</repeat>
+            <repeat group="{{ @games }}" value="{{ @item }}">
+                <li class="game{{ @item['id'] }}">
+                    <a href="{{ @ALIASES.crs_list_by_game }}/{{ @item['id'] }}" title="">
+                        <img src="{{ @media }}/center/30/{{ @item['api_image'] }}">
+                        <div class="gameinfo">
+                            <p class="gamename">{{ trim(@item['name']) }}
+                            </p>
+                        </div>
+
+                    </a>
+                </li>
+            </repeat>
 		</ul>
 	</check>
 
