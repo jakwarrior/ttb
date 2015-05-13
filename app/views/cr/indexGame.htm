@@ -1,0 +1,25 @@
+<div id="crotypedia" class="homebox">
+	<h2><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
+
+	<check if="{{ isset(@game) }}">
+		<style>h3.game{{ @game['id'] }} { background-image:url('{{ @media }}/large/{{ @game['api_image'] }}');}</style>
+		<h3 class="game game{{ @game['id'] }}">{{ @game.name }}</h3>
+	</check>
+
+    <ul>
+        <repeat group="{{ @list }}" value="{{ @item }}">
+            <li class="list_CR">
+                <a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}">
+                    {{ trim(@item['games']) }} <check if="{{ @item['comment'] }}">&ndash; {{@item['comment']}} </check>
+                </a>
+                <span>par {{ @item['username'] }}</span>
+                <span class="format format_{{ toAscii(@item['format']) }} type_{{ toAscii(@item['type']) }}">
+                    <check if="{{ @item['format'] <> 'Standard' }}">{{ @item['format'] }}</check> {{ @item['type'] }}
+                </span>
+                <span class="date">{{ date('d/m/y', strtotime(@item['date_posted']) ) }}</span>
+            </li>
+        </repeat>
+    </ul>
+    <div class="cleaner"></div>
+    <br/>
+</div><!-- #crotypedia -->

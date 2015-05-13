@@ -5,8 +5,10 @@ class HomeController extends Controller {
 	public function index()
     {
         $Actus = new Actu($this->db);
+        $CRs = new CR($this->db);
 
         $this->f3->set('actus',$Actus->all(10));
+        $this->f3->set('crs',$CRs->all(20));
 		//$this->f3->set('streams',$Streams->find(NULL, array('order'=>'twitch_username ASC')));
 
 

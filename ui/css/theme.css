@@ -404,6 +404,28 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     border-left: none;
 }
 
+#crotypedia.homebox ul {
+    margin:0;
+    padding:10px 15px;
+    list-style-type: none;
+}
+
+#crotypedia li.list_CR * {
+    vertical-align: middle;
+    line-height: 35px;
+    display: inline-block;
+}
+
+#crotypedia li.list_CR a {
+    color:#0645ad;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#crotypedia span.date {
+    float: right;
+}
+
 span.format {
     position: absolute;
     top: 0;
@@ -480,7 +502,7 @@ display:none;
 }
 
 .cr_details {
-    background-color: white;
+    background-color: #EEEEEE;
     padding: 15px;
 }
 
@@ -516,7 +538,7 @@ h3.game {
     color: white;
     text-align: center;
     font-size: 2em;
-    margin: 5px 0;
+    margin: 0.5em 0;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 

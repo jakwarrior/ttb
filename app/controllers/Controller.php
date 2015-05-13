@@ -9,7 +9,6 @@ class Controller {
     function beforeroute() {
         //Header
 
-        $CRs = new CR($this->db);
         $Streams = new Stream($this->db);
 
 
@@ -24,7 +23,6 @@ class Controller {
 
         $this->f3->set('inc_streams',$crss);
 
-        $this->f3->set('crs',$CRs->all(20));
         //Header
 
         //Menu

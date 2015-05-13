@@ -41,7 +41,7 @@ class CRController extends Controller {
 		$this->f3->set('game',$myGame = $Game->load(array('id=?',$this->f3->get('PARAMS.id'))));
 
 		$this->f3->set('site_title','CRs de '.$myGame['name'].' | CROTYpedia');
-		$this->f3->set('view','cr/index.htm');
+		$this->f3->set('view','cr/indexGame.htm');
 	}
 
 	public function byAlpha()
