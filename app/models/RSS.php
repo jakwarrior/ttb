@@ -21,7 +21,19 @@ class RSS extends DB\SQL\Mapper {
         ' ) as p'.
         ' ORDER BY p.date_posted DESC';
 
-      return $this->db->exec($request);
+        return $this->rss_post_treatment($this->db->exec($request));
+        //return $this->db->exec($request);
+    }
+
+    private function rss_post_treatment($rss) {
+        foreach ($rss as $subKey  => $subArray) {
+            //error_log($subArray['content']);
+            $subArray['content'] = html_entity_decode($subArray['content']);
+
+            $rss[$subKey] = $subArray;
+        }
+
+        return $rss;
     }
 
 }

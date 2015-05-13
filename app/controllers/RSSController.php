@@ -13,7 +13,7 @@ class RSSController extends Controller {
 
 
     $this->f3->set('feed_url',$this->f3->get('site').$this->f3->get('ALIASES')['rss_all']);
-    $this->f3->set('feed_title','CR&amp;Actus');
+    $this->f3->set('feed_title',html_entity_decode('CR&amp;Actus'));
     $this->f3->set('feeds',$RSS->all());
 
     echo Template::instance()->render('rss/feed.xml','application/xml');

@@ -41,8 +41,6 @@ class Actu extends DB\SQL\Mapper {
                     $container->setAttribute('class', 'video-container');
 
                     $new_node = $doc->createElement('iframe');
-                    //$new_node->setAttribute('width', '700');
-                    //$new_node->setAttribute('height', '393.75');
                     $new_node->setAttribute('src', $address);
                     $new_node->setAttribute('frameborder', '0');
                     $new_node->setAttribute('allowfullscreen', 'true');
