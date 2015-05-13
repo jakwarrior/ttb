@@ -35,7 +35,7 @@ class Controller {
                         'tcolor' => 'white',
                         'icon' => 'none');
 
-        $menu[] = array('title' => 'Home',
+        $menu[] = array('title' => 'Accueil',
                         'url' =>   $this->f3->get('ALIASES.home'),
                         'color' => '#EEEEEE',
                         'tcolor' => 'black',

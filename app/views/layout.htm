@@ -27,15 +27,27 @@
 
 	</head>
 	<body>
+
 		<div id="outter">
+
+            <div class="container header">
+                <div class="wrap">
+                    <div class="header">
+                        <h1><a href="/" title="{{ @site }}">{{ @site }}</a></h1>
+                        <h3>&laquo; Seulement -80% ? J'attendrai les soldes. &raquo;
+                            <br>&ndash;<i> Un Maitre Tartuffe</i></h3>
+                    </div>
+                </div>
+            </div>
+
 			<div id="menu">
 				<!-- LOGO -->
-				<a id="title" href="">TTB 10</a>
+				<!--<a id="title" href="">TTB 10</a>
 				<h3>« Seulement -80% ? J'attendrai les soldes. »
-					<br>–<i> Un Maitre Tartuffe</i></h3>
+					<br>–<i> Un Maitre Tartuffe</i></h3>-->
 				<!-- TOOLBAR -->
 				<ul id="toolbar_up">
-					<li class="rss"><a href="/">Le RSS 100% tartuffe</a></li>
+					<li class="rss"><a href="{{ @ALIASES.rss_all }}">Le RSS 100% tartuffe</a></li>
 
 
 				</ul>

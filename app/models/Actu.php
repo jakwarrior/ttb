@@ -37,20 +37,21 @@ class Actu extends DB\SQL\Mapper {
                 if (preg_match($rx, $a->nodeValue) == 1) {
                     $address = preg_replace($rx, $replace, $a->nodeValue);
 
-                    $center = $doc->createElement('center');
+                    $container = $doc->createElement('div');
+                    $container->setAttribute('class', 'video-container');
 
                     $new_node = $doc->createElement('iframe');
-                    $new_node->setAttribute('width', '700');
-                    $new_node->setAttribute('height', '393.75');
+                    //$new_node->setAttribute('width', '700');
+                    //$new_node->setAttribute('height', '393.75');
                     $new_node->setAttribute('src', $address);
                     $new_node->setAttribute('frameborder', '0');
                     $new_node->setAttribute('allowfullscreen', 'true');
 
-                    $center->appendChild($new_node);
-                    $a->parentNode->replaceChild($center, $a);
+                    $container->appendChild($new_node);
+                    $a->parentNode->replaceChild($container, $a);
 
-                    $center->parentNode->insertBefore($doc->createElement('br'), $center);
-                    $center->parentNode->insertBefore($doc->createElement('br'), $center->nextSibling);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
                 }
             }
 

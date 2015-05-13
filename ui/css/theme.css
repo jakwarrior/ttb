@@ -511,3 +511,44 @@ a.hfrtv.all {
   display: block;
   width: 100%;
   margin: 5px auto !important; }
+
+.video-container {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.container .header {
+    background: #1a1a1a;
+}
+
+.header h1 a {
+    color:#EEEEEE;
+    font-weight: 700;
+    font-size:1.5em;
+}
+
+.header h1, .header h3 {
+    font-family: 'Arvo', Georgia, Times, serif;
+    text-align: center;
+    margin: 0;
+    padding-top: 0.5%;
+}
+
+.header h3 {
+    margin:0.5em 15px;
+    padding-bottom: 1%;
+    font-size:0.9em;
+    color:#EEEEEE;
+    font-weight: 400;
+}
