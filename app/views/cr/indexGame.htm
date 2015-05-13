@@ -6,17 +6,20 @@
 		<h3 class="game game{{ @game['id'] }}">{{ @game.name }}</h3>
 	</check>
 
-    <ul>
+    <ul class="imagelist">
         <repeat group="{{ @list }}" value="{{ @item }}">
-            <li class="list_CR">
-                <a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}">
-                    {{ trim(@item['games']) }} <check if="{{ @item['comment'] }}">&ndash; {{@item['comment']}} </check>
+            <li class="game{{ @item['id'] }}">
+                <a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}" title="">
+                    <img src="{{ @media }}/center/30/{{ @game['api_image'] }}">
+                    <div class="gameinfo">
+                        <p class="gamename">{{ @item['username'] }} - {{ date('d/m/y', strtotime(@item['date_posted']) ) }}
+                        </p>
+                    </div>
+
+                    <span class="format format_{{ toAscii(@item['format']) }} type_{{ toAscii(@item['type']) }}">
+                        <check if="{{ @item['format'] <> 'Standard' }}">{{ @item['format'] }}</check> {{ @item['type'] }}
+                    </span>
                 </a>
-                <span>par {{ @item['username'] }}</span>
-                <span class="format format_{{ toAscii(@item['format']) }} type_{{ toAscii(@item['type']) }}">
-                    <check if="{{ @item['format'] <> 'Standard' }}">{{ @item['format'] }}</check> {{ @item['type'] }}
-                </span>
-                <span class="date">{{ date('d/m/y', strtotime(@item['date_posted']) ) }}</span>
             </li>
         </repeat>
     </ul>

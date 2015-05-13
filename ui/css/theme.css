@@ -410,22 +410,6 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     list-style-type: none;
 }
 
-#crotypedia li.list_CR * {
-    vertical-align: middle;
-    line-height: 35px;
-    display: inline-block;
-}
-
-#crotypedia li.list_CR a {
-    color:#0645ad;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#crotypedia span.date {
-    float: right;
-}
-
 span.format {
     position: absolute;
     top: 0;
