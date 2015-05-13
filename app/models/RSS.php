@@ -2,8 +2,11 @@
 
 class RSS extends DB\SQL\Mapper {
 
+    private $utils;
+
     public function __construct(DB\SQL $db) {
         parent::__construct($db,'cr');
+        $this->utils = new Utils();
     }
 
     public function all() {
@@ -22,12 +25,10 @@ class RSS extends DB\SQL\Mapper {
         ' ORDER BY p.date_posted DESC';
 
         return $this->rss_post_treatment($this->db->exec($request));
-        //return $this->db->exec($request);
     }
 
     private function rss_post_treatment($rss) {
         foreach ($rss as $subKey  => $subArray) {
-            //error_log($subArray['content']);
             $subArray['content'] = html_entity_decode($subArray['content']);
 
             $rss[$subKey] = $subArray;

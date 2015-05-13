@@ -537,13 +537,17 @@ a.hfrtv.all {
     font-weight: 700;
     font-size:1.5em;
     text-decoration: none;
+    padding-top: 0.5%;
+    margin-left: 150px;
 }
 
 .header h1, .header h3 {
     font-family: 'Arvo', Georgia, Times, serif;
     text-align: center;
     margin: 0;
-    padding-top: 0.5%;
+
+
+    display: inline-block;
 }
 
 .header h3 {
@@ -552,4 +556,5 @@ a.hfrtv.all {
     font-size:0.9em;
     color:#EEEEEE;
     font-weight: 400;
+    margin-left: 75px;
 }
