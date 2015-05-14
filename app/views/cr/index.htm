@@ -21,7 +21,7 @@
             <repeat group="{{ @gamesother }}" value="{{ @item }}">
                 <li class="game{{ @item['id'] }}">
                     <a href="{{ @ALIASES.crs_list_by_game }}/{{ @item['id'] }}" title="">
-                        <img src="{{ @media }}/center/30/{{ @item['api_image'] }}">
+                        <img src="{{ @media }}/center/50/{{ @item['api_image'] }}">
                         <div class="gameinfo">
                             <p class="gamename">{{ trim(@item['name']) }}
                             </p>
@@ -44,7 +44,7 @@
             <repeat group="{{ @games }}" value="{{ @item }}">
                 <li class="game{{ @item['id'] }}">
                     <a href="{{ @ALIASES.crs_list_by_game }}/{{ @item['id'] }}" title="">
-                        <img src="{{ @media }}/center/30/{{ @item['api_image'] }}">
+                        <img src="{{ @media }}/center/50/{{ @item['api_image'] }}">
                         <div class="gameinfo">
                             <p class="gamename">{{ trim(@item['name']) }}
                             </p>
