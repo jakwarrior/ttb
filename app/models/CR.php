@@ -85,7 +85,7 @@ class CR extends DB\SQL\Mapper {
       ' GROUP BY cr.id'.
       ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
 
-        return $this->utils->content_post_treatment($this->db->exec($Res, $idCR));
+        return $this->db->exec($Res, $idCR);
     }
 
     public function byAlpha() {

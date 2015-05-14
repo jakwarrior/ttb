@@ -22,7 +22,16 @@ class CRController extends Controller {
 	{
 
 		$CRs = new CR($this->db);
-		$this->f3->set('cr',$myCR = $CRs->byId($this->f3->get('PARAMS.id'))[0]);
+        $utils = new Utils();
+
+        $myCR = $CRs->byId($this->f3->get('PARAMS.id'));
+
+        foreach ($myCR as $subKey => $subArray) {
+            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+            $myCR[$subKey] = $subArray;
+        }
+
+		$this->f3->set('cr',$myCR = $myCR[0]);
 
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->byCR($myCR['id']));

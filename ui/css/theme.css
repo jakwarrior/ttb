@@ -619,7 +619,7 @@ a.hfrtv.all {
     list-style-type: disc;
 }
 
-#gibbactu .gibbactus a, #gibbactu .allinks {
+#gibbactu .gibbactus a {
     color: #03254a;
     font-weight: bold;
     padding: 0 3px;
@@ -712,11 +712,15 @@ a.hfrtv.all {
 .allinks {
     float:right;
     font-size: 14px;
-    padding:20px;
+    margin:20px;
     font-style:italic;
     font-weight: bolder;
-    margin-bottom: 10px;
     font-size: 0.9em;
+}
+
+#gibbactu .allinks {
+    color: #03254a;
+    font-weight: bold;
 }
 
 /*#hfrtv ul, #crotypedia ul.cr_games {

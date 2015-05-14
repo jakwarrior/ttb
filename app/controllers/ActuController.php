@@ -7,10 +7,13 @@ class ActuController extends Controller {
 	public function index()
     {
         $actus = new Actu($this->db);
+        $utils = new Utils();
 
 		$page=$actus->paginate(0,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
 
-		//print_r($page);
+        foreach ($page['subset'] as $subKey => $subArray) {
+            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+        }
 
 		$this->f3->set('page',$page);
         $this->f3->set('page_type','gibbactu');
@@ -19,6 +22,7 @@ class ActuController extends Controller {
 
 	public function page()
     {
+        $utils = new Utils();
 	    $pageNum = $this->f3->get('PARAMS.page');
 		$pageNum--;
 
@@ -28,6 +32,10 @@ class ActuController extends Controller {
 
         $actus = new Actu($this->db);
 		$page=$actus->paginate($pageNum,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
+
+        foreach ($page['subset'] as $subKey => $subArray) {
+            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+        }
 
 		if($pageNum > $page['count']) { //On vérifie que le numéro de page existe
 			$this->f3->reroute('@actus_list');

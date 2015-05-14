@@ -6,8 +6,16 @@ class HomeController extends Controller {
     {
         $Actus = new Actu($this->db);
         $CRs = new CR($this->db);
+        $utils = new Utils();
 
-        $this->f3->set('actus',$Actus->all(10));
+        $actus = $Actus->all(10);
+
+        foreach ($actus as $subKey => $subArray) {
+            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+            $actus[$subKey] = $subArray;
+        }
+
+        $this->f3->set('actus',$actus);
         $this->f3->set('crs',$CRs->all(20));
 		//$this->f3->set('streams',$Streams->find(NULL, array('order'=>'twitch_username ASC')));
 

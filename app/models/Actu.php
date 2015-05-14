@@ -17,6 +17,6 @@ class Actu extends DB\SQL\Mapper {
   			' ORDER by a.date_posted DESC, a.id DESC'.
             ' LIMIT :limit';
 
-        return $this->utils->content_post_treatment($this->db->exec($request, array(':limit' => $limit)));
+        return $this->db->exec($request, array(':limit' => $limit));
     }
 }
