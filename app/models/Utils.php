@@ -20,28 +20,124 @@ class Utils
         $replace = 'http://www.youtube.com/embed/$1';
 
         foreach ($xpath->query('//a') as $a) {
-            if (preg_match($rx, $a->nodeValue) == 1) {
-                $address = preg_replace($rx, $replace, $a->nodeValue);
+            if (strlen($a->nodeValue) > 0) {
+                if ($this->str_ends_with($a->nodeValue, '.mp4') || $this->str_ends_with($a->nodeValue, '.webm') || $this->str_ends_with($a->nodeValue, '.ogv')) {
+                    $container = $doc->createElement('div');
+                    $container->setAttribute('class', 'html5-container');
 
+                    $video = $doc->createElement('video');
+                    $video->setAttribute('src', $a->getAttribute('href'));
+                    $video->setAttribute('loop', 'true');
+                    $video->setAttribute('muted', 'true');
+                    $video->setAttribute('controls', 'true');
+
+                    $container->appendChild($video);
+                    $a->parentNode->replaceChild($container, $a);
+
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+                }
+                else if ($this->str_ends_with($a->nodeValue, '.gifv')) {
+                    $container = $doc->createElement('div');
+                    $container->setAttribute('class', 'html5-container');
+
+                    $video = $doc->createElement('video');
+                    $video->setAttribute('src', str_replace('gifv', 'mp4', $a->getAttribute('href')));
+                    $video->setAttribute('loop', 'true');
+                    $video->setAttribute('muted', 'true');
+                    $video->setAttribute('controls', 'true');
+
+                    $container->appendChild($video);
+                    $a->parentNode->replaceChild($container, $a);
+
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+                }
+                else if ((strpos($a->nodeValue, 'i.imgur.com') !== FALSE) && ($this->str_ends_with($a->nodeValue, '.gif'))) {
+                    $container = $doc->createElement('div');
+                    $container->setAttribute('class', 'html5-container');
+
+                    $video = $doc->createElement('video');
+                    $video->setAttribute('src', str_replace('gif', 'mp4', $a->getAttribute('href')));
+                    $video->setAttribute('loop', 'true');
+                    $video->setAttribute('muted', 'true');
+                    $video->setAttribute('controls', 'true');
+
+                    $container->appendChild($video);
+                    $a->parentNode->replaceChild($container, $a);
+
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+                }
+                else if (strpos($a->nodeValue, '//gfycat.com/') !== FALSE) {
+                    $res = explode('/', $a->getAttribute('href'));
+                    $container = $doc->createElement('div');
+                    $container->setAttribute('class', 'html5-container');
+
+                    $video = $doc->createElement('video');
+                    $video->setAttribute('loop', 'true');
+                    $video->setAttribute('muted', 'true');
+                    $video->setAttribute('controls', 'true');
+
+                    $source = $doc->createElement('source');
+                    $source->setAttribute('src', 'http://zippy.gfycat.com/' . $res[count($res)-1] . '.webm');
+                    $source->setAttribute('type', 'video/webm');
+                    $video->appendChild($source);
+
+                    $source2 = $doc->createElement('source');
+                    $source2->setAttribute('src', 'http://fat.gfycat.com/' . $res[count($res)-1] . '.webm');
+                    $source2->setAttribute('type', 'video/webm');
+                    $video->appendChild($source2);
+
+                    $source3 = $doc->createElement('source');
+                    $source3->setAttribute('src', 'http://giant.gfycat.com/' . $res[count($res)-1] . '.webm');
+                    $source3->setAttribute('type', 'video/webm');
+                    $video->appendChild($source3);
+
+                    $container->appendChild($video);
+                    $a->parentNode->replaceChild($container, $a);
+
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+
+                }
+                else if (preg_match($rx, $a->nodeValue) == 1) {
+                    $address = preg_replace($rx, $replace, $a->nodeValue);
+
+                    $container = $doc->createElement('div');
+                    $container->setAttribute('class', 'video-container');
+
+                    $new_node = $doc->createElement('iframe');
+                    $new_node->setAttribute('src', $address);
+                    $new_node->setAttribute('frameborder', '0');
+                    $new_node->setAttribute('allowfullscreen', 'true');
+
+                    $container->appendChild($new_node);
+                    $a->parentNode->replaceChild($container, $a);
+
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+                }
+            }
+        }
+
+        foreach ($xpath->query('//img') as $img) {
+            if ($img->getAttribute('src') && (strpos($img->getAttribute('src'), 'i.imgur.com') !== FALSE) && ($this->str_ends_with($img->getAttribute('src'), '.gif'))) {
                 $container = $doc->createElement('div');
-                $container->setAttribute('class', 'video-container');
+                $container->setAttribute('class', 'html5-container');
 
-                $new_node = $doc->createElement('iframe');
-                $new_node->setAttribute('src', $address);
-                $new_node->setAttribute('frameborder', '0');
-                $new_node->setAttribute('allowfullscreen', 'true');
+                $video = $doc->createElement('video');
+                $video->setAttribute('src', str_replace('gif', 'mp4', $img->getAttribute('src')));
+                $video->setAttribute('autoplay', 'true');
+                $video->setAttribute('loop', 'true');
+                $video->setAttribute('muted', 'true');
+                $video->setAttribute('controls', 'false');
 
-                $container->appendChild($new_node);
-                $a->parentNode->replaceChild($container, $a);
+                $container->appendChild($video);
+                $img->parentNode->replaceChild($container, $img);
 
                 $container->parentNode->insertBefore($doc->createElement('br'), $container);
                 $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
-            }
-
-            if (strlen($a->nodeValue) > 0) {
-                if ($this->str_starts_with($a->nodeValue, 'mp4')) {
-                    error_log($a->nodeValue);
-                }
             }
         }
 
