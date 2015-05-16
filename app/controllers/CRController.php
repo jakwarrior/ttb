@@ -44,7 +44,16 @@ class CRController extends Controller {
 	public function byGame()
 	{
 		$CRs = new CR($this->db);
-		$this->f3->set('list',$CRs->byGame($this->f3->get('PARAMS.id')));
+        $utils = new Utils();
+
+        $myCR = $CRs->byGame($this->f3->get('PARAMS.id'));
+
+        foreach ($myCR as $subKey => $subArray) {
+            $subArray['username'] = html_entity_decode($subArray['username']);
+            $myCR[$subKey] = $subArray;
+        }
+
+		$this->f3->set('list',$myCR);
 
 		$Game = new Game($this->db);
 

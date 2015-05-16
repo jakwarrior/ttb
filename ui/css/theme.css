@@ -317,11 +317,12 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
 .spoiler {
     cursor: pointer;
     border-collapse: collapse;
-    background: transparent url(/ui/images/warning.png) no-repeat 50% 50%;
+    background: transparent url(/ui/images/spoiler-alert.png) no-repeat 50% 50%;
+    background-size: auto 100%;
 }
 
 .spoiler tbody {
-    background: white;
+    background: #EEEEEE;
     visibility: hidden;
 }
 
@@ -330,7 +331,7 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     width: 100%;
 }
 
-.quote {
+.quote, .citation{
     border-collapse: collapse;
     background: transparent url(/ui/images/quote.png) no-repeat top left;
     width: 95%;
@@ -338,11 +339,11 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     background-color: #EEEEEE;
 }
 
-.quote tr.none td {
+.quote tr.none td, .citation tr.none td {
     padding: 0 10px 25px 10px;
 }
 
-.quote tbody {
+.quote tbody, .citation tbody {
     background: transparent url(/ui/images/quote.png) no-repeat bottom right;
 }
 
@@ -630,7 +631,7 @@ a.hfrtv.all {
     margin: 0 0 5px 0;
 }
 
-#gibbactu .gibbactus .s1, #gibbactu .gibbactus .s1Topic {
+#gibbactu .gibbactus .s1, #gibbactu .gibbactus .s1Topic, #crotypedia.homebox .s1, #crotypedia.homebox .s1Topic {
     display: none;
 }
 
