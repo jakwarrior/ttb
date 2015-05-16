@@ -321,9 +321,15 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     background-size: auto 100%;
 }
 
-.spoiler tbody {
+.spoiler tbody  {
     background: #EEEEEE;
     visibility: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .spoiler td {

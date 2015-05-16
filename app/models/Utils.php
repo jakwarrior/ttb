@@ -4,20 +4,14 @@ class Utils
 {
     public function content_post_treatment($raw)
     {
-
         $raw = html_entity_decode($raw);
 
         $doc = new DOMDocument('1.0', 'UTF-8');
         $doc->loadHTML(mb_convert_encoding($raw, 'HTML-ENTITIES', 'UTF-8')); //pour éviter les problèmes d'encodage
         $xpath = new DOMXpath($doc);
 
-        $rx = '~
-                ^(?:https?://)?              # Optional protocol
-                (?:www\.)?                  # Optional subdomain
-                (?:youtube\.com|youtu\.be)  # Mandatory domain name
-                /watch\?v=([^&]+)           # URI with video id as capture group 1
-                ~x';
-        $replace = 'http://www.youtube.com/embed/$1';
+        $rx = '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i';
+        $rx2 = '%(?:youtube(?:-nocookie)?\.com/)%i';
 
         foreach ($xpath->query('//a') as $a) {
             if (strlen($a->nodeValue) > 0) {
@@ -101,22 +95,29 @@ class Utils
                     $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
 
                 }
-                else if (preg_match($rx, $a->nodeValue) == 1) {
-                    $address = preg_replace($rx, $replace, $a->nodeValue);
+                else if (preg_match($rx2, $a->nodeValue) == 1) {
+                    $match = array();
+                    preg_match($rx, $a->getAttribute('href'), $match);
 
-                    $container = $doc->createElement('div');
-                    $container->setAttribute('class', 'video-container');
+                    if (isset($match[1]))
+                    {
+                        $address = 'http://www.youtube.com/embed/' . $match[1];
+                        error_log($address);
 
-                    $new_node = $doc->createElement('iframe');
-                    $new_node->setAttribute('src', $address);
-                    $new_node->setAttribute('frameborder', '0');
-                    $new_node->setAttribute('allowfullscreen', 'true');
+                        $container = $doc->createElement('div');
+                        $container->setAttribute('class', 'video-container');
 
-                    $container->appendChild($new_node);
-                    $a->parentNode->replaceChild($container, $a);
+                        $new_node = $doc->createElement('iframe');
+                        $new_node->setAttribute('src', $address);
+                        $new_node->setAttribute('frameborder', '0');
+                        $new_node->setAttribute('allowfullscreen', 'true');
 
-                    $container->parentNode->insertBefore($doc->createElement('br'), $container);
-                    $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+                        $container->appendChild($new_node);
+                        $a->parentNode->replaceChild($container, $a);
+
+                        $container->parentNode->insertBefore($doc->createElement('br'), $container);
+                        $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
+                    }
                 }
             }
         }
