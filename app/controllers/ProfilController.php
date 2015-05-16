@@ -4,7 +4,6 @@ class ProfilController extends Controller {
 
   public function view()
     {
-      //echo "lol";
         $CR = new CR($this->db);
         $this->f3->set('list_cr', $myCr = $CR->byUserName($this->f3->get('PARAMS.name')));
 

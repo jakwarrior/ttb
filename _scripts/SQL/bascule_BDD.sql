@@ -1,0 +1,18 @@
+-- creation table user
+CREATE TABLE IF NOT EXISTS `user` (
+  `hfr_user_id` int(11) DEFAULT NULL,
+  `username` varchar(255) NOT NULL DEFAULT '',
+  `password` varchar(255) NOT NULL DEFAULT '',
+  `isAdmin` BOOLEAN NOT NULL DEFAULT 0,
+  PRIMARY KEY (`hfr_user_id`),
+  UNIQUE KEY `hfr_user_id` (`hfr_user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+INSERT IGNORE INTO `user`(`username`, `hfr_user_id`) SELECT `username`, `hfr_user_id` FROM `cr`;
+INSERT IGNORE INTO `user`(`username`, `hfr_user_id`) SELECT `username`, `hfr_user_id` FROM `actu`;
+
+-- update id Etahos
+UPDATE `cr` SET `hfr_user_id`=1024630, `username`='Etahos', `comment`='' WHERE `comment`='Etahos';
+
+-- suppression Taxalot vu qu'il ne veut plus apparaitre
+UPDATE `cr` SET `comment`='' WHERE `comment`='Taxalot';

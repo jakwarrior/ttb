@@ -28,6 +28,7 @@ class CRController extends Controller {
 
         foreach ($myCR as $subKey => $subArray) {
             $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+            $subArray['username'] = html_entity_decode($subArray['username']);
             $myCR[$subKey] = $subArray;
         }
 

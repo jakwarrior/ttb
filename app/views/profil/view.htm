@@ -5,7 +5,7 @@
   <check if="{{ @list_cr }}">
     <h2><a href="#cr">Les CRs de {{@PARAMS.name}}</a></h2>
 
-    <ul>
+    <ul class="imagelist">
       <repeat group="{{ @list_cr }}" value="{{ @item }}">
         <include href="cr/li.htm" />
       </repeat>
