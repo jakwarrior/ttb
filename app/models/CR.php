@@ -67,7 +67,7 @@ class CR extends DB\SQL\Mapper
             ' ON ct.id = cr.type_id' .
             ' INNER JOIN cr_format as cf' .
             ' ON cf.id = cr.format_id' .
-            ' WHERE (cr.username = :userName OR cr.comment = :userName)' .
+            ' WHERE cr.username = :userName' .
             ' GROUP BY cr.id, g.id' .
             ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
 

@@ -102,7 +102,6 @@ class Utils
                     if (isset($match[1]))
                     {
                         $address = 'http://www.youtube.com/embed/' . $match[1];
-                        error_log($address);
 
                         $container = $doc->createElement('div');
                         $container->setAttribute('class', 'video-container');

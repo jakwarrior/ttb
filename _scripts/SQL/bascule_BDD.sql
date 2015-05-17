@@ -11,6 +11,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT IGNORE INTO `user`(`username`, `hfr_user_id`) SELECT `username`, `hfr_user_id` FROM `cr`;
 INSERT IGNORE INTO `user`(`username`, `hfr_user_id`) SELECT `username`, `hfr_user_id` FROM `actu`;
 
+-- jakwarrior est admin
+UPDATE `user` SET `isAdmin`=1 WHERE `hfr_user_id`=929138; 
+-- gibbonaz est admin
+UPDATE `user` SET `isAdmin`=1 WHERE `hfr_user_id`=266770;
+-- thefolken est admin
+UPDATE `user` SET `isAdmin`=1 WHERE `hfr_user_id`=89386;
+
 -- update id Etahos
 UPDATE `cr` SET `hfr_user_id`=1024630, `username`='Etahos', `comment`='' WHERE `comment`='Etahos';
 
