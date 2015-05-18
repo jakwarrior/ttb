@@ -1,8 +1,9 @@
 -- creation table user
 CREATE TABLE IF NOT EXISTS `user` (
-  `hfr_user_id` int(11) DEFAULT NULL,
-  `username` varchar(255) NOT NULL DEFAULT '',
+  `hfr_user_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(50) NOT NULL DEFAULT '',
   `isAdmin` BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (`hfr_user_id`),
   UNIQUE KEY `hfr_user_id` (`hfr_user_id`)

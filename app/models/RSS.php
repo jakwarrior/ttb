@@ -2,11 +2,8 @@
 
 class RSS extends DB\SQL\Mapper {
 
-    private $utils;
-
     public function __construct(DB\SQL $db) {
         parent::__construct($db,'cr');
-        $this->utils = new Utils();
     }
 
     public function all() {

@@ -1,5 +1,15 @@
 <div class="auth">
-    <a href="{{@ALIASES.login}}">Se connecter</a>
+    <!--<a href="{{@ALIASES.login}}">Se connecter</a>-->
+    <form action="{{@ALIASES.login}}" method="post" class="pure-form">
+        <input type="username" name="username" placeholder="Login">
+        <input type="password" name="password" placeholder="Password">
+
+        <label for="remember">
+            <input id="remember" type="checkbox"> Remember me
+        </label>
+
+        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+    </form>
     <br>
-    <a href="" class="auth">Mot de passe oublié</a>
+    <a href="{{@ALIASES.reset}}" class="auth">Mot de passe oublié</a>
 </div>
