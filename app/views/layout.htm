@@ -6,6 +6,7 @@
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
 
 		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
+        <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
@@ -20,7 +21,7 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-53630707-1', 'auto');
+		ga('create', 'UA-62727574-1', 'auto');
 		ga('send', 'pageview');
 
 		</script>
@@ -41,10 +42,6 @@
             </div>
 
 			<div id="menu">
-				<!-- LOGO -->
-				<!--<a id="title" href="">TTB 10</a>
-				<h3>« Seulement -80% ? J'attendrai les soldes. »
-					<br>–<i> Un Maitre Tartuffe</i></h3>-->
 				<!-- TOOLBAR -->
 				<ul id="toolbar_up">
 					<li class="rss"><a href="{{ @ALIASES.rss_all }}">Le RSS 100% tartuffe</a></li>
@@ -91,12 +88,12 @@
 							background-image:none !important;
 							border-color:{{ @item['color'] }} !important;
 							border-left:5px solid;
+                            background-image:{{ @item['icon'] }} !important;
 						}
 
 						li.{{ toAscii(@item['title']) }} a:hover,  li.{{ toAscii(@item['title']) }} a.selected {
 							color:{{ @item['tcolor'] }} !important;
 							background-color:{{ @item['color'] }} !important;
-							<!-- background-image:{{ @item['icon'] }} !important; -->
 
 						}
 

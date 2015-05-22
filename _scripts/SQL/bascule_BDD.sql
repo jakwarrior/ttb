@@ -13,7 +13,7 @@ INSERT IGNORE INTO `user`(`username`, `hfr_user_id`) SELECT `username`, `hfr_use
 INSERT IGNORE INTO `user`(`username`, `hfr_user_id`) SELECT `username`, `hfr_user_id` FROM `actu`;
 
 -- jakwarrior est admin
-UPDATE `user` SET `isAdmin`=1 WHERE `hfr_user_id`=929138; 
+UPDATE `user` SET `isAdmin`=1, `email`='jakwarrior45@hotmail.com' WHERE `hfr_user_id`=929138; 
 -- gibbonaz est admin
 UPDATE `user` SET `isAdmin`=1 WHERE `hfr_user_id`=266770;
 -- thefolken est admin

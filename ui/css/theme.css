@@ -103,7 +103,7 @@ a:hover {
 }
 
 #menu .categories {
-    margin: 10px 0;
+    margin: 20px 0;
     /*
             li.mon-compte a {
                 &:hover,  &.selected {
@@ -193,8 +193,8 @@ a:hover {
     padding: 0 10px;
     height: 40px;
     line-height: 40px;
-    padding-left: 30px;
-    background: transparent no-repeat right 10px center;
+    padding-left: 60px;
+    background: transparent no-repeat left 15px center;
     background-size: 30px;
     text-decoration: none;
 }
@@ -354,7 +354,7 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
 }
 
 #footer h4 {
-    background: transparent url(/ui/images/cac30.gif) no-repeat right 10px center;
+    background: transparent no-repeat right 10px center;
     background-size: contain;
     height: 40px;
     line-height: 40px;
@@ -367,7 +367,7 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
 }
 
 #footer img {
-    background: #F1F1F1;
+    background: #bbbbbb;
     margin: 10px auto;
     display: block;
 }

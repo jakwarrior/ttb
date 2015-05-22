@@ -31,19 +31,19 @@ class Controller {
                         'url' =>   $this->f3->get('ALIASES.account'),
                         'color' => '#B02C2B',
                         'tcolor' => 'white',
-                        'icon' => 'none');
+                        'icon' => 'url(/ui/images/user.png)');
 
         $menu[] = array('title' => 'Accueil',
                         'url' =>   $this->f3->get('ALIASES.home'),
-                        'color' => '#EEEEEE',
-                        'tcolor' => 'black',
-                        'icon' => 'url(/favicon.ico)');
+                        'color' => '#3F4C6C',
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/home.png)');
 
         $menu[] = array('title' => 'Gibbactus',
                         'url' =>   $this->f3->get('ALIASES.actus_list'),
                         'color' => 'rgb(3, 37, 74)',
-                        'tcolor' => '#ccff33',
-                        'icon' => 'url(/ui/images/gibbactu.jpg)');
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/news.png)');
 
         $menu[] = array('title' => 'HFR.tv',
                         'url' =>   $this->f3->get('ALIASES.streams_list'),
@@ -53,21 +53,27 @@ class Controller {
 
         $menu[] = array('title' => 'CROTYpedia',
                         'url' =>   $this->f3->get('ALIASES.crs_list'),
-                        'color' => '#FFF',
-                        'tcolor' => '#000',
-                        'icon' => 'url(/ui/images/crotypedia.png)');
+                        'color' => '#B02C2B',
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/book.png)');
+
+        $menu[] = array('title' => 'Tartuffe Chat',
+                        'url' =>   $this->f3->get('ALIASES.crs_list'),
+                        'color' => '#3F4C6C',
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/chat.png)');
 
         $menu[] = array('title' => 'Mods',
                         'url' =>   $this->f3->get('ALIASES.mods_list'),
-                        'color' => '#3F4C6C',
-                        'tcolor' => '#FFF',
-                        'icon' => 'none');
+                        'color' => 'rgb(3, 37, 74)',
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/mods.png)');
 
         $menu[] = array('title' => 'TU PC',
                         'url' =>   $this->f3->get('ALIASES.tupc_list'),
                         'color' => '#f18f18',
-                        'tcolor' => '#FFF',
-                        'icon' => 'none');
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/hfr.png)');
 
 
         //current URL

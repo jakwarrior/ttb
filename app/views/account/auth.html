@@ -1,15 +1,18 @@
 <div class="auth">
-    <!--<a href="{{@ALIASES.login}}">Se connecter</a>-->
-    <form action="{{@ALIASES.login}}" method="post" class="pure-form">
-        <input type="username" name="username" placeholder="Login">
-        <input type="password" name="password" placeholder="Password">
+    <form action="{{@ALIASES.login}}" method="post" class="pure-form pure-form-stacked">
+        <fieldset>
+            <legend><b>Se connecter</b></legend>
 
-        <label for="remember">
-            <input id="remember" type="checkbox"> Remember me
-        </label>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email">
 
-        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password">
+
+            <button type="submit" class="pure-button pure-button-primary">Connexion</button>
+        </fieldset>
     </form>
+
     <br>
     <a href="{{@ALIASES.reset}}" class="auth">Mot de passe oublié</a>
 </div>

@@ -24,12 +24,13 @@ class AccountController extends Controller
     {
         $user = new User($this->db, $this->f3);
 
-        $username = $this->f3->get('POST.username');
+        //WARNING\\
+        $email = $this->f3->get('POST.email');
         $password = $this->f3->get('POST.password');
 
-        error_log($username . ' ' . $password);
+        //error_log($email . ' ' . $password);
 
-        $response = $user->login($username, $password);
+        $response = $user->login($email, $password);
 
         if ($response)
         {
@@ -46,8 +47,8 @@ class AccountController extends Controller
 
     public function reset()
     {
-        $user = new User($this->db);
-        $user->reset();
+        $user = new User($this->db, $this->f3);
+        $user->resetLogin();
 
         $this->f3->set('view', 'error.html');
     }
