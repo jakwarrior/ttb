@@ -93,9 +93,16 @@ a:hover {
 #menu #toolbar_up .rss {
     height: 30px;
     line-height: 30px;
-    background: transparent url(/ui/images/1418066385_rss.png) no-repeat right center;
+/*    background: transparent url(/ui/images/1418066385_rss.png) no-repeat right center;
+    background-size: contain;*/
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#menu #toolbar_up a.rss {
+    background: transparent url(/ui/images/1418066385_rss.png) no-repeat left center;
     background-size: contain;
-    padding-left: 0px;
+    padding-left: 40px;
 }
 
 #menu blockquote {

@@ -58,7 +58,7 @@ class Controller {
                         'icon' => 'url(/ui/images/book.png)');
 
         $menu[] = array('title' => 'Tartuffe Chat',
-                        'url' =>   $this->f3->get('ALIASES.crs_list'),
+                        'url' =>   $this->f3->get('ALIASES.chat'),
                         'color' => '#3F4C6C',
                         'tcolor' => 'white',
                         'icon' => 'url(/ui/images/chat.png)');
@@ -69,7 +69,7 @@ class Controller {
                         'tcolor' => 'white',
                         'icon' => 'url(/ui/images/mods.png)');
 
-        $menu[] = array('title' => 'TU PC',
+        $menu[] = array('title' => 'Topic PC',
                         'url' =>   $this->f3->get('ALIASES.tupc_list'),
                         'color' => '#f18f18',
                         'tcolor' => 'white',

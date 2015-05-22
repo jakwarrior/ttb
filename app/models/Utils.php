@@ -118,6 +118,9 @@ class Utils
                         $container->parentNode->insertBefore($doc->createElement('br'), $container->nextSibling);
                     }
                 }
+                else if ((preg_match($rx2, $a->nodeValue) == 0) && (preg_match($rx2, $a->getAttribute('href')) == 1)) {
+                    $a->setAttribute('class', 'popup-youtube');
+                }
             }
         }
 
