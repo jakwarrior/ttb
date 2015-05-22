@@ -745,6 +745,17 @@ a.hfrtv.all {
     font-weight: bold;
 }
 
+.auth_content {
+    margin:10px;
+    text-align: justify;
+}
+
+.auth_content a {
+    color: black;
+}
+
+
+
 /*#hfrtv ul, #crotypedia ul.cr_games {
     padding:0;
     background:black;

@@ -1,10 +1,10 @@
-<div class="auth">
+<div class="auth_content">
     <form action="{{@ALIASES.login}}" method="post" class="pure-form pure-form-stacked">
         <fieldset>
             <legend><b>Se connecter</b></legend>
 
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email">
+            <input id="email" name="email" type="email" placeholder="Email" autofocus="true">
 
             <label for="password">Password</label>
             <input id="password" name="password" type="password" placeholder="Password">
@@ -14,5 +14,16 @@
     </form>
 
     <br>
-    <a href="{{@ALIASES.reset}}" class="auth">Mot de passe oublié</a>
+    <a href="{{@ALIASES.reset}}" class="auth">Mot de passe oublié ?</a>
+
+    <br>
+    <br>
+    <br>
+
+    <form class="pure-form pure-form-stacked">
+        <fieldset>
+            <legend><b>S'inscrire</b></legend>
+            <p>Afin d'assurer l'unicité des comptes entre les sites <b>TheTartuffeBay.org</b> et <b>Hardware.fr</b>, l'inscription se fait en m'envoyant un <b><a href="http://forum.hardware.fr/hfr/profil-929138.htm">message privé</a></b> depuis le forum en me précisant votre adresse mail. Le mot de passe du compte sera envoyé à cette adresse, il peut être modifié par la suite.</p>
+        </fieldset>
+    </form>
 </div>

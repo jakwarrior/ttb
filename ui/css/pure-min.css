@@ -582,10 +582,6 @@ td, th {
     margin: .25em 0
 }
 
-.pure-form.pure-form-stacked {
-    margin: 10px;
-}
-
 .pure-form-aligned input, .pure-form-aligned textarea, .pure-form-aligned select, .pure-form-aligned .pure-help-inline, .pure-form-message-inline {
     display: inline-block;
     *display: inline;
