@@ -119,6 +119,8 @@ class Utils
                     }
                 }
                 else if ((preg_match($rx2, $a->nodeValue) == 0) && (preg_match($rx2, $a->getAttribute('href')) == 1)) {
+                    //TODO à corriger pour ce type de video
+                    //$a->setAttribute('href', 'https://youtu.be/NlkC1lkvG-Q' );
                     $a->setAttribute('class', 'popup-youtube');
                 }
             }

@@ -37,8 +37,6 @@
                     'password'          : $('input[name=password]').val()
                 };
 
-                console.log(formData);
-
                 $.ajax({
                     type        : 'POST',
                     url         : '{{@ALIASES.login}}',
@@ -47,19 +45,39 @@
                     encode      : true
                 })
                     .done(function(data) {
-                            console.log(data);
                             if ( !data.success) {
                                 if (data.errors.email) {
-
+                                    $.modal(data.errors.email,
+                                            {   overlayClose : true,
+                                                onShow: function(dlg) {
+                                                    $(dlg.container).css('height','auto');
+                                                    $(dlg.container).css('width','auto');
+                                                    $.modal.setPosition();
+                                                }});
                                 }
 
                                 if (data.errors.password) {
-                                    alert(data.errors.password);
+                                    $.modal(data.errors.password,
+                                            {   overlayClose : true,
+                                                onShow: function(dlg) {
+                                                    $(dlg.container).css('height','auto');
+                                                    $(dlg.container).css('width','auto');
+                                                    $.modal.setPosition();
+                                                }});
+                                }
 
+                                if (data.errors.else) {
+                                    $.modal(data.errors.else,
+                                            {   overlayClose : true,
+                                                onShow: function(dlg) {
+                                                    $(dlg.container).css('height','auto');
+                                                    $(dlg.container).css('width','auto');
+                                                    $.modal.setPosition();
+                                                }});
                                 }
                             }
                             else {
-
+                                window.location.replace('{{@ALIASES.account}}');
                             }
                     });
                 event.preventDefault();
