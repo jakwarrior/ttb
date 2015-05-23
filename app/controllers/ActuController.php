@@ -18,6 +18,7 @@ class ActuController extends Controller {
 		$this->f3->set('page',$page);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/list.htm');
+        echo \Template::instance()->render('layout.htm');
 	}
 
 	public function page()
@@ -44,5 +45,6 @@ class ActuController extends Controller {
 		$this->f3->set('page',$page);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/list.htm');
+        echo \Template::instance()->render('layout.htm');
 	}
 }

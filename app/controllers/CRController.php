@@ -15,6 +15,7 @@ class CRController extends Controller {
 
 		$this->f3->set('site_title','CR, Tests, Reviews 100% Tartuffe | CROTYpedia');
 	  $this->f3->set('view','cr/index.htm');
+      echo \Template::instance()->render('layout.htm');
 
 	}
 
@@ -39,6 +40,7 @@ class CRController extends Controller {
 
 		$this->f3->set('site_title','CR de '.$myCR['games'].' par '.$myCR['username'].' | CROTYpedia');
 		$this->f3->set('view','cr/view.htm');
+        echo \Template::instance()->render('layout.htm');
 	}
 
 	public function byGame()
@@ -61,6 +63,7 @@ class CRController extends Controller {
 
 		$this->f3->set('site_title','CRs de '.$myGame['name'].' | CROTYpedia');
 		$this->f3->set('view','cr/indexGame.htm');
+        echo \Template::instance()->render('layout.htm');
 	}
 
 	public function byAlpha()
@@ -70,6 +73,7 @@ class CRController extends Controller {
 
 		$this->f3->set('site_title','Tous les CRs | CROTYpedia');
 		$this->f3->set('view','cr/index.htm', 86400);
+        echo \Template::instance()->render('layout.htm');
 	}
 
 

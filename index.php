@@ -121,12 +121,12 @@ $f3->set('ONERROR',function($f3){
 	{
 		$f3->set('view','error.html');
 		$f3->set('site_title','404');
-  		echo \Template::instance()->render('layout.htm');
+  		echo \Template::instance()->render('error.html');
 	}
 	else {
 		$f3->set('view','error.html');
 		$f3->set('site_title','404');
-  		echo \Template::instance()->render('layout.htm');
+  		echo \Template::instance()->render('error.html');
 		//print_r($f3->get('ERROR'));
 	}
 });

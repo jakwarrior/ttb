@@ -24,6 +24,7 @@ class HomeController extends Controller {
 
         $this->f3->set('page_head','Le premier site d\'information des tartuffes :o');
         $this->f3->set('view','home.htm');
+        echo \Template::instance()->render('layout.htm');
 
 	}
 

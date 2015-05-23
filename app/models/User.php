@@ -5,9 +5,9 @@ class User extends DB\SQL\Mapper {
 
     private $f3;
 
-	public function __construct(DB\SQL $db, $f3) {
+	public function __construct(DB\SQL $db) {
 		parent::__construct($db,'user');
-        $this->f3 = $f3;
+        $this->f3 = \Base::instance();
 	}
 
     public function login($email, $password)
@@ -27,16 +27,16 @@ class User extends DB\SQL\Mapper {
                 sec_session_start();
 
                 $user_browser = $_SERVER['HTTP_USER_AGENT'];
-                $this->f3->set('SESSION.username', $result[0]['username']);
+                $this->f3->set('SESSION.username', html_entity_decode($result[0]['username']));
                 $this->f3->set('SESSION.hfr_user_id', $result[0]['hfr_user_id']);
                 $this->f3->set('SESSION.login_string', hash('sha512', $password . $user_browser));
 
-                return true;
+                return "OK";
             } else {
-                return false;
+                return "incorrect";
             }
         } else {
-            return false;
+            return "problem";
         }
 
 

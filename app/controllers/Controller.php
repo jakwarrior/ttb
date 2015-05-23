@@ -70,7 +70,8 @@ class Controller {
                         'icon' => 'url(/ui/images/mods.png)');
 
         $menu[] = array('title' => 'Topic PC',
-                        'url' =>   $this->f3->get('ALIASES.tupc_list'),
+                        /*'url' =>   $this->f3->get('ALIASES.tupc_list'),*/
+                        'url' => 'http://forum.hardware.fr/hfr/JeuxVideo/PC/joueurs-downgrade-edition-sujet_177180_1.htm',
                         'color' => '#f18f18',
                         'tcolor' => 'white',
                         'icon' => 'url(/ui/images/hfr.png)');
@@ -97,7 +98,7 @@ class Controller {
     }
 
     function afterroute() {
-        echo Template::instance()->render('layout.htm');
+
     }
 
     function __construct() {

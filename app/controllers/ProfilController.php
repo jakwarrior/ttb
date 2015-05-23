@@ -17,7 +17,7 @@ class ProfilController extends Controller {
 
         $this->f3->set('site_title','Les CRs, Streams, Actus de '.$this->f3->get('PARAMS.name').' | thetartuffebay.org');
         $this->f3->set('view','profil/view.htm');
-
+        echo \Template::instance()->render('layout.htm');
   }
 
 }
