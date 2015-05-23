@@ -1,29 +1,14 @@
 <div class="auth_content">
     <form class="pure-form pure-form-stacked">
         <fieldset>
-            <legend><b>Se connecter</b></legend>
+            <legend><b>Réinitialiser le mot de passe</b></legend>
+            <p>Un nouveau mot de passe vous sera envoyé par email.</p>
+            <br>
 
             <label for="email">Email</label>
             <input id="email" name="email" type="email" placeholder="Email" autofocus="true">
 
-            <label for="password">Mot de passe</label>
-            <input id="password" name="password" type="password" placeholder="Mot de passe">
-
-            <button type="submit" id="submit" class="pure-button pure-button-primary broken-ajax">Connexion</button>
-        </fieldset>
-    </form>
-
-    <br>
-    <a href="{{@ALIASES.reset}}" class="auth">Mot de passe oublié ?</a>
-
-    <br>
-    <br>
-    <br>
-
-    <form class="pure-form pure-form-stacked">
-        <fieldset>
-            <legend><b>S'inscrire</b></legend>
-            <p>Afin d'assurer l'unicité des comptes entre les sites <b>TheTartuffeBay.org</b> et <b>Hardware.fr</b>, l'inscription se fait en m'envoyant un <b><a href="http://forum.hardware.fr/hfr/profil-929138.htm">message privé</a></b> depuis le forum en me précisant votre adresse mail. Le mot de passe du compte sera envoyé à cette adresse, il peut être modifié par la suite.</p>
+            <button type="submit" id="submit" class="pure-button pure-button-primary broken-ajax">Réinitialiser</button>
         </fieldset>
     </form>
 
@@ -33,13 +18,12 @@
             $('form').submit(function(event) {
 
                 var formData = {
-                    'email'             : $('input[name=email]').val(),
-                    'password'          : hex_sha512($('input[name=password]').val())
+                    'email'             : $('input[name=email]').val()
                 };
 
                 $.ajax({
                     type        : 'POST',
-                    url         : '{{@ALIASES.login}}',
+                    url         : '{{@ALIASES.reset_ajax}}',
                     data        : formData,
                     dataType    : 'json',
                     encode      : true
@@ -48,16 +32,6 @@
                             if ( !data.success) {
                                 if (data.errors.email) {
                                     $.modal(data.errors.email,
-                                            {   overlayClose : true,
-                                                onShow: function(dlg) {
-                                                    $(dlg.container).css('height','auto');
-                                                    $(dlg.container).css('width','auto');
-                                                    $.modal.setPosition();
-                                                }});
-                                }
-
-                                if (data.errors.password) {
-                                    $.modal(data.errors.password,
                                             {   overlayClose : true,
                                                 onShow: function(dlg) {
                                                     $(dlg.container).css('height','auto');
@@ -77,7 +51,13 @@
                                 }
                             }
                             else {
-                                window.location.replace('{{@ALIASES.account}}');
+                                $.modal(data.message,
+                                        {   overlayClose : true,
+                                            onShow: function(dlg) {
+                                                $(dlg.container).css('height','auto');
+                                                $(dlg.container).css('width','auto');
+                                                $.modal.setPosition();
+                                            }});
                             }
                     });
                 event.preventDefault();
