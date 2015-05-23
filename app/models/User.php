@@ -44,19 +44,19 @@ class User extends DB\SQL\Mapper {
 
     public function resetLogin()
     {
-/*        $password='azerty';
+        $password='azerty';
+        $password_hash = hash('sha512', $password);
 
-        $hash_pwd = password_hash($password, PASSWORD_DEFAULT);
+        $hash_pwd = password_hash($password_hash, PASSWORD_DEFAULT);
 
         $request = 'UPDATE user SET password= :password WHERE hfr_user_id=929138';
 
-        return $this->db->exec($request, array(':password' => $hash_pwd));*/
+        return $this->db->exec($request, array(':password' => $hash_pwd));
 
-        //$smtp = new SMTP ( 'ns0.ovh.net', 587, false, 'no-reply@thetartuffebay.org', '+^KWU<kt-S$p4H{F' );
-        $smtp=new SMTP ($this->f3->get('smtp_server'), $this->f3->get('smtp_port'), false, $this->f3->get('smtp_account'), $this->f3->get('smtp_pwd'));
+/*        $smtp=new SMTP ($this->f3->get('smtp_server'), $this->f3->get('smtp_port'), false, $this->f3->get('smtp_account'), $this->f3->get('smtp_pwd'));
         $smtp->set('To', '"plop" <plop@plop.com>');
         $smtp->set('From', '"The Tartuffe Bay" <no-reply@thetartuffebay.org>');
         $smtp->set('Subject', 'Sent with the F3 SMTP plug-in');
-        $smtp->send("Plop");
+        $smtp->send("Plop");*/
     }
 }

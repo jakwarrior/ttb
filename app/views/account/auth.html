@@ -34,8 +34,10 @@
 
                 var formData = {
                     'email'             : $('input[name=email]').val(),
-                    'password'          : $('input[name=password]').val()
+                    'password'          : hex_sha512($('input[name=password]').val())
                 };
+
+                console.log(formData);
 
                 $.ajax({
                     type        : 'POST',
