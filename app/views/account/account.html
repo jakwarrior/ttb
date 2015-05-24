@@ -1,7 +1,21 @@
 <check if="{{ \Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true') }}">
     <true>
-        <div class="auth_content">
-            Hello {{@SESSION.username}} !
+        <div id='cssmenu'>
+            <ul>
+                <li class='active'><a href='{{@ALIASES.account}}'>Mon compte</a></li>
+                <li><a href='{{@ALIASES.accountCR}}'>Mes CRs</a></li>
+                <li><a href='{{@ALIASES.accountActu}}'>Mes dernières actus</a></li>
+                <check if="{{ \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true') }}">
+                <true>
+                    <li><a href='{{@ALIASES.accountActu}}'>Importer un CR</a></li>
+                    <li><a href='{{@ALIASES.accountActu}}'>Gestion des utilisateurs</a></li>
+                    <li><a href='{{@ALIASES.accountActu}}'>Ajouter un utilisateur</a></li>
+                </true>
+                </check>
+            </ul>
+        </div>
+        <div class="account_content">
+        Hello {{@SESSION.username}} !
         </div>
     </true>
     <false>

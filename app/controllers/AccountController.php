@@ -20,6 +20,7 @@ class AccountController extends Controller
             $this->f3->set('view', 'account/account.html');
             $this->f3->set('includeJsCssAccount', 'true');
             $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
+            $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
             echo \Template::instance()->render('layout.htm');
         }
     }

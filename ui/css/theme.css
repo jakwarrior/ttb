@@ -751,7 +751,7 @@ a.hfrtv.all {
     font-weight: bold;
 }
 
-.auth_content {
+.auth_content, .account_content {
     margin:10px;
     text-align: justify;
 }
