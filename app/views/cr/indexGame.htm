@@ -12,7 +12,7 @@
                 <a href="{{ @ALIASES.crs_list }}/{{ @item['id'] }}" title="">
                     <img src="{{ @media }}/center/30/{{ @game['api_image'] }}">
                     <div class="gameinfo">
-                        <p class="gamename">{{ @item['username'] }} - {{ date('d/m/y', strtotime(@item['date_posted']) ) }}
+                        <p class="gamename">{{ @item['username'] }} <check if="{{ @item['comment'] }}">&ndash; {{@item['comment']}} </check>- {{ date('d/m/y', strtotime(@item['date_posted']) ) }}
                         </p>
                     </div>
 

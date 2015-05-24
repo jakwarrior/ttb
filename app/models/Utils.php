@@ -11,7 +11,7 @@ class Utils
         $xpath = new DOMXpath($doc);
 
         $rx = '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i';
-        $rx2 = '%(?:youtube(?:-nocookie)?\.com/)%i';
+        $rx2 = '%(?:youtube(?:-nocookie)?\.com/)|youtu\.be/%i';
 
         foreach ($xpath->query('//a') as $a) {
             if (strlen($a->nodeValue) > 0) {
@@ -119,9 +119,17 @@ class Utils
                     }
                 }
                 else if ((preg_match($rx2, $a->nodeValue) == 0) && (preg_match($rx2, $a->getAttribute('href')) == 1)) {
-                    //TODO à corriger pour ce type de video
-                    //$a->setAttribute('href', 'https://youtu.be/NlkC1lkvG-Q' );
                     $a->setAttribute('class', 'popup-youtube');
+                }
+            }
+            else if (($this->str_ends_with($a->getAttribute('href'), '.jpg')) || ($this->str_ends_with($a->getAttribute('href'), '.jpeg'))
+                || ($this->str_ends_with($a->getAttribute('href'), '.png'))) {
+                foreach ($a->getElementsByTagName('img') as $img) {
+                    if (($this->str_ends_with($img->getAttribute('alt'), '.jpg')) || ($this->str_ends_with($img->getAttribute('alt'), '.jpeg'))
+                        || ($this->str_ends_with($img->getAttribute('alt'), '.png'))) {
+                        $a->setAttribute('href', str_replace('http://reho.st/view/self/', 'http://reho.st/self/', $a->getAttribute('href')));
+                        $a->setAttribute('class', 'test-popup-link');
+                    }
                 }
             }
         }

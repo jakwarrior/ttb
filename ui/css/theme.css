@@ -409,6 +409,7 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     width: 25%;
     height: 120px;
     float: left;
+    font-size: 0.8em;
 }
 
 #crotypedia.homebox ul.imagelist li:after, #crotypedia.homebox ul.cr_games li:after {
@@ -652,6 +653,11 @@ a.hfrtv.all {
     color: #ccff33;
     background-color: #03254a;
     text-decoration: none;
+}
+
+.test-popup-link:hover {
+    background-color: transparent !important;
+    cursor: zoom-in;
 }
 
 #gibbactu .gibbactus a.date {

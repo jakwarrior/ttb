@@ -138,14 +138,35 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
+                $(".popup-youtube").magnificPopup({
                     disableOn: 700,
                     type: "iframe",
                     mainClass: "mfp-fade",
                     removalDelay: 160,
                     preloader: false,
+                    fixedContentPos: false,
+                    iframe: {
+                        patterns: {
+                            youtube_short: {
+                                index: 'youtu.be/',
+                                id: 'youtu.be/',
+                                src: '//www.youtube.com/embed/%id%?autoplay=1'
+                            }
+                        }
+                    }
+                });
 
-                    fixedContentPos: false
+                $(".test-popup-link").magnificPopup({
+                    type: 'image',
+                    closeOnContentClick: true,
+                    image: {
+                        verticalFit: true
+                    },
+                    mainClass: 'mfp-no-margins mfp-with-zoom',
+                    zoom: {
+                        enabled: true,
+                        duration: 300
+                    }
                 });
             });
         </script>
