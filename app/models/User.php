@@ -51,8 +51,10 @@ class User extends DB\SQL\Mapper {
         if (is_array($result) && count($result) == 1)
         {
             $newPwd = $this->random_password(12);
+            $hash_pwd = password_hash(hash('sha512', $newPwd), PASSWORD_DEFAULT);
+
             $request2 = 'UPDATE user SET password= :password WHERE hfr_user_id= :user_id';
-            $result2 = $this->db->exec($request2, array(':password' => $newPwd, ':user_id' => $result[0]['hfr_user_id']));
+            $result2 = $this->db->exec($request2, array(':password' => $hash_pwd, ':user_id' => $result[0]['hfr_user_id']));
 
             if ($result2 == 1) {
                 $message = html_entity_decode("Bonjour " . html_entity_decode($result[0]['username']) . ",<br><br>Vous avez demandé la réinitialisation de votre mot de passe. Votre nouveau mot de passe est " . $newPwd . "<br><br>A bientôt sur <a href='www.thetartuffebay.org'>TheTartuffeBay.org</a>");

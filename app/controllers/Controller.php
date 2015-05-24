@@ -57,7 +57,7 @@ class Controller {
                         'tcolor' => 'white',
                         'icon' => 'url(/ui/images/book.png)');
 
-        $menu[] = array('title' => 'Tartuffe Chat',
+        $menu[] = array('title' => 'Salon des Tartuffes',
                         'url' =>   $this->f3->get('ALIASES.chat'),
                         'color' => '#3F4C6C',
                         'tcolor' => 'white',
@@ -98,7 +98,7 @@ class Controller {
     }
 
     function afterroute() {
-
+        $this->f3->set('includeJsCssAccount', 'false');
     }
 
     function __construct() {

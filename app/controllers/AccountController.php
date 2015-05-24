@@ -19,6 +19,7 @@ class AccountController extends Controller
     public function auth()
     {
         $this->f3->set('view', 'account/auth.html');
+        $this->f3->set('includeJsCssAccount', 'true');
         echo \Template::instance()->render('layout.htm');
     }
 
@@ -67,6 +68,7 @@ class AccountController extends Controller
     public function reset()
     {
         $this->f3->set('view', 'account/reset.html');
+        $this->f3->set('includeJsCssAccount', 'true');
         echo \Template::instance()->render('layout.htm');
     }
 

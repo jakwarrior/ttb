@@ -6,18 +6,23 @@
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
 
 		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
-        <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
+
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="ui/js/ttb.js"></script>
-        <script type="text/javascript" src="ui/js/sha512.js"></script>
+
+        <check if="{{ \Base::instance()->exists('includeJsCssAccount') && (@includeJsCssAccount == 'true') }}">
+            <true>
+                <script type="text/javascript" src="ui/js/sha512.js"></script>
+                <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
+                <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
+            </true>
+        </check>
 
         <script type="text/javascript" src="ui/js/jquery.magnific-popup.js"></script>
         <link rel="stylesheet" href="ui/css/magnific-popup.css" type="text/css" />
-
-        <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
 
 		<link rel="shortcut icon" href="http://www.thetartuffebay.org/favicon.ico?v=4" />
 
