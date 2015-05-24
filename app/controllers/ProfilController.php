@@ -7,12 +7,6 @@ class ProfilController extends Controller {
         $CR = new CR($this->db);
         $myCr = $CR->byUserName($this->f3->get('PARAMS.name'));
 
-        foreach ($myCr as $subKey  => $subArray) {
-            if ($subArray["username"] != htmlentities("Profil supprimé")) {
-                unset($myCr[$subKey ]);
-            }
-        }
-
         $this->f3->set('list_cr', $myCr);
 
         $Stream = new Stream($this->db);
