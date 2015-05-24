@@ -99,6 +99,7 @@ class Controller {
 
     function afterroute() {
         $this->f3->set('includeJsCssAccount', 'false');
+        $this->f3->set('normalLoginCheck', 'false');
     }
 
     function __construct() {

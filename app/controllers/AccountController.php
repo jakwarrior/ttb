@@ -3,6 +3,13 @@ include_once 'app/vendor/functions.php';
 
 class AccountController extends Controller
 {
+    private $user;
+
+    function __construct() {
+        parent::__construct();
+        $this->user = new User($this->db);
+    }
+
     public function index()
     {
         sec_session_start();
@@ -10,8 +17,9 @@ class AccountController extends Controller
         if (null === $this->f3->get('SESSION.username')) {
             $this->f3->reroute('@auth');
         } else {
-            echo($this->f3->get('SESSION.username'));
-            $this->f3->set('view', 'error.html');
+            $this->f3->set('view', 'account/account.html');
+            $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -25,8 +33,6 @@ class AccountController extends Controller
 
     public function login()
     {
-        $user = new User($this->db);
-
         $errors = array();
         $data = array();
 
@@ -43,7 +49,7 @@ class AccountController extends Controller
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-            $response = $user->login($email, $password);
+            $response = $this->user->login($email, $password);
 
             if ($response == "OK") {
                 $data['success'] = true;
@@ -74,8 +80,6 @@ class AccountController extends Controller
 
     public function reset_ajax()
     {
-        $user = new User($this->db);
-
         $errors = array();
         $data = array();
 
@@ -86,7 +90,7 @@ class AccountController extends Controller
             $data['success'] = false;
         } else {
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $response = $user->resetLogin($email);
+            $response = $this->user->resetLogin($email);
 
             if ($response == "OK") {
                 $data['success'] = true;

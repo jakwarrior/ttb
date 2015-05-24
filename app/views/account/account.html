@@ -1,0 +1,12 @@
+<check if="{{ \Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true') }}">
+    <true>
+        <div class="auth_content">
+            Hello {{@SESSION.username}} !
+        </div>
+    </true>
+    <false>
+        <div class="auth_content">
+            Accès interdit
+        </div>
+    </false>
+</check>

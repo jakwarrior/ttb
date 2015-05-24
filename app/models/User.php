@@ -29,7 +29,7 @@ class User extends DB\SQL\Mapper {
                 $user_browser = $_SERVER['HTTP_USER_AGENT'];
                 $this->f3->set('SESSION.username', html_entity_decode($result[0]['username']));
                 $this->f3->set('SESSION.hfr_user_id', $result[0]['hfr_user_id']);
-                $this->f3->set('SESSION.login_string', hash('sha512', $password . $user_browser));
+                $this->f3->set('SESSION.login_string', hash('sha512', $result[0]['password'] . $user_browser));
 
                 return "OK";
             } else {
@@ -80,5 +80,77 @@ class User extends DB\SQL\Mapper {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
         $password = substr( str_shuffle( $chars ), 0, $length );
         return $password;
+    }
+
+    function normalLoginCheck() {
+        // Check if all session variables are set
+        if ($this->f3->exists('SESSION.username') && $this->f3->exists('SESSION.hfr_user_id') && $this->f3->exists('SESSION.login_string')) {
+
+            $user_id = $this->f3->get('SESSION.hfr_user_id');
+            $login_string = $this->f3->get('SESSION.login_string');
+            $username = $this->f3->get('SESSION.username');
+
+            // Get the user-agent string of the user.
+            $user_browser = $_SERVER['HTTP_USER_AGENT'];
+
+            $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
+
+            $result = $this->db->exec($request, array(':user_id' => $user_id));
+
+            if (is_array($result) && count($result) == 1) {
+                // If the user exists get variables from result.
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+
+                if ($login_check == $login_string) {
+                    // Logged In!!!!
+                    return true;
+                } else {
+                    // Not logged in
+                    return false;
+                }
+            } else {
+                // Not logged in
+                return false;
+            }
+        } else {
+            // Not logged in
+            return false;
+        }
+    }
+
+    function adminLoginCheck() {
+        // Check if all session variables are set
+        if ($this->f3->exists('SESSION.username') && $this->f3->exists('SESSION.hfr_user_id') && $this->f3->exists('SESSION.login_string')) {
+
+            $user_id = $this->f3->get('SESSION.hfr_user_id');
+            $login_string = $this->f3->get('SESSION.login_string');
+            $username = $this->f3->get('SESSION.username');
+
+            // Get the user-agent string of the user.
+            $user_browser = $_SERVER['HTTP_USER_AGENT'];
+
+            $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
+
+            $result = $this->db->exec($request, array(':user_id' => $user_id));
+
+            if (is_array($result) && count($result) == 1) {
+                // If the user exists get variables from result.
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+
+                if (($login_check == $login_string) && ($result[0]['isAdmin'] == 1)) {
+                    // Logged In!!!!
+                    return true;
+                } else {
+                    // Not logged in
+                    return false;
+                }
+            } else {
+                // Not logged in
+                return false;
+            }
+        } else {
+            // Not logged in
+            return false;
+        }
     }
 }
