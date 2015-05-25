@@ -186,4 +186,61 @@ class AccountController extends Controller
         $data['errors']  = $errors;
         echo json_encode($data);
     }
+
+    public function changePwd() {
+
+        $errors = array();
+        $data = array();
+
+        if (!$this->f3->exists('POST.newPwd2') || (hash('sha512', "") == $this->f3->get('POST.newPwd2')))
+            $errors['password'] = "Veuillez réécrire le nouveau mot de passe";
+
+        if (!$this->f3->exists('POST.newPwd1') || (hash('sha512', "") == $this->f3->get('POST.newPwd1')))
+            $errors['password'] = "Le nouveau mot de passe est requis";
+
+        if (!$this->f3->exists('POST.oldPwd') || (hash('sha512', "") == $this->f3->get('POST.oldPwd')))
+            $errors['password'] = "L'ancien mot de passe est requis";
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            $oldPwd = filter_input(INPUT_POST, 'oldPwd', FILTER_SANITIZE_STRING);
+            $newPwd1 = filter_input(INPUT_POST, 'newPwd1', FILTER_SANITIZE_STRING);
+            $newPwd2 = filter_input(INPUT_POST, 'newPwd2', FILTER_SANITIZE_STRING);
+
+            if (!($newPwd1 ==  $newPwd2)) {
+                $errors['password'] = "Les deux mots de passe ne sont pas identiques";
+                $data['success'] = false;
+            } else {
+                sec_session_start();
+
+                $response = $this->user->changePwd($this->f3->get('SESSION.hfr_user_id'), $oldPwd, $newPwd1);
+
+                if ($response == "OK") {
+                    $data['success'] = true;
+                    $data['message'] = "Le nouveau mot de passe a bien été enregistré";
+                }
+                else if ($response == "incorrect") {
+                    $data['success'] = false;
+                    $data['message'] = "L'ancien mot de passe est incorrect";
+                    $errors['else'] = "L'ancien mot de passe est incorrect";
+                }
+                else if ($response == "problem") {
+                    $data['success'] = false;
+                    $data['message'] = "Une erreur s'est produite";
+                    $errors['else'] = "Une erreur s'est produite";
+                }
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
+    }
+
+    public function logout()
+    {
+        sec_session_start();
+        sec_session_destroy();
+        $this->f3->reroute('@account');
+    }
 }

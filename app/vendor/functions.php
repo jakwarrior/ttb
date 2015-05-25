@@ -19,3 +19,22 @@ function sec_session_start() {
     session_start();            // Start the PHP session
     session_regenerate_id(true);    // regenerated the session, delete the old one.
 }
+
+function sec_session_destroy() {
+    // Unset all session values
+    $_SESSION = array();
+
+    // get session parameters
+    $params = session_get_cookie_params();
+
+    // Delete the actual cookie.
+    setcookie(session_name(),
+        '', time() - 42000,
+        $params["path"],
+        $params["domain"],
+        $params["secure"],
+        $params["httponly"]);
+
+    // Destroy session
+    session_destroy();
+}

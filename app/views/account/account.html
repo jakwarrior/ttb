@@ -50,17 +50,17 @@
                     <legend><b>Changer mon mot de passe</b></legend>
                     <div class="pure-control-group">
                         <label for="password">Ancien mot de passe</label>
-                        <input id="password" type="password" placeholder="">
+                        <input id="password" name="oldPwd" type="password" placeholder="">
                     </div>
 
                     <div class="pure-control-group">
                         <label for="password">Nouveau mot de passe</label>
-                        <input id="newPassword" type="password" placeholder="">
+                        <input id="newPassword" name="newPwd1" type="password" placeholder="">
                     </div>
 
                     <div class="pure-control-group">
                         <label for="password">Réécrire nouveau mot de passe</label>
-                        <input id="newPassword2" type="password" placeholder="">
+                        <input id="newPassword2" name="newPwd2" type="password" placeholder="">
                     </div>
 
                     <button type="submit" id="submit2" class="pure-button pure-button-primary broken-ajax">Enregistrer</button>
@@ -68,7 +68,7 @@
             </form>
 
             <br>
-            <a href="{{@ALIASES.reset}}" class="auth">Se déconnecter</a>
+            <a href="{{@ALIASES.logout}}" class="auth">Se déconnecter</a>
         </div>
 
         <script>
@@ -125,6 +125,54 @@
                 });
 
                 $('#passwordForm').submit(function(event) {
+
+                    var formData = {
+                        'oldPwd'             : hex_sha512($('input[name=oldPwd]').val()),
+                        'newPwd1'             : hex_sha512($('input[name=newPwd1]').val()),
+                        'newPwd2'             : hex_sha512($('input[name=newPwd2]').val())
+                    };
+
+                    $.ajax({
+                        type        : 'POST',
+                        url         : '{{@ALIASES.changePwd}}',
+                        data        : formData,
+                        dataType    : 'json',
+                        encode      : true
+                    })
+                            .done(function(data) {
+                                console.log(data);
+
+                                if ( !data.success) {
+                                    if (data.errors.password) {
+                                        $.modal(data.errors.password,
+                                                {   overlayClose : true,
+                                                    onShow: function(dlg) {
+                                                        $(dlg.container).css('height','auto');
+                                                        $(dlg.container).css('width','auto');
+                                                        $.modal.setPosition();
+                                                    }});
+                                    }
+
+                                    if (data.errors.else) {
+                                        $.modal(data.errors.else,
+                                                {   overlayClose : true,
+                                                    onShow: function(dlg) {
+                                                        $(dlg.container).css('height','auto');
+                                                        $(dlg.container).css('width','auto');
+                                                        $.modal.setPosition();
+                                                    }});
+                                    }
+                                }
+                                else {
+                                    $.modal(data.message,
+                                            {   overlayClose : true,
+                                                onShow: function(dlg) {
+                                                    $(dlg.container).css('height','auto');
+                                                    $(dlg.container).css('width','auto');
+                                                    $.modal.setPosition();
+                                                }});
+                                }
+                            });
 
                     event.preventDefault();
                 });

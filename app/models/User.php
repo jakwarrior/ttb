@@ -161,8 +161,54 @@ class User extends DB\SQL\Mapper {
 
         if ($result == 1) {
             $this->f3->set('SESSION.email', $newEmail);
-
             return "OK";
+        } else {
+            return "problem";
+        }
+    }
+
+    function changePwd($hfr_user_id, $oldPwd, $newPwd) {
+        if ($this->f3->exists('SESSION.login_string')) {
+            $login_string = $this->f3->get('SESSION.login_string');
+
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+
+            $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
+
+            $result = $this->db->exec($request, array(':user_id' => $hfr_user_id));
+
+            if (is_array($result) && count($result) == 1) {
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+
+                if (($login_check == $login_string)) {
+
+                    $verifyPwd = password_verify($oldPwd, $result[0]['password']);
+
+                    if ($verifyPwd == true)
+                    {
+                        $hash_pwd = password_hash($newPwd, PASSWORD_DEFAULT);
+
+                        $request2 = 'UPDATE user SET password= :password WHERE hfr_user_id= :user_id';
+                        $result2 = $this->db->exec($request2, array(':password' => $hash_pwd, ':user_id' => $hfr_user_id));
+
+                        if ($result2 == 1) {
+                            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+                            $this->f3->set('SESSION.login_string', hash('sha512', $hash_pwd . $user_browser));
+
+                            return "OK";
+                        } else {
+                            return "problem";
+                        }
+                    } else {
+                        return "incorrect";
+                    }
+
+                } else {
+                    return "problem";
+                }
+            } else {
+                return "problem";
+            }
         } else {
             return "problem";
         }
