@@ -70,6 +70,26 @@ class CR extends DB\SQL\Mapper
         return $this->db->exec($Res, array(':userName' => htmlentities($userName)));
     }
 
+    public function byHFRUserId($hfr_user_id)
+    {
+        $Res = 'SELECT cr.id AS id, cr.username AS username, GROUP_CONCAT( g.name SEPARATOR \', \') as games, IF(cr.hfr_user_id = 1, \'\', cr.comment)  as comment, ct.name as type, cf.name as format, cr.date_posted as date_posted, cr.hfr_post_id' .
+            ', g.api_image AS api_image' .
+            ' FROM cr as cr' .
+            ' INNER JOIN cr_game as cg' .
+            ' ON cr.id = cg.cr_id' .
+            ' INNER JOIN game as g' .
+            ' ON g.id = cg.game_id' .
+            ' INNER JOIN cr_type as ct' .
+            ' ON ct.id = cr.type_id' .
+            ' INNER JOIN cr_format as cf' .
+            ' ON cf.id = cr.format_id' .
+            ' WHERE cr.hfr_user_id = :userId' .
+            ' GROUP BY cr.id, g.id' .
+            ' ORDER BY cr.username ASC, cr.date_posted ASC, cr.comment ASC, ct.id ASC, cf.id ASC';
+
+        return $this->db->exec($Res, array(':userId' => $hfr_user_id));
+    }
+
     public function byId($idCR)
     {
 

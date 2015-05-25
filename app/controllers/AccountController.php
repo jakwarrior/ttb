@@ -112,4 +112,51 @@ class AccountController extends Controller
         $data['errors']  = $errors;
         echo json_encode($data);
     }
+
+    public function cr() {
+        sec_session_start();
+
+        error_log($this->f3->get('view'));
+
+        if (null === $this->f3->get('SESSION.username')) {
+            $this->f3->reroute('@auth');
+        } else {
+            $CR = new CR($this->db);
+            $this->f3->set('list_cr', $myCr = $CR->byHFRUserId($this->f3->get('SESSION.hfr_user_id')));
+
+            $this->f3->set('view', 'account/cr.html');
+            $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
+            $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
+
+    public function gibbactu() {
+        sec_session_start();
+
+        error_log($this->f3->get('view'));
+
+        if (null === $this->f3->get('SESSION.username')) {
+            $this->f3->reroute('@auth');
+        } else {
+            $Actus = new Actu($this->db);
+            $utils = new Utils();
+
+            $actus = $Actus->byHFRUserId($this->f3->get('SESSION.hfr_user_id'), 10);
+
+            foreach ($actus as $subKey => $subArray) {
+                $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+                $actus[$subKey] = $subArray;
+            }
+
+            $this->f3->set('actus',$actus);
+
+            $this->f3->set('view', 'account/gibbactu.html');
+            $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
+            $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
 }

@@ -26,7 +26,7 @@ class User extends DB\SQL\Mapper {
             {
                 sec_session_start();
 
-                $user_browser = $_SERVER['HTTP_USER_AGENT'];
+                $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
                 $this->f3->set('SESSION.username', html_entity_decode($result[0]['username']));
                 $this->f3->set('SESSION.hfr_user_id', $result[0]['hfr_user_id']);
                 $this->f3->set('SESSION.login_string', hash('sha512', $result[0]['password'] . $user_browser));
@@ -91,7 +91,7 @@ class User extends DB\SQL\Mapper {
             $username = $this->f3->get('SESSION.username');
 
             // Get the user-agent string of the user.
-            $user_browser = $_SERVER['HTTP_USER_AGENT'];
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
             $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
 
@@ -127,7 +127,7 @@ class User extends DB\SQL\Mapper {
             $username = $this->f3->get('SESSION.username');
 
             // Get the user-agent string of the user.
-            $user_browser = $_SERVER['HTTP_USER_AGENT'];
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
             $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
 
