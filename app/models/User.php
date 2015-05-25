@@ -30,6 +30,7 @@ class User extends DB\SQL\Mapper {
                 $this->f3->set('SESSION.username', html_entity_decode($result[0]['username']));
                 $this->f3->set('SESSION.hfr_user_id', $result[0]['hfr_user_id']);
                 $this->f3->set('SESSION.login_string', hash('sha512', $result[0]['password'] . $user_browser));
+                $this->f3->set('SESSION.email', $result[0]['email']);
 
                 return "OK";
             } else {
@@ -40,7 +41,7 @@ class User extends DB\SQL\Mapper {
         }
     }
 
-    public function resetLogin($email)
+    public function resetPassword($email)
     {
         $request = 'SELECT *'.
             ' FROM user '.
@@ -72,7 +73,7 @@ class User extends DB\SQL\Mapper {
             }
         }
         else {
-            return "problem";
+            return "inconnu";
         }
     }
 
@@ -151,6 +152,19 @@ class User extends DB\SQL\Mapper {
         } else {
             // Not logged in
             return false;
+        }
+    }
+
+    function changeEmail($hfr_user_id, $newEmail) {
+        $request = 'UPDATE user SET email= :email WHERE hfr_user_id= :user_id';
+        $result = $this->db->exec($request, array(':email' => $newEmail, ':user_id' => $hfr_user_id));
+
+        if ($result == 1) {
+            $this->f3->set('SESSION.email', $newEmail);
+
+            return "OK";
+        } else {
+            return "problem";
         }
     }
 }

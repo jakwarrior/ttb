@@ -15,8 +15,121 @@
             </ul>
         </div>
         <div class="account_content">
-        Hello {{@SESSION.username}} !
+            <form class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend><b>Mes informations personnelles</b></legend>
+                    <div class="pure-control-group">
+                        <label for="name">Identifiant</label>
+                        <label class="closer" id="name">{{@SESSION.username}}</label>
+                    </div>
+                </fieldset>
+            </form>
+            <br>
+
+            <form id="emailForm" class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend><b>Changer mon adresse e-mail</b></legend>
+
+                    <div class="pure-control-group">
+                        <label for="email">Adresse e-mail actuelle</label>
+                        <input id="email" name="email" type="email" placeholder="{{@SESSION.email}}" disabled>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="newEmail">Nouvelle adresse e-mail</label>
+                        <input id="newEmail" name="newEmail" type="email" placeholder="">
+                    </div>
+
+                    <button type="submit" id="submit" class="pure-button pure-button-primary broken-ajax">Enregistrer</button>
+                </fieldset>
+            </form>
+            <br>
+
+            <form id="passwordForm" class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend><b>Changer mon mot de passe</b></legend>
+                    <div class="pure-control-group">
+                        <label for="password">Ancien mot de passe</label>
+                        <input id="password" type="password" placeholder="">
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="password">Nouveau mot de passe</label>
+                        <input id="newPassword" type="password" placeholder="">
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="password">Réécrire nouveau mot de passe</label>
+                        <input id="newPassword2" type="password" placeholder="">
+                    </div>
+
+                    <button type="submit" id="submit2" class="pure-button pure-button-primary broken-ajax">Enregistrer</button>
+                </fieldset>
+            </form>
+
+            <br>
+            <a href="{{@ALIASES.reset}}" class="auth">Se déconnecter</a>
         </div>
+
+        <script>
+            $(document).ready(function() {
+                // process the form
+                $('#emailForm').submit(function(event) {
+
+                    var formData = {
+                        'email'             : $('input[name=newEmail]').val()
+                    };
+
+                    $.ajax({
+                        type        : 'POST',
+                        url         : '{{@ALIASES.changeEmail}}',
+                        data        : formData,
+                        dataType    : 'json',
+                        encode      : true
+                    })
+                            .done(function(data) {
+                                if ( !data.success) {
+                                    if (data.errors.email) {
+                                        $.modal(data.errors.email,
+                                                {   overlayClose : true,
+                                                    onShow: function(dlg) {
+                                                        $(dlg.container).css('height','auto');
+                                                        $(dlg.container).css('width','auto');
+                                                        $.modal.setPosition();
+                                                    }});
+                                    }
+
+                                    if (data.errors.else) {
+                                        $.modal(data.errors.else,
+                                                {   overlayClose : true,
+                                                    onShow: function(dlg) {
+                                                        $(dlg.container).css('height','auto');
+                                                        $(dlg.container).css('width','auto');
+                                                        $.modal.setPosition();
+                                                    }});
+                                    }
+                                }
+                                else {
+                                    $('#email').attr("placeholder",$('input[name=newEmail]').val());
+                                    $.modal(data.message,
+                                            {   overlayClose : true,
+                                                onShow: function(dlg) {
+                                                    $(dlg.container).css('height','auto');
+                                                    $(dlg.container).css('width','auto');
+                                                    $.modal.setPosition();
+                                                }});
+                                }
+                            });
+
+                    event.preventDefault();
+                });
+
+                $('#passwordForm').submit(function(event) {
+
+                    event.preventDefault();
+                });
+            });
+        </script>
     </true>
     <false>
         <div class="auth_content">

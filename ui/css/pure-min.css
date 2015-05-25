@@ -519,7 +519,7 @@ td, th {
 .pure-form input[type=text][disabled], .pure-form input[type=password][disabled], .pure-form input[type=email][disabled], .pure-form input[type=url][disabled], .pure-form input[type=date][disabled], .pure-form input[type=month][disabled], .pure-form input[type=time][disabled], .pure-form input[type=datetime][disabled], .pure-form input[type=datetime-local][disabled], .pure-form input[type=week][disabled], .pure-form input[type=number][disabled], .pure-form input[type=search][disabled], .pure-form input[type=tel][disabled], .pure-form input[type=color][disabled], .pure-form select[disabled], .pure-form textarea[disabled] {
     cursor: not-allowed;
     background-color: #eaeded;
-    color: #cad2d3
+    color: #596162
 }
 
 .pure-form input:not([type])[disabled] {
@@ -593,7 +593,7 @@ td, th {
     vertical-align: top
 }
 
-.pure-form-aligned .pure-control-group {
+.pure-form-aligned .pure-control-group, .pure-form-aligned .pure-control-group2 {
     margin-bottom: .5em
 }
 
@@ -601,8 +601,23 @@ td, th {
     text-align: right;
     display: inline-block;
     vertical-align: middle;
-    width: 10em;
+    width: 14em;
     margin: 0 1em 0 0
+}
+
+.pure-form-aligned .pure-control-group2 label {
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    width: 7em;
+    margin: 0 1em 0 0
+}
+
+.pure-form-aligned .pure-control-group label.closer {
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1em;
 }
 
 .pure-form-aligned .pure-controls {

@@ -479,6 +479,13 @@ display:none;
     padding: 0 10px;
 }
 
+#crotypedia.catbox .innercontent a, .cr_details a {
+     color: #0645ad;
+     text-decoration: none;
+     display: inline;
+     font-weight: bold;
+}
+
 #crotypedia.catbox img {
     max-width: 100%;
     margin: 0 !important;
@@ -493,6 +500,10 @@ display:none;
 #crotypedia.catbox ul {
     list-style-type: disc;
     padding: 0 30px;
+}
+
+#crotypedia li a:hover, #crotypedia.catbox p a:hover, #crotypedia.catbox .innercontent a:hover, .cr_details a:hover {
+    color:#000;
 }
 
 .cr_details {
@@ -627,7 +638,7 @@ a.hfrtv.all {
     list-style-type: disc;
 }
 
-#gibbactu .gibbactus a, #crotypedia.catbox .innercontent a, .cr_details a {
+#gibbactu .gibbactus a {
     color: #03254a;
     font-weight: bold;
     padding: 0 3px;
@@ -642,7 +653,7 @@ a.hfrtv.all {
     display: none;
 }
 
-#gibbactu .gibbactus a:hover, #gibbactu .allinks:hover, #crotypedia.catbox .innercontent a:hover, .cr_details a:hover {
+#gibbactu .gibbactus a:hover {
     color: #ccff33;
     background-color: #03254a;
     text-decoration: none;
@@ -749,7 +760,7 @@ a.hfrtv.all {
     text-align: justify;
 }
 
-.auth_content a {
+.auth_content a, .account_content a {
     color: black;
 }
 

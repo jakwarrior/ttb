@@ -38,9 +38,9 @@ class AccountController extends Controller
         $data = array();
 
         if (!$this->f3->exists('POST.email') || empty($this->f3->get('POST.email')))
-            $errors['email'] = "L'Email est requis";
+            $errors['email'] = "L'adresse e-mail est requise";
 
-        if (!$this->f3->exists('POST.password') || empty($this->f3->get('POST.password')))
+        if (!$this->f3->exists('POST.password') || (hash('sha512', "") == $this->f3->get('POST.password')))
             $errors['password'] = 'Le mot de passe est requis';
 
         if ( !empty($errors)) {
@@ -85,13 +85,13 @@ class AccountController extends Controller
         $data = array();
 
         if (!$this->f3->exists('POST.email') || empty($this->f3->get('POST.email')))
-            $errors['email'] = "L'Email est requis";
+            $errors['email'] = "L'adresse e-mail est requise";
 
         if ( !empty($errors)) {
             $data['success'] = false;
         } else {
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $response = $this->user->resetLogin($email);
+            $response = $this->user->resetPassword($email);
 
             if ($response == "OK") {
                 $data['success'] = true;
@@ -116,8 +116,6 @@ class AccountController extends Controller
     public function cr() {
         sec_session_start();
 
-        error_log($this->f3->get('view'));
-
         if (null === $this->f3->get('SESSION.username')) {
             $this->f3->reroute('@auth');
         } else {
@@ -134,8 +132,6 @@ class AccountController extends Controller
 
     public function gibbactu() {
         sec_session_start();
-
-        error_log($this->f3->get('view'));
 
         if (null === $this->f3->get('SESSION.username')) {
             $this->f3->reroute('@auth');
@@ -158,5 +154,36 @@ class AccountController extends Controller
             $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
             echo \Template::instance()->render('layout.htm');
         }
+    }
+
+    public function changeEmail() {
+        $errors = array();
+        $data = array();
+
+        if (!$this->f3->exists('POST.email') || empty($this->f3->get('POST.email')))
+            $errors['email'] = "L'adresse e-mail est requise";
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            sec_session_start();
+
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+
+            $response = $this->user->changeEmail($this->f3->get('SESSION.hfr_user_id'), $email);
+
+            if ($response == "OK") {
+                $data['success'] = true;
+                $data['message'] = "L'adresse e-mail a bien été enregistrée";
+            }
+            else if ($response == "problem") {
+                $data['success'] = false;
+                $data['message'] = "Une erreur s'est produite";
+                $errors['else'] = "Une erreur s'est produite";
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
     }
 }
