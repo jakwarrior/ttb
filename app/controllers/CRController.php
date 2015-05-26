@@ -95,5 +95,47 @@ class CRController extends Controller {
         echo \Template::instance()->render('layout.htm');
 	}
 
+    public function editCr() {
+        sec_session_start();
 
+        if (null === $this->f3->get('SESSION.username')) {
+            $this->f3->reroute('@auth');
+        } else {
+
+            $CRs = new CR($this->db);
+            $user = new User($this->db);
+
+            $myCR = $CRs->byId($this->f3->get('PARAMS.id'));
+
+            foreach ($myCR as $subKey => $subArray) {
+                $subArray['content'] = html_entity_decode($subArray['content']);
+                $subArray['username'] = html_entity_decode($subArray['username']);
+                $myCR[$subKey] = $subArray;
+            }
+
+            $this->f3->set('cr',$myCR = $myCR[0]);
+
+            $Game = new Game($this->db);
+            $this->f3->set('games',$Game->byCR($myCR['id']));
+
+            $check = $user->loginCheck();
+
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+
+                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                    && ($this->f3->get('SESSION.username') == $myCR['username'])) {
+
+                    if ($user->checkCrPossession($myCR['id'])) {
+                        $this->f3->set('checkCrPossession', 'true');
+                    }
+                }
+            }
+
+            $this->f3->set('view', 'cr/edit.html');
+            $this->f3->set('includeJsCssEdition', 'true');
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
 }

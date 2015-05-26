@@ -22,6 +22,12 @@
             </true>
         </check>
 
+        <check if="{{ \Base::instance()->exists('includeJsCssEdition') && (@includeJsCssEdition == 'true') }}">
+            <true>
+                <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+            </true>
+        </check>
+
         <script type="text/javascript" src="ui/js/jquery.magnific-popup.js"></script>
         <link rel="stylesheet" href="ui/css/magnific-popup.css" type="text/css" />
 

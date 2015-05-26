@@ -14,23 +14,15 @@
                 voir sur HFR &rsaquo;</a>
         </span>
 
-        <check if="{{ \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')}}">
+        <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
+                    (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
+                    && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
+                    && \Base::instance()->exists('checkCrPossession') && (@checkCrPossession == 'true')) }}">
             <true>
                 <span class="out_link">
-                    <a href="{{@ALIASES.crs_list . '/edit/' . @item['id']}}" class="date">Éditer &rsaquo;</a>
+                    <a href="{{@ALIASES.crs_list . '/edit/' . @cr['id']}}" class="date">Éditer &rsaquo;</a>
                 </span>
             </true>
-            <false>
-                <check if="{{ \Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
-                    && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
-                    && \Base::instance()->exists('checkCrPossession') && (@checkCrPossession == 'true')}}">
-                    <true>
-                        <span class="out_link">
-                            <a href="{{@ALIASES.crs_list . '/edit/' . @item['id']}}" class="date">Éditer &rsaquo;</a>
-                         </span>
-                    </true>
-                </check>
-            </false>
         </check>
     </div>
 </check>

@@ -1,0 +1,28 @@
+<check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
+    (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
+                    && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
+                    && \Base::instance()->exists('checkCrPossession') && (@checkCrPossession == 'true')) }}">
+    <true>
+        <div id="crotypedia" class="homebox catbox">
+            <h2>Édition du CR de par {{ @cr['username'] }}</h2>
+
+            <form>
+                <textarea name="editor1" id="editor1" rows="10" cols="80">
+                    {{ html_entity_decode(@cr['content'])}}
+                </textarea>
+                <script>
+                    CKEDITOR.replace( 'editor1' );
+                </script>
+            </form>
+        </div>
+    </true>
+    <false>
+        <div class="auth_content">
+            Accès interdit
+        </div>
+    </false>
+</check>
+
+
+
+

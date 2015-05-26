@@ -506,6 +506,10 @@ display:none;
     color:#000;
 }
 
+#crotypedia.catbox #cke_editor1 {
+    margin-top: 20px;
+}
+
 .cr_details {
     background-color: #EEEEEE;
     padding: 15px;
