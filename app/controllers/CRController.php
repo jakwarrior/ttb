@@ -1,4 +1,5 @@
 <?php
+include_once 'app/vendor/functions.php';
 
 class CRController extends Controller {
 
@@ -21,9 +22,9 @@ class CRController extends Controller {
 
 	public function view()
 	{
-
 		$CRs = new CR($this->db);
         $utils = new Utils();
+        $user = new User($this->db);
 
         $myCR = $CRs->byId($this->f3->get('PARAMS.id'));
 
@@ -38,8 +39,26 @@ class CRController extends Controller {
 		$Game = new Game($this->db);
 		$this->f3->set('games',$Game->byCR($myCR['id']));
 
+        sec_session_start();
+
+        $check = $user->loginCheck();
+
+        if (count($check) == 2) {
+            $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+            $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+
+            if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                && ($this->f3->get('SESSION.username') == $myCR['username'])) {
+                //apparemment l'utilisateur a les droits d'éditer le CR mais on va quand même vérifier son identité
+                if ($user->checkCrPossession($myCR['id'])) {
+                    $this->f3->set('checkCrPossession', 'true');
+                }
+            }
+        }
+
 		$this->f3->set('site_title','CR de '.$myCR['games'].' par '.$myCR['username'].' | CROTYpedia');
 		$this->f3->set('view','cr/view.htm');
+
         echo \Template::instance()->render('layout.htm');
 	}
 

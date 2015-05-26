@@ -17,10 +17,15 @@ class AccountController extends Controller
         if (null === $this->f3->get('SESSION.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $check = $this->user->loginCheck();
+
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+            }
+
             $this->f3->set('view', 'account/account.html');
             $this->f3->set('includeJsCssAccount', 'true');
-            $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
-            $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -122,10 +127,15 @@ class AccountController extends Controller
             $CR = new CR($this->db);
             $this->f3->set('list_cr', $myCr = $CR->byHFRUserId($this->f3->get('SESSION.hfr_user_id')));
 
+            $check = $this->user->loginCheck();
+
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+            }
+
             $this->f3->set('view', 'account/cr.html');
             $this->f3->set('includeJsCssAccount', 'true');
-            $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
-            $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -148,10 +158,15 @@ class AccountController extends Controller
 
             $this->f3->set('actus',$actus);
 
+            $check = $this->user->loginCheck();
+
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+            }
+
             $this->f3->set('view', 'account/gibbactu.html');
             $this->f3->set('includeJsCssAccount', 'true');
-            $this->f3->set('normalLoginCheck', $this->user->normalLoginCheck());
-            $this->f3->set('adminLoginCheck', $this->user->adminLoginCheck());
             echo \Template::instance()->render('layout.htm');
         }
     }

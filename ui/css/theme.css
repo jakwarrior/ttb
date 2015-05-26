@@ -502,7 +502,7 @@ display:none;
     padding: 0 30px;
 }
 
-#crotypedia li a:hover, #crotypedia.catbox p a:hover, #crotypedia.catbox .innercontent a:hover, .cr_details a:hover {
+#crotypedia.catbox .innercontent a:hover, .cr_details a:hover {
     color:#000;
 }
 
@@ -653,7 +653,7 @@ a.hfrtv.all {
     display: none;
 }
 
-#gibbactu .gibbactus a:hover {
+#gibbactu .gibbactus a:hover, #gibbactu .allinks:hover {
     color: #ccff33;
     background-color: #03254a;
     text-decoration: none;
@@ -760,7 +760,7 @@ a.hfrtv.all {
     text-align: justify;
 }
 
-.auth_content a, .account_content a {
+.auth_content a.auth, .account_content a.auth {
     color: black;
 }
 

@@ -83,13 +83,14 @@ class User extends DB\SQL\Mapper {
         return $password;
     }
 
-    function normalLoginCheck() {
+    function loginCheck() {
+        $return = array();
+
         // Check if all session variables are set
         if ($this->f3->exists('SESSION.username') && $this->f3->exists('SESSION.hfr_user_id') && $this->f3->exists('SESSION.login_string')) {
 
             $user_id = $this->f3->get('SESSION.hfr_user_id');
             $login_string = $this->f3->get('SESSION.login_string');
-            $username = $this->f3->get('SESSION.username');
 
             // Get the user-agent string of the user.
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
@@ -103,55 +104,26 @@ class User extends DB\SQL\Mapper {
                 $login_check = hash('sha512', $result[0]['password'] . $user_browser);
 
                 if ($login_check == $login_string) {
-                    // Logged In!!!!
-                    return true;
+                    if ($result[0]['isAdmin'] == 1) {
+                        $return['adminLoginCheck'] = 'true';
+                        $return['normalLoginCheck'] = 'true';
+                    } else {
+                        $return['adminLoginCheck'] = 'false';
+                        $return['normalLoginCheck'] = 'true';
+                    }
+
+                    return $return;
                 } else {
                     // Not logged in
-                    return false;
+                    return $return;
                 }
             } else {
                 // Not logged in
-                return false;
+                return $return;
             }
         } else {
             // Not logged in
-            return false;
-        }
-    }
-
-    function adminLoginCheck() {
-        // Check if all session variables are set
-        if ($this->f3->exists('SESSION.username') && $this->f3->exists('SESSION.hfr_user_id') && $this->f3->exists('SESSION.login_string')) {
-
-            $user_id = $this->f3->get('SESSION.hfr_user_id');
-            $login_string = $this->f3->get('SESSION.login_string');
-            $username = $this->f3->get('SESSION.username');
-
-            // Get the user-agent string of the user.
-            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
-
-            $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
-
-            $result = $this->db->exec($request, array(':user_id' => $user_id));
-
-            if (is_array($result) && count($result) == 1) {
-                // If the user exists get variables from result.
-                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
-
-                if (($login_check == $login_string) && ($result[0]['isAdmin'] == 1)) {
-                    // Logged In!!!!
-                    return true;
-                } else {
-                    // Not logged in
-                    return false;
-                }
-            } else {
-                // Not logged in
-                return false;
-            }
-        } else {
-            // Not logged in
-            return false;
+            return $return;
         }
     }
 
@@ -211,6 +183,30 @@ class User extends DB\SQL\Mapper {
             }
         } else {
             return "problem";
+        }
+    }
+
+    public function checkCrPossession($CrId) {
+        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
+            $login_string = $this->f3->get('SESSION.login_string');
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+            $hfr_user_id = $this->f3->get('SESSION.hfr_user_id');
+
+            $request = 'SELECT cr.id AS id, cr.username as username, cr.hfr_user_id as hfr_user_id, user.password as password FROM cr as cr LEFT JOIN user as user ON cr.hfr_user_id = user.hfr_user_id  WHERE cr.id = :crId';
+            $result = $this->db->exec($request, array(':crId' => $CrId));
+
+            if (is_array($result) && count($result) == 1) {
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+                if (($login_check == $login_string) && $hfr_user_id ==  $result[0]['hfr_user_id']) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 }
