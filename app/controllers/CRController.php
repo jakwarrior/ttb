@@ -116,7 +116,9 @@ class CRController extends Controller {
             $this->f3->set('cr',$myCR = $myCR[0]);
 
             $Game = new Game($this->db);
-            $this->f3->set('games',$Game->byCR($myCR['id']));
+            $games = $Game->byCR($myCR['id']);
+
+            $this->f3->set('game',$games[0]['name']);
 
             $check = $user->loginCheck();
 
