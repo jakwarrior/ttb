@@ -128,12 +128,34 @@ class User extends DB\SQL\Mapper {
     }
 
     function changeEmail($hfr_user_id, $newEmail) {
-        $request = 'UPDATE user SET email= :email WHERE hfr_user_id= :user_id';
-        $result = $this->db->exec($request, array(':email' => $newEmail, ':user_id' => $hfr_user_id));
+        if ($this->f3->exists('SESSION.login_string')) {
+            $login_string = $this->f3->get('SESSION.login_string');
 
-        if ($result == 1) {
-            $this->f3->set('SESSION.email', $newEmail);
-            return "OK";
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+
+            $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
+
+            $result = $this->db->exec($request, array(':user_id' => $hfr_user_id));
+
+            if (is_array($result) && count($result) == 1) {
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+
+                if (($login_check == $login_string)) {
+                    $request2 = 'UPDATE user SET email= :email WHERE hfr_user_id= :user_id';
+                    $result2 = $this->db->exec($request2, array(':email' => $newEmail, ':user_id' => $hfr_user_id));
+
+                    if ($result2 == 1) {
+                        $this->f3->set('SESSION.email', $newEmail);
+                        return "OK";
+                    } else {
+                        return "problem";
+                    }
+                } else {
+                    return "problem";
+                }
+            } else {
+                return "problem";
+            }
         } else {
             return "problem";
         }

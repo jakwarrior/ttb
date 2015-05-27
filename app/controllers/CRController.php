@@ -116,9 +116,8 @@ class CRController extends Controller {
             $this->f3->set('cr',$myCR = $myCR[0]);
 
             $Game = new Game($this->db);
-            $games = $Game->byCR($myCR['id']);
 
-            $this->f3->set('game',$games[0]['name']);
+            $this->f3->set('games',$Game->byCR($myCR['id']));
 
             $check = $user->loginCheck();
 
@@ -139,5 +138,40 @@ class CRController extends Controller {
             $this->f3->set('includeJsCssEdition', 'true');
             echo \Template::instance()->render('layout.htm');
         }
+    }
+
+    public function editCr_ajax()
+    {
+        $errors = array();
+        $data = array();
+
+        if (!$this->f3->exists('POST.content') || empty($this->f3->get('POST.content')))
+            $errors['content'] = "Une erreur s'est produite";
+
+        if (!$this->f3->exists('POST.crId') || empty($this->f3->get('POST.crId')))
+            $errors['crId'] = "Une erreur s'est produite";
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            sec_session_start();
+
+            $CRs = new CR($this->db);
+            $content = htmlEntities($this->f3->get('POST.content'), ENT_QUOTES);
+            $response = $CRs->updateCR($this->f3->get('POST.crId'), $content);
+
+            if ($response == "OK") {
+                $data['success'] = true;
+                $data['message'] = "Le CR a bien été mis à jour";
+            }
+            else if ($response == "problem") {
+                $data['success'] = false;
+                $data['message'] = "Une erreur s'est produite";
+                $errors['else'] = "Une erreur s'est produite";
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
     }
 }

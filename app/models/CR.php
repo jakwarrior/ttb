@@ -2,9 +2,12 @@
 
 class CR extends DB\SQL\Mapper
 {
+    private $f3;
+
     public function __construct(DB\SQL $db)
     {
         parent::__construct($db, 'cr');
+        $this->f3 = \Base::instance();
     }
 
     public function all($limit = 0)
@@ -128,6 +131,36 @@ class CR extends DB\SQL\Mapper
         );
     }
 
+    public function updateCR($idCR, $content) {
+        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
+            $login_string = $this->f3->get('SESSION.login_string');
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+
+            $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
+            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('SESSION.hfr_user_id')));
+
+            if (is_array($result) && count($result) == 1) {
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+
+                if (($login_check == $login_string)) {
+                    $request = 'UPDATE cr SET content = :content WHERE id = :idCR';
+                    $result = $this->db->exec($request, array(':content' => $content, ':idCR' => $idCR));
+
+                    if ($result == 1) {
+                        return "OK";
+                    } else {
+                        return "problem";
+                    }
+                } else {
+                    return "problem";
+                }
+            } else {
+                return "problem";
+            }
+        } else {
+            return "problem";
+        }
+    }
 
     public function processRawContent($cr)
     {
