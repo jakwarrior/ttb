@@ -21,9 +21,9 @@ class Utils
 
                     $video = $doc->createElement('video');
                     $video->setAttribute('src', $a->getAttribute('href'));
-                    $video->setAttribute('loop', 'true');
-                    $video->setAttribute('muted', 'true');
-                    $video->setAttribute('controls', 'true');
+                    $video->setAttribute('loop', '');
+                    $video->setAttribute('muted', '');
+                    $video->setAttribute('controls', '');
 
                     $container->appendChild($video);
                     $a->parentNode->replaceChild($container, $a);
@@ -37,9 +37,9 @@ class Utils
 
                     $video = $doc->createElement('video');
                     $video->setAttribute('src', str_replace('gifv', 'mp4', $a->getAttribute('href')));
-                    $video->setAttribute('loop', 'true');
-                    $video->setAttribute('muted', 'true');
-                    $video->setAttribute('controls', 'true');
+                    $video->setAttribute('loop', '');
+                    $video->setAttribute('muted', '');
+                    $video->setAttribute('controls', '');
 
                     $container->appendChild($video);
                     $a->parentNode->replaceChild($container, $a);
@@ -53,9 +53,9 @@ class Utils
 
                     $video = $doc->createElement('video');
                     $video->setAttribute('src', str_replace('gif', 'mp4', $a->getAttribute('href')));
-                    $video->setAttribute('loop', 'true');
-                    $video->setAttribute('muted', 'true');
-                    $video->setAttribute('controls', 'true');
+                    $video->setAttribute('loop', '');
+                    $video->setAttribute('muted', '');
+                    $video->setAttribute('controls', '');
 
                     $container->appendChild($video);
                     $a->parentNode->replaceChild($container, $a);
@@ -69,9 +69,9 @@ class Utils
                     $container->setAttribute('class', 'html5-container');
 
                     $video = $doc->createElement('video');
-                    $video->setAttribute('loop', 'true');
-                    $video->setAttribute('muted', 'true');
-                    $video->setAttribute('controls', 'true');
+                    $video->setAttribute('loop', '');
+                    $video->setAttribute('muted', '');
+                    $video->setAttribute('controls', '');
 
                     $source = $doc->createElement('source');
                     $source->setAttribute('src', 'http://zippy.gfycat.com/' . $res[count($res)-1] . '.webm');
@@ -109,7 +109,7 @@ class Utils
                         $new_node = $doc->createElement('iframe');
                         $new_node->setAttribute('src', $address);
                         $new_node->setAttribute('frameborder', '0');
-                        $new_node->setAttribute('allowfullscreen', 'true');
+                        $new_node->setAttribute('allowfullscreen', true);
 
                         $container->appendChild($new_node);
                         $a->parentNode->replaceChild($container, $a);
@@ -141,10 +141,9 @@ class Utils
 
                 $video = $doc->createElement('video');
                 $video->setAttribute('src', str_replace('gif', 'mp4', $img->getAttribute('src')));
-                $video->setAttribute('autoplay', 'true');
-                $video->setAttribute('loop', 'true');
-                $video->setAttribute('muted', 'true');
-                $video->setAttribute('controls', 'false');
+                $video->setAttribute('autoplay', '');
+                $video->setAttribute('loop', '');
+                $video->setAttribute('muted', '');
 
                 $container->appendChild($video);
                 $img->parentNode->replaceChild($container, $img);
