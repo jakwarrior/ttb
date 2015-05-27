@@ -1,7 +1,8 @@
 <?php
+include_once 'app/vendor/functions.php';
 
-ini_set("log_errors", 1);
-ini_set("error_log", "/tmp/php-error.log");
+/*ini_set("log_errors", 1);
+ini_set("error_log", "/tmp/php-error.log");*/
 
 class AdminController extends Controller {
 
@@ -10,17 +11,33 @@ class AdminController extends Controller {
   }
 
   public function importcr() {
-    //liste les types
-    $types = new CrType($this->db);
-    $this->f3->set('types', $types->find());
+      sec_session_start();
 
-    //liste les formats
-    $formats = new CrFormat($this->db);
-    $this->f3->set('formats', $formats->find());
+      if (null === $this->f3->get('SESSION.username')) {
+          $this->f3->reroute('@auth');
+      } else {
+          $user = new User($this->db);
 
-    $this->f3->set('admin_cat', 'Import CR');
-    $this->f3->set('view','admin/importcr.htm');
-    echo Template::instance()->render('admin.htm');
+          //liste les types
+          $types = new CrType($this->db);
+          $this->f3->set('types', $types->find());
+
+          //liste les formats
+          $formats = new CrFormat($this->db);
+          $this->f3->set('formats', $formats->find());
+
+          $check = $user->loginCheck();
+
+          if (count($check) == 2) {
+              $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+              $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+          }
+
+          $this->f3->set('includeJsCssImportCr', 'true');
+          $this->f3->set('admin_cat', 'Import CR');
+          $this->f3->set('view','admin/importcr.htm');
+          echo Template::instance()->render('layout.htm');
+      }
   }
 
   public function APICrImport() {

@@ -7,7 +7,7 @@
                 <li class='active'><a href='{{@ALIASES.accountActu}}'>Mes dernières actus</a></li>
                 <check if="{{ \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true') }}">
                     <true>
-                        <li><a href='{{@ALIASES.accountActu}}'>Importer un CR</a></li>
+                        <li><a href='{{@ALIASES.importcr}}'>Importer un CR</a></li>
                         <li><a href='{{@ALIASES.accountActu}}'>Gestion des utilisateurs</a></li>
                         <li><a href='{{@ALIASES.accountActu}}'>Ajouter un utilisateur</a></li>
                     </true>
