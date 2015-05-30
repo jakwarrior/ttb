@@ -1,34 +1,13 @@
 <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
     (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
                     && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
-                    && \Base::instance()->exists('checkCrPossession') && (@checkCrPossession == 'true')) }}">
+                    && \Base::instance()->exists('checkActuPossession') && (@checkActuPossession == 'true')) }}">
     <true>
-        <div id="crotypedia" class="homebox catbox">
-            <h2><a href="{{@ALIASES.crs_list}}">CROTYpedia</a></h2>
-
-            <div class="cr_details">
-                <span class="games">Jeu<check if="{{count(@games) > 1}}">x</check>
-                <repeat group="{{ @games }}" value="{{ @item }}">
-                    <br/><a href="{{@ALIASES.crs_list_by_game}}/{{ @item['id'] }}" title="">{{ @item['name'] }}</a>
-                </repeat>
-                </span>
-                <span class="username">Par <a href="/user/{{ @cr['username'] }}" title="Profil de {{ @cr['username'] }}">{{
-                    @cr['username'] }}</a></span>
-                        <span class="date">Le {{ date('d/m/y', strtotime(@cr['date_posted']) ) }}</span>
-                <span class="out_link">
-                    <a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@cr['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@cr['hfr_post_id']}}"
-                       class="date" target="_blank">
-                        voir sur HFR &rsaquo;</a>
-                </span>
-
-                <span class="out_link">
-                    <a href="{{@ALIASES.crs_list . '/' . @cr['id']}}" class="date">Retour &rsaquo;</a>
-                </span>
-            </div>
-
+        <div id="gibbactu" class="homebox">
+        <h2><a href="{{@ALIASES.actus_list}}">Les dernières actus</a></h2>
             <form>
                 <textarea name="editor1" id="editor1">
-                    {{ @cr['content'] | raw }}
+                    {{ @actu['content'] | raw }}
                 </textarea>
                 <script>
                     tinymce.init({
@@ -36,31 +15,30 @@
                         theme: "modern",
                         language : 'fr_FR',
                         plugins: [
-                        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-                        "searchreplace wordcount visualblocks visualchars code fullscreen",
-                        "insertdatetime media nonbreaking save table contextmenu directionality",
-                        "emoticons template paste textcolor colorpicker textpattern autoresize"
-                    ],
-                    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | forecolor backcolor emoticons",
-                    toolbar2: "save cancel | fullscreen preview ",
-                    image_advtab: true,
+                            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen",
+                            "insertdatetime media nonbreaking save table contextmenu directionality",
+                            "emoticons template paste textcolor colorpicker textpattern autoresize"
+                        ],
+                        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | forecolor backcolor emoticons",
+                        toolbar2: "save cancel | fullscreen preview ",
+                        image_advtab: true,
                         save_onsavecallback: function() {
 
+                            var formData = {
+                                'content'             : tinymce.get('editor1').getContent(),
+                                'actuId'                : "{{ @actu['id'] }}"
+                            };
 
-                                var formData = {
-                                    'content'             : tinymce.get('editor1').getContent(),
-                                    'crId'                : "{{ @cr['id'] }}"
-                                };
+                            console.log(formData);
 
-                                console.log(formData);
-
-                                $.ajax({
-                                    type        : 'POST',
-                                    url         : '{{@ALIASES.editCr_ajax}}',
-                                    data        : formData,
-                                    dataType    : 'json',
-                                    encode      : true
-                                })
+                            $.ajax({
+                                type        : 'POST',
+                                url         : '{{@ALIASES.editActu_ajax}}',
+                                data        : formData,
+                                dataType    : 'json',
+                                encode      : true
+                            })
                                     .done(function(data) {
                                         if ( !data.success) {
                                             if (data.errors.content) {
@@ -73,8 +51,8 @@
                                                             }});
                                             }
 
-                                            if (data.errors.crId) {
-                                                $.modal(data.errors.crId,
+                                            if (data.errors.actuId) {
+                                                $.modal(data.errors.actuId,
                                                         {   overlayClose : true,
                                                             onShow: function(dlg) {
                                                                 $(dlg.container).css('height','auto');

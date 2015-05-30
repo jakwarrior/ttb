@@ -1,4 +1,5 @@
 <?php
+include_once 'app/vendor/functions.php';
 
 class ActuController extends Controller {
 
@@ -129,4 +130,80 @@ class ActuController extends Controller {
         $this->f3->set('view','actu/list.htm');
         echo \Template::instance()->render('layout.htm');
 	}
+
+    public function editActu() {
+        sec_session_start();
+
+        if (null === $this->f3->get('SESSION.username')) {
+            $this->f3->reroute('@auth');
+        } else {
+
+            $actus = new Actu($this->db);
+            $user = new User($this->db);
+
+            $myActu = $actus->byId($this->f3->get('PARAMS.id'));
+
+            foreach ($myActu as $subKey => $subArray) {
+                $subArray['content'] = html_entity_decode($subArray['content']);
+                $subArray['username'] = html_entity_decode($subArray['username']);
+                $myActu[$subKey] = $subArray;
+            }
+
+            $this->f3->set('actu',$myActu = $myActu[0]);
+
+            $check = $user->loginCheck();
+
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+
+                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                    && ($this->f3->get('SESSION.username') == $myActu['username'])) {
+
+                    if ($user->checkActuPossession($myActu['id'])) {
+                        $this->f3->set('checkActuPossession', 'true');
+                    }
+                }
+            }
+
+            $this->f3->set('view', 'actu/edit.html');
+            $this->f3->set('includeJsCssEdition', 'true');
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
+
+    public function editActu_ajax()
+    {
+        $errors = array();
+        $data = array();
+
+        if (!$this->f3->exists('POST.content') || empty($this->f3->get('POST.content')))
+            $errors['content'] = "Une erreur s'est produite";
+
+        if (!$this->f3->exists('POST.actuId') || empty($this->f3->get('POST.actuId')))
+            $errors['actuId'] = "Une erreur s'est produite";
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            sec_session_start();
+
+            $actus = new Actu($this->db);
+            $content = htmlEntities($this->f3->get('POST.content'), ENT_QUOTES);
+            $response = $actus->updateActu($this->f3->get('POST.actuId'), $content);
+
+            if ($response == "OK") {
+                $data['success'] = true;
+                $data['message'] = "La gibbactu a bien été mise à jour";
+            }
+            else if ($response == "problem") {
+                $data['success'] = false;
+                $data['message'] = "Une erreur s'est produite";
+                $errors['else'] = "Une erreur s'est produite";
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
+    }
 }
