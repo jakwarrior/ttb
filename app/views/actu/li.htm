@@ -5,16 +5,10 @@
 		{{ @item['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@item['date_posted']) ) }} &#8675;
 	</a>
 
-<!--    <check if="{{isset(@item['checkActuPossession'])}}">
-        <true>
-            Plop : {{ var_dump(@item) }}
-        </true>
-    </check>-->
-
     <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
                     (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
                     && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
-                    && isset(@item['checkActuPossession']) && ((@item['checkActuPossession'] == 'true') || (@item['checkActuPossession'] == null)  )) }}">
+                    && isset(@item['checkActuPossession']) && (@item['checkActuPossession'] == 'true')) }}">
         <true>
             <br><br><a href="{{@ALIASES.actus_list . '/edit/' . @item['id']}}" class="edit">Éditer &rsaquo;</a>
         </true>

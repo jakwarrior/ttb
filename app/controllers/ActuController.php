@@ -21,29 +21,41 @@ class ActuController extends Controller {
 
 		$page=$actus->paginate(0,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
 
+        $page2 = array();
+        $page2['pos'] = $page['pos'];
+        $page2['count'] = $page['count'];
+        $page2['content'] = array();
+
         foreach ($page['subset'] as $subKey => $subArray) {
-            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+            $tmp = array();
+            $tmp['id'] = $subArray['id'];
+            $tmp['hfr_cat_id'] = $subArray['hfr_cat_id'];
+            $tmp['hfr_subcat_id'] = $subArray['hfr_subcat_id'];
+            $tmp['hfr_topic_id'] = $subArray['hfr_topic_id'];
+            $tmp['hfr_page_id'] = $subArray['hfr_page_id'];
+            $tmp['hfr_post_id'] = $subArray['hfr_post_id'];
+            $tmp['hfr_user_id'] = $subArray['hfr_user_id'];
+            $tmp['username'] = $subArray['username'];
+            $tmp['content'] = $utils->content_post_treatment($subArray['content']);
+            $tmp['content_raw'] = $subArray['content_raw'];
+            $tmp['date_added'] = $subArray['date_added'];
+            $tmp['date_modified'] = $subArray['date_modified'];
+            $tmp['date_posted'] = $subArray['date_posted'];
+            $tmp['processed'] = $subArray['processed'];
+            $tmp['active'] = $subArray['active'];
 
             if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
                 && ($this->f3->get('SESSION.username') == $subArray['username'])) {
 
                 if ($user->checkActuPossession($subArray['id'])) {
-                    $subArray['checkActuPossession'] = 'true';
+                    $tmp['checkActuPossession'] = 'true';
                 }
             }
-            //var_dump(isset($page['checkActuPossession']));
-            //$page['subset'][$subKey] = $subArray;
-        }
-        //var_dump($page['subset']);
-        $plop = $page['subset'];
-/*        if (isset($plop['checkActuPossession']))
-            var_dump($plop['checkActuPossession']);*/
 
-        foreach ($plop as $test) {
-            //var_dump($test);
+            array_push($page2['content'], $tmp);
         }
 
-		$this->f3->set('page',$page);
+		$this->f3->set('page',$page2);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/list.htm');
         echo \Template::instance()->render('layout.htm');
@@ -52,6 +64,18 @@ class ActuController extends Controller {
 	public function page()
     {
         $utils = new Utils();
+
+        $user = new User($this->db);
+
+        sec_session_start();
+
+        $check = $user->loginCheck();
+
+        if (count($check) == 2) {
+            $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+            $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+        }
+
 	    $pageNum = $this->f3->get('PARAMS.page');
 		$pageNum--;
 
@@ -62,15 +86,45 @@ class ActuController extends Controller {
         $actus = new Actu($this->db);
 		$page=$actus->paginate($pageNum,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
 
-        foreach ($page['subset'] as $subKey => $subArray) {
-            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
-        }
-
 		if($pageNum > $page['count']) { //On vérifie que le numéro de page existe
 			$this->f3->reroute('@actus_list');
 		}
 
-		$this->f3->set('page',$page);
+        $page2 = array();
+        $page2['pos'] = $page['pos'];
+        $page2['count'] = $page['count'];
+        $page2['content'] = array();
+
+        foreach ($page['subset'] as $subKey => $subArray) {
+            $tmp = array();
+            $tmp['id'] = $subArray['id'];
+            $tmp['hfr_cat_id'] = $subArray['hfr_cat_id'];
+            $tmp['hfr_subcat_id'] = $subArray['hfr_subcat_id'];
+            $tmp['hfr_topic_id'] = $subArray['hfr_topic_id'];
+            $tmp['hfr_page_id'] = $subArray['hfr_page_id'];
+            $tmp['hfr_post_id'] = $subArray['hfr_post_id'];
+            $tmp['hfr_user_id'] = $subArray['hfr_user_id'];
+            $tmp['username'] = $subArray['username'];
+            $tmp['content'] = $utils->content_post_treatment($subArray['content']);
+            $tmp['content_raw'] = $subArray['content_raw'];
+            $tmp['date_added'] = $subArray['date_added'];
+            $tmp['date_modified'] = $subArray['date_modified'];
+            $tmp['date_posted'] = $subArray['date_posted'];
+            $tmp['processed'] = $subArray['processed'];
+            $tmp['active'] = $subArray['active'];
+
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+
+                if ($user->checkActuPossession($subArray['id'])) {
+                    $tmp['checkActuPossession'] = 'true';
+                }
+            }
+
+            array_push($page2['content'], $tmp);
+        }
+
+		$this->f3->set('page',$page2);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/list.htm');
         echo \Template::instance()->render('layout.htm');

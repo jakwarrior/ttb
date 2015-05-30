@@ -1,6 +1,6 @@
 <div id="gibbactu" class="homebox">
 	<h2><a href="{{@ALIASES.actus_list}}">Les dernières actus</a></h2>
-	<repeat group="{{ @page[subset] }}" value="{{ @item }}">
+	<repeat group="{{ @page[content] }}" value="{{ @item }}">
 		<include href="actu/li.htm" />
 	</repeat>
 
