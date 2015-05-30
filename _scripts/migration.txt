@@ -1,0 +1,4 @@
+1. Passer la version de PHP à 5.5
+2. Executer le script de migration bascule_BDD.sql
+3. Modifier le fichier config.ini pour rajouter les infos du smtp et passer les infos de debug à 0
+4. Mettre à jour les infos dans le .htaccess

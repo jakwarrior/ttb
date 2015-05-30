@@ -271,7 +271,7 @@ class Crontroller extends Controller {
 			$NPA->date_modified = date('Y-m-d H:i:s');
 			$NPA->date_posted = $processActu['date_posted'];
 
-			$NPA->content=$processHTMLfinal;
+			$NPA->content=htmlentities($processHTMLfinal);
 			$NPA->active = 1;
 			$NPA->processed = 1;
 			$NPA->save();

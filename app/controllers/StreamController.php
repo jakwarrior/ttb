@@ -9,4 +9,10 @@ class StreamController extends Controller {
         $this->f3->set('view','stream/list.htm');
         echo \Template::instance()->render('layout.htm');
 	}
+
+    public function agenda()
+    {
+        $this->f3->set('view','stream/agenda.html');
+        echo \Template::instance()->render('layout.htm');
+    }
 }
