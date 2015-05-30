@@ -4,4 +4,19 @@
 	<a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}" class="date" target="_blank">
 		{{ @item['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@item['date_posted']) ) }} &#8675;
 	</a>
+
+<!--    <check if="{{isset(@item['checkActuPossession'])}}">
+        <true>
+            Plop : {{ var_dump(@item) }}
+        </true>
+    </check>-->
+
+    <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
+                    (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
+                    && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
+                    && isset(@item['checkActuPossession']) && ((@item['checkActuPossession'] == 'true') || (@item['checkActuPossession'] == null)  )) }}">
+        <true>
+            <br><br><a href="{{@ALIASES.actus_list . '/edit/' . @item['id']}}" class="edit">Éditer &rsaquo;</a>
+        </true>
+    </check>
 </div>

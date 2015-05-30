@@ -231,4 +231,28 @@ class User extends DB\SQL\Mapper {
             return false;
         }
     }
+
+    public function checkActuPossession($actuId) {
+        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
+            $login_string = $this->f3->get('SESSION.login_string');
+            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+            $hfr_user_id = $this->f3->get('SESSION.hfr_user_id');
+
+            $request = 'SELECT actu.id AS id, actu.username as username, actu.hfr_user_id as hfr_user_id, user.password as password FROM actu as actu LEFT JOIN user as user ON actu.hfr_user_id = user.hfr_user_id  WHERE actu.id = :actuId';
+            $result = $this->db->exec($request, array(':actuId' => $actuId));
+
+            if (is_array($result) && count($result) == 1) {
+                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+                if (($login_check == $login_string) && $hfr_user_id ==  $result[0]['hfr_user_id']) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

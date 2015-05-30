@@ -149,21 +149,30 @@ class AccountController extends Controller
             $Actus = new Actu($this->db);
             $utils = new Utils();
 
-            $actus = $Actus->byHFRUserId($this->f3->get('SESSION.hfr_user_id'), 10);
-
-            foreach ($actus as $subKey => $subArray) {
-                $subArray['content'] = $utils->content_post_treatment($subArray['content']);
-                $actus[$subKey] = $subArray;
-            }
-
-            $this->f3->set('actus',$actus);
-
-            $check = $this->user->loginCheck();
+            $check = $check = $this->user->loginCheck();
 
             if (count($check) == 2) {
                 $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
                 $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
             }
+
+            $actus = $Actus->byHFRUserId($this->f3->get('SESSION.hfr_user_id'), 10);
+
+            foreach ($actus as $subKey => $subArray) {
+                $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+
+                if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                    && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+
+                    if ($this->user->checkActuPossession($subArray['id'])) {
+                        $subArray['checkActuPossession'] = 'true';
+                    }
+                }
+
+                $actus[$subKey] = $subArray;
+            }
+
+            $this->f3->set('actus',$actus);
 
             $this->f3->set('view', 'account/gibbactu.html');
             $this->f3->set('includeJsCssAccount', 'true');

@@ -8,11 +8,39 @@ class ActuController extends Controller {
     {
         $actus = new Actu($this->db);
         $utils = new Utils();
+        $user = new User($this->db);
+
+        sec_session_start();
+
+        $check = $user->loginCheck();
+
+        if (count($check) == 2) {
+            $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+            $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+        }
 
 		$page=$actus->paginate(0,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
 
         foreach ($page['subset'] as $subKey => $subArray) {
             $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+
+                if ($user->checkActuPossession($subArray['id'])) {
+                    $subArray['checkActuPossession'] = 'true';
+                }
+            }
+            //var_dump(isset($page['checkActuPossession']));
+            //$page['subset'][$subKey] = $subArray;
+        }
+        //var_dump($page['subset']);
+        $plop = $page['subset'];
+/*        if (isset($plop['checkActuPossession']))
+            var_dump($plop['checkActuPossession']);*/
+
+        foreach ($plop as $test) {
+            //var_dump($test);
         }
 
 		$this->f3->set('page',$page);
