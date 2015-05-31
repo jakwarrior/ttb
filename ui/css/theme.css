@@ -325,7 +325,8 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     cursor: pointer;
     border-collapse: collapse;
     background: transparent url(/ui/images/spoiler-alert.png) no-repeat 50% 50%;
-    background-size: auto 100%;
+    background-size: auto 100px;
+    background-position: top;
 }
 
 .spoiler tbody  {
@@ -341,6 +342,16 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
 
 .spoiler td {
     padding: 0;
+    width: 100%;
+}
+
+table.spoiler {
+    width:100%;
+}
+
+table.spoiler img[onload] {
+    max-width: 100%;
+    height: auto;
     width: 100%;
 }
 

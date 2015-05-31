@@ -107,7 +107,8 @@
 				<!-- MENU -->
 				<ul class="categories">
 					<repeat group="{{ @menu }}" value="{{ @item }}">
-						<li class="{{ toAscii(@item['title']) }}"><a class="<check if="{{ @item['selected'] == 'selected' }}"> selected</check>" href="{{ @item['url'] }}">{{ @item['title'] }}</a></li>
+						<li class="{{ toAscii(@item['title']) }}"><a class="<check if="{{ @item['selected'] == 'selected' }}"> selected</check>" href="{{ @item['url'] }}"
+                            <check if="{{ @item['title'] == 'Topic PC' || @item['title'] == 'Salon des Tartuffes' }}"> target="_blank"</check>>{{ @item['title'] }}</a></li>
 
 					</repeat>
 
