@@ -128,6 +128,8 @@ class AJAXChat {
 		// Start the PHP session (if not already started):
 		$this->startSession();
 
+        //$this->private_login();
+
 		if($this->isLoggedIn()) {
 			// Logout if we receive a logout request, the chat has been closed or the userID could not be revalidated:
 			if($this->getRequestVar('logout') || !$this->isChatOpen() || !$this->revalidateUserID()) {
@@ -167,6 +169,18 @@ class AJAXChat {
 		
 		$this->initCustomSession();
 	}
+
+    function private_login() {
+        $this->setUserID($_SESSION['hfr_user_id']);
+        $this->setUserName($_SESSION['username']);
+        $this->setLoginUserName($_SESSION['username']);
+        $this->setUserRole('admin');
+        $this->setLoggedIn(true);
+        $this->setLoginTimeStamp(time());
+
+        // IP Security check variable:
+        $this->setSessionIP($_SERVER['REMOTE_ADDR']);
+    }
 
 	function initLogsViewSession() {
 		if($this->getConfig('socketServerEnabled')) {

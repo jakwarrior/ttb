@@ -105,7 +105,7 @@ $config['privateChannelSuffix'] = ']';
 $config['forceAutoLogin'] = false;
 
 // Defines if login/logout and channel enter/leave are displayed:
-$config['showChannelMessages'] = true;
+$config['showChannelMessages'] = false;
 
 // If enabled, the chat will only be accessible for the admin:
 $config['chatClosed'] = false;
@@ -139,7 +139,7 @@ $config['changedNickPrefix'] = '(';
 $config['changedNickSuffix'] = ')';
 
 // Allow/Disallow registered users to delete their own messages:
-$config['allowUserMessageDelete'] = true;
+$config['allowUserMessageDelete'] = false;
 
 // The userID used for ChatBot messages:
 $config['chatBotID'] = 2147483647;
