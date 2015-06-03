@@ -129,6 +129,7 @@ class AJAXChat {
 		$this->startSession();
 
         //$this->private_login();
+        $this->_requestVars['login'] = true;
 
 		if($this->isLoggedIn()) {
 			// Logout if we receive a logout request, the chat has been closed or the userID could not be revalidated:
@@ -171,10 +172,10 @@ class AJAXChat {
 	}
 
     function private_login() {
-        $this->setUserID($_SESSION['hfr_user_id']);
+        //$this->setUserID($_SESSION['hfr_user_id']);
         $this->setUserName($_SESSION['username']);
         $this->setLoginUserName($_SESSION['username']);
-        $this->setUserRole('admin');
+        $this->setUserRole(AJAX_CHAT_ADMIN);
         $this->setLoggedIn(true);
         $this->setLoginTimeStamp(time());
 
@@ -381,7 +382,14 @@ class AJAXChat {
 	
 	function login() {
 		// Retrieve valid login user data (from request variables or session data):
-		$userData = $this->getValidLoginUserData();
+		//$userData = $this->getValidLoginUserData();
+
+        $userData['userID'] = $_SESSION['hfr_user_id'];
+        $userData['userName'] = $_SESSION['username'];
+        $userData['userRole'] = AJAX_CHAT_ADMIN;
+
+        // IP Security check variable:
+        $this->setSessionIP($_SERVER['REMOTE_ADDR']);
 		
 		if(!$userData) {
 			$this->addInfoMessage('errorInvalidUser');
