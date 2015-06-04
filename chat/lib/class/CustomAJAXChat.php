@@ -39,11 +39,6 @@ class CustomAJAXChat extends AJAXChat {
 			// Guest users:
 			return $this->getGuestUser();
 		}
-
-/*        $userData = array();
-        $userData['userID'] = 42;
-        $userData['userName'] = 'jakwarrior';
-        $userData['userRole'] = 'admin';*/
 	}
 
 	// Store the channels the current user has access to

@@ -117,7 +117,7 @@ class AJAXChat {
 			}
 		}
 		// Unset the dbConnection array for safety purposes:
-		unset($this->_config['dbConnection']);			
+		//unset($this->_config['dbConnection']);
 	}
 	
 	function getDataBaseTable($table) {
@@ -128,7 +128,6 @@ class AJAXChat {
 		// Start the PHP session (if not already started):
 		$this->startSession();
 
-        //$this->private_login();
         $this->_requestVars['login'] = true;
 
 		if($this->isLoggedIn()) {
@@ -170,18 +169,6 @@ class AJAXChat {
 		
 		$this->initCustomSession();
 	}
-
-    function private_login() {
-        //$this->setUserID($_SESSION['hfr_user_id']);
-        $this->setUserName($_SESSION['username']);
-        $this->setLoginUserName($_SESSION['username']);
-        $this->setUserRole(AJAX_CHAT_ADMIN);
-        $this->setLoggedIn(true);
-        $this->setLoginTimeStamp(time());
-
-        // IP Security check variable:
-        $this->setSessionIP($_SERVER['REMOTE_ADDR']);
-    }
 
 	function initLogsViewSession() {
 		if($this->getConfig('socketServerEnabled')) {
@@ -379,14 +366,64 @@ class AJAXChat {
 				return false;
 		}
 	}
+
+    function private_login() {
+        $userData = array();
+
+        $mysqli = new mysqli($this->_config['dbConnection']['host'], $this->_config['dbConnection']['user'], $this->_config['dbConnection']['pass'], $this->_config['dbConnection']['name']);
+
+        // Unset the dbConnection array for safety purposes:
+        unset($this->_config['dbConnection']);
+
+        if ($mysqli->connect_errno) {
+           error_log("Échec de la connexion : %s\n", $mysqli->connect_error);
+            return null;
+        }
+
+        if (isset($_SESSION['hfr_user_id']) && isset($_SESSION['login_string'])) {
+            $sql = "SELECT * FROM user WHERE hfr_user_id =" . $_SESSION['hfr_user_id'];
+            $result = $mysqli->query($sql);
+
+            if (mysqli_num_rows($result) == 1) {
+                $row = $result->fetch_assoc();
+
+                $user_browser = $_SERVER['HTTP_USER_AGENT'];
+                $login_check = hash('sha512', $row['password'] . $user_browser);
+
+                if ($login_check == $_SESSION['login_string']) {
+                    $userData['userName'] = $row['username'];
+                    $userData['userID'] = $row['hfr_user_id'];
+
+                    if ($row['isAdmin'] == 1) {
+                        $userData['userRole'] = AJAX_CHAT_ADMIN;
+                    } else {
+                        $userData['userRole'] = AJAX_CHAT_USER;
+                    }
+
+                    $result->free();
+                    $mysqli->close();
+
+                    return $userData;
+                } else {
+                    $mysqli->close();
+                    return null;
+                }
+            } else {
+                $mysqli->close();
+                return null;
+            }
+        } else {
+            $mysqli->close();
+            return null;
+        }
+
+    }
 	
 	function login() {
 		// Retrieve valid login user data (from request variables or session data):
 		//$userData = $this->getValidLoginUserData();
 
-        $userData['userID'] = $_SESSION['hfr_user_id'];
-        $userData['userName'] = $_SESSION['username'];
-        $userData['userRole'] = AJAX_CHAT_ADMIN;
+        $userData = $this->private_login();
 
         // IP Security check variable:
         $this->setSessionIP($_SERVER['REMOTE_ADDR']);
