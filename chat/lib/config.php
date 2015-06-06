@@ -57,7 +57,7 @@ $config['langNames'] = array(
 // Available styles:
 $config['styleAvailable'] = array('beige','black','grey','Oxygen','Lithium','Sulfur','Cobalt','Mercury','Uranium','Plum','prosilver','subblack2','subSilver','Core','MyBB','vBulletin');
 // Default style:
-$config['styleDefault'] = 'Core';
+$config['styleDefault'] = 'vBulletin';
 
 // The encoding used for the XHTML content:
 $config['contentEncoding'] = 'UTF-8';
@@ -173,8 +173,8 @@ $config['maxMessageRate'] = 20;
 $config['defaultBanTime'] = 5;
 
 // Argument that is given to the handleLogout JavaScript method:
-//$config['logoutData'] = './account/logout';
-$config['logoutData'] = './?logout=true';
+$config['logoutData'] = '../account/logout';
+//$config['logoutData'] = './?logout=true';
 
 // If true, checks if the user IP is the same when logged in:
 $config['ipCheck'] = true;
