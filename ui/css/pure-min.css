@@ -420,9 +420,10 @@ td, th {
     color: rgba(0, 0, 0, .8);
     border: 1px solid #999;
     border: 0 rgba(0, 0, 0, 0);
-    background-color: #E6E6E6;
+    background-color: #cacaca;
     text-decoration: none;
-    border-radius: 2px
+    border-radius: 2px;
+    border: solid #1a1a1a 1px;
 }
 
 .pure-button-hover, .pure-button:hover, .pure-button:focus {
@@ -465,7 +466,7 @@ td, th {
 }
 
 .pure-button-primary, .pure-button-selected, a.pure-button-primary, a.pure-button-selected {
-    background-color: #1a1a1a;
+    background-color: #555555;
     color: #fff
 }
 
