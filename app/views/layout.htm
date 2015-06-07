@@ -11,6 +11,8 @@
 		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="ui/jquery-ui/jquery-ui.css">
+        <script src="ui/jquery-ui/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="ui/js/ttb.js"></script>
 
         <check if="{{ \Base::instance()->exists('includeJsCssAccount') && (@includeJsCssAccount == 'true') }}">
@@ -19,13 +21,6 @@
                 <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
                 <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
                 <link rel="stylesheet" href="ui/css/menu.css" type="text/css" />
-            </true>
-        </check>
-
-        <check if="{{ \Base::instance()->exists('includeJsCssAgenda') && (@includeJsCssAgenda == 'true') }}">
-            <true>
-                <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
-                <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
             </true>
         </check>
 

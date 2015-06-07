@@ -13,7 +13,6 @@ class StreamController extends Controller {
     public function agenda()
     {
         $this->f3->set('view','stream/agenda.html');
-        $this->f3->set('includeJsCssAgenda', 'true');
         echo \Template::instance()->render('layout.htm');
     }
 }
