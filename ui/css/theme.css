@@ -407,14 +407,14 @@ table.spoiler img[onload] {
     margin-top: 10px;
 }
 
-#crotypedia.homebox ul.imagelist li {
+#crotypedia.homebox ul.imagelist li, #hfrtv.homebox ul.cr_games li {
     border-bottom: 5px solid #EEEEEE;
     border-left: 3px solid #EEEEEE;
     width: 50%;
     float: left;
 }
 
-#crotypedia.homebox ul.cr_games li {
+#crotypedia.homebox ul.cr_games li, #hfrtv.homebox ul.cr_games li {
     border-bottom: 5px solid #EEEEEE;
     border-left: 3px solid #EEEEEE;
     width: 25%;
@@ -423,7 +423,7 @@ table.spoiler img[onload] {
     font-size: 0.8em;
 }
 
-#crotypedia.homebox ul.imagelist li:after, #crotypedia.homebox ul.cr_games li:after {
+#crotypedia.homebox ul.imagelist li:after, #crotypedia.homebox ul.cr_games li:after, #hfrtv.cr_games ul.imagelist li:after {
     padding-top: 30%;
 }
 
@@ -586,6 +586,24 @@ h3.game.total4 {
     margin: 0px;
     padding-right: 50px;
     text-align: right;
+}
+
+#hfrtv h2 {
+    background: #6441a5 url(/ui/images/hfrtv.png) no-repeat center left;
+    background-size: contain;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+#hfrtv h2 a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding-left: 65px;
 }
 
 a.hfrtv.all {

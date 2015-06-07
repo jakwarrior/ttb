@@ -1,2 +1,9 @@
-<style>li.{{ @item['twitch_username'] }}:after { background-image:url('{{ @media }}/medium/{{ @item['image_url'] }}');}</style>
-<li class="{{ @item['twitch_username'] }}"><a href="http://twitch.tv/{{ @item['twitch_username'] }}" title="">{{ @item['twitch_username'] }} <check if="{{ @item['username'] <> @item['twitch_username'] }}">({{ @item['username'] }})</check></a></li>
+<li class="streamer{{ @item['id'] }}">
+    <a href="{{ @ALIASES.streams_list }}/{{ @item['username'] }}" title="">
+        <img src="{{ @media }}/center/50/{{ @item['image_url'] }}">
+        <div class="gameinfo">
+            <p class="gamename">{{ @item['username'] }}
+            </p>
+        </div>
+    </a>
+</li>
