@@ -82,6 +82,10 @@
 
 				</ul>
 
+                <form method="POST" action="/search" id="search">
+                    <input name="q" type="text" size="40" placeholder="Recherche..." />
+                </form>
+
 				<!-- TV -->
 				<div id="event">
 					<h2 class="hfrtv">HFR.tv</h2>
@@ -147,9 +151,13 @@
 
 			<div id="content">
 				<!-- SEARCHBOX -->
-				<div id="search_box">
-					<input type="text" placeholder="Recherche">
-				</div>
+<!--				<div id="search_box">
+					<input type="search" placeholder="Recherche">
+				</div>-->
+
+<!--                <form method="POST" action="/search" id="search">
+                    <input name="q" type="search" size="40" placeholder="Recherche..." />
+                </form>-->
 
 				<include href="{{ @view }}" />
 
