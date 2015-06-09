@@ -31,6 +31,13 @@
             </true>
         </check>
 
+        <check if="{{ \Base::instance()->exists('includeJsCssStream') && (@includeJsCssStream == 'true') }}">
+            <true>
+                <script src="/youmax/js/jquery.youmax.min.js"></script>
+                <link rel="stylesheet" href="/youmax/css/youmax_white.min.css" type="text/css" />
+            </true>
+        </check>
+
         <check if="{{ \Base::instance()->exists('includeJsCssImportCr') && (@includeJsCssImportCr == 'true') }}">
             <true>
                 <link rel="stylesheet" href="ui/css/loading-bar.css" type="text/css" />

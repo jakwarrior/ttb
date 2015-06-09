@@ -1,16 +1,22 @@
 <div id="hfrtv" class="homebox">
-	<h2><a href="{{@ALIASES.streams_list}}">Les membres d'HFR.tv</a></h2>
-	<ul class="cr_games">
-		<repeat group="{{ @streams }}" value="{{ @item }}">
-			<include href="stream/li.htm" />
-		</repeat>
-	</ul>
+
+    <h2><a href="https://www.youtube.com/user/HFRTVTwitch/featured" target="_blank">Les dernières vidéos d'HFR.tv </a></h2>
+
+    <div id="youmax">
+    </div>
+
     <div class="cleaner"></div>
     <br/>
-    <h2><a href="https://www.youtube.com/user/HFRTVTwitch/featured" target="_blank">La chaîne Youtube d'HFR.tv </a></h2>
-    <script src="https://apis.google.com/js/platform.js"></script>
-    <div class="g-ytsubscribe" data-channel="HFRTVTwitch" data-layout="default" data-count="default"></div><br>
-    <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=HFRTVTwitch" width="480" height="400"></iframe>
-    <!--<script type="text/javascript" src="https://ytchannelembed.com/ytce-frgallery.js"></script><div style="width:100%;max-width:1015px;" class="ytce" data-user="HFRTVTwitch" data-rows="4" data-ratio="hd" data-width="250" data-margin="5" data-desc="0" data-desc_color="9E9E9E" data-title="30" data-title_color="000000" data-https="0" data-duration="1" data-views="0" data-likes="0" data-dislikes="0" data-fav="0" data-cols="4" ></div>-->
+
+    <h2><a href="{{@ALIASES.streams_list}}">Les membres d'HFR.tv</a></h2>
+    <ul class="cr_games">
+        <repeat group="{{ @streams }}" value="{{ @item }}">
+            <include href="stream/li.htm" />
+        </repeat>
+    </ul>
+
+    <script type="text/javascript">
+        $("#youmax").youmax({apiKey:"{{@apiKey}}",clientId:"{{@clientId}}",channel:"https://www.youtube.com/user/HFRTVTwitch",playList:[],searchTab:[],selectedTab:"u",displayVideo:"popup",alwaysUseDropdown:false,autoPlayVideo:true,displayFirstVideoOnLoad:false,skin:"none",searchBoxScope:"channel",linkNewPages:false,autoLoadComments:false,featuredVideo:"",maxResults:12,innerOffset:40,outerOffset:40,minItemWidth:250,maxItemWidth:400,maxContainerWidth:1020});
+    </script>
 
 </div><!-- #hfrtv -->
