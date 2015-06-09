@@ -1,0 +1,37 @@
+<div id="hfrtv" class="homebox">
+
+    <check if="{{ @streamer['twitch_url'] != '' }}">
+        <true>
+            <h2><a href="{{@streamer['twitch_url']}}" target="_blank">La page Twitch de {{@streamer['username']}}</a></h2>
+            <div class="video-container">
+                <iframe src="http://www.twitch.tv/{{@streamer['twitch_username']}}/embed" frameborder="0" scrolling="no" height="378" width="620"></iframe><a href="http://www.twitch.tv/{{@streamer['twitch_username']}}?tt_medium=live_embed&tt_content=text_link" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px;text-decoration:underline;">Watch live video from {{@streamer['twitch_username']}} on www.twitch.tv</a>
+            </div>
+            <div class="cleaner"></div>
+            <br/>
+        </true>
+    </check>
+
+    <check if="{{ @streamer['hitbox_url'] != '' }}">
+        <true>
+            <h2><a href="{{@streamer['hitbox_url']}}" target="_blank">La page Hitbox de {{@streamer['username']}}</a></h2>
+            <div class="video-container">
+                <iframe width="640" height="360" src="http://www.hitbox.tv/embed/{{@streamer['hitbox_username']}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="cleaner"></div>
+            <br/>
+        </true>
+    </check>
+
+    <check if="{{ @streamer['replay_youtube_url'] != '' }}">
+        <true>
+            <h2><a href="{{@streamer['replay_youtube_url']}}" target="_blank">Les replays de {{@streamer['username']}}</a></h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLrjcdfa13Z92NfOH9dmTyVx3-uTYTIEyC" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="cleaner"></div>
+            <br/>
+        </true>
+    </check>
+
+
+</div>
