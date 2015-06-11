@@ -425,20 +425,22 @@ table.spoiler img[onload] {
     padding-top: 80%;
 }
 
-#crotypedia.homebox {
+#crotypedia.homebox, #hfrtv.homebox {
     margin-top: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
 }
 
-#crotypedia.homebox ul.imagelist li, #hfrtv.homebox ul.cr_games li {
-    border-bottom: 5px solid #EEEEEE;
-    border-left: 3px solid #EEEEEE;
+#crotypedia.homebox ul.imagelist li {
+    border-bottom: 5px solid transparent;
+    border-left: 3px solid transparent;
     width: 50%;
     float: left;
 }
 
 #crotypedia.homebox ul.cr_games li, #hfrtv.homebox ul.cr_games li {
-    border-bottom: 5px solid #EEEEEE;
-    border-left: 3px solid #EEEEEE;
+    border-bottom: 5px solid transparent;
+    border-left: 3px solid transparent;
     width: 25%;
     height: 120px;
     float: left;
@@ -635,6 +637,16 @@ a.hfrtv.all {
     text-align: right;
 }
 
+#hfrtv .allinks {
+    color:rgb(100, 65, 165);
+    text-decoration: none;
+}
+
+.contour {
+    border: 1px solid #6441A5;
+    background-color: rgba(100, 65, 165, 0.1);
+}
+
 #menu ul.imagelist li {
     margin: 0;
 }
@@ -766,11 +778,6 @@ a.hfrtv.all {
     max-height: 100%;
 }
 
-/*#hfrtv iframe {
-    width: 100%;
-    height: auto;
-}*/
-
 
 .container .header {
     background: #1a1a1a;
@@ -808,12 +815,17 @@ a.hfrtv.all {
     margin:20px;
     font-style:italic;
     font-weight: bolder;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 #gibbactu .allinks {
     color: #03254a;
     font-weight: bold;
+}
+
+#crotypedia .allinks {
+    color:#262626;
+    text-decoration: none;
 }
 
 .auth_content, .account_content {

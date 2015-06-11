@@ -21,31 +21,16 @@
 
 </div><!-- #crotypedia -->
 
-<div id="hfrtv" class="homebox profilbox">
-  <check if="{{ !@list_stream }}">
-    <h2><a href="#stream">{{@PARAMS.name}} ne stream pas... encore?!</a></h2>
-  </check>
-  <check if="{{ @list_stream }}">
-    <h2><a href="#stream">Le Stream de {{@PARAMS.name}}</a></h2>
-
-    <check if="{{ !@list_stream }}">
-        <img src="/ui/images/daique.gif" alt="Pas de stream" class="nostream"/>
-    </check>
-    <check if="{{ @list_stream }}">
-      <ul class="name">
-
-        <repeat group="{{ @list_stream }}" value="{{ @item }}">
-          <include href="stream/li.htm" />
-        </repeat>
-      </ul>
-    </check>
-  </check>
-
-  <check if="{{ !@list_stream }}">
-    <a class="allinks" href="{{@ALIASES.streams_list}}" title="HFR.tv">voir tous les streams &rsaquo;</a>
-  </check>
-  <check if="{{ @list_stream }}">
-    <a class="allinks" href="{{@ALIASES.streams_list}}" title="HFR.tv">tous les autres streams &rsaquo;</a>
-  </check>
-
-</div><!-- #hfrtv -->
+<check if="{{ !@streamer }}">
+    <div id="hfrtv" class="contour homebox profilbox">
+        <h2><a href="{{@ALIASES.streams_list}}">{{@PARAMS.name}} ne stream pas... encore ?!</a></h2>
+        <a class="allinks" href="{{@ALIASES.streams_list}}" title="HFR.tv">voir tous les streams &rsaquo;</a>
+    </div>
+</check>
+<check if="{{ @streamer }}">
+    <ul class="name">
+        <include href="stream/profil.html" />
+        <a class="allinks" href="{{@ALIASES.streams_list}}" title="HFR.tv">tous les autres streams &rsaquo;</a>
+    </ul>
+</check>
+<!-- #hfrtv -->
