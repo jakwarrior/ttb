@@ -36,7 +36,7 @@ class HomeController extends Controller {
         }
 
         $this->f3->set('actus',$actus);
-        $this->f3->set('crs',$CRs->all(20));
+        $this->f3->set('crs',$CRs->all(40));
 		//$this->f3->set('streams',$Streams->find(NULL, array('order'=>'twitch_username ASC')));
 
 

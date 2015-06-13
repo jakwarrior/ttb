@@ -813,9 +813,11 @@ a.hfrtv.all {
     float:right;
     font-size: 14px;
     margin:20px;
+    margin-top: 25px;
     font-style:italic;
     font-weight: bolder;
     font-size: 0.8em;
+    vertical-align: baseline;
 }
 
 #gibbactu .allinks {
@@ -826,6 +828,33 @@ a.hfrtv.all {
 #crotypedia .allinks {
     color:#262626;
     text-decoration: none;
+}
+
+.datepicker {
+    color: #03254A;
+    font-weight: bold;
+    float: left;
+    margin: 20px;
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.datepicker input[type="text"] {
+    width: 120px;
+
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #CCC;
+    box-shadow: 0px 1px 3px #DDD inset;
+    border-radius: 4px;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    line-height: normal;
+    color: inherit;
+    font: inherit;
+    margin: 0px;
+    margin-left: 5px;
 }
 
 .auth_content, .account_content {

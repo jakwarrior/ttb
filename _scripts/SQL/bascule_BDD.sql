@@ -56,7 +56,7 @@ INSERT INTO `stream`(`hfr_user_id`, `username`, `twitch_url`, `twitch_username`,
 
 INSERT INTO `stream`(`hfr_user_id`, `username`, `twitch_url`, `twitch_username`, `image_url`) VALUES (607634,'zad38','http://www.twitch.tv/zadfr', 'zadfr', 'http://static-cdn.jtvnw.net/jtv_user_pictures/zadfr-channel_offline_image-19cda6e51933f8f9-640x360.jpeg');
 
-INSERT INTO `stream`(`hfr_user_id`, `username`, `twitch_url`, `twitch_username`, `image_url`, `replay_youtube_url`, `replay_youtube_id`) VALUES (620710,'blood_sam','http://www.twitch.tv/blood_sam', 'blood_sam', 'http://static-cdn.jtvnw.net/jtv_user_pictures/blood_sam-profile_banner-68fc225a9c5dcb50-480.jpeg','https://www.youtube.com/playlist?list=PLrjcdfa13Z91YK0s3KJqUFg2LVUDutola', 'PLrjcdfa13Z91YK0s3KJqUFg2LVUDutola');
+INSERT INTO `stream`(`hfr_user_id`, `username`, `twitch_url`, `twitch_username`, `hitbox_url`, `hitbox_username`, `image_url`, `replay_youtube_url`, `replay_youtube_id`) VALUES (620710,'blood_sam','http://www.twitch.tv/blood_sam', 'blood_sam', 'http://www.hitbox.tv/bloodsam', 'bloodsam', 'http://static-cdn.jtvnw.net/jtv_user_pictures/blood_sam-profile_banner-68fc225a9c5dcb50-480.jpeg','https://www.youtube.com/playlist?list=PLrjcdfa13Z91YK0s3KJqUFg2LVUDutola', 'PLrjcdfa13Z91YK0s3KJqUFg2LVUDutola');
 
 INSERT INTO `stream`(`hfr_user_id`, `username`, `twitch_url`, `twitch_username`, `image_url`) VALUES (266770,'gibbonaz','http://www.twitch.tv/gibbonaz', 'gibbonaz', 'http://i.imgur.com/SmVJZp7.png');
 
