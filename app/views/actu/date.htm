@@ -1,5 +1,5 @@
 <div id="gibbactu" class="homebox">
-	<h2><a href="{{@ALIASES.actus_list}}">Les dernières actus</a></h2>
+	<h2><a href="{{@ALIASES.actus_list}}">Les gibbactus du {{@showDate}}</a></h2>
 
     <div class="overflow">
         <div class="datepicker">
@@ -8,35 +8,20 @@
             </form>
         </div>
 
-        <check if="{{ @page[pos]+1 < @page[count] }}">
-            <a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos]+2 }}" title="">plus anciennes &rsaquo;</a>
-        </check>
+        <a class="allinks" href="{{@ALIASES.gibbactuDate}}/{{ @tomorrow }}" title="">jour suivant &rsaquo;</a>
 
-        <check if="{{ @page[pos] > 1 }}">
-            <a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos] }}" title="">&lsaquo; plus recentes</a>
-        </check>
+        <a class="allinks" href="{{@ALIASES.gibbactuDate}}/{{ @yesterday }}" title="">&lsaquo; jour précédent</a>
 
-        <check if="{{ @page[pos] > 0 }}">
-            <a class="allinks" href="{{@ALIASES.actus_list}}" title="Gibb'Actu">&lsaquo;&lsaquo; toutes les actus </a>
-        </check>
     </div>
 
-	<repeat group="{{ @page[content] }}" value="{{ @item }}">
+	<repeat group="{{ @page }}" value="{{ @item }}">
 		<include href="actu/li.htm" />
 	</repeat>
 
     <div class="overflow">
-        <check if="{{ @page[pos]+1 < @page[count] }}">
-            <a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos]+2 }}" title="">plus anciennes &rsaquo;</a>
-        </check>
+        <a class="allinks" href="{{@ALIASES.gibbactuDate}}/{{ @tomorrow }}" title="">jour suivant &rsaquo;</a>
 
-        <check if="{{ @page[pos] > 1 }}">
-            <a class="allinks" href="{{@ALIASES.actus_list}}/{{ @page[pos] }}" title="">&lsaquo; plus recentes</a>
-        </check>
-
-        <check if="{{ @page[pos] > 0 }}">
-            <a class="allinks" href="{{@ALIASES.actus_list}}" title="Gibb'Actu">&lsaquo;&lsaquo; toutes les actus </a>
-        </check>
+        <a class="allinks" href="{{@ALIASES.gibbactuDate}}/{{ @yesterday }}" title="">&lsaquo; jour précédent</a>
     </div>
 
     <style type = "text/css">

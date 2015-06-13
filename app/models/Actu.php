@@ -41,6 +41,16 @@ class Actu extends DB\SQL\Mapper {
         return $this->db->exec($request, array(':id' => $idActu));
     }
 
+    public function byDate($dateActu) {
+        $request =
+            'SELECT *'.
+            ' FROM actu as a'.
+            ' WHERE date_posted LIKE :date'.
+            ' ORDER BY date_posted ASC';
+
+        return $this->db->exec($request, array(':date' => ($dateActu . '%')));
+    }
+
     public function updateActu($idActu, $content) {
         if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
             $login_string = $this->f3->get('SESSION.login_string');

@@ -206,4 +206,94 @@ class ActuController extends Controller {
         $data['errors']  = $errors;
         echo json_encode($data);
     }
+
+    public function gibbactuDate() {
+
+        if (!$this->f3->exists('POST.datepicker') || empty($this->f3->get('POST.datepicker'))) {
+            $this->f3->reroute('@actus_list');
+        } else {
+            $date = $this->f3->clean($this->f3->get('POST.datepicker'));
+            $tmp = explode('/', $date);
+
+            if (count($tmp) == 3) {
+                $jour = $tmp[0];
+                $mois = $tmp[1];
+                $annee = $tmp[2];
+
+                if (checkdate($mois, $jour, $annee)) {
+                    $this->f3->reroute('@showGibbactuDate(@date=' . $jour . '-' . $mois . '-' . $annee  . ')');
+                } else {
+                    $this->f3->set('view','error.html');
+                    echo \Template::instance()->render('layout.htm');
+                }
+            } else {
+                $this->f3->set('view','error.html');
+                echo \Template::instance()->render('layout.htm');
+            }
+        }
+    }
+
+    public function showGibbactuDate() {
+        sec_session_start();
+
+        $date = $this->f3->clean($this->f3->get('PARAMS.date'));
+        $tmp = explode('-', $date);
+
+        if (count($tmp) == 3) {
+            $jour = $tmp[0];
+            $mois = $tmp[1];
+            $annee = $tmp[2];
+
+            if (checkdate($mois, $jour, $annee)) {
+                $searchDate = $annee . '-' . $mois . '-' . $jour;
+                $showDate = $jour . '/' . $mois . '/' . $annee;
+                $actus = new Actu($this->db);
+                $utils = new Utils();
+                $user = new User($this->db);
+
+                $result = $actus->byDate($searchDate);
+
+                $check = $check = $user->loginCheck();
+
+                if (count($check) == 2) {
+                    $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                    $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+                }
+
+                foreach ($result as $subKey => $subArray) {
+                    $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+
+                    if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                        && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+
+                        if ($user->checkActuPossession($subArray['id'])) {
+                            $subArray['checkActuPossession'] = 'true';
+                        }
+                    }
+
+                    $result[$subKey] = $subArray;
+                }
+
+                $tomorrow = new DateTime($annee . '-' . $mois . '-' . $jour);
+                $tomorrow->modify('tomorrow');
+                $this->f3->set('tomorrow', $tomorrow->format('d-m-Y'));
+
+                $yesterday = new DateTime($annee . '-' . $mois . '-' . $jour);
+                $yesterday->modify('yesterday');
+                $this->f3->set('yesterday', $yesterday->format('d-m-Y'));
+
+                $this->f3->set('page',$result);
+                $this->f3->set('page_type','gibbactu');
+                $this->f3->set('showDate', $showDate);
+                $this->f3->set('view','actu/date.htm');
+                echo \Template::instance()->render('layout.htm');
+            } else {
+                $this->f3->set('view','error.html');
+                echo \Template::instance()->render('layout.htm');
+            }
+        } else {
+            $this->f3->set('view','error.html');
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
 }
