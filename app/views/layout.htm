@@ -18,7 +18,6 @@
         <check if="{{ \Base::instance()->exists('includeJsCssAccount') && (@includeJsCssAccount == 'true') }}">
             <true>
                 <script type="text/javascript" src="ui/js/sha512.js"></script>
-                <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
                 <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
                 <link rel="stylesheet" href="ui/css/menu.css" type="text/css" />
             </true>
@@ -27,7 +26,6 @@
         <check if="{{ \Base::instance()->exists('includeJsCssEdition') && (@includeJsCssEdition == 'true') }}">
             <true>
                 <script src="tinymce/js/tinymce/tinymce.min.js"></script>
-                <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
             </true>
         </check>
 
@@ -52,6 +50,7 @@
 
         <script type="text/javascript" src="ui/js/jquery.magnific-popup.js"></script>
         <link rel="stylesheet" href="ui/css/magnific-popup.css" type="text/css" />
+        <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
 
 		<link rel="shortcut icon" href="http://www.thetartuffebay.org/favicon.ico?v=4" />
 
@@ -89,8 +88,8 @@
 
 				</ul>
 
-                <form method="POST" action="/search" id="search">
-                    <input name="q" type="text" size="40" placeholder="Recherche..." />
+                <form method="GET" action="{{@ALIASES.search}}" onsubmit="return validateForm()" id="search" name="search">
+                    <input name="query" id ="query" type="text" size="40" placeholder="Recherche..." />
                 </form>
 
 				<!-- TV -->
@@ -164,6 +163,20 @@
 		</div>
 
         <script type="text/javascript">
+            function validateForm() {
+                var x = document.forms["search"]["query"].value;
+                if (x == null || x == "" || x.length < 3) {
+                    $.modal("Votre recherche doit faire au moins 3 caractères",
+                            {   overlayClose : true,
+                                onShow: function(dlg) {
+                                    $(dlg.container).css('height','auto');
+                                    $(dlg.container).css('width','auto');
+                                    $.modal.setPosition();
+                                }});
+                    return false;
+                }
+            }
+
             $(document).ready(function() {
                 $(".popup-youtube").magnificPopup({
                     disableOn: 700,

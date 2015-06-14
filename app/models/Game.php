@@ -58,4 +58,18 @@ class Game extends DB\SQL\Mapper {
         $idCR
       );
     }
+
+    public function byNameLike($nameCR) {
+
+        return $this->db->exec(
+            'SELECT g.id AS id, g.name AS name, g.api_image AS api_image, COUNT(cg.cr_id) as nombre_cr'.
+            ' FROM game as g'.
+            ' INNER JOIN cr_game as cg'.
+            ' ON g.id = cg.game_id'.
+            ' WHERE g.name LIKE ?'.
+            ' GROUP BY g.id'.
+            ' ORDER BY g.name ASC',
+            '%' . $nameCR .'%'
+        );
+    }
 }

@@ -15,4 +15,14 @@ class Stream extends DB\SQL\Mapper {
         $userName
       );
     }
+
+    public function byUserNameLike($userName) {
+
+        return $this->db->exec(
+            'SELECT *'.
+            ' FROM stream s'.
+            ' WHERE s.username LIKE ?',
+            '%' . $userName . '%'
+        );
+    }
 }

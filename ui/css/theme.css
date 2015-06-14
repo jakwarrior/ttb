@@ -425,7 +425,13 @@ table.spoiler img[onload] {
     padding-top: 80%;
 }
 
-#crotypedia.homebox, #hfrtv.homebox {
+#crotypedia.homebox, #hfrtv.homebox, #gibbactu.homebox {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+#gibbactu.homebox {
     margin-top: 10px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -706,10 +712,14 @@ a.hfrtv.all {
     list-style-type: disc;
 }
 
-#gibbactu .gibbactus a {
+#gibbactu .gibbactus a, .gibbactusSearch a {
     color: #03254a;
     font-weight: bold;
     padding: 0 3px;
+}
+
+.gibbactusSearch {
+    margin: 5px;
 }
 
 #gibbactu .gibbactus .container, #gibbactu .gibbactus .container p {
@@ -721,7 +731,7 @@ a.hfrtv.all {
     display: none;
 }
 
-#gibbactu .gibbactus a:hover, #gibbactu .allinks:hover {
+#gibbactu .gibbactus a:hover, #gibbactu .allinks:hover, .gibbactusSearch a:hover {
     color: #ccff33;
     background-color: #03254a;
     text-decoration: none;

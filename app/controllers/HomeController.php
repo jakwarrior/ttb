@@ -48,4 +48,19 @@ class HomeController extends Controller {
 
 	}
 
+    public function search() {
+        $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
+
+        $Game = new Game($this->db);
+        $this->f3->set('games',$Game->byNameLike($query));
+
+        $Actu = new Actu($this->db);
+        $this->f3->set('actus',$Actu->byContentLike($query));
+
+        $Stream = new Stream($this->db);
+        $this->f3->set('streams',$Stream->byUserNameLike($query));
+
+        $this->f3->set('view','search/search.html');
+        echo \Template::instance()->render('layout.htm');
+    }
 }

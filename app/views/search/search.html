@@ -1,0 +1,49 @@
+<check if="{{ @games }}">
+    <true>
+        <div id="crotypedia" class="homebox">
+            <h2><a href="{{@ALIASES.crs_list}}">Résultat de la recherche dans le CROTYpedia</a></h2>
+            <br/>
+            <ul class="cr_games">
+                <repeat group="{{ @games }}" value="{{ @item }}">
+                    <li class="game{{ @item['id'] }}">
+                        <a href="{{ @ALIASES.crs_list_by_game }}/{{ @item['id'] }}" title="">
+                            <img src="{{ @media }}/center/50/{{ @item['api_image'] }}">
+                            <div class="gameinfo">
+                                <p class="gamename">{{ trim(@item['name']) }}
+                                </p>
+                            </div>
+
+                        </a>
+                    </li>
+                </repeat>
+            </ul>
+        </div>
+    </true>
+</check>
+
+
+<check if="{{ @actus }}">
+    <true>
+        <div id="gibbactu" class="homebox">
+            <h2><a href="{{@ALIASES.actus_list}}">Résultat de la recherche dans les gibbactus</a></h2>
+            <repeat group="{{ @actus }}" value="{{ @item }}">
+                <include href="search/li.html" />
+            </repeat>
+        </div>
+    </true>
+</check>
+
+<check if="{{ @streams }}">
+    <true>
+        <div id="hfrtv" class="homebox">
+            <div class="contour">
+                <h2><a href="{{@ALIASES.streams_list}}">Résultat de la recherche dans les streamers</a></h2>
+                <ul class="cr_games">
+                    <repeat group="{{ @streams }}" value="{{ @item }}">
+                        <include href="stream/li.htm" />
+                    </repeat>
+                </ul>
+            </div>
+        </div>
+    </true>
+</check>

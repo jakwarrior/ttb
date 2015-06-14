@@ -1,28 +1,29 @@
 <?php
 include_once 'app/vendor/functions.php';
 
-class CRController extends Controller {
+class CRController extends Controller
+{
 
-	public function index()
-  {
-	  $CRs = new CR($this->db);
-	  $this->f3->set('list',$CRs->all(12));
+    public function index()
+    {
+        $CRs = new CR($this->db);
+        $this->f3->set('list', $CRs->all(12));
 
-		$Game = new Game($this->db);
-		$this->f3->set('games',$Game->all());
+        $Game = new Game($this->db);
+        $this->f3->set('games', $Game->all());
 
-		$Game = new Game($this->db);
-		$this->f3->set('gamesother',$Game->allOther());
+        $Game = new Game($this->db);
+        $this->f3->set('gamesother', $Game->allOther());
 
-		$this->f3->set('site_title','CR, Tests, Reviews 100% Tartuffe | CROTYpedia');
-	  $this->f3->set('view','cr/index.htm');
-      echo \Template::instance()->render('layout.htm');
+        $this->f3->set('site_title', 'CR, Tests, Reviews 100% Tartuffe | CROTYpedia');
+        $this->f3->set('view', 'cr/index.htm');
+        echo \Template::instance()->render('layout.htm');
 
-	}
+    }
 
-	public function view()
-	{
-		$CRs = new CR($this->db);
+    public function view()
+    {
+        $CRs = new CR($this->db);
         $utils = new Utils();
         $user = new User($this->db);
 
@@ -34,10 +35,10 @@ class CRController extends Controller {
             $myCR[$subKey] = $subArray;
         }
 
-		$this->f3->set('cr',$myCR = $myCR[0]);
+        $this->f3->set('cr', $myCR = $myCR[0]);
 
-		$Game = new Game($this->db);
-		$this->f3->set('games',$Game->byCR($myCR['id']));
+        $Game = new Game($this->db);
+        $this->f3->set('games', $Game->byCR($myCR['id']));
 
         sec_session_start();
 
@@ -48,7 +49,8 @@ class CRController extends Controller {
             $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
             if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                && ($this->f3->get('SESSION.username') == $myCR['username'])) {
+                && ($this->f3->get('SESSION.username') == $myCR['username'])
+            ) {
                 //apparemment l'utilisateur a les droits d'éditer le CR mais on va quand même vérifier son identité
                 if ($user->checkCrPossession($myCR['id'])) {
                     $this->f3->set('checkCrPossession', 'true');
@@ -56,15 +58,15 @@ class CRController extends Controller {
             }
         }
 
-		$this->f3->set('site_title','CR de '.$myCR['games'].' par '.$myCR['username'].' | CROTYpedia');
-		$this->f3->set('view','cr/view.htm');
+        $this->f3->set('site_title', 'CR de ' . $myCR['games'] . ' par ' . $myCR['username'] . ' | CROTYpedia');
+        $this->f3->set('view', 'cr/view.htm');
 
         echo \Template::instance()->render('layout.htm');
-	}
+    }
 
-	public function byGame()
-	{
-		$CRs = new CR($this->db);
+    public function byGame()
+    {
+        $CRs = new CR($this->db);
         $utils = new Utils();
 
         $myCR = $CRs->byGame($this->f3->get('PARAMS.id'));
@@ -74,28 +76,29 @@ class CRController extends Controller {
             $myCR[$subKey] = $subArray;
         }
 
-		$this->f3->set('list',$myCR);
+        $this->f3->set('list', $myCR);
 
-		$Game = new Game($this->db);
+        $Game = new Game($this->db);
 
-		$this->f3->set('game',$myGame = $Game->load(array('id=?',$this->f3->get('PARAMS.id'))));
+        $this->f3->set('game', $myGame = $Game->load(array('id=?', $this->f3->get('PARAMS.id'))));
 
-		$this->f3->set('site_title','CRs de '.$myGame['name'].' | CROTYpedia');
-		$this->f3->set('view','cr/indexGame.htm');
+        $this->f3->set('site_title', 'CRs de ' . $myGame['name'] . ' | CROTYpedia');
+        $this->f3->set('view', 'cr/indexGame.htm');
         echo \Template::instance()->render('layout.htm');
-	}
+    }
 
-	public function byAlpha()
-	{
-		$CRs = new CR($this->db);
-		$this->f3->set('list',$CRs->byAlpha(), 86400);
+    public function byAlpha()
+    {
+        $CRs = new CR($this->db);
+        $this->f3->set('list', $CRs->byAlpha(), 86400);
 
-		$this->f3->set('site_title','Tous les CRs | CROTYpedia');
-		$this->f3->set('view','cr/index.htm', 86400);
+        $this->f3->set('site_title', 'Tous les CRs | CROTYpedia');
+        $this->f3->set('view', 'cr/index.htm', 86400);
         echo \Template::instance()->render('layout.htm');
-	}
+    }
 
-    public function editCr() {
+    public function editCr()
+    {
         sec_session_start();
 
         if (null === $this->f3->get('SESSION.username')) {
@@ -113,11 +116,11 @@ class CRController extends Controller {
                 $myCR[$subKey] = $subArray;
             }
 
-            $this->f3->set('cr',$myCR = $myCR[0]);
+            $this->f3->set('cr', $myCR = $myCR[0]);
 
             $Game = new Game($this->db);
 
-            $this->f3->set('games',$Game->byCR($myCR['id']));
+            $this->f3->set('games', $Game->byCR($myCR['id']));
 
             $check = $user->loginCheck();
 
@@ -126,7 +129,8 @@ class CRController extends Controller {
                 $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
                 if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                    && ($this->f3->get('SESSION.username') == $myCR['username'])) {
+                    && ($this->f3->get('SESSION.username') == $myCR['username'])
+                ) {
 
                     if ($user->checkCrPossession($myCR['id'])) {
                         $this->f3->set('checkCrPossession', 'true');
@@ -151,7 +155,7 @@ class CRController extends Controller {
         if (!$this->f3->exists('POST.crId') || empty($this->f3->get('POST.crId')))
             $errors['crId'] = "Une erreur s'est produite";
 
-        if ( !empty($errors)) {
+        if (!empty($errors)) {
             $data['success'] = false;
         } else {
             sec_session_start();
@@ -163,15 +167,14 @@ class CRController extends Controller {
             if ($response == "OK") {
                 $data['success'] = true;
                 $data['message'] = "Le CR a bien été mis à jour";
-            }
-            else if ($response == "problem") {
+            } else if ($response == "problem") {
                 $data['success'] = false;
                 $data['message'] = "Une erreur s'est produite";
                 $errors['else'] = "Une erreur s'est produite";
             }
         }
 
-        $data['errors']  = $errors;
+        $data['errors'] = $errors;
         echo json_encode($data);
     }
 }
