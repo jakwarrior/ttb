@@ -1,5 +1,5 @@
 <div class="gibbactusSearch">
-<a href="{{ @ALIASES.gibbactuDate }}/{{ date('d-m-Y', strtotime(@item['date_posted']) ) }}#{{ @item['id'] }}">
+<a href="{{ @ALIASES.actus_list }}/id/{{ @item['id'] }}">
     &rsaquo; Gibbactu du  {{ date('d/m/Y à G\hi', strtotime(@item['date_posted']) ) }} par {{ @item['username'] }}
 </a>
 </div>

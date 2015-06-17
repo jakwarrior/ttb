@@ -347,7 +347,7 @@ ul.imagelist li a span.format, ul.cr_games li a span.format {
     cursor: pointer;
     border-collapse: collapse;
     background: transparent url(/ui/images/spoiler-alert.png) no-repeat 50% 50%;
-    background-size: auto 100px;
+    background-size: auto 80px;
     background-position: top;
 }
 
@@ -425,14 +425,13 @@ table.spoiler img[onload] {
     padding-top: 80%;
 }
 
-#crotypedia.homebox, #hfrtv.homebox, #gibbactu.homebox {
+#crotypedia.homebox, #hfrtv.homebox {
     margin-top: 10px;
     margin-bottom: 20px;
     overflow: hidden;
 }
 
 #gibbactu.homebox {
-    margin-top: 10px;
     margin-bottom: 20px;
     overflow: hidden;
 }
@@ -719,7 +718,9 @@ a.hfrtv.all {
 }
 
 .gibbactusSearch {
-    margin: 5px;
+    margin: 8px;
+    margin-left: 10px;
+    text-align: justify;
 }
 
 #gibbactu .gibbactus .container, #gibbactu .gibbactus .container p {

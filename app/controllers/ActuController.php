@@ -36,7 +36,7 @@ class ActuController extends Controller {
             $tmp['hfr_page_id'] = $subArray['hfr_page_id'];
             $tmp['hfr_post_id'] = $subArray['hfr_post_id'];
             $tmp['hfr_user_id'] = $subArray['hfr_user_id'];
-            $tmp['username'] = $subArray['username'];
+            $tmp['username'] = html_entity_decode($subArray['username']);
             $tmp['content'] = $utils->content_post_treatment($subArray['content']);
             $tmp['content_raw'] = $subArray['content_raw'];
             $tmp['date_added'] = $subArray['date_added'];
@@ -105,7 +105,7 @@ class ActuController extends Controller {
             $tmp['hfr_page_id'] = $subArray['hfr_page_id'];
             $tmp['hfr_post_id'] = $subArray['hfr_post_id'];
             $tmp['hfr_user_id'] = $subArray['hfr_user_id'];
-            $tmp['username'] = $subArray['username'];
+            $tmp['username'] = html_entity_decode($subArray['username']);
             $tmp['content'] = $utils->content_post_treatment($subArray['content']);
             $tmp['content_raw'] = $subArray['content_raw'];
             $tmp['date_added'] = $subArray['date_added'];
@@ -262,6 +262,7 @@ class ActuController extends Controller {
 
                 foreach ($result as $subKey => $subArray) {
                     $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+                    $subArray['username'] = html_entity_decode($subArray['username']);
 
                     if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
                         && ($this->f3->get('SESSION.username') == $subArray['username'])) {
@@ -295,5 +296,50 @@ class ActuController extends Controller {
             $this->f3->set('view','error.html');
             echo \Template::instance()->render('layout.htm');
         }
+    }
+    
+    public function id() {
+        $actus = new Actu($this->db);
+        $utils = new Utils();
+        $user = new User($this->db);
+
+        sec_session_start();
+
+        $check = $user->loginCheck();
+
+        if (count($check) == 2) {
+            $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+            $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+        }
+        
+        $id = $this->f3->clean($this->f3->get('PARAMS.id'));
+        $result = $actus->byId($id);
+
+        if (count($result) == 0) {
+            $this->f3->set('view','error.html');
+            echo \Template::instance()->render('layout.htm');
+        }
+        
+        foreach ($result as $subKey => $subArray) {
+            $subArray['content'] = $utils->content_post_treatment($subArray['content']);
+            $subArray['username'] = html_entity_decode($subArray['username']);
+
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
+                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+
+                if ($user->checkActuPossession($subArray['id'])) {
+                    $subArray['checkActuPossession'] = 'true';
+                }
+            }
+
+            $result[$subKey] = $subArray;
+        }
+
+        $result = $result[0];
+        
+        $this->f3->set('page',$result);
+        $this->f3->set('page_type','gibbactu');
+        $this->f3->set('view','actu/id.html');
+        echo \Template::instance()->render('layout.htm');
     }
 }

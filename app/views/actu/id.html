@@ -1,0 +1,65 @@
+<div id="gibbactu" class="homebox">
+	<h2><a href="{{@ALIASES.actus_list}}">Gibbactu du {{ date('d/m/Y à G\hi', strtotime(@page['date_posted']) ) }} par {{ @page['username'] }}</a></h2>
+
+    <div class="overflow">
+        <div class="datepicker">
+            <form action="{{@ALIASES.gibbactuDate}}" method="POST">
+            &rsaquo; Voir les gibbactus du <input type="text" id="datepicker" name="datepicker">
+            </form>
+        </div>
+
+        <a class="allinks" href="{{@ALIASES.gibbactuDate}}/{{ date('d-m-Y', strtotime(@page['date_posted']) ) }}" title="">voir toutes les gibbactus de ce jour &rsaquo;</a>
+    </div>
+
+    <div class="gibbactus">
+        {{ @page['content'] | raw | esc }}
+
+        <a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@page['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@page['hfr_post_id']}}" class="date" id="{{ @page['id'] }}" target="_blank">
+            {{ @page['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@page['date_posted']) ) }} &#8675;
+        </a>
+
+        <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
+                    (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
+                    && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
+                    && isset(@page['checkActuPossession']) && (@page['checkActuPossession'] == 'true')) }}">
+            <true>
+                <br><br><a href="{{@ALIASES.actus_list . '/edit/' . @page['id']}}" class="edit">Éditer &rsaquo;</a>
+            </true>
+        </check>
+    </div>
+
+    <div class="overflow">
+        <a class="allinks" href="{{@ALIASES.gibbactuDate}}/{{ date('d-m-Y', strtotime(@page['date_posted']) ) }}" title="">voir toutes les gibbactus de ce jour &rsaquo;</a>
+    </div>
+
+    <style type = "text/css">
+        .ui-datepicker { font-size:0.8em !important}
+    </style>
+    <script>
+        $(function() {
+            $.datepicker.regional['fr'] = {
+                closeText: 'Fermer',
+                prevText: 'Précédent',
+                nextText: 'Suivant',
+                currentText: 'Aujourd\'hui',
+                monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+                monthNamesShort: ['Janv.','Févr.','Mars','Avril','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'],
+                dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+                dayNamesShort: ['Dim.','Lun.','Mar.','Mer.','Jeu.','Ven.','Sam.'],
+                dayNamesMin: ['D','L','M','M','J','V','S'],
+                weekHeader: 'Sem.',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''};
+            $.datepicker.setDefaults($.datepicker.regional['fr']);
+            $( "#datepicker" ).datepicker({
+                onSelect: function(dateText, obj) {
+                    $(this).parent('form').submit();
+                }
+            });
+        });
+    </script>
+
+</div><!-- #gibbactu -->
