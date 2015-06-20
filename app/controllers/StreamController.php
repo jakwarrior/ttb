@@ -1,5 +1,6 @@
 <?php
 require_once "/google-api-php-client/src/Google/autoload.php";
+include_once 'app/vendor/functions.php';
 
 class StreamController extends Controller {
 
@@ -58,6 +59,8 @@ class StreamController extends Controller {
         if ( !empty($errors)) {
             $data['success'] = false;
         } else {
+            sec_session_start();
+
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
             $game = filter_input(INPUT_POST, 'game', FILTER_SANITIZE_STRING);
             $day = filter_input(INPUT_POST, 'day', FILTER_SANITIZE_STRING);
@@ -80,7 +83,7 @@ class StreamController extends Controller {
 
             $client_email = $this->f3->get('clientEmail');
             $private_key = file_get_contents('ui/key/TheTartuffeBay-c985f9bb86a4.p12');
-            $scopes = array('https://www.googleapis.com/auth/calendar');
+            $scopes = implode(' ', array(Google_Service_Calendar::CALENDAR));
             $credentials = new Google_Auth_AssertionCredentials(
                 $client_email,
                 $scopes,
@@ -88,13 +91,44 @@ class StreamController extends Controller {
             );
 
             $client = new Google_Client();
+            $client->setApplicationName("TheTartuffeBayCalendar");
+            $client->setScopes(implode(' ', array(Google_Service_Calendar::CALENDAR)));
+            $client->setAccessType('offline');
+            $client->setClientId("798656333713-essdvgnjnoe414jcdikm6e6qho99g8d1.apps.googleusercontent.com");
             $client->setAssertionCredentials($credentials);
+
             if ($client->getAuth()->isAccessTokenExpired()) {
                 $client->getAuth()->refreshTokenWithAssertion();
             }
 
             $service = new Google_Service_Calendar($client);
+            $event = new Google_Service_Calendar_Event(array(
+                'summary' => 'Google I/O 2015',
+                'location' => '800 Howard St., San Francisco, CA 94103',
+                'description' => 'A chance to hear more about Google\'s developer products.',
+                'start' => array(
+                    'dateTime' => '2015-07-28T09:00:00-07:00',
+                    'timeZone' => 'America/Los_Angeles',
+                ),
+                'end' => array(
+                    'dateTime' => '2015-07-28T17:00:00-07:00',
+                    'timeZone' => 'America/Los_Angeles',
+                ),
+            ));
+/*            $event = new Google_Service_Calendar_Event();
+            $event->setSummary('Plop');
+            $event->setLocation('Plap');
+            $start = new Google_EventDateTime();
+            $start->setDateTime('2013-10-22T19:00:00.000+01:00');
+            $start->setTimeZone('Europe/London');
+            $event->setStart($start);
+            $end = new Google_EventDateTime();
+            $end->setDateTime('2013-10-22T19:25:00.000+01:00');
+            $end->setTimeZone('Europe/London');
+            $event->setEnd($end);*/
+
             $calendarId = 'ddbhu19gfu40seliu5torjfe8g@group.calendar.google.com';
+            $event = $service->events->insert($calendarId, $event);
 
             $optParams = array(
                 'maxResults' => 10,
