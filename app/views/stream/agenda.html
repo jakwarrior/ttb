@@ -23,8 +23,10 @@
                 <input type="text" name="game" id="game"  class="text ui-widget-content ui-corner-all">
                 <label for="day">Jour :</label>
                 <input type="text" id="day" name="day" class="datepicker2">
-                <label for="hour">Heure de début :</label>
-                <input type="text" id="hour" name="hour" class="datepicker2">
+                <label for="hourStart">Heure de début :</label>
+                <input type="text" id="hourStart" name="hourStart" class="datepicker2">
+                <label for="hourEnd">Heure de fin :</label>
+                <input type="text" id="hourEnd" name="hourEnd" class="datepicker2">
 
             </fieldset>
         </form>
@@ -52,7 +54,7 @@
             height: 100px !important;
         }
         .datepicker2 {
-            margin-bottom:12px; width:95%; padding: .4em;
+            margin-bottom:12px; width:95%;
             padding: 0.5em 0.6em;
             display: inline-block;
             border: 1px solid #AAA;
@@ -67,26 +69,114 @@
     </style>
     <script>
         $(function() {
-            var dialog, form,
+            var dialog, form;
+
+            function addStream() {
+
+                var name = "";
+                var selected = $( "#name option:selected" ).text();
+
+                if ( selected != "Autre") {
+                    name =  selected;
+                } else {
+                    name = $('input[name=nameother]').val();
+                }
+
+                var formData = {
+                    'name'             : name,
+                    'game'             : $('input[name=game]').val(),
+                    'day'             : $('input[name=day]').val(),
+                    'hourStart'             : $('input[name=hourStart]').val(),
+                    'hourEnd'             : $('input[name=hourEnd]').val()
+                };
+
+                $.ajax({
+                    type        : 'POST',
+                    url         : '{{@ALIASES.addStreamAjax}}',
+                    data        : formData,
+                    dataType    : 'json',
+                    encode      : true
+                })
+
+                .done(function(data) {
+                    if ( !data.success) {
+                        if (data.errors.name) {
+                            $.modal(data.errors.name,
+                                    {   overlayClose : true,
+                                        onShow: function(dlg) {
+                                            $(dlg.container).css('height','auto');
+                                            $(dlg.container).css('width','auto');
+                                            $.modal.setPosition();
+                                        }});
+                        }
+
+                        if (data.errors.game) {
+                            $.modal(data.errors.game,
+                                    {   overlayClose : true,
+                                        onShow: function(dlg) {
+                                            $(dlg.container).css('height','auto');
+                                            $(dlg.container).css('width','auto');
+                                            $.modal.setPosition();
+                                        }});
+                        }
+
+                        if (data.errors.day) {
+                            $.modal(data.errors.day,
+                                    {   overlayClose : true,
+                                        onShow: function(dlg) {
+                                            $(dlg.container).css('height','auto');
+                                            $(dlg.container).css('width','auto');
+                                            $.modal.setPosition();
+                                        }});
+                        }
+
+                        if (data.errors.hourStart) {
+                            $.modal(data.errors.hourStart,
+                                    {   overlayClose : true,
+                                        onShow: function(dlg) {
+                                            $(dlg.container).css('height','auto');
+                                            $(dlg.container).css('width','auto');
+                                            $.modal.setPosition();
+                                        }});
+                        }
+
+                        if (data.errors.hourEnd) {
+                            $.modal(data.errors.hourEnd,
+                                    {   overlayClose : true,
+                                        onShow: function(dlg) {
+                                            $(dlg.container).css('height','auto');
+                                            $(dlg.container).css('width','auto');
+                                            $.modal.setPosition();
+                                        }});
+                        }
+
+                        if (data.errors.else) {
+                            $.modal(data.errors.else,
+                                    {   overlayClose : true,
+                                        onShow: function(dlg) {
+                                            $(dlg.container).css('height','auto');
+                                            $(dlg.container).css('width','auto');
+                                            $.modal.setPosition();
+                                        }});
+                        }
+                    }
+                    else {
+                        window.location.replace('{{@ALIASES.agenda}}');
+                    }
+                });
+            }
 
             dialog = $( "#dialog-form" ).dialog({
                 autoOpen: false,
-                height: 425,
+                height: 490,
                 width: 350,
                 modal: true,
-                buttons: [
-                    {
-                        text: "Enregistrer",
-                        click: $.noop,
-                        type: "submit"
-                    },
-                    {
-                        text: "Fermer",
-                        click: function() {
-                            $( this ).dialog( "close" );
-                        }
+                buttons: {
+                    "Enregistrer": addStream,
+                    "Fermer": function() {
+                        dialog.dialog( "close" );
                     }
-                ]
+                }
             });
 
             $( "#name" ).selectmenu({
@@ -137,7 +227,8 @@
 
             $( "#day" ).datepicker();
 
-            $('#hour').timepicker();
+            $('#hourStart').timepicker();
+            $('#hourEnd').timepicker();
 
             $( "#add" ).button().on( "click", function() {
                 dialog.dialog( "open" );
