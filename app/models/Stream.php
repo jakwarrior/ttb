@@ -25,4 +25,12 @@ class Stream extends DB\SQL\Mapper {
             '%' . $userName . '%'
         );
     }
+
+    public function getListStreamers() {
+        return $this->db->exec(
+            'SELECT s.username'.
+            ' FROM stream s'.
+            ' ORDER BY s.username ASC'
+        );
+    }
 }

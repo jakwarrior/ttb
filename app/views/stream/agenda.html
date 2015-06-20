@@ -7,32 +7,85 @@
     <button class="pure-button" type="button">Modifier un stream</button>
     <button class="pure-button" type="button">Supprimer un stream</button>
 
-    <div id="dialog-form" title="Create new user">
-        <p class="validateTips">All form fields are required.</p>
+    <div id="dialog-form" title="Ajouter un stream">
 
         <form>
-            <fieldset>
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+            <fieldset class="fieldset">
+                <label for="name">Streamer :</label>
+                <select name="name" id="name" class="overflow2">
+                    <repeat group="{{ @streamers }}" value="{{ @item }}">
+                        <option>{{ @item['username'] }}</option>
+                    </repeat>
+                    <option>Autre</option>
+                </select>
+                <input type="text" name="nameother" id="nameother"  class="text ui-widget-content ui-corner-all">
+                <label for="game">Jeu :</label>
+                <input type="text" name="game" id="game"  class="text ui-widget-content ui-corner-all">
+                <label for="day">Jour :</label>
+                <input type="text" id="day" name="day" class="datepicker2">
 
-                <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
             </fieldset>
         </form>
     </div>
+    <style type = "text/css">
+        .ui-widget {
+            font-size:0.8em !important; text-align: justify;
+            overflow: visible;
+        }
+        .fieldset {
+            border: 0px none;
+        }
+        label, input { display:block;
+        }
+        input.text {
+            margin-bottom:12px; width:95%; padding: .4em;
+        }
+        select {
+            width:278px; padding: .4em;
+        }
+        #name-button {
+            margin-bottom: 12px;
+        }
+        .overflow2 {
+            height: 100px !important;
+        }
+        .datepicker2 {
+            margin-bottom:12px; width:95%; padding: .4em;
+            padding: 0.5em 0.6em;
+            display: inline-block;
+            border: 1px solid #AAA;
+            border-radius: 4px;
+            vertical-align: baseline;
+            box-sizing: border-box;
+            line-height: normal;
+            color: inherit;
+            font: inherit;
+        }
+        #nameother { display: none;}
+    </style>
     <script>
         $(function() {
             var dialog, form,
 
             dialog = $( "#dialog-form" ).dialog({
                 autoOpen: false,
-                height: 300,
+                height: 500,
                 width: 350,
-                modal: true
+                modal: true,
+                buttons: [
+                    {
+                        text: "Enregistrer",
+                        click: $.noop,
+                        type: "submit"
+                    },
+                    {
+                        text: "Fermer",
+                        click: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                ]
     /*            buttons: {
                     "Create an account": addUser,
                     Cancel: function() {
@@ -44,6 +97,37 @@
                     allFields.removeClass( "ui-state-error" );
                 }*/
             });
+
+            $( "#name" ).selectmenu({
+                select: function( event, ui ) {
+                    if (ui.item.value == "Autre") {
+                        document.getElementById("nameother").style.display = 'block';
+                    } else {
+                        document.getElementById("nameother").style.display = 'none';
+                    }
+                }
+            });
+
+            $.datepicker.regional['fr'] = {
+                closeText: 'Fermer',
+                prevText: 'Précédent',
+                nextText: 'Suivant',
+                currentText: 'Aujourd\'hui',
+                monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+                monthNamesShort: ['Janv.','Févr.','Mars','Avril','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'],
+                dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+                dayNamesShort: ['Dim.','Lun.','Mar.','Mer.','Jeu.','Ven.','Sam.'],
+                dayNamesMin: ['D','L','M','M','J','V','S'],
+                weekHeader: 'Sem.',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''};
+
+            $.datepicker.setDefaults($.datepicker.regional['fr']);
+
+            $( "#day" ).datepicker();
 
             $( "#add" ).button().on( "click", function() {
                 dialog.dialog( "open" );

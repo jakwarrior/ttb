@@ -13,6 +13,8 @@ class StreamController extends Controller {
 
     public function agenda()
     {
+        $Streams = new Stream($this->db);
+        $this->f3->set('streamers', $Streams->getListStreamers());
         $this->f3->set('view','stream/agenda.html');
         echo \Template::instance()->render('layout.htm');
     }
