@@ -23,7 +23,8 @@
                 <input type="text" name="game" id="game"  class="text ui-widget-content ui-corner-all">
                 <label for="day">Jour :</label>
                 <input type="text" id="day" name="day" class="datepicker2">
-
+                <label for="hour">Heure de début :</label>
+                <input type="text" id="hour" name="hour" class="datepicker2">
 
             </fieldset>
         </form>
@@ -70,7 +71,7 @@
 
             dialog = $( "#dialog-form" ).dialog({
                 autoOpen: false,
-                height: 500,
+                height: 425,
                 width: 350,
                 modal: true,
                 buttons: [
@@ -86,16 +87,6 @@
                         }
                     }
                 ]
-    /*            buttons: {
-                    "Create an account": addUser,
-                    Cancel: function() {
-                        dialog.dialog( "close" );
-                    }
-                },
-                close: function() {
-                    form[ 0 ].reset();
-                    allFields.removeClass( "ui-state-error" );
-                }*/
             });
 
             $( "#name" ).selectmenu({
@@ -127,7 +118,26 @@
 
             $.datepicker.setDefaults($.datepicker.regional['fr']);
 
+            $.timepicker.regional['fr'] = {
+                timeOnlyTitle: 'Choisir une heure',
+                timeText: 'Heure',
+                hourText: 'Heures',
+                minuteText: 'Minutes',
+                secondText: 'Secondes',
+                millisecText: 'Millisecondes',
+                timezoneText: 'Fuseau horaire',
+                currentText: 'Maintenant',
+                closeText: 'OK',
+                timeFormat: 'hh:mm',
+                amNames: ['AM', 'A'],
+                pmNames: ['PM', 'P'],
+                ampm: false
+            };
+            $.timepicker.setDefaults($.timepicker.regional['fr']);
+
             $( "#day" ).datepicker();
+
+            $('#hour').timepicker();
 
             $( "#add" ).button().on( "click", function() {
                 dialog.dialog( "open" );

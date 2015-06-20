@@ -15,6 +15,7 @@ class StreamController extends Controller {
     {
         $Streams = new Stream($this->db);
         $this->f3->set('streamers', $Streams->getListStreamers());
+        $this->f3->set('includeJsCssAgenda', 'true');
         $this->f3->set('view','stream/agenda.html');
         echo \Template::instance()->render('layout.htm');
     }

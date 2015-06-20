@@ -36,6 +36,13 @@
             </true>
         </check>
 
+        <check if="{{ \Base::instance()->exists('includeJsCssAgenda') && (@includeJsCssAgenda == 'true') }}">
+            <true>
+                <script type="text/javascript" src="ui/js/jquery-ui-timepicker-addon.js"></script>
+                <link rel="stylesheet" href="ui/css/jquery-ui-timepicker-addon.css" type="text/css" />
+            </true>
+        </check>
+
         <check if="{{ \Base::instance()->exists('includeJsCssImportCr') && (@includeJsCssImportCr == 'true') }}">
             <true>
                 <link rel="stylesheet" href="ui/css/loading-bar.css" type="text/css" />
