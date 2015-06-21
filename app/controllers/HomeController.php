@@ -37,8 +37,6 @@ class HomeController extends Controller {
 
         $this->f3->set('actus',$actus);
         $this->f3->set('crs',$CRs->all(40));
-		//$this->f3->set('streams',$Streams->find(NULL, array('order'=>'twitch_username ASC')));
-
 
 		$this->f3->set('site_title','Un torrent d\'informations — TTB');
 
@@ -49,18 +47,25 @@ class HomeController extends Controller {
 	}
 
     public function search() {
-        $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
+        $query = $this->f3->clean($this->f3->get('GET.query'));
 
         $Game = new Game($this->db);
-        $this->f3->set('games',$Game->byNameLike($query));
+        $games = $Game->byNameLike($query);
+        $this->f3->set('games', $games);
 
         $Actu = new Actu($this->db);
-        $this->f3->set('actus',$Actu->byContentLike($query));
+        $actus = $Actu->byContentLike($query);
+        $this->f3->set('actus', $actus);
 
         $Stream = new Stream($this->db);
-        $this->f3->set('streams',$Stream->byUserNameLike($query));
+        $streams = $Stream->byUserNameLike($query);
+        $this->f3->set('streams', $streams);
 
-        $this->f3->set('view','search/search.html');
+        if (count($games) == 0 && count($actus) == 0 && count($streams) == 0) {
+            $this->f3->set('view','search/noresult.html');
+        } else {
+            $this->f3->set('view','search/search.html');
+        }
         echo \Template::instance()->render('layout.htm');
     }
 }
