@@ -16,6 +16,16 @@ class Stream extends DB\SQL\Mapper {
       );
     }
 
+    public function byId($id) {
+
+        return $this->db->exec(
+            'SELECT *'.
+            ' FROM stream s'.
+            ' WHERE s.id = ?',
+            $id
+        );
+    }
+
     public function byUserNameLike($userName) {
 
         return $this->db->exec(

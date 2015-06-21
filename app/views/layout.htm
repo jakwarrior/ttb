@@ -105,14 +105,14 @@
 					<ul class="imagelist">
 						<repeat group="{{ @inc_streams }}" value="{{ @item }}">
 							<li>
-								<a href="http://twitch.com/" target="_blank">
+								<a href="{{ @ALIASES.streams_list }}/{{ @item['username'] }}/">
 									<img src="{{ @media }}/center/33/{{ @item['image'] }}"/>
 									<div class="gameinfo">
 										<p>{{ @item['username'] }} le {{@item['date']}}</p>
-										<blockquote>
-											<p>{{@item['description']}}</p>
-										</blockquote>
 									</div>
+                                    <span class="format format_standard type_cr">
+			                            {{@item['games']}}
+		                            </span>
 								</a>
 
 							</li>

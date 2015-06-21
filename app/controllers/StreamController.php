@@ -117,7 +117,7 @@ class StreamController extends Controller {
                 }
 
                 $Agenda = new Agenda($this->db);
-                $return = $Agenda->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'));
+                $return = $Agenda->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'), $datetime1->format('Y-m-d'));
 
                 if ($return == 1) {
                     $data['success'] = true;
@@ -130,28 +130,6 @@ class StreamController extends Controller {
                 $data['success'] = false;
                 $errors['else'] = "Une erreur s'est produite";
             }
-
-
-
-/*            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-
-            $response = $this->user->login($email, $password);
-
-            if ($response == "OK") {
-                $data['success'] = true;
-                $data['message'] = "L'authentification s'est bien déroulée";
-            }
-            else if($response == "incorrect") {
-                $data['success'] = false;
-                $data['message'] = 'Le mot de passe est incorrect';
-                $errors['else'] = 'Le mot de passe est incorrect';
-            }
-            else if ($response == "problem") {
-                $data['success'] = false;
-                $data['message'] = "Une erreur s'est produite";
-                $errors['else'] = "Une erreur s'est produite";
-            }*/
         }
 
         $data['errors']  = $errors;

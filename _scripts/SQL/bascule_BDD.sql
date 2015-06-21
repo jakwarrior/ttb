@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   `streamer_id` int(11) NOT NULL DEFAULT 0,
   `game` varchar(100) NOT NULL DEFAULT '',
   `date` varchar(50) NOT NULL DEFAULT '',
+  `completeDate` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
