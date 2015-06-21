@@ -25,6 +25,17 @@ UPDATE `cr` SET `hfr_user_id`=1024630, `username`='Etahos', `comment`='' WHERE `
 -- suppression Taxalot vu qu'il ne veut plus apparaitre
 UPDATE `cr` SET `comment`='' WHERE `comment`='Taxalot';
 
+-- agenda
+CREATE TABLE IF NOT EXISTS `agenda` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `google_event_id` varchar(255) NOT NULL DEFAULT '',
+  `streamer` varchar(50) NOT NULL DEFAULT '',
+  `streamer_id` int(11) NOT NULL DEFAULT 0,
+  `game` varchar(100) NOT NULL DEFAULT '',
+  `date` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
 -- streams
 DROP TABLE `stream`;
 

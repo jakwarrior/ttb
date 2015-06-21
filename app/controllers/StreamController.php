@@ -105,7 +105,26 @@ class StreamController extends Controller {
             try {
                 $event = $service->events->insert($calendarId, $event);
 
-                $data['success'] = true;
+                $Stream = new Stream($this->db);
+                $streamer = $Stream->byUserName($name);
+
+                if (count($streamer) == 0) {
+                    $streamer = array();
+                    $streamer['id'] = -1;
+                    $streamer['username'] = $name;
+                } else {
+                    $streamer = $streamer[0];
+                }
+
+                $Agenda = new Agenda($this->db);
+                $return = $Agenda->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'));
+
+                if ($return == 1) {
+                    $data['success'] = true;
+                } else {
+                    $data['success'] = false;
+                    $errors['else'] = "Une erreur s'est produite";
+                }
             } catch (Google_Exception $e) {
                 error_log($e);
                 $data['success'] = false;
