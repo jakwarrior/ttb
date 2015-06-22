@@ -19,7 +19,11 @@ class Controller {
             $tmp = array();
             if ($sub['streamer_id'] == -1) {
                 $tmp['image'] = 'http://i.imgur.com/SmVJZp7.png';
-                $tmp['adress'] = $this->f3->get('ALIASES.streams_list');
+                if ($sub['url'] == '') {
+                    $tmp['adress'] = $this->f3->get('ALIASES.streams_list');
+                } else {
+                    $tmp['adress'] = $sub['url'];
+                }
             } else {
                 $streamer = $Stream->byId($sub['streamer_id']);
 
@@ -106,10 +110,6 @@ class Controller {
         }
 
         $this->f3->set('menu',$menu);
-
-
-
-
     }
 
     function afterroute() {

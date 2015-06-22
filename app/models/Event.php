@@ -6,15 +6,16 @@ class Event extends DB\SQL\Mapper {
         parent::__construct($db,'event');
     }
 
-    public function addEvent($google_event_id, $streamer, $streamer_id, $game, $date, $completeDate) {
+    public function addEvent($google_event_id, $streamer, $streamer_id, $game, $date, $completeDate, $url) {
         return $this->db->exec(
-            'INSERT INTO `event`(`google_event_id`, `streamer`, `streamer_id`, `game`, `date`, `completeDate`) VALUES (:google_event_id ,:streamer, :streamer_id, :game, :date, :completeDate)',
+            'INSERT INTO `event`(`google_event_id`, `streamer`, `streamer_id`, `game`, `date`, `completeDate`, `url`) VALUES (:google_event_id ,:streamer, :streamer_id, :game, :date, :completeDate, :url)',
             array(':google_event_id' => $google_event_id,
                 ':streamer' => $streamer,
                 ':streamer_id' => $streamer_id,
                 ':game' => $game,
                 ':date' => $date,
-                ':completeDate' => $completeDate)
+                ':completeDate' => $completeDate,
+                ':url' => $url)
         );
     }
 

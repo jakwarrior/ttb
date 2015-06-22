@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `game` varchar(100) NOT NULL DEFAULT '',
   `date` varchar(50) NOT NULL DEFAULT '',
   `completeDate` varchar(50) NOT NULL DEFAULT '',
+  `url` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 

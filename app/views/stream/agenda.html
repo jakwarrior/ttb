@@ -18,6 +18,8 @@
                     <option>Autre</option>
                 </select>
                 <input type="text" name="nameother" id="nameother"  class="text ui-widget-content ui-corner-all">
+                <label id="labelurl" for="url">URL du stream (facultatif) :</label>
+                <input type="text" name="url" id="url"  class="text ui-widget-content ui-corner-all">
                 <label for="game">Jeu :</label>
                 <input type="text" name="game" id="game"  class="text ui-widget-content ui-corner-all">
                 <label for="day">Jour :</label>
@@ -78,7 +80,7 @@
             color: inherit;
             font: inherit;
         }
-        #nameother { display: none;}
+        #nameother, #url, #labelurl { display: none;}
     </style>
     <script>
         $(function() {
@@ -87,12 +89,14 @@
             function addEvent() {
 
                 var name = "";
+                var url = "";
                 var selected = $( "#name option:selected" ).text();
 
                 if ( selected != "Autre") {
                     name =  selected;
                 } else {
                     name = $('input[name=nameother]').val();
+                    url = $('input[name=url]').val();
                 }
 
                 var formData = {
@@ -100,7 +104,8 @@
                     'game'             : $('input[name=game]').val(),
                     'day'             : $('input[name=day]').val(),
                     'hourStart'             : $('input[name=hourStart]').val(),
-                    'hourEnd'             : $('input[name=hourEnd]').val()
+                    'hourEnd'             : $('input[name=hourEnd]').val(),
+                    'url'               : url
                 };
 
                 $.ajax({
@@ -225,7 +230,7 @@
 
             dialog = $( "#dialog-form" ).dialog({
                 autoOpen: false,
-                height: 490,
+                height: 445,
                 width: 350,
                 modal: true,
                 buttons: {
@@ -252,9 +257,15 @@
             $( "#name" ).selectmenu({
                 select: function( event, ui ) {
                     if (ui.item.value == "Autre") {
+                        $("#dialog-form").dialog("option", "height", 555);
                         document.getElementById("nameother").style.display = 'block';
+                        document.getElementById("url").style.display = 'block';
+                        document.getElementById("labelurl").style.display = 'block';
                     } else {
+                        $("#dialog-form").dialog("option", "height", 445);
                         document.getElementById("nameother").style.display = 'none';
+                        document.getElementById("url").style.display = 'none';
+                        document.getElementById("labelurl").style.display = 'none';
                     }
                 }
             });

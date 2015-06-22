@@ -65,6 +65,7 @@ class StreamController extends Controller {
             $day = $this->f3->clean($this->f3->get('POST.day'));
             $hourStart = $this->f3->clean($this->f3->get('POST.hourStart'));
             $hourEnd = $this->f3->clean($this->f3->get('POST.hourEnd'));
+            $url = $this->f3->clean($this->f3->get('POST.url'));
 
             $client_email = $this->f3->get('clientEmail');
             $private_key = file_get_contents('ui/key/TheTartuffeBay-c985f9bb86a4.p12');
@@ -114,12 +115,14 @@ class StreamController extends Controller {
                     $streamer = array();
                     $streamer['id'] = -1;
                     $streamer['username'] = $name;
+                    $streamer['url'] = $url;
                 } else {
                     $streamer = $streamer[0];
+                    $streamer['url'] = '';
                 }
 
                 $Event = new Event($this->db);
-                $return = $Event->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'), $datetime1->format('Y-m-d'));
+                $return = $Event->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'), $datetime1->format('Y-m-d'), $streamer['url']);
 
                 if ($return == 1) {
                     $data['success'] = true;
