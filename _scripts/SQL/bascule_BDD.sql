@@ -26,7 +26,7 @@ UPDATE `cr` SET `hfr_user_id`=1024630, `username`='Etahos', `comment`='' WHERE `
 UPDATE `cr` SET `comment`='' WHERE `comment`='Taxalot';
 
 -- agenda
-CREATE TABLE IF NOT EXISTS `agenda` (
+CREATE TABLE IF NOT EXISTS `event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `google_event_id` varchar(255) NOT NULL DEFAULT '',
   `streamer` varchar(50) NOT NULL DEFAULT '',

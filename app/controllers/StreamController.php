@@ -15,9 +15,9 @@ class StreamController extends Controller {
     public function agenda()
     {
         $Streams = new Stream($this->db);
-        $Agenda = new Agenda($this->db);
+        $Event = new Event($this->db);
         $this->f3->set('streamers', $Streams->getListStreamers());
-        $this->f3->set('events', $Agenda->getAllListEvents());
+        $this->f3->set('events', $Event->getAllListEvents());
         $this->f3->set('includeJsCssAgenda', 'true');
         $this->f3->set('view','stream/agenda.html');
         echo \Template::instance()->render('layout.htm');
@@ -118,8 +118,8 @@ class StreamController extends Controller {
                     $streamer = $streamer[0];
                 }
 
-                $Agenda = new Agenda($this->db);
-                $return = $Agenda->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'), $datetime1->format('Y-m-d'));
+                $Event = new Event($this->db);
+                $return = $Event->addEvent($event->getId(), $streamer['username'], $streamer['id'], $game, $datetime1->format('d/m\@H\hi'), $datetime1->format('Y-m-d'));
 
                 if ($return == 1) {
                     $data['success'] = true;
@@ -175,8 +175,8 @@ class StreamController extends Controller {
             try {
                 $service->events->delete($calendarId, $id);
 
-                $Agenda = new Agenda($this->db);
-                $return = $Agenda->deleteEvent($id);
+                $Event = new Event($this->db);
+                $return = $Event->deleteEvent($id);
 
                 if ($return == 1) {
                     $data['success'] = true;

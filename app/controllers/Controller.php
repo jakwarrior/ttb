@@ -10,12 +10,12 @@ class Controller {
         //Header
 
         $Stream = new Stream($this->db);
-        $Agenda = new Agenda($this->db);
-        $agenda = $Agenda->getListEvents(4);
+        $Event = new Event($this->db);
+        $event = $Event->getListEvents(4);
 
         $crss = array ();
 
-        foreach ($agenda as $subKey => $sub) {
+        foreach ($event as $subKey => $sub) {
             $tmp = array();
             if ($sub['streamer_id'] == -1) {
                 $tmp['image'] = 'http://i.imgur.com/SmVJZp7.png';
