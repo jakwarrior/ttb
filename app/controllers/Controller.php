@@ -11,7 +11,7 @@ class Controller {
 
         $Stream = new Stream($this->db);
         $Agenda = new Agenda($this->db);
-        $agenda = $Agenda->getListStreamFromNow();
+        $agenda = $Agenda->getListEvents(4);
 
         $crss = array ();
 
@@ -19,12 +19,14 @@ class Controller {
             $tmp = array();
             if ($sub['streamer_id'] == -1) {
                 $tmp['image'] = 'http://i.imgur.com/SmVJZp7.png';
+                $tmp['adress'] = $this->f3->get('ALIASES.streams_list');
             } else {
                 $streamer = $Stream->byId($sub['streamer_id']);
 
                 if (count($streamer) > 0) {
                     $streamer = $streamer[0];
                     $tmp['image'] = $streamer['image_url'];
+                    $tmp['adress'] = $this->f3->get('ALIASES.streams_list') . '/' . $sub['streamer'];
                 }
             }
 

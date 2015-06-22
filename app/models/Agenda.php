@@ -18,7 +18,19 @@ class Agenda extends DB\SQL\Mapper {
         );
     }
 
-    public function getListStreamFromNow() {
-        return $this->db->exec('SELECT * FROM agenda a WHERE a.completeDate >= ?  ORDER by a.completeDate ASC LIMIT 4', date('Y-m-d'));
+    public function getListEvents($limit = 0) {
+        return $this->db->exec('SELECT * FROM agenda a WHERE a.completeDate >= :date  ORDER by a.completeDate ASC LIMIT :limit',
+            array( ':date' => date('Y-m-d'),
+            ':limit' => $limit));
+    }
+
+    public function getAllListEvents() {
+        return $this->db->exec('SELECT * FROM agenda a WHERE a.completeDate >= :date  ORDER by a.completeDate ASC',
+            array( ':date' => date('Y-m-d')));
+    }
+
+    public function deleteEvent($id) {
+        return $this->db->exec('DELETE FROM agenda WHERE google_event_id = :id',
+            array( ':id' => $id));
     }
 }

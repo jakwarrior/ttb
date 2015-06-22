@@ -105,7 +105,7 @@
 					<ul class="imagelist">
 						<repeat group="{{ @inc_streams }}" value="{{ @item }}">
 							<li>
-								<a href="{{ @ALIASES.streams_list }}/{{ @item['username'] }}/">
+								<a href="{{ @item['adress'] }}/">
 									<img src="{{ @media }}/center/33/{{ @item['image'] }}"/>
 									<div class="gameinfo">
 										<p>{{ @item['username'] }} le {{@item['date']}}</p>
