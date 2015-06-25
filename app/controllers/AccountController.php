@@ -267,4 +267,74 @@ class AccountController extends Controller
         sec_session_destroy();
         $this->f3->reroute('@account');
     }
+
+    public function addUser() {
+        sec_session_start();
+
+        if (null === $this->f3->get('SESSION.username')) {
+            $this->f3->reroute('@auth');
+        } else {
+            $user = new User($this->db);
+            $check = $user->loginCheck();
+
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+            }
+
+            $this->f3->set('view', 'account/addUser.html');
+            $this->f3->set('includeJsCssAccount', 'true');
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
+
+    public  function addUserAjax() {
+        $errors = array();
+        $data = array();
+
+        if (!preg_match("/^-?[1-9][0-9]*$/D", $this->f3->get('POST.hfr_user_id'))) {
+            $errors['hfr_user_id'] = "Le HFR User Id doit être un nombre entier";
+        }
+
+        if (!$this->f3->exists('POST.hfr_user_id') || empty($this->f3->get('POST.hfr_user_id')))
+            $errors['hfr_user_id'] = "Le HFR User Id est requis";
+
+        if (!$this->f3->exists('POST.username') || empty($this->f3->get('POST.username')))
+            $errors['username'] = "L'identifiant est requis";
+
+        if (!$this->f3->exists('POST.email') || empty($this->f3->get('POST.email')))
+            $errors['email'] = "L'adresse e-mail est requise";
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            $hfr_user_id = $this->f3->clean($this->f3->get('POST.hfr_user_id'));
+            $username = $this->f3->clean($this->f3->get('POST.username'));
+            $email = $this->f3->clean($this->f3->get('POST.email'));
+
+            sec_session_start();
+
+            $response = $this->user->addUser($hfr_user_id, $username, $email);
+
+            if ($response == "OK") {
+                $data['success'] = true;
+                $data['message'] = "L'utilisateur a bien été ajouté";
+            }
+            else if ($response == "problem") {
+                $data['success'] = false;
+                $data['message'] = "Une erreur s'est produite";
+                $errors['else'] = "Une erreur s'est produite";
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
+    }
+
+    public function manageUser() {
+
+
+
+
+    }
 }

@@ -1,5 +1,15 @@
 <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) }}">
     <true>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='{{@ALIASES.account}}'>Mon compte</a></li>
+                <li><a href='{{@ALIASES.accountCR}}'>Mes CRs</a></li>
+                <li><a href='{{@ALIASES.accountActu}}'>Mes dernières actus</a></li>
+                <li class='active'><a href='{{@ALIASES.importcr}}'>Importer un CR</a></li>
+                <li><a href='{{@ALIASES.manageUser}}'>Gestion des utilisateurs</a></li>
+                <li><a href='{{@ALIASES.addUser}}'>Ajouter un utilisateur</a></li>
+            </ul>
+        </div>
         <div ng-controller="importcrHelperController" ng-cloak class="importcr">
             <h2>Import d'un CR</h2>
 

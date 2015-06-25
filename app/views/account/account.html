@@ -8,8 +8,8 @@
                 <check if="{{ \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true') }}">
                 <true>
                     <li><a href='{{@ALIASES.importcr}}'>Importer un CR</a></li>
-                    <li><a href='{{@ALIASES.accountActu}}'>Gestion des utilisateurs</a></li>
-                    <li><a href='{{@ALIASES.accountActu}}'>Ajouter un utilisateur</a></li>
+                    <li><a href='{{@ALIASES.manageUser}}'>Gestion des utilisateurs</a></li>
+                    <li><a href='{{@ALIASES.addUser}}'>Ajouter un utilisateur</a></li>
                 </true>
                 </check>
             </ul>
@@ -54,12 +54,12 @@
                     </div>
 
                     <div class="pure-control-group">
-                        <label for="password">Nouveau mot de passe</label>
+                        <label for="newPassword">Nouveau mot de passe</label>
                         <input id="newPassword" name="newPwd1" type="password" placeholder="">
                     </div>
 
                     <div class="pure-control-group">
-                        <label for="password">Réécrire nouveau mot de passe</label>
+                        <label for="newPassword2">Réécrire nouveau mot de passe</label>
                         <input id="newPassword2" name="newPwd2" type="password" placeholder="">
                     </div>
 
