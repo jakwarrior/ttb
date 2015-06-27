@@ -1,0 +1,154 @@
+<check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) }}">
+    <true>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='{{@ALIASES.account}}'>Mon compte</a></li>
+                <li ><a href='{{@ALIASES.accountCR}}'>Mes CRs</a></li>
+                <li><a href='{{@ALIASES.accountActu}}'>Mes dernières actus</a></li>
+                <li><a href='{{@ALIASES.importcr}}'>Importer un CR</a></li>
+                <li class='active'><a href='{{@ALIASES.manageUser}}'>Gestion des utilisateurs</a></li>
+                <li><a href='{{@ALIASES.addUser}}'>Ajouter un utilisateur</a></li>
+            </ul>
+        </div>
+        <div class="account_content">
+            <repeat group="{{ @users }}" value="{{ @item }}">
+                <check if="{{ @item['username'] != '' }}">
+                    <true>
+                        <div class="repeat">
+                            <form id="{{ "addUserForm" . @item['hfr_user_id'] }}"  class="pure-form pure-form-aligned">
+                                <label for="{{ "email"  . @item['hfr_user_id'] }}">{{ html_entity_decode(@item['username']) }} :</label>
+                                <input id="{{ "email"  . @item['hfr_user_id'] }}" name="{{ "email" . @item['hfr_user_id'] }}" type="email" placeholder="{{@item['email']}}">
+                                <button id="{{ "saveEmail"  . @item['hfr_user_id'] }}" type="button" class="pure-button pure-button-primary">Enregistrer</button>
+                                <button id="{{ "resetPassword"  . @item['hfr_user_id'] }}" type="button" class="pure-button pure-button-primary">Réinitialiser MDP</button>
+                            </form>
+                        </div>
+                        <script>
+                            $(document).ready(function() {
+                                // process the form
+                                $('#{{ "saveEmail" . @item['hfr_user_id'] }}').click(function(event) {
+
+                                    var formData = {
+                                        'hfr_user_id'       : {{ @item['hfr_user_id'] }},
+                                        'email'             : $('input[name={{ "email" . @item['hfr_user_id'] }}]').val()
+                                    };
+
+                                    $.ajax({
+                                        type        : 'POST',
+                                        url         : '{{@ALIASES.changeEmailAdmin}}',
+                                        data        : formData,
+                                        dataType    : 'json',
+                                        encode      : true
+                                    })
+                                            .done(function(data) {
+                                                if ( !data.success) {
+                                                    if (data.errors.email) {
+                                                        $.modal(data.errors.email,
+                                                                {   overlayClose : true,
+                                                                    onShow: function(dlg) {
+                                                                        $(dlg.container).css('height','auto');
+                                                                        $(dlg.container).css('width','auto');
+                                                                        $.modal.setPosition();
+                                                                    }});
+                                                    }
+
+                                                    if (data.errors.else) {
+                                                        $.modal(data.errors.else,
+                                                                {   overlayClose : true,
+                                                                    onShow: function(dlg) {
+                                                                        $(dlg.container).css('height','auto');
+                                                                        $(dlg.container).css('width','auto');
+                                                                        $.modal.setPosition();
+                                                                    }});
+                                                    }
+                                                }
+                                                else {
+                                                    $('#{{ "email" . @item['hfr_user_id'] }}').attr("placeholder",$('input[name={{ "email" . @item['hfr_user_id'] }}]').val());
+                                                    $.modal(data.message,
+                                                            {   overlayClose : true,
+                                                                onShow: function(dlg) {
+                                                                    $(dlg.container).css('height','auto');
+                                                                    $(dlg.container).css('width','auto');
+                                                                    $.modal.setPosition();
+                                                                }});
+                                                }
+                                            });
+                                    event.preventDefault();
+                                });
+
+                                $('#{{ "resetPassword" . @item['hfr_user_id'] }}').click(function(event) {
+
+                                    var formData = {
+                                        'hfr_user_id'       : {{ @item['hfr_user_id'] }}
+                                    };
+
+                                    $.ajax({
+                                        type        : 'POST',
+                                        url         : '{{@ALIASES.resetPasswordAdmin}}',
+                                        data        : formData,
+                                        dataType    : 'json',
+                                        encode      : true
+                                    })
+                                            .done(function(data) {
+                                                if ( !data.success) {
+                                                    if (data.errors.email) {
+                                                        $.modal(data.errors.email,
+                                                                {   overlayClose : true,
+                                                                    onShow: function(dlg) {
+                                                                        $(dlg.container).css('height','auto');
+                                                                        $(dlg.container).css('width','auto');
+                                                                        $.modal.setPosition();
+                                                                    }});
+                                                    }
+
+                                                    if (data.errors.else) {
+                                                        $.modal(data.errors.else,
+                                                                {   overlayClose : true,
+                                                                    onShow: function(dlg) {
+                                                                        $(dlg.container).css('height','auto');
+                                                                        $(dlg.container).css('width','auto');
+                                                                        $.modal.setPosition();
+                                                                    }});
+                                                    }
+                                                }
+                                                else {
+                                                    $.modal(data.message,
+                                                            {   overlayClose : true,
+                                                                onShow: function(dlg) {
+                                                                    $(dlg.container).css('height','auto');
+                                                                    $(dlg.container).css('width','auto');
+                                                                    $.modal.setPosition();
+                                                                }});
+                                                }
+                                            });
+                                    event.preventDefault();
+                                    });
+                            });
+                        </script>
+                    </true>
+                </check>
+            </repeat>
+        </div>
+        <style type = "text/css">
+            .repeat {
+                text-align: left;
+                margin: 10px;
+            }
+            .pure-button {
+               vertical-align: middle;
+                margin-top: 0;
+                margin-left: 5px;
+            }
+            label {
+                display: inline-block;
+                width: 250px;
+                text-align: right;
+                padding-right: 10px;
+            }
+        </style>
+    </true>
+    <false>
+        <div class="auth_content">
+            Accès interdit
+        </div>
+    </false>
+</check>

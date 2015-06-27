@@ -10,25 +10,23 @@
                 <li class='active'><a href='{{@ALIASES.addUser}}'>Ajouter un utilisateur</a></li>
             </ul>
         </div>
-        <div id="addUserForm" class="account_content">
-            <form class="pure-form pure-form-aligned">
+        <div class="account_content">
+            <form id="addUserForm" class="pure-form pure-form-aligned">
                 <fieldset>
                     <legend><b>Ajout d'un utilisateur</b></legend>
                     <div class="pure-control-group">
-                        <div class="pure-control-group">
-                            <label for="hfr_user_id">HFR User Id</label>
-                            <input id="hfr_user_id" name="hfr_user_id" type="text" placeholder="">
-                        </div>
+                        <label for="hfr_user_id">HFR User Id</label>
+                        <input id="hfr_user_id" name="hfr_user_id" type="text" placeholder="">
+                    </div>
 
-                        <div class="pure-control-group">
-                            <label for="username">Identifiant</label>
-                            <input id="username" name="username" type="text" placeholder="">
-                        </div>
+                    <div class="pure-control-group">
+                        <label for="username">Identifiant</label>
+                        <input id="username" name="username" type="text" placeholder="">
+                    </div>
 
-                        <div class="pure-control-group">
-                            <label for="email">Adresse e-mail</label>
-                            <input id="email" name="email" type="email" placeholder="">
-                        </div>
+                    <div class="pure-control-group">
+                        <label for="email">Adresse e-mail</label>
+                        <input id="email" name="email" type="email" placeholder="">
                     </div>
                     <button type="submit" id="submit" class="pure-button pure-button-primary broken-ajax">Enregistrer</button>
                 </fieldset>

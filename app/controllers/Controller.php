@@ -11,7 +11,7 @@ class Controller {
 
         $Stream = new Stream($this->db);
         $Event = new Event($this->db);
-        $event = $Event->getListEvents(4);
+        $event = $Event->getListEvents(3);
 
         $crss = array ();
 

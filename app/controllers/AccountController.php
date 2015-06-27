@@ -332,9 +332,93 @@ class AccountController extends Controller
     }
 
     public function manageUser() {
+        sec_session_start();
 
+        if (null === $this->f3->get('SESSION.username')) {
+            $this->f3->reroute('@auth');
+        } else {
+            $user = new User($this->db);
+            $check = $user->loginCheck();
 
+            if (count($check) == 2) {
+                $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
+                $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
+            }
 
+            $this->f3->set('users', $user->getAllUsers());
+            $this->f3->set('view', 'account/manageUser.html');
+            $this->f3->set('includeJsCssAccount', 'true');
+            echo \Template::instance()->render('layout.htm');
+        }
+    }
 
+    public function changeEmailAdmin() {
+        $errors = array();
+        $data = array();
+
+        if (!$this->f3->exists('POST.email') || empty($this->f3->get('POST.email')))
+            $errors['email'] = "L'adresse e-mail est requise";
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            sec_session_start();
+
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+            $hfr_user_id = $this->f3->clean($this->f3->get('POST.hfr_user_id'));
+
+            $response = $this->user->changeEmailAdmin($hfr_user_id, $email);
+
+            if ($response == "OK") {
+                $data['success'] = true;
+                $data['message'] = "L'adresse e-mail a bien été enregistrée";
+            }
+            else if ($response == "problem") {
+                $data['success'] = false;
+                $data['message'] = "Une erreur s'est produite";
+                $errors['else'] = "Une erreur s'est produite";
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
+    }
+
+    public function resetPasswordAdmin()
+    {
+        $errors = array();
+        $data = array();
+
+        if ( !empty($errors)) {
+            $data['success'] = false;
+        } else {
+            sec_session_start();
+
+            $hfr_user_id = $this->f3->clean($this->f3->get('POST.hfr_user_id'));
+            $response = $this->user->resetPasswordAdmin($hfr_user_id);
+
+            if ($response == "OK") {
+                $data['success'] = true;
+                $data['message'] = "Le nouveau mot de passe vient de vous être envoyé";
+            }
+            else if ($response == "inconnu") {
+                $data['success'] = false;
+                $data['message'] = 'Le compte correspondant à cette adresse est introuvable';
+                $errors['else'] = 'Le compte correspondant à cette adresse est introuvable';
+            }
+            else if ($response == "email") {
+                $data['success'] = false;
+                $data['message'] = "L'adresse e-mail associé à ce compte est vide";
+                $errors['else'] = "L'adresse e-mail associé à ce compte est vide";
+            }
+            else if ($response == "problem") {
+                $data['success'] = false;
+                $data['message'] = "Une erreur s'est produite";
+                $errors['else'] = "Une erreur s'est produite";
+            }
+        }
+
+        $data['errors']  = $errors;
+        echo json_encode($data);
     }
 }
