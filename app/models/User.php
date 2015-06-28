@@ -312,7 +312,6 @@ class User extends DB\SQL\Mapper {
                     $result2 = $this->db->exec($request2, array(':email' => $newEmail, ':user_id' => $hfr_user_id));
 
                     if ($result2 == 1) {
-                        $this->f3->set('SESSION.email', $newEmail);
                         return "OK";
                     } else {
                         return "problem";
