@@ -1,5 +1,5 @@
 <?php
-require_once "/google-api-php-client/src/Google/autoload.php";
+require_once "google-api-php-client/src/Google/autoload.php";
 
 class StreamController extends Controller {
 
