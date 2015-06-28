@@ -14,8 +14,7 @@ class Game extends DB\SQL\Mapper {
         ' ON g.id = cg.game_id'.
         ' WHERE g.type_id = 1'.
         ' GROUP BY g.id'.
-        ' ORDER BY g.name ASC', NULL, 86400
-      );
+        ' ORDER BY g.name ASC');
     }
 
 

@@ -132,7 +132,7 @@ class AdminController extends Controller {
     $newCR->hfr_post_id = $crProcessed['hfr_post_id'];
     $newCR->hfr_user_id = $crProcessed['hfr_user_id'];
     $newCR->username	= $crProcessed['username'];
-    $newCR->content = $crProcessed['content'];
+    $newCR->content = htmlentities($crProcessed['content']);
     $newCR->content_raw = $crProcessed['content_raw'];
     $newCR->date_posted = $crProcessed['date_posted'];
     $newCR->date_modified = date('Y-m-d H:i:s');
