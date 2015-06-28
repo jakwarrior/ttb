@@ -417,6 +417,16 @@ table.spoiler img[onload] {
     font-size: .8em;
 }
 
+#footer div.copyr {
+    font-weight: bold;
+    font-size: .9em;
+}
+
+#footer {
+    text-align: center;
+    padding-top: 30px;
+}
+
 #side_content .crotypedia {
     margin: 0;
 }
@@ -939,84 +949,7 @@ a.hfrtv.all {
     color: #84b8d9;
 }
 
-/*#basic-modal-content {
-    width: 100px;
-    height: 100%;
-}*/
-
-/*#hfrtv ul, #crotypedia ul.cr_games {
-    padding:0;
-    background:black;
-    z-index:1;
-    position: relative;
-
+#floatingMenu {
+    height: 570px;
+    overflow: hidden;
 }
-
-#hfrtv ul li, #crotypedia ul.cr_games li {
-    display: block;
-    position: relative;
-    float:left;
-    width:25%;
-
-}
-
-#crotypedia ul.cr_games li {
-    width:25%;
-}
-#hfrtv ul li::before, #crotypedia ul.cr_games li::before {
-    content: "";
-    display: block;
-    padding-top: 55%;
-    z-index:-21;
-    position: relative;
-}
-#crotypedia ul.cr_games li::before {
-    padding-top: 50%;
-}
-
-#hfrtv ul li a, #crotypedia ul.cr_games li a {
-    position:  absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    font-size:.7em;
-    color:white;
-    text-decoration: none;
-
-    background-color:rgba(100, 65, 165, 0.8);
-    height:2em;
-    line-height:2em;
-    padding-left:0.4em;
-}
-
-#crotypedia ul.cr_games li a {
-    background-color:rgba(255, 255, 255, 0.8);
-    color:#000;
-}
-
-#hfrtv ul li::before, #crotypedia ul.cr_games li::before {
-    content: "";
-    background-color:black;
-}
-#hfrtv ul li::after, #crotypedia ul.cr_games li::after {
-    -webkit-background-size: 110%;
-    -moz-background-size: 110%;
-    -o-background-size: 110%;
-    background-size: 110%;
-
-    background-position: center center;
-    top: 0;
-    left: 0;
-    content: "";
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-    transition: opacity .2s ease;
-    background-repeat: no-repeat;
-
-}
-#hfrtv ul li:hover::after, #crotypedia ul.cr_games li:hover::after {
-    opacity:.8;
-}*/
-

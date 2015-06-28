@@ -69,6 +69,35 @@
 
 		</script>
 
+        <script>
+            $(function() {
+                // Menu flottant
+                var nav = $('#floatingMenu');
+                var navHomeY = nav.offset().top;
+                var isFixed = false;
+                var $w = $(window);
+                $w.scroll(function () {
+                    var scrollTop = $w.scrollTop();
+                    var shouldBeFixed = scrollTop > navHomeY;
+                    if (shouldBeFixed && !isFixed) {
+                        nav.css({
+                            position: 'fixed',
+                            top: 0,
+                            left: nav.offset().left,
+                            width: nav.width()
+                        });
+                        isFixed = true;
+                    }
+                    else if (!shouldBeFixed && isFixed) {
+                        nav.css({
+                            position: 'static'
+                        });
+                        isFixed = false;
+                    }
+                });
+            });
+        </script>
+
 	</head>
 	<body>
 
@@ -121,43 +150,45 @@
 				</div>
 
 				<!-- MENU -->
-				<ul class="categories">
-					<repeat group="{{ @menu }}" value="{{ @item }}">
-						<li class="{{ toAscii(@item['title']) }}"><a class="<check if="{{ @item['selected'] == 'selected' }}"> selected</check>" href="{{ @item['url'] }}"
-                            <check if="{{ @item['title'] == 'Topic PC' || @item['title'] == 'Salon des Tartuffes' }}"> target="_blank"</check>>{{ @item['title'] }}</a></li>
+                <div id="floatingMenu">
+                    <ul class="categories">
+                        <repeat group="{{ @menu }}" value="{{ @item }}">
+                            <li class="{{ toAscii(@item['title']) }}"><a class="<check if="{{ @item['selected'] == 'selected' }}"> selected</check>" href="{{ @item['url'] }}"
+                                <check if="{{ @item['title'] == 'Topic PC' || @item['title'] == 'Salon des Tartuffes' }}"> target="_blank"</check>>{{ @item['title'] }}</a></li>
 
-					</repeat>
+                        </repeat>
 
-				</ul>
+                    </ul>
 
-				<style>
-					<repeat group="{{ @menu }}" value="{{ @item }}">
-						li.{{ toAscii(@item['title']) }} a {
-							background-image:none !important;
-							border-color:{{ @item['color'] }} !important;
-							border-left:5px solid;
-                            background-image:{{ @item['icon'] }} !important;
-						}
+                    <style>
+                        <repeat group="{{ @menu }}" value="{{ @item }}">
+                            li.{{ toAscii(@item['title']) }} a {
+                                background-image:none !important;
+                                border-color:{{ @item['color'] }} !important;
+                                border-left:5px solid;
+                                background-image:{{ @item['icon'] }} !important;
+                            }
 
-						li.{{ toAscii(@item['title']) }} a:hover,  li.{{ toAscii(@item['title']) }} a.selected {
-							color:{{ @item['tcolor'] }} !important;
-							background-color:{{ @item['color'] }} !important;
+                            li.{{ toAscii(@item['title']) }} a:hover,  li.{{ toAscii(@item['title']) }} a.selected {
+                                color:{{ @item['tcolor'] }} !important;
+                                background-color:{{ @item['color'] }} !important;
 
-						}
+                            }
 
-						<check if="{{ @item['selected'] == 'selected' }}">
-						#menu {
-							border-color:{{ @item['color'] }} !important;
-						}
+                            <check if="{{ @item['selected'] == 'selected' }}">
+                            #menu {
+                                border-color:{{ @item['color'] }} !important;
+                            }
 
-						</check>
+                            </check>
 
-					</repeat>
-				</style>
+                        </repeat>
+                    </style>
 
 
-				<include href="footer.htm" />
-			</div>
+                    <include href="footer.htm" />
+                </div>
+            </div>
 
 			<div id="content">
 
