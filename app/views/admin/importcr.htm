@@ -26,11 +26,11 @@
                 <div class="step">
                     Type : <select ng-model="selectedType" name="selectedType">
                     <repeat group="{{ @types }}" value="{{ @item }}">
-                        <option value="{{ @item['id'] }}">{{ @item['name'] }}</p>
+                        <option value="{{ @item['id'] }}">{{ @item['name'] }}</option>
                     </repeat>
                 </select> - Format : <select ng-model="selectedFormat" name="selectedFormat">
                     <repeat group="{{ @formats }}" value="{{ @item }}">
-                        <option value="{{ @item['id'] }}">{{ @item['name'] }}</p>
+                        <option value="{{ @item['id'] }}">{{ @item['name'] }}</option>
                     </repeat>
                 </select>
                     <br><br><input type="text" ng-model="selectedComment" placeholder='commentaire'/>
