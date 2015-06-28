@@ -2,7 +2,7 @@ select {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif;
 }
 
-input {
+input.import {
     font-family: 'PT Sans', Helvetica, Arial, sans-serif;
     font-size:1.1em;
     color:#262626;
@@ -14,7 +14,7 @@ padding-left:15px;
 
 }
 
-h4, h5, .games input[type=button] {
+h4, h5, .games input[type=button].import {
 cursor: pointer;
 text-decoration: none;
 display: inline-block;
@@ -30,7 +30,7 @@ h4 {
   margin:10px 0;
 }
 
-h4:hover, .games input[type=button]:hover {
+h4:hover, .games input[type=button]:hover.import {
   background-color:white;
 
 }
@@ -58,7 +58,7 @@ margin:10px 0;
   vertical-align: bottom;
 }
 
-input[type=text] {
+input[type=text].import {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif;
   font-size:1.1em;
   color:#262626;
@@ -73,14 +73,14 @@ input.inputsearch {
   width:100%;
 }
 
-.games input[type=button] {
+.games input[type=button].import {
   width:19%;
   padding:5px;
   text-align:center;
   line-height: 28px;font-weight:bold;
 }
 
-.games2 input[type=button] {
+.games2 input[type=button].import {
   width:150px;
   line-height: 28px;font-weight:bold;
 }
@@ -129,7 +129,12 @@ background-color: greenyellow;
 }
 
 
-.manual input {
+.manual input.import {
   width: 100%;
   margin:5px 0;
+}
+
+.importcr a {
+    color: #000000;
+    text-decoration: none;
 }

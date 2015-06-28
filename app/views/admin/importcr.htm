@@ -16,7 +16,7 @@
             <div class="messageko" ng-show="import_stepKO" ng-bind-html="messageKO"></div>
             <div class="message" ng-show="import_stepOK" ng-bind-html="message"></div>
 
-            <input type="url" ng-change="resetURL()"  name="input" ng-model="cr_url" placeholder="<ignore>{{somePlaceholder}}</ignore>"/>
+            <input class="import" type="url" ng-change="resetURL()"  name="input" ng-model="cr_url" placeholder="<ignore>{{somePlaceholder}}</ignore>"/>
 
             <h4 ng-click="validateUrl(this)">Etape 1/4 > Vérifier le CR</h4>
 
@@ -33,24 +33,24 @@
                         <option value="{{ @item['id'] }}">{{ @item['name'] }}</option>
                     </repeat>
                 </select>
-                    <br><br><input type="text" ng-model="selectedComment" placeholder='commentaire'/>
+                    <br><br><input class="import" type="text" ng-model="selectedComment" placeholder='commentaire'/>
                 </div>
 
                 <h3>Etape 3/4> Associer le(s) jeu(x)</h3>
                 <div class="step">
                     <div class="games" ng-repeat="game in table track by $index">
-                        <input ng-model="table[$index].name" type="text" placeholder='nom du jeu' disabled />
-                        <input type="button" ng-click="table.splice($index, 1)" value="supprimer"/>
+                        <input class="import" ng-model="table[$index].name" type="text" placeholder='nom du jeu' disabled />
+                        <input class="import" type="button" ng-click="table.splice($index, 1)" value="supprimer"/>
                     </div>
                     <p style="margin:10px;" ng-hide="table.length">Aucun jeu associé!</p>
                     <h3>Recherche d'un jeu</h3>
 
-                    <input keyboard-poster post-function="searchGames" class="inputsearch" ng-model="searchterm" type="text" placeholder='nom un jeu' />
+                    <input keyboard-poster post-function="searchGames" class="inputsearch import" ng-model="searchterm" type="text" placeholder='nom un jeu' />
                     <div class="gamelist">
                         <div class="games2" ng-repeat="game in tableGames">
                             <ignore>
                                 <span ng-show="game.origin">[bdd]</span> {{game.name}} ({{game.date}})
-                                <input ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
+                                <input class="import" ng-show="(table | exist: game) < 0" type="button" ng-click="addGame(game)" value="associer"/>
                                 <img ng-src="{{game.image.thumb_url}}">
                             </ignore>
                         </div>
@@ -58,10 +58,10 @@
                     </div>
                     <div class="manual" ng-hide="import_searchKO != 3">
                         <p style="margin:10px;" >Aucun résultat > Saisie manuelle :</p>
-                        <input class="inputmanuel" ng-model="manualname" type="text" placeholder='Nom un jeu' />
-                        <input class="inputmanuel" ng-model="manualimage" type="text" placeholder="Url de l'image (large :o)" />
+                        <input class="inputmanuel import" ng-model="manualname" type="text" placeholder='Nom un jeu' />
+                        <input class="inputmanuel import" ng-model="manualimage" type="text" placeholder="Url de l'image (large :o)" />
 
-                        <input type="button" ng-click="addManualGame()" value="associer"/>
+                        <input class="import" type="button" ng-click="addManualGame()" value="associer"/>
                     </div>
 
                 </div>

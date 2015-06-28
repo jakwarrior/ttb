@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" <check if="{{ \Base::instance()->exists('includeJsCssImportCr') && (@includeJsCssImportCr == 'true') }}"><true>ng-app="App"</true></check>>
 	<head>
 		<meta charset="<?php echo $ENCODING; ?>" />
 		<title><check if="{{ isset(@site_title) }}">{{ @site_title }}</check><check if="{{ !isset(@site_title) }}">{{ @site }}</check></title>
