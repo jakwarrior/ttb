@@ -881,6 +881,19 @@ a.hfrtv.all {
     color: black;
 }
 
+.mod a {
+    color: black;
+    font-weight: bold;
+}
+
+.mod img {
+    max-width: 100%;
+    height: auto;
+    width: 70%;
+    margin: 20px auto;
+    display: block;
+}
+
 /* Overlay */
 #simplemodal-overlay {
     background-color: #000;
