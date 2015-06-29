@@ -4,8 +4,8 @@
 // @include     http://forum.hardware.fr/*
 // @version     1.0.0
 // @grant       none
-// @downloadURL http://tetcorporation.fr/HFR/HFR_Gibbactu.user.js
-// @updateURL   http://tetcorporation.fr/HFR/HFR_Gibbactu.user.js
+// @downloadURL http://www.thetartuffebay.org/mod/HFR_Gibbactu.user.js
+// @updateURL   http://www.thetartuffebay.org/mod/HFR_Gibbactu.user.js
 // ==/UserScript==
 
 'use strict';
