@@ -26,6 +26,7 @@ class AccountController extends Controller
 
             $this->f3->set('view', 'account/account.html');
             $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('site_title','Mon compte — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -34,6 +35,7 @@ class AccountController extends Controller
     {
         $this->f3->set('view', 'account/auth.html');
         $this->f3->set('includeJsCssAccount', 'true');
+        $this->f3->set('site_title','Authentification — TTB');
         echo \Template::instance()->render('layout.htm');
     }
 
@@ -81,6 +83,7 @@ class AccountController extends Controller
     {
         $this->f3->set('view', 'account/reset.html');
         $this->f3->set('includeJsCssAccount', 'true');
+        $this->f3->set('site_title','Réinitialisation — TTB');
         echo \Template::instance()->render('layout.htm');
     }
 
@@ -136,6 +139,7 @@ class AccountController extends Controller
 
             $this->f3->set('view', 'account/cr.html');
             $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('site_title','Mes CRs — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -176,6 +180,7 @@ class AccountController extends Controller
 
             $this->f3->set('view', 'account/gibbactu.html');
             $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('site_title','Mes actus — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -284,6 +289,7 @@ class AccountController extends Controller
 
             $this->f3->set('view', 'account/addUser.html');
             $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('site_title','Ajout utilisateur — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -348,6 +354,7 @@ class AccountController extends Controller
             $this->f3->set('users', $user->getAllUsers());
             $this->f3->set('view', 'account/manageUser.html');
             $this->f3->set('includeJsCssAccount', 'true');
+            $this->f3->set('site_title','Gestion utilisateurs — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }

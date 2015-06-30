@@ -140,6 +140,7 @@ class CRController extends Controller
 
             $this->f3->set('view', 'cr/edit.html');
             $this->f3->set('includeJsCssEdition', 'true');
+            $this->f3->set('site_title','Edition de CR — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }

@@ -59,6 +59,7 @@ class ActuController extends Controller {
 		$this->f3->set('page',$page2);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/list.htm');
+        $this->f3->set('site_title','Les dernières actus — TTB');
         echo \Template::instance()->render('layout.htm');
 	}
 
@@ -128,6 +129,7 @@ class ActuController extends Controller {
 		$this->f3->set('page',$page2);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/list.htm');
+        $this->f3->set('site_title','Gibbactus - page ' . $this->f3->get('PARAMS.page') . ' — TTB');
         echo \Template::instance()->render('layout.htm');
 	}
 
@@ -168,6 +170,7 @@ class ActuController extends Controller {
 
             $this->f3->set('view', 'actu/edit.html');
             $this->f3->set('includeJsCssEdition', 'true');
+            $this->f3->set('site_title','Edition gibbactu — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -224,10 +227,12 @@ class ActuController extends Controller {
                     $this->f3->reroute('@showGibbactuDate(@date=' . $jour . '-' . $mois . '-' . $annee  . ')');
                 } else {
                     $this->f3->set('view','error.html');
+                    $this->f3->set('site_title','Erreur — TTB');
                     echo \Template::instance()->render('layout.htm');
                 }
             } else {
                 $this->f3->set('view','error.html');
+                $this->f3->set('site_title','Erreur — TTB');
                 echo \Template::instance()->render('layout.htm');
             }
         }
@@ -287,13 +292,16 @@ class ActuController extends Controller {
                 $this->f3->set('page_type','gibbactu');
                 $this->f3->set('showDate', $showDate);
                 $this->f3->set('view','actu/date.htm');
+                $this->f3->set('site_title','Gibbactus du ' . $showDate . ' — TTB');
                 echo \Template::instance()->render('layout.htm');
             } else {
                 $this->f3->set('view','error.html');
+                $this->f3->set('site_title','Erreur — TTB');
                 echo \Template::instance()->render('layout.htm');
             }
         } else {
             $this->f3->set('view','error.html');
+            $this->f3->set('site_title','Erreur — TTB');
             echo \Template::instance()->render('layout.htm');
         }
     }
@@ -317,6 +325,7 @@ class ActuController extends Controller {
 
         if (count($result) == 0) {
             $this->f3->set('view','error.html');
+            $this->f3->set('site_title','Erreur — TTB');
             echo \Template::instance()->render('layout.htm');
         }
         
@@ -340,6 +349,7 @@ class ActuController extends Controller {
         $this->f3->set('page',$result);
         $this->f3->set('page_type','gibbactu');
         $this->f3->set('view','actu/id.html');
+        $this->f3->set('site_title','Gibbactu n°' . $this->f3->get('PARAMS.id') . ' — TTB');
         echo \Template::instance()->render('layout.htm');
     }
 }

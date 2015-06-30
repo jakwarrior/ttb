@@ -9,6 +9,7 @@ class StreamController extends Controller {
         $this->f3->set('streams',$Streams->find(NULL, array('order'=>'username ASC')));
         $this->f3->set('includeJsCssStream','true');
         $this->f3->set('view','stream/list.htm');
+        $this->f3->set('site_title','Les streams de TTB');
         echo \Template::instance()->render('layout.htm');
 	}
 
@@ -20,6 +21,7 @@ class StreamController extends Controller {
         $this->f3->set('events', $Event->getAllListEvents());
         $this->f3->set('includeJsCssAgenda', 'true');
         $this->f3->set('view','stream/agenda.html');
+        $this->f3->set('site_title','Agenda des streams — TTB');
         echo \Template::instance()->render('layout.htm');
     }
 
@@ -35,6 +37,7 @@ class StreamController extends Controller {
         $this->f3->set('streamer', $streamer[0]);
 
         $this->f3->set('view','stream/profil.html');
+        $this->f3->set('site_title','Les streams de '.$this->f3->get('PARAMS.name').' — TTB');
         echo \Template::instance()->render('layout.htm');
     }
 

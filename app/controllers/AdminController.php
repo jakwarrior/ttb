@@ -37,6 +37,7 @@ class AdminController extends Controller {
           $this->f3->set('includeJsCssAccount', 'true');
           $this->f3->set('admin_cat', 'Import CR');
           $this->f3->set('view','admin/importcr.htm');
+          $this->f3->set('site_title','Import CR — TTB');
           echo Template::instance()->render('layout.htm');
       }
   }

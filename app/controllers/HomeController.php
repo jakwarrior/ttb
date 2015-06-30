@@ -66,6 +66,7 @@ class HomeController extends Controller {
         } else {
             $this->f3->set('view','search/search.html');
         }
+        $this->f3->set('site_title','Résultat de la recherche — TTB');
         echo \Template::instance()->render('layout.htm');
     }
 }
