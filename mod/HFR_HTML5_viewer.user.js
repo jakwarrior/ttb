@@ -2,7 +2,7 @@
 // @name        HFR HTML5 viewer
 // @description webm embed
 // @include     http://forum.hardware.fr/*
-// @version     1.1.4
+// @version     1.1.5
 // @grant       none
 // @downloadURL http://www.thetartuffebay.org/mod/HFR_HTML5_viewer.user.js
 // @updateURL   http://www.thetartuffebay.org/mod/HFR_HTML5_viewer.user.js
@@ -15,6 +15,7 @@
 //Version 1.1.2 : correction d'un bug dans le cas où l'url contiendrait "webm" ou une autre extension
 //Version 1.1.3 : ajout de @downloadURL et @updateURL
 //Version 1.1.4 : affichage de la source de la vidéo sous celle-ci | si une vidéo est plus large que la largeur de la page, elle est redimensionnée à la taille max de la page
+//Version 1.1.5 : le calcul se fait sur le nodeValue et non le href pour éviter un bug
 
 'use strict';
 
@@ -27,76 +28,79 @@ function main()
     for (var i = 0; i < videos.length; i++)
     {
         var link = videos[i].href;
+        var link2 = videos[i].firstChild.nodeValue
         var reg=/\.[0-9a-z]+$/i;
-        var extension = reg.exec(link);
+        var extension = reg.exec(link2);
         
-        if (extension)
-        {
-            if (extension[0] === ".webm" || extension[0] === ".mp4" || extension[0] === ".ogv")
+        if (link.length > 0) {
+            if (extension)
             {
-                var video = document.createElement('video');
-                video.src = link;
-                video.autoplay = true;
-                video.loop = true;
-                video.muted = true;
-                video.controls= true;
+                if (extension[0] === ".webm" || extension[0] === ".mp4" || extension[0] === ".ogv")
+                {
+                    var video = document.createElement('video');
+                    video.src = link;
+                    video.autoplay = true;
+                    video.loop = true;
+                    video.muted = true;
+                    video.controls= true;
 
-                videos[i].parentNode.replaceChild(video, videos[i]);
-                video.parentNode.insertBefore(document.createElement('br'), video);
-                video.parentNode.insertBefore(document.createElement('br'), video.nextSibling);
-                var node = document.createTextNode(link);
-                video.parentNode.insertBefore(node, video.nextSibling.nextSibling);
-                video.parentNode.insertBefore(document.createElement('br'),node.nextSibling);
-            }
-            else if (extension[0] === ".gifv")
+                    videos[i].parentNode.replaceChild(video, videos[i]);
+                    video.parentNode.insertBefore(document.createElement('br'), video);
+                    video.parentNode.insertBefore(document.createElement('br'), video.nextSibling);
+                    var node = document.createTextNode(link);
+                    video.parentNode.insertBefore(node, video.nextSibling.nextSibling);
+                    video.parentNode.insertBefore(document.createElement('br'),node.nextSibling);
+                }
+                else if (extension[0] === ".gifv")
+                {
+                    var video = document.createElement('video');
+                    video.autoplay= true;
+                    video.src = link.replace("gifv", "mp4");
+                    video.loop = true;
+                    video.muted = true;
+                    video.controls= true;
+
+                    videos[i].parentNode.replaceChild(video, videos[i]);
+                    video.parentNode.insertBefore(document.createElement('br'), video);
+                    video.parentNode.insertBefore(document.createElement('br'), video.nextSibling);
+                    var node = document.createTextNode(link);
+                    video.parentNode.insertBefore(node, video.nextSibling.nextSibling);
+                    video.parentNode.insertBefore(document.createElement('br'),node.nextSibling);
+                }
+            } else
             {
-                var video = document.createElement('video');
-                video.autoplay= true;
-                video.src = link.replace("gifv", "mp4");
-                video.loop = true;
-                video.muted = true;
-                video.controls= true;
+                if ((link.indexOf("//gfycat.com/") > -1))
+                {
+                    var res = link.split("/");
 
-                videos[i].parentNode.replaceChild(video, videos[i]);
-                video.parentNode.insertBefore(document.createElement('br'), video);
-                video.parentNode.insertBefore(document.createElement('br'), video.nextSibling);
-                var node = document.createTextNode(link);
-                video.parentNode.insertBefore(node, video.nextSibling.nextSibling);
-                video.parentNode.insertBefore(document.createElement('br'),node.nextSibling);
-            }
-        } else
-        {
-            if ((link.indexOf("//gfycat.com/") > -1))
-            {
-                var res = link.split("/");
+                    var video = document.createElement('video');
+                    video.autoplay= true;
+                    video.loop = true;
+                    video.muted = true;
+                    video.controls= true;
 
-                var video = document.createElement('video');
-                video.autoplay= true;
-                video.loop = true;
-                video.muted = true;
-                video.controls= true;
+                    var source = document.createElement('source');
+                    source.src = "http://zippy.gfycat.com/" + res[res.length-1] + ".webm";
+                    source.type = "video/webm";
+                    video.appendChild(source);
 
-                var source = document.createElement('source');
-                source.src = "http://zippy.gfycat.com/" + res[res.length-1] + ".webm";
-                source.type = "video/webm";
-                video.appendChild(source);
+                    var source2 = document.createElement('source');
+                    source2.src = "http://fat.gfycat.com/" + res[res.length-1] + ".webm";
+                    source2.type = "video/webm";
+                    video.appendChild(source2);
 
-                var source2 = document.createElement('source');
-                source2.src = "http://fat.gfycat.com/" + res[res.length-1] + ".webm";
-                source2.type = "video/webm";
-                video.appendChild(source2);
+                    var source3 = document.createElement('source');
+                    source3.src = "http://giant.gfycat.com/" + res[res.length-1] + ".webm";
+                    source3.type = "video/webm";
+                    video.appendChild(source3);
 
-                var source3 = document.createElement('source');
-                source3.src = "http://giant.gfycat.com/" + res[res.length-1] + ".webm";
-                source3.type = "video/webm";
-                video.appendChild(source3);
-
-                videos[i].parentNode.replaceChild(video, videos[i]);
-                video.parentNode.insertBefore(document.createElement('br'), video);
-                video.parentNode.insertBefore(document.createElement('br'), video.nextSibling);
-                var node = document.createTextNode(link);
-                video.parentNode.insertBefore(node, video.nextSibling.nextSibling);
-                video.parentNode.insertBefore(document.createElement('br'),node.nextSibling);
+                    videos[i].parentNode.replaceChild(video, videos[i]);
+                    video.parentNode.insertBefore(document.createElement('br'), video);
+                    video.parentNode.insertBefore(document.createElement('br'), video.nextSibling);
+                    var node = document.createTextNode(link);
+                    video.parentNode.insertBefore(node, video.nextSibling.nextSibling);
+                    video.parentNode.insertBefore(document.createElement('br'),node.nextSibling);
+                }
             }
         }
     }
@@ -134,6 +138,7 @@ window.onload = main;
     var a = links.item(i);
     if (a.hostname && a.hostname == "i.imgur.com" && a.pathname.match(/\.gif$/i)) {
       a.pathname += "v";
+      a.firstChild.nodeValue += "v";
     }
   }
 })();

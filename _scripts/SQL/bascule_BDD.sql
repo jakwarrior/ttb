@@ -25,6 +25,11 @@ UPDATE `cr` SET `hfr_user_id`=1024630, `username`='Etahos', `comment`='' WHERE `
 -- suppression Taxalot vu qu'il ne veut plus apparaitre
 UPDATE `cr` SET `comment`='' WHERE `comment`='Taxalot';
 
+-- update Sanglier pour son renommage
+UPDATE user SET username = 'Sanglier' where hfr_user_id='637246';
+UPDATE actu SET username = 'Sanglier' where hfr_user_id='637246';
+UPDATE cr SET username = 'Sanglier' where hfr_user_id='637246';
+
 -- agenda
 CREATE TABLE IF NOT EXISTS `event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
