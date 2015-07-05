@@ -5,6 +5,11 @@ function sec_session_start() {
     // This stops JavaScript being able to access the session id.
     $httponly = true;
     // Forces sessions to only use cookies.
+    //ini_set('session.save_path', $_SERVER['DOCUMENT_ROOT'].'/sessions');
+    //session_save_path($_SERVER['DOCUMENT_ROOT'].'/sessions');
+    ini_set('session.gc_maxlifetime',60*60*24*7);
+    ini_set('session.gc_probability', 1);
+    ini_set('session.gc_divisor', 100);
     ini_set('session.use_only_cookies', 1);
 
     // Gets current cookies params.
@@ -25,6 +30,11 @@ function sec_chat_session_start() {
     // This stops JavaScript being able to access the session id.
     $httponly = true;
     // Forces sessions to only use cookies.
+    //ini_set('session.save_path', $_SERVER['DOCUMENT_ROOT'].'/sessions');
+    //session_save_path($_SERVER['DOCUMENT_ROOT'].'/sessions');
+    ini_set('session.gc_maxlifetime',60*60*24*7);
+    ini_set('session.gc_probability', 1);
+    ini_set('session.gc_divisor', 100);
     ini_set('session.use_only_cookies', 1);
 
     // Gets current cookies params.
