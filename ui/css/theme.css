@@ -706,7 +706,7 @@ a.hfrtv.all {
 #gibbactu .gibbactus {
     text-align: justify;
     position: relative;
-    padding-top: 60px;
+    padding-top: 50px;
     margin-bottom: 50px;
     padding-left: 15px;
     padding-right: 15px;
@@ -902,6 +902,10 @@ a.hfrtv.all {
     width: 70%;
     margin: 20px auto;
     display: block;
+}
+
+.mod {
+    font-size: 0.9em;
 }
 
 /* Overlay */
