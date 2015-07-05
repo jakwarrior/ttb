@@ -147,18 +147,18 @@ $config['chatBotID'] = 2147483647;
 $config['chatBotName'] = 'ChatBot';
 
 // Minutes until a user is declared inactive (last status update) - the minimum is 2 minutes:
-$config['inactiveTimeout'] = 2;
+$config['inactiveTimeout'] = 10;
 // Interval in minutes to check for inactive users:
-$config['inactiveCheckInterval'] = 5;
+$config['inactiveCheckInterval'] = 10;
 
 // Defines if messages are shown which have been sent before the user entered the channel:
 $config['requestMessagesPriorChannelEnter'] = true;
 // Defines an array of channelIDs (e.g. array(0, 1)) for which the previous setting is always true (will be ignored if set to null):
 $config['requestMessagesPriorChannelEnterList'] = null;
 // Max time difference in hours for messages to display on each request:
-$config['requestMessagesTimeDiff'] = 24;
+$config['requestMessagesTimeDiff'] = 48;
 // Max number of messages to display on each request:
-$config['requestMessagesLimit'] = 10;
+$config['requestMessagesLimit'] = 20;
 
 // Max users in chat (does not affect moderators or admins):
 $config['maxUsersLoggedIn'] = 150;
@@ -170,7 +170,7 @@ $config['messageTextMaxLength'] = 1040;
 $config['maxMessageRate'] = 20;
 
 // Defines the default time in minutes a user gets banned if kicked from a moderator without ban minutes parameter:
-$config['defaultBanTime'] = 5;
+$config['defaultBanTime'] = 120;
 
 // Argument that is given to the handleLogout JavaScript method:
 $config['logoutData'] = '../account/logout';
@@ -182,10 +182,10 @@ $config['ipCheck'] = true;
 // Defines the max time difference in hours for logs when no period or search condition is given:
 $config['logsRequestMessagesTimeDiff'] = 1;
 // Defines how many logs are returned on each logs request:
-$config['logsRequestMessagesLimit'] = 10;
+$config['logsRequestMessagesLimit'] = 40;
 
 // Defines the earliest year used for the logs selection:
-$config['logsFirstYear'] = 2007;
+$config['logsFirstYear'] = 2014;
 
 // Defines if old messages are purged from the database:
 $config['logsPurgeLogs'] = true;

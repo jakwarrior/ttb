@@ -168,6 +168,8 @@
 	vertical-align:top;
 	overflow:auto;
 	margin:5px;
+    max-width: 250px !important;
+    height: auto;
 }
 #content #chatList .delete {
 	display:block;
