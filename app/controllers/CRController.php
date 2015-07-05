@@ -1,5 +1,4 @@
 <?php
-include_once 'app/vendor/functions.php';
 
 class CRController extends Controller
 {
@@ -40,7 +39,7 @@ class CRController extends Controller
         $Game = new Game($this->db);
         $this->f3->set('games', $Game->byCR($myCR['id']));
 
-        sec_session_start();
+        $utils->updateCookies();
 
         $check = $user->loginCheck();
 
@@ -48,8 +47,8 @@ class CRController extends Controller
             $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
             $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
-            if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                && ($this->f3->get('SESSION.username') == $myCR['username'])
+            if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                && ($this->f3->get('COOKIE.username') == $myCR['username'])
             ) {
                 //apparemment l'utilisateur a les droits d'éditer le CR mais on va quand même vérifier son identité
                 if ($user->checkCrPossession($myCR['id'])) {
@@ -99,11 +98,11 @@ class CRController extends Controller
 
     public function editCr()
     {
-        sec_session_start();
-
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $CRs = new CR($this->db);
             $user = new User($this->db);
@@ -128,8 +127,8 @@ class CRController extends Controller
                 $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
                 $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
-                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                    && ($this->f3->get('SESSION.username') == $myCR['username'])
+                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                    && ($this->f3->get('COOKIE.username') == $myCR['username'])
                 ) {
 
                     if ($user->checkCrPossession($myCR['id'])) {
@@ -159,7 +158,8 @@ class CRController extends Controller
         if (!empty($errors)) {
             $data['success'] = false;
         } else {
-            sec_session_start();
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $CRs = new CR($this->db);
             $content = htmlEntities($this->f3->get('POST.content'), ENT_QUOTES);

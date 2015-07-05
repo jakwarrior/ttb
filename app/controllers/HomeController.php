@@ -1,5 +1,4 @@
 <?php
-include_once 'app/vendor/functions.php';
 
 class HomeController extends Controller {
 
@@ -10,7 +9,7 @@ class HomeController extends Controller {
         $utils = new Utils();
         $user = new User($this->db);
 
-        sec_session_start();
+        $utils->updateCookies();
 
         $check = $user->loginCheck();
 
@@ -24,8 +23,8 @@ class HomeController extends Controller {
         foreach ($actus as $subKey => $subArray) {
             $subArray['content'] = $utils->content_post_treatment($subArray['content']);
 
-            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
 
                 if ($user->checkActuPossession($subArray['id'])) {
                     $subArray['checkActuPossession'] = 'true';

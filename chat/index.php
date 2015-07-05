@@ -9,9 +9,7 @@
 
 include_once '../app/vendor/functions.php';
 
-sec_chat_session_start();
-
-if (!isset($_SESSION['username'])) {
+if (!isset($_COOKIE['username'])) {
     header("Location: /account/auth"); /* Redirect browser */
     exit();
 } else {

@@ -1,5 +1,4 @@
 <?php
-include_once 'app/vendor/functions.php';
 
 class ActuController extends Controller {
 
@@ -11,7 +10,8 @@ class ActuController extends Controller {
         $utils = new Utils();
         $user = new User($this->db);
 
-        sec_session_start();
+        $utils = new Utils();
+        $utils->updateCookies();
 
         $check = $user->loginCheck();
 
@@ -45,8 +45,8 @@ class ActuController extends Controller {
             $tmp['processed'] = $subArray['processed'];
             $tmp['active'] = $subArray['active'];
 
-            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
 
                 if ($user->checkActuPossession($subArray['id'])) {
                     $tmp['checkActuPossession'] = 'true';
@@ -69,7 +69,8 @@ class ActuController extends Controller {
 
         $user = new User($this->db);
 
-        sec_session_start();
+        $utils = new Utils();
+        $utils->updateCookies();
 
         $check = $user->loginCheck();
 
@@ -115,8 +116,8 @@ class ActuController extends Controller {
             $tmp['processed'] = $subArray['processed'];
             $tmp['active'] = $subArray['active'];
 
-            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
 
                 if ($user->checkActuPossession($subArray['id'])) {
                     $tmp['checkActuPossession'] = 'true';
@@ -134,11 +135,12 @@ class ActuController extends Controller {
 	}
 
     public function editActu() {
-        sec_session_start();
 
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $actus = new Actu($this->db);
             $user = new User($this->db);
@@ -159,8 +161,8 @@ class ActuController extends Controller {
                 $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
                 $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
-                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                    && ($this->f3->get('SESSION.username') == $myActu['username'])) {
+                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                    && ($this->f3->get('COOKIE.username') == $myActu['username'])) {
 
                     if ($user->checkActuPossession($myActu['id'])) {
                         $this->f3->set('checkActuPossession', 'true');
@@ -189,7 +191,8 @@ class ActuController extends Controller {
         if ( !empty($errors)) {
             $data['success'] = false;
         } else {
-            sec_session_start();
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $actus = new Actu($this->db);
             $content = htmlEntities($this->f3->get('POST.content'), ENT_QUOTES);
@@ -239,7 +242,8 @@ class ActuController extends Controller {
     }
 
     public function showGibbactuDate() {
-        sec_session_start();
+        $utils = new Utils();
+        $utils->updateCookies();
 
         $date = $this->f3->clean($this->f3->get('PARAMS.date'));
         $tmp = explode('-', $date);
@@ -269,8 +273,8 @@ class ActuController extends Controller {
                     $subArray['content'] = $utils->content_post_treatment($subArray['content']);
                     $subArray['username'] = html_entity_decode($subArray['username']);
 
-                    if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                        && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+                    if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                        && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
 
                         if ($user->checkActuPossession($subArray['id'])) {
                             $subArray['checkActuPossession'] = 'true';
@@ -311,7 +315,8 @@ class ActuController extends Controller {
         $utils = new Utils();
         $user = new User($this->db);
 
-        sec_session_start();
+        $utils = new Utils();
+        $utils->updateCookies();
 
         $check = $user->loginCheck();
 
@@ -333,8 +338,8 @@ class ActuController extends Controller {
             $subArray['content'] = $utils->content_post_treatment($subArray['content']);
             $subArray['username'] = html_entity_decode($subArray['username']);
 
-            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+            if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
 
                 if ($user->checkActuPossession($subArray['id'])) {
                     $subArray['checkActuPossession'] = 'true';

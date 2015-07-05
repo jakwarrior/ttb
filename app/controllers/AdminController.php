@@ -1,5 +1,4 @@
 <?php
-include_once 'app/vendor/functions.php';
 
 /*ini_set("log_errors", 1);
 ini_set("error_log", "/tmp/php-error.log");*/
@@ -11,11 +10,13 @@ class AdminController extends Controller {
   }
 
   public function importcr() {
-      sec_session_start();
 
-      if (null === $this->f3->get('SESSION.username')) {
+      if (null === $this->f3->get('COOKIE.username')) {
           $this->f3->reroute('@auth');
       } else {
+          $utils = new Utils();
+          $utils->updateCookies();
+
           $user = new User($this->db);
 
           //liste les types

@@ -12,6 +12,13 @@ function sec_session_start() {
     ini_set('session.gc_divisor', 100);
     ini_set('session.use_only_cookies', 1);
 
+/*    if (isset($_COOKIE['300gp'])) {
+        $web = $_COOKIE['300gp'];
+        unset($_COOKIE['300gp']);
+        $duration = 60*60*24*7;
+        setcookie('300gp', $web, time()+$duration, '/', '.thetartuffebay.org');
+    }*/
+
     // Gets current cookies params.
     $cookieParams = session_get_cookie_params();
     session_set_cookie_params(60*60*24*7,
@@ -36,6 +43,13 @@ function sec_chat_session_start() {
     ini_set('session.gc_probability', 1);
     ini_set('session.gc_divisor', 100);
     ini_set('session.use_only_cookies', 1);
+
+/*    if (isset($_COOKIE['300gp'])) {
+        $web = $_COOKIE['300gp'];
+        unset($_COOKIE['300gp']);
+        $duration = 60*60*24*7;
+        setcookie('300gp', $web, time()+$duration, '/', '.thetartuffebay.org');
+    }*/
 
     // Gets current cookies params.
     $cookieParams = session_get_cookie_params();

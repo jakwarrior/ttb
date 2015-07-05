@@ -1,6 +1,6 @@
 <?php
 
-class Utils
+class Utils extends Controller
 {
     public function content_post_treatment($raw)
     {
@@ -171,5 +171,46 @@ class Utils
     {
         return substr_compare($haystack, $needle, -strlen($needle))
         === 0;
+    }
+
+    public function createCookies($username, $hfr_user_id, $login_string, $email) {
+        setcookie('username', $username, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('hfr_user_id', $hfr_user_id, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('login_string', $login_string, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('email', $email, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+    }
+
+    public function updateCookies() {
+        setcookie('username', $this->f3->get('COOKIE.username'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('hfr_user_id', $this->f3->get('COOKIE.hfr_user_id'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('login_string', $this->f3->get('COOKIE.login_string'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('email', $this->f3->get('COOKIE.email'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+    }
+
+    public function deleteCookies() {
+        $cookieUsername = $this->f3->get('COOKIE.username');
+        unset($cookieUsername);
+        setcookie('username', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
+
+        $cookieHFRUserId = $this->f3->get('COOKIE.hfr_user_id');
+        unset($cookieHFRUserId);
+        setcookie('hfr_user_id', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
+
+        $cookieLoginString = $this->f3->get('COOKIE.login_string');
+        unset($cookieLoginString);
+        setcookie('login_string', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
+
+        $cookieEmail = $this->f3->get('COOKIE.email');
+        unset($cookieEmail);
+        setcookie('email', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
+
+/*        unset($_COOKIE['hfr_user_id']);
+        setcookie('hfr_user_id', '', time() - 3600);
+
+        unset($_COOKIE['login_string']);
+        setcookie('login_string', '', time() - 3600);
+
+        unset($_COOKIE['email']);
+        setcookie('email', '', time() - 3600);*/
     }
 }

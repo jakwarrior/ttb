@@ -1,5 +1,4 @@
 <?php
-include_once 'app/vendor/functions.php';
 
 class User extends DB\SQL\Mapper {
 
@@ -24,13 +23,10 @@ class User extends DB\SQL\Mapper {
 
             if ($verifyPwd == true)
             {
-                sec_session_start();
-
                 $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
-                $this->f3->set('SESSION.username', html_entity_decode($result[0]['username']));
-                $this->f3->set('SESSION.hfr_user_id', $result[0]['hfr_user_id']);
-                $this->f3->set('SESSION.login_string', hash('sha512', $result[0]['password'] . $user_browser));
-                $this->f3->set('SESSION.email', $result[0]['email']);
+
+                $utils = new Utils();
+                $utils->createCookies(html_entity_decode($result[0]['username']), $result[0]['hfr_user_id'], hash('sha512', $result[0]['password'] . $user_browser), $result[0]['email']);
 
                 return "OK";
             } else {
@@ -87,10 +83,10 @@ class User extends DB\SQL\Mapper {
         $return = array();
 
         // Check if all session variables are set
-        if ($this->f3->exists('SESSION.username') && $this->f3->exists('SESSION.hfr_user_id') && $this->f3->exists('SESSION.login_string')) {
+        if ($this->f3->exists('COOKIE.username') && $this->f3->exists('COOKIE.hfr_user_id') && $this->f3->exists('COOKIE.login_string')) {
 
-            $user_id = $this->f3->get('SESSION.hfr_user_id');
-            $login_string = $this->f3->get('SESSION.login_string');
+            $user_id = $this->f3->get('COOKIE.hfr_user_id');
+            $login_string = $this->f3->get('COOKIE.login_string');
 
             // Get the user-agent string of the user.
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
@@ -128,8 +124,8 @@ class User extends DB\SQL\Mapper {
     }
 
     function changeEmail($hfr_user_id, $newEmail) {
-        if ($this->f3->exists('SESSION.login_string')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
 
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
@@ -145,7 +141,7 @@ class User extends DB\SQL\Mapper {
                     $result2 = $this->db->exec($request2, array(':email' => $newEmail, ':user_id' => $hfr_user_id));
 
                     if ($result2 == 1) {
-                        $this->f3->set('SESSION.email', $newEmail);
+                        $this->f3->set('COOKIE.email', $newEmail);
                         return "OK";
                     } else {
                         return "problem";
@@ -162,8 +158,8 @@ class User extends DB\SQL\Mapper {
     }
 
     function changePwd($hfr_user_id, $oldPwd, $newPwd) {
-        if ($this->f3->exists('SESSION.login_string')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
 
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
@@ -187,7 +183,7 @@ class User extends DB\SQL\Mapper {
 
                         if ($result2 == 1) {
                             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
-                            $this->f3->set('SESSION.login_string', hash('sha512', $hash_pwd . $user_browser));
+                            $this->f3->set('COOKIE.login_string', hash('sha512', $hash_pwd . $user_browser));
 
                             return "OK";
                         } else {
@@ -208,10 +204,10 @@ class User extends DB\SQL\Mapper {
     }
 
     public function checkCrPossession($CrId) {
-        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
-            $hfr_user_id = $this->f3->get('SESSION.hfr_user_id');
+            $hfr_user_id = $this->f3->get('COOKIE.hfr_user_id');
 
             $request = 'SELECT cr.id AS id, cr.username as username, cr.hfr_user_id as hfr_user_id, user.password as password FROM cr as cr LEFT JOIN user as user ON cr.hfr_user_id = user.hfr_user_id  WHERE cr.id = :crId';
             $result = $this->db->exec($request, array(':crId' => $CrId));
@@ -232,10 +228,10 @@ class User extends DB\SQL\Mapper {
     }
 
     public function checkActuPossession($actuId) {
-        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
-            $hfr_user_id = $this->f3->get('SESSION.hfr_user_id');
+            $hfr_user_id = $this->f3->get('COOKIE.hfr_user_id');
 
             $request = 'SELECT actu.id AS id, actu.username as username, actu.hfr_user_id as hfr_user_id, user.password as password FROM actu as actu LEFT JOIN user as user ON actu.hfr_user_id = user.hfr_user_id  WHERE actu.id = :actuId';
             $result = $this->db->exec($request, array(':actuId' => $actuId));
@@ -256,18 +252,18 @@ class User extends DB\SQL\Mapper {
     }
 
     public function addUser($hfr_user_id, $username, $email) {
-        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
             $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
 
-            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('SESSION.hfr_user_id')));
+            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('COOKIE.hfr_user_id')));
 
             if (is_array($result) && count($result) == 1) {
                 $login_check = hash('sha512', $result[0]['password'] . $user_browser);
 
-                if ($login_check == $login_string && $this->f3->get('SESSION.hfr_user_id') ==  $result[0]['hfr_user_id'] && $result[0]['isAdmin'] == 1) {
+                if ($login_check == $login_string && $this->f3->get('COOKIE.hfr_user_id') ==  $result[0]['hfr_user_id'] && $result[0]['isAdmin'] == 1) {
 
                     $request2 = 'INSERT INTO `user`(`hfr_user_id`, `username`, `email`, `isAdmin`) VALUES (:hfr_user_id, :username, :email, 0)';
                     $result2 = $this->db->exec($request2, array(':hfr_user_id' => $hfr_user_id, ':username' => $username, ':email' => $email));
@@ -294,19 +290,19 @@ class User extends DB\SQL\Mapper {
     }
 
     function changeEmailAdmin($hfr_user_id, $newEmail) {
-        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
 
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
             $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
 
-            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('SESSION.hfr_user_id')));
+            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('COOKIE.hfr_user_id')));
 
             if (is_array($result) && count($result) == 1) {
                 $login_check = hash('sha512', $result[0]['password'] . $user_browser);
 
-                if ($login_check == $login_string && $this->f3->get('SESSION.hfr_user_id') ==  $result[0]['hfr_user_id'] && $result[0]['isAdmin'] == 1) {
+                if ($login_check == $login_string && $this->f3->get('COOKIE.hfr_user_id') ==  $result[0]['hfr_user_id'] && $result[0]['isAdmin'] == 1) {
 
                     $request2 = 'UPDATE user SET email= :email WHERE hfr_user_id= :user_id';
                     $result2 = $this->db->exec($request2, array(':email' => $newEmail, ':user_id' => $hfr_user_id));
@@ -329,19 +325,19 @@ class User extends DB\SQL\Mapper {
 
     public function resetPasswordAdmin($hfr_user_id)
     {
-        if ($this->f3->exists('SESSION.login_string') && $this->f3->exists('SESSION.hfr_user_id')) {
-            $login_string = $this->f3->get('SESSION.login_string');
+        if ($this->f3->exists('COOKIE.login_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
+            $login_string = $this->f3->get('COOKIE.login_string');
 
             $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
 
             $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
 
-            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('SESSION.hfr_user_id')));
+            $result = $this->db->exec($request, array(':user_id' => $this->f3->get('COOKIE.hfr_user_id')));
 
             if (is_array($result) && count($result) == 1) {
                 $login_check = hash('sha512', $result[0]['password'] . $user_browser);
 
-                if ($login_check == $login_string && $this->f3->get('SESSION.hfr_user_id') ==  $result[0]['hfr_user_id'] && $result[0]['isAdmin'] == 1) {
+                if ($login_check == $login_string && $this->f3->get('COOKIE.hfr_user_id') ==  $result[0]['hfr_user_id'] && $result[0]['isAdmin'] == 1) {
                     $request2 = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
                     $result2 = $this->db->exec($request2, array(':user_id' => $hfr_user_id));
 

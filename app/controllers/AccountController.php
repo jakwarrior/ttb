@@ -1,5 +1,4 @@
 <?php
-include_once 'app/vendor/functions.php';
 
 class AccountController extends Controller
 {
@@ -12,11 +11,12 @@ class AccountController extends Controller
 
     public function index()
     {
-        sec_session_start();
-
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $utils = new Utils();
+            $utils->updateCookies();
+
             $check = $this->user->loginCheck();
 
             if (count($check) == 2) {
@@ -122,13 +122,15 @@ class AccountController extends Controller
     }
 
     public function cr() {
-        sec_session_start();
 
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $utils = new Utils();
+            $utils->updateCookies();
+
             $CR = new CR($this->db);
-            $this->f3->set('list_cr', $myCr = $CR->byHFRUserId($this->f3->get('SESSION.hfr_user_id')));
+            $this->f3->set('list_cr', $myCr = $CR->byHFRUserId($this->f3->get('COOKIE.hfr_user_id')));
 
             $check = $this->user->loginCheck();
 
@@ -145,13 +147,13 @@ class AccountController extends Controller
     }
 
     public function gibbactu() {
-        sec_session_start();
 
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
             $Actus = new Actu($this->db);
             $utils = new Utils();
+            $utils->updateCookies();
 
             $check = $check = $this->user->loginCheck();
 
@@ -160,13 +162,13 @@ class AccountController extends Controller
                 $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
             }
 
-            $actus = $Actus->byHFRUserId($this->f3->get('SESSION.hfr_user_id'), 10);
+            $actus = $Actus->byHFRUserId($this->f3->get('COOKIE.hfr_user_id'), 10);
 
             foreach ($actus as $subKey => $subArray) {
                 $subArray['content'] = $utils->content_post_treatment($subArray['content']);
 
-                if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('SESSION.username'))
-                    && ($this->f3->get('SESSION.username') == $subArray['username'])) {
+                if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
+                    && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
 
                     if ($this->user->checkActuPossession($subArray['id'])) {
                         $subArray['checkActuPossession'] = 'true';
@@ -195,11 +197,12 @@ class AccountController extends Controller
         if ( !empty($errors)) {
             $data['success'] = false;
         } else {
-            sec_session_start();
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
-            $response = $this->user->changeEmail($this->f3->get('SESSION.hfr_user_id'), $email);
+            $response = $this->user->changeEmail($this->f3->get('COOKIE.hfr_user_id'), $email);
 
             if ($response == "OK") {
                 $data['success'] = true;
@@ -241,9 +244,10 @@ class AccountController extends Controller
                 $errors['password'] = "Les deux mots de passe ne sont pas identiques";
                 $data['success'] = false;
             } else {
-                sec_session_start();
+                $utils = new Utils();
+                $utils->updateCookies();
 
-                $response = $this->user->changePwd($this->f3->get('SESSION.hfr_user_id'), $oldPwd, $newPwd1);
+                $response = $this->user->changePwd($this->f3->get('COOKIE.hfr_user_id'), $oldPwd, $newPwd1);
 
                 if ($response == "OK") {
                     $data['success'] = true;
@@ -268,17 +272,18 @@ class AccountController extends Controller
 
     public function logout()
     {
-        sec_session_start();
-        sec_session_destroy();
+        $utils = new Utils();
+        $utils->deleteCookies();
         $this->f3->reroute('@account');
     }
 
     public function addUser() {
-        sec_session_start();
-
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $utils = new Utils();
+            $utils->updateCookies();
+
             $user = new User($this->db);
             $check = $user->loginCheck();
 
@@ -318,7 +323,8 @@ class AccountController extends Controller
             $username = $this->f3->clean($this->f3->get('POST.username'));
             $email = $this->f3->clean($this->f3->get('POST.email'));
 
-            sec_session_start();
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $response = $this->user->addUser($hfr_user_id, $username, $email);
 
@@ -338,11 +344,13 @@ class AccountController extends Controller
     }
 
     public function manageUser() {
-        sec_session_start();
 
-        if (null === $this->f3->get('SESSION.username')) {
+        if (null === $this->f3->get('COOKIE.username')) {
             $this->f3->reroute('@auth');
         } else {
+            $utils = new Utils();
+            $utils->updateCookies();
+
             $user = new User($this->db);
             $check = $user->loginCheck();
 
@@ -369,7 +377,8 @@ class AccountController extends Controller
         if ( !empty($errors)) {
             $data['success'] = false;
         } else {
-            sec_session_start();
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $hfr_user_id = $this->f3->clean($this->f3->get('POST.hfr_user_id'));
@@ -399,7 +408,8 @@ class AccountController extends Controller
         if ( !empty($errors)) {
             $data['success'] = false;
         } else {
-            sec_session_start();
+            $utils = new Utils();
+            $utils->updateCookies();
 
             $hfr_user_id = $this->f3->clean($this->f3->get('POST.hfr_user_id'));
             $response = $this->user->resetPasswordAdmin($hfr_user_id);
