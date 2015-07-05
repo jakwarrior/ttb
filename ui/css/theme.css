@@ -245,7 +245,7 @@ a:hover {
 }
 
 #real_content {
-    width: 75%;
+    width: 80%;
     border-right: 5px solid #EEEEEE;
     float: left;
     /*
@@ -270,9 +270,9 @@ a:hover {
 }
 
 #side_content {
-    width: 25%;
+    width: 20%;
     max-width: 1024px;
-    float: left;
+    float: right;
     font-size: 0.9em;
 }
 
@@ -521,6 +521,7 @@ display:none;
 #crotypedia.catbox .innercontent {
     padding: 15px 0;
     text-align: justify;
+    font-size: 0.9em;
 }
 
 #crotypedia.catbox .innercontent p {
@@ -705,8 +706,11 @@ a.hfrtv.all {
 #gibbactu .gibbactus {
     text-align: justify;
     position: relative;
-    padding-top: 35px;
-    margin-bottom: 15px;
+    padding-top: 60px;
+    margin-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 0.9em;
 }
 
 #gibbactu .gibbactus p {
@@ -763,6 +767,7 @@ a.hfrtv.all {
     color: #ccff33;
     background-color: #03254a;
     text-decoration: none;
+    margin-right: 15px;
 }
 
 #gibbactu .gibbactus a.date * {

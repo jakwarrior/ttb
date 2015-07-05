@@ -36,7 +36,7 @@ class HomeController extends Controller {
         }
 
         $this->f3->set('actus',$actus);
-        $this->f3->set('crs',$CRs->all(30));
+        $this->f3->set('crs',$CRs->all(40));
 
 		$this->f3->set('site_title','Un torrent d\'informations — TTB');
 
