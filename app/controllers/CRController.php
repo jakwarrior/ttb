@@ -98,7 +98,7 @@ class CRController extends Controller
 
     public function editCr()
     {
-        if (null === $this->f3->get('COOKIE.username')) {
+        if (!($this->f3->exists('COOKIE.pwd_string')) || !($this->f3->exists('COOKIE.username'))) {
             $this->f3->reroute('@auth');
         } else {
             $utils = new Utils();

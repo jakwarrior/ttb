@@ -173,17 +173,17 @@ class Utils extends Controller
         === 0;
     }
 
-    public function createCookies($username, $hfr_user_id, $login_string, $email) {
+    public function createCookies($username, $hfr_user_id, $pwd_string, $email) {
         setcookie('username', $username, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
         setcookie('hfr_user_id', $hfr_user_id, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
-        setcookie('login_string', $login_string, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('pwd_string', $pwd_string, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
         setcookie('email', $email, time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
     }
 
     public function updateCookies() {
         setcookie('username', $this->f3->get('COOKIE.username'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
         setcookie('hfr_user_id', $this->f3->get('COOKIE.hfr_user_id'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
-        setcookie('login_string', $this->f3->get('COOKIE.login_string'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
+        setcookie('pwd_string', $this->f3->get('COOKIE.pwd_string'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
         setcookie('email', $this->f3->get('COOKIE.email'), time() + (86400 * 10), '/', $this->f3->get('domain'), false, true);
     }
 
@@ -196,9 +196,9 @@ class Utils extends Controller
         unset($cookieHFRUserId);
         setcookie('hfr_user_id', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
 
-        $cookieLoginString = $this->f3->get('COOKIE.login_string');
+        $cookieLoginString = $this->f3->get('COOKIE.pwd_string');
         unset($cookieLoginString);
-        setcookie('login_string', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
+        setcookie('pwd_string', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
 
         $cookieEmail = $this->f3->get('COOKIE.email');
         unset($cookieEmail);

@@ -63,17 +63,16 @@ class Actu extends DB\SQL\Mapper {
 
 
     public function updateActu($idActu, $content) {
-        if ($this->f3->exists('COOKIE.login_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
-            $login_string = $this->f3->get('COOKIE.login_string');
-            $user_browser = $this->f3->get('SERVER.HTTP_USER_AGENT');
+        if ($this->f3->exists('COOKIE.pwd_string') && $this->f3->exists('COOKIE.hfr_user_id')) {
+            $pwd_string = $this->f3->get('COOKIE.pwd_string');
 
             $request = 'SELECT * FROM user WHERE hfr_user_id = :user_id';
             $result = $this->db->exec($request, array(':user_id' => $this->f3->get('COOKIE.hfr_user_id')));
 
             if (is_array($result) && count($result) == 1) {
-                $login_check = hash('sha512', $result[0]['password'] . $user_browser);
+                $login_check = hash('sha512', $result[0]['password']);
 
-                if (($login_check == $login_string)) {
+                if (($login_check == $pwd_string)) {
                     $request = 'UPDATE actu SET content = :content WHERE id = :idActu';
                     $result = $this->db->exec($request, array(':content' => $content, ':idActu' => $idActu));
 

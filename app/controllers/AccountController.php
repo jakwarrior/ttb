@@ -11,7 +11,7 @@ class AccountController extends Controller
 
     public function index()
     {
-        if (null === $this->f3->get('COOKIE.username')) {
+        if (!($this->f3->exists('COOKIE.pwd_string')) || !($this->f3->exists('COOKIE.username'))) {
             $this->f3->reroute('@auth');
         } else {
             $utils = new Utils();
@@ -123,7 +123,7 @@ class AccountController extends Controller
 
     public function cr() {
 
-        if (null === $this->f3->get('COOKIE.username')) {
+        if (!($this->f3->exists('COOKIE.pwd_string')) || !($this->f3->exists('COOKIE.username'))) {
             $this->f3->reroute('@auth');
         } else {
             $utils = new Utils();
@@ -148,7 +148,7 @@ class AccountController extends Controller
 
     public function gibbactu() {
 
-        if (null === $this->f3->get('COOKIE.username')) {
+        if (!($this->f3->exists('COOKIE.pwd_string')) || !($this->f3->exists('COOKIE.username'))) {
             $this->f3->reroute('@auth');
         } else {
             $Actus = new Actu($this->db);
@@ -278,7 +278,7 @@ class AccountController extends Controller
     }
 
     public function addUser() {
-        if (null === $this->f3->get('COOKIE.username')) {
+        if (!($this->f3->exists('COOKIE.pwd_string')) || !($this->f3->exists('COOKIE.username'))) {
             $this->f3->reroute('@auth');
         } else {
             $utils = new Utils();
@@ -345,7 +345,7 @@ class AccountController extends Controller
 
     public function manageUser() {
 
-        if (null === $this->f3->get('COOKIE.username')) {
+        if (!($this->f3->exists('COOKIE.pwd_string')) || !($this->f3->exists('COOKIE.username'))) {
             $this->f3->reroute('@auth');
         } else {
             $utils = new Utils();

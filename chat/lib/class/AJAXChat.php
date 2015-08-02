@@ -380,17 +380,16 @@ class AJAXChat {
             return null;
         }
 
-        if (isset($_COOKIE['hfr_user_id']) && isset($_COOKIE['login_string'])) {
+        if (isset($_COOKIE['hfr_user_id']) && isset($_COOKIE['pwd_string'])) {
             $sql = "SELECT * FROM user WHERE hfr_user_id =" . $_COOKIE['hfr_user_id'];
             $result = $mysqli->query($sql);
 
             if (mysqli_num_rows($result) == 1) {
                 $row = $result->fetch_assoc();
 
-                $user_browser = $_SERVER['HTTP_USER_AGENT'];
-                $login_check = hash('sha512', $row['password'] . $user_browser);
+                $login_check = hash('sha512', $row['password']);
 
-                if ($login_check == $_COOKIE['login_string']) {
+                if ($login_check == $_COOKIE['pwd_string']) {
                     $userData['userName'] = $row['username'];
                     $userData['userID'] = $row['hfr_user_id'];
 

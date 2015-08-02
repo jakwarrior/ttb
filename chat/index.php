@@ -9,7 +9,7 @@
 
 include_once '../app/vendor/functions.php';
 
-if (!isset($_COOKIE['username'])) {
+if (!isset($_COOKIE['username']) || !isset($_COOKIE['pwd_string'])) {
     header("Location: /account/auth"); /* Redirect browser */
     exit();
 } else {
