@@ -538,7 +538,7 @@ display:none;
 
 #crotypedia.catbox img {
     max-width: 100%;
-    margin: 0 !important;
+    margin: 0;
 }
 
 #crotypedia.catbox img[onload], .gibbactus table img[onload], .gibbactus img[onload] {
