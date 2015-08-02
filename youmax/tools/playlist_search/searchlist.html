@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width">
+    <title>Youmax 7.0 - Complete Youtube Channel on your Website - Jquery plugin</title>
+
+	
+	<!--jquery-->
+	<script src="../jquery/jquery-1.9.1.min.js"></script>
+	
+	
+	<style>
+
+      body {
+        font-family: Calibri;
+        font-size: 14px;
+		text-align:center;
+      }
+	  
+	  .control_holder {
+		padding: 5px;
+		font-size: 15px;
+		text-align: left;
+		
+		width: 500px;
+		display: inline-block;
+		position:relative;
+	  }
+	  
+	  .control_holder input, .control_holder select, .right-button {
+		float: right;
+		}
+		
+		.control_holder select {
+		/*width: 172px;*/
+		}
+		
+		.separator {
+			height:0px;
+			width:100%;
+			border-top:1px solid #e2e2e2;
+		}
+
+		.mandatory {
+			color:red;
+		}
+		
+		.little-separator {
+			border-top: 1px solid rgb(243, 139, 139);
+			margin: 20px 0px 10px 0px;
+			width: 510px;
+			display: inline-block;
+		}
+		
+		.search_tab {
+			border:1px dotted #e2e2e2;
+			width:500px;
+			display:inline-block;
+			padding: 15px;
+			margin-bottom: 10px;
+			position:relative;
+		}
+		
+		#search_holder {
+			display:inline-block;
+			width: 550px;
+		}
+		
+		
+		.little-text {
+			font-size: 12px;
+			font-family: Calibri;
+			font-weight: 100;
+		}
+		
+		#playlist_holder {
+			display:inline-block;
+			width: 550px;
+		}
+		
+		.remove_playlist,.remove_searchtab {
+			display: inline-block;
+			font-size: 16px;
+			position: absolute;
+			left: 45%;
+			top: 4px;
+			color: rgb(243, 139, 139);
+			cursor: pointer;
+			border: 1px solid #e2e2e2;
+			border-radius: 15px;
+			padding: 0px 9px 3px 7px;
+		}
+		
+		.remove_searchtab {
+			top: 45%;
+		}
+		
+		.section_title {
+			color: rgb(243, 139, 139);
+			font-weight: bold;
+			border-bottom: 1px solid;
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+		
+		button {
+		background-color: rgb(243, 139, 139);
+		color: white;
+		border: 1px solid;
+		height: 24px;
+		cursor: pointer;
+		font-size: 12px;
+		}
+		
+		.large-button {
+		height: 28px;
+		font-size: 14px;		
+		}
+		
+		#generated_output {
+		width: 100%;
+		box-sizing: border-box;
+		height: 200px;
+		margin-top: 20px;
+		/*border: 1px solid #ccc;*/
+		}
+		
+		.generate-info {
+		  display: inline-block;
+		  float: right;
+		  color: rgb(119, 119, 119);
+		  margin-top: 7px;
+		}		
+
+	</style>
+
+	</head>
+  <body>
+		<a href="http://www.codehandling.com/2015/01/youmax-40-bring-youtube-to-your-users.html">
+		<img src="https://lh5.googleusercontent.com/-gLj9ju3brLs/VMDwvF_oD9I/AAAAAAAABEQ/PyXHYDnwD6I/s400/youmax_title.png"/>
+		</a>
+		<div class="separator"></div>
+<br><br>	
+
+<div class="section_title control_holder">YouTube Playlists</div>
+<br>
+
+<div class="control_holder">
+YouTube API Key <span class="mandatory">*</span>
+<input type="text" id="api_key" value="AIzaSyDEm5wGLsWi2G3WG40re-DAJcWioQSpJ6o"/>
+</div>
+<br>
+
+
+<div id="playlist_holder">
+	<div class="control_holder">
+		Playlist URL
+		<input type="text" id="playlist_url_1" value="https://www.youtube.com/playlist?list=PL6295232EFE2E2D9A"/>
+		<div class="remove_playlist">x</div>
+	</div>
+</div>
+<br/>
+<div class="control_holder">
+	<button onclick="addPlaylist();">Add Playlist</button>
+</div>
+<br/>
+
+
+<div class="little-separator"></div>
+<br/>
+
+<div class="control_holder">
+<button class="large-button" onclick="generateFile();">Generate Search File</button>
+<div class="generate-info">Add this to your searchlist.json file.</div>
+</div>
+<br>
+
+<div class="control_holder">
+<textarea id="generated_output"></textarea>
+</div>
+<br>
+
+
+<br>	<br>	
+<div id="youmax"></div>
+
+<br/><br/>
+
+<a href="http://www.codehandling.com/2015/01/youmax-40-bring-youtube-to-your-users.html">See how to use this plugin - at codehandling</a>
+
+<br/><br/><br/>
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+
+<script>
+var playlist_count = 0;
+var playlist_videos = "";
+var completedPlaylistCount = 0;
+var playlistInterval;
+
+function addPlaylist() {
+	
+	playlist_count++;
+	$('#playlist_holder').append('<div class="control_holder">Playlist URL<input type="text" value="https://www.youtube.com/playlist?list=PL6295232EFE2E2D9A"/><div class="remove_playlist">x</div></div>');
+	//id="playlist_url_'+playlist_count+'"
+	
+}
+
+
+$('#playlist_holder').on('click','.remove_playlist',function(){
+	$(this).parent().remove();
+	playlist_count--;
+});
+
+
+
+function generateFile() {
+	$('#generated_output').text('');
+	playlist_videos = "";
+	
+	if(null!=playlistInterval) {
+		clearInterval(playlistInterval);
+	}
+	
+	var apiKey = $('#api_key').val().trim();
+	var jsonFile = '{"searchList":[\n';
+	
+	$('#playlist_holder').find('input').each(function(i,v){
+		
+		playlist = $(this).val().trim();
+		
+		s=playlist.indexOf("list=");
+		if(s!=-1) {
+			playlistId = playlist.substring(s+5);
+			getPlaylistVideos(apiKey,playlistId,null);
+		} else {
+			alert("Could Not List Videos for - "+playlist);
+			completedPlaylistCount++;
+		}
+		
+	});
+	
+	playlistInterval = setInterval(function(){ displayJsonFile() }, 1500);	
+	
+	
+
+}
+
+function displayJsonFile() {
+	
+	if(completedPlaylistCount>=	playlist_count) {
+		playlist_videos = playlist_videos.substring(0,playlist_videos.length-2);
+		playlist_videos = '{"searchList":[\n'+playlist_videos+'\n]}';
+		$('#generated_output').text(playlist_videos);
+		clearInterval(playlistInterval);
+	}
+
+}
+
+function getPlaylistVideos(apiKey,playlistId,pageToken) {
+
+	var pageTokenUrl = "";
+	if(null!=pageToken) {
+		pageTokenUrl = "&pageToken="+pageToken;
+	}
+
+	apiPlaylistVideosURL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId="+playlistId+"&maxResults=50"+pageTokenUrl+"&key="+apiKey;
+	
+	//console.log('getPlaylistVideos apiPlaylistVideosURL-'+apiPlaylistVideosURL);
+	
+	$.ajax({
+		url: apiPlaylistVideosURL,
+		type: "GET",
+		async: true,
+		cache: true,
+		dataType: 'jsonp',
+		success: function(response) { insertPlaylistVideos(apiKey,playlistId,response);},
+		error: function(html) { alert(html); },
+		beforeSend: setHeader
+	});
+
+}
+
+
+function insertPlaylistVideos(apiKey,playlistId,response) {
+
+	console.log("insertPlaylistVideos");
+	console.log(response);
+
+	var videoArray = response.items;
+	var nextPageToken = response.nextPageToken;
+	
+	if(null!=nextPageToken && nextPageToken!="undefined" && nextPageToken!="") {
+		//call again for the next page
+		insertPlaylistVideos(apiKey,playlistId,nextPageToken);
+	} else {
+		completedPlaylistCount++;
+		//do nothing
+	}
+	
+	for(var i=0; i<videoArray.length; i++) {
+		videoId = videoArray[i].snippet.resourceId.videoId;			
+		videoTitle = videoArray[i].snippet.title.toLowerCase();
+		videoTitle = videoTitle.replace(/"/g,' ');
+		videoDescription = videoArray[i].snippet.description.toLowerCase();
+		videoDescription = videoDescription.replace(/\r?\n|\r/g,' ');
+		videoDescription = videoDescription.replace(/"/g,' ');
+		//console.log('videoUploaded-'+videoUploaded);
+		playlist_videos+='{"videoId":"'+videoId+'","videoTitle":"'+videoTitle+'","videoDescription":"'+videoDescription+'"},\n';
+	}
+
+}
+
+	function setHeader(xhr) {
+		if(xhr && xhr.overrideMimeType) {
+			xhr.overrideMimeType("application/j-son;charset=UTF-8");
+		}
+	}
+
+
+
+
+</script>
+
+
+  </body>
+</html>
+
+
+

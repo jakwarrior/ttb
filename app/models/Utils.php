@@ -203,14 +203,5 @@ class Utils extends Controller
         $cookieEmail = $this->f3->get('COOKIE.email');
         unset($cookieEmail);
         setcookie('email', '', time() - 3600, '/', $this->f3->get('domain'), false, true);
-
-/*        unset($_COOKIE['hfr_user_id']);
-        setcookie('hfr_user_id', '', time() - 3600);
-
-        unset($_COOKIE['login_string']);
-        setcookie('login_string', '', time() - 3600);
-
-        unset($_COOKIE['email']);
-        setcookie('email', '', time() - 3600);*/
     }
 }

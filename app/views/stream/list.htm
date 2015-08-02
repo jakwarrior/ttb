@@ -2,8 +2,7 @@
 
     <h2><a href="https://www.youtube.com/user/HFRTVTwitch/featured" target="_blank">Les dernières vidéos d'HFR.tv </a></h2>
 
-    <div id="youmax">
-    </div>
+    <div id="youmax" class="youmax"></div>
 
     <div class="cleaner"></div>
     <br/>
@@ -17,8 +16,34 @@
         </ul>
     </div>
 
+
+
     <script type="text/javascript">
-        $("#youmax").youmax({apiKey:"{{@apiKey}}",clientId:"{{@clientId}}",channel:"https://www.youtube.com/user/HFRTVTwitch",playList:[],searchTab:[],selectedTab:"u",displayVideo:"popup",alwaysUseDropdown:false,autoPlayVideo:true,displayFirstVideoOnLoad:false,skin:"none",searchBoxScope:"channel",linkNewPages:false,autoLoadComments:false,featuredVideo:"",maxResults:12,innerOffset:40,outerOffset:40,minItemWidth:250,maxItemWidth:400,maxContainerWidth:1020});
+        $("#youmax").youmax({
+            apiKey: "{{@apiKey}}",
+            clientId: "{{@clientId}}",
+            channel:"https://www.youtube.com/user/HFRTVTwitch",
+            youtube_channel_uploads: [{
+                name: "Uploads",
+                url: "https://www.youtube.com/user/HFRTVTwitch",
+                selected: true
+            }],
+            youtube_channel_playlists: [{
+                name: "Playlists",
+                url: "https://www.youtube.com/user/HFRTVTwitch",
+                selected: false
+            }],
+            alwaysUseDropdown: false,
+            autoPlayVideo: true,
+            skin:"block",
+            loadMode:"loadmore",
+            loadButtonSize:"small",
+            autoLoadComments:false,
+            hideComments:false,
+            hideVideoDetails:false,
+            innerOffset: 25,
+            maxContainerWidth: 1020
+        });
     </script>
 
 </div><!-- #hfrtv -->
