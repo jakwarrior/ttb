@@ -238,9 +238,7 @@ class AdminController extends Controller
         $query = $request['term'];
 //,platforms:94
         $url = 'http://www.giantbomb.com/api/games/?api_key=' . $this->f3->get('giantbombAPI') . '&format=json&filter=name:' . urlencode($query) . ',platforms:94&field_list=id,name,image,original_release_date,expected_release_year&sort=name:asc';
-
         //echo $url;
-//      error_log($url);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -248,11 +246,9 @@ class AdminController extends Controller
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
         $html = curl_exec($ch);
+        $manage = (array)json_decode($html);
 
-        if (!$this->startsWith($html, "<html>")) {
-
-            $manage = (array)json_decode($html);
-
+        if (isset($manage['results'])) {
             foreach ($manage['results'] as $k => $result) {
 
                 if ($result->original_release_date) $result->date_release = date('Y', strtotime($result->original_release_date));
@@ -270,7 +266,35 @@ class AdminController extends Controller
 
             }
         } else {
-            $manage = array("results" => array());
+            // si erreur, on tente de passer par un proxy pour faire la requête
+            $proxy_host = '212.47.235.81:3129';
+
+            curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
+            curl_setopt($ch, CURLOPT_PROXY, $proxy_host);
+
+            $html = curl_exec($ch);
+            $manage = (array)json_decode($html);
+
+            if (isset($manage['results'])) {
+                foreach ($manage['results'] as $k => $result) {
+
+                    if ($result->original_release_date) $result->date_release = date('Y', strtotime($result->original_release_date));
+                    if ($result->expected_release_year) $result->date_expectd = $result->expected_release_year;
+
+                    if (property_exists($result, 'date_expectd') && !property_exists($result, 'date_release')) {
+                        $result->date = $result->date_expectd;
+                    } else if (!property_exists($result, 'date_expectd') && property_exists($result, 'date_release')) {
+                        $result->date = $result->date_release;
+                    }
+
+                    if (!property_exists($result, 'date')) {
+                        unset($manage['results'][$k]);
+                    }
+
+                }
+            } else {
+                $manage = array("results" => array());
+            }
         }
 
         $Game = new Game($this->db);
