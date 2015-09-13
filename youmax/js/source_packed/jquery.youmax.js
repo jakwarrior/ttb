@@ -1,522 +1,4094 @@
-//Youmax 8.0 - http://codecanyon.net/item/youmax-youtube-channel-on-your-website/9989505
-
+//Youmax 9.0 - http://codecanyon.net/item/youmax-youtube-channel-on-your-website/9989505
 
 /*!
- * imagesLoaded PACKAGED v3.0.4
- * https://github.com/desandro/imagesloaded
+ * imagesLoaded PACKAGED v3.1.8
  * JavaScript is all like "You images are done yet or what?"
+ * MIT License
  */
 
-(function(){"use strict";function e(){}function t(e,t){for(var n=e.length;n--;)if(e[n].listener===t)return n;return-1}var n=e.prototype;n.getListeners=function(e){var t,n,i=this._getEvents();if("object"==typeof e){t={};for(n in i)i.hasOwnProperty(n)&&e.test(n)&&(t[n]=i[n])}else t=i[e]||(i[e]=[]);return t},n.flattenListeners=function(e){var t,n=[];for(t=0;e.length>t;t+=1)n.push(e[t].listener);return n},n.getListenersAsObject=function(e){var t,n=this.getListeners(e);return n instanceof Array&&(t={},t[e]=n),t||n},n.addListener=function(e,n){var i,r=this.getListenersAsObject(e),o="object"==typeof n;for(i in r)r.hasOwnProperty(i)&&-1===t(r[i],n)&&r[i].push(o?n:{listener:n,once:!1});return this},n.on=n.addListener,n.addOnceListener=function(e,t){return this.addListener(e,{listener:t,once:!0})},n.once=n.addOnceListener,n.defineEvent=function(e){return this.getListeners(e),this},n.defineEvents=function(e){for(var t=0;e.length>t;t+=1)this.defineEvent(e[t]);return this},n.removeListener=function(e,n){var i,r,o=this.getListenersAsObject(e);for(r in o)o.hasOwnProperty(r)&&(i=t(o[r],n),-1!==i&&o[r].splice(i,1));return this},n.off=n.removeListener,n.addListeners=function(e,t){return this.manipulateListeners(!1,e,t)},n.removeListeners=function(e,t){return this.manipulateListeners(!0,e,t)},n.manipulateListeners=function(e,t,n){var i,r,o=e?this.removeListener:this.addListener,s=e?this.removeListeners:this.addListeners;if("object"!=typeof t||t instanceof RegExp)for(i=n.length;i--;)o.call(this,t,n[i]);else for(i in t)t.hasOwnProperty(i)&&(r=t[i])&&("function"==typeof r?o.call(this,i,r):s.call(this,i,r));return this},n.removeEvent=function(e){var t,n=typeof e,i=this._getEvents();if("string"===n)delete i[e];else if("object"===n)for(t in i)i.hasOwnProperty(t)&&e.test(t)&&delete i[t];else delete this._events;return this},n.emitEvent=function(e,t){var n,i,r,o,s=this.getListenersAsObject(e);for(r in s)if(s.hasOwnProperty(r))for(i=s[r].length;i--;)n=s[r][i],o=n.listener.apply(this,t||[]),(o===this._getOnceReturnValue()||n.once===!0)&&this.removeListener(e,s[r][i].listener);return this},n.trigger=n.emitEvent,n.emit=function(e){var t=Array.prototype.slice.call(arguments,1);return this.emitEvent(e,t)},n.setOnceReturnValue=function(e){return this._onceReturnValue=e,this},n._getOnceReturnValue=function(){return this.hasOwnProperty("_onceReturnValue")?this._onceReturnValue:!0},n._getEvents=function(){return this._events||(this._events={})},"function"==typeof define&&define.amd?define(function(){return e}):"undefined"!=typeof module&&module.exports?module.exports=e:this.EventEmitter=e}).call(this),function(e){"use strict";var t=document.documentElement,n=function(){};t.addEventListener?n=function(e,t,n){e.addEventListener(t,n,!1)}:t.attachEvent&&(n=function(t,n,i){t[n+i]=i.handleEvent?function(){var t=e.event;t.target=t.target||t.srcElement,i.handleEvent.call(i,t)}:function(){var n=e.event;n.target=n.target||n.srcElement,i.call(t,n)},t.attachEvent("on"+n,t[n+i])});var i=function(){};t.removeEventListener?i=function(e,t,n){e.removeEventListener(t,n,!1)}:t.detachEvent&&(i=function(e,t,n){e.detachEvent("on"+t,e[t+n]);try{delete e[t+n]}catch(i){e[t+n]=void 0}});var r={bind:n,unbind:i};"function"==typeof define&&define.amd?define(r):e.eventie=r}(this),function(e){"use strict";function t(e,t){for(var n in t)e[n]=t[n];return e}function n(e){return"[object Array]"===c.call(e)}function i(e){var t=[];if(n(e))t=e;else if("number"==typeof e.length)for(var i=0,r=e.length;r>i;i++)t.push(e[i]);else t.push(e);return t}function r(e,n){function r(e,n,s){if(!(this instanceof r))return new r(e,n);"string"==typeof e&&(e=document.querySelectorAll(e)),this.elements=i(e),this.options=t({},this.options),"function"==typeof n?s=n:t(this.options,n),s&&this.on("always",s),this.getImages(),o&&(this.jqDeferred=new o.Deferred);var a=this;setTimeout(function(){a.check()})}function c(e){this.img=e}r.prototype=new e,r.prototype.options={},r.prototype.getImages=function(){this.images=[];for(var e=0,t=this.elements.length;t>e;e++){var n=this.elements[e];"IMG"===n.nodeName&&this.addImage(n);for(var i=n.querySelectorAll("img"),r=0,o=i.length;o>r;r++){var s=i[r];this.addImage(s)}}},r.prototype.addImage=function(e){var t=new c(e);this.images.push(t)},r.prototype.check=function(){function e(e,r){return t.options.debug&&a&&s.log("confirm",e,r),t.progress(e),n++,n===i&&t.complete(),!0}var t=this,n=0,i=this.images.length;if(this.hasAnyBroken=!1,!i)return this.complete(),void 0;for(var r=0;i>r;r++){var o=this.images[r];o.on("confirm",e),o.check()}},r.prototype.progress=function(e){this.hasAnyBroken=this.hasAnyBroken||!e.isLoaded;var t=this;setTimeout(function(){t.emit("progress",t,e),t.jqDeferred&&t.jqDeferred.notify(t,e)})},r.prototype.complete=function(){var e=this.hasAnyBroken?"fail":"done";this.isComplete=!0;var t=this;setTimeout(function(){if(t.emit(e,t),t.emit("always",t),t.jqDeferred){var n=t.hasAnyBroken?"reject":"resolve";t.jqDeferred[n](t)}})},o&&(o.fn.imagesLoaded=function(e,t){var n=new r(this,e,t);return n.jqDeferred.promise(o(this))});var f={};return c.prototype=new e,c.prototype.check=function(){var e=f[this.img.src];if(e)return this.useCached(e),void 0;if(f[this.img.src]=this,this.img.complete&&void 0!==this.img.naturalWidth)return this.confirm(0!==this.img.naturalWidth,"naturalWidth"),void 0;var t=this.proxyImage=new Image;n.bind(t,"load",this),n.bind(t,"error",this),t.src=this.img.src},c.prototype.useCached=function(e){if(e.isConfirmed)this.confirm(e.isLoaded,"cached was confirmed");else{var t=this;e.on("confirm",function(e){return t.confirm(e.isLoaded,"cache emitted confirmed"),!0})}},c.prototype.confirm=function(e,t){this.isConfirmed=!0,this.isLoaded=e,this.emit("confirm",this,t)},c.prototype.handleEvent=function(e){var t="on"+e.type;this[t]&&this[t](e)},c.prototype.onload=function(){this.confirm(!0,"onload"),this.unbindProxyEvents()},c.prototype.onerror=function(){this.confirm(!1,"onerror"),this.unbindProxyEvents()},c.prototype.unbindProxyEvents=function(){n.unbind(this.proxyImage,"load",this),n.unbind(this.proxyImage,"error",this)},r}var o=e.jQuery,s=e.console,a=s!==void 0,c=Object.prototype.toString;"function"==typeof define&&define.amd?define(["eventEmitter/EventEmitter","eventie/eventie"],r):e.imagesLoaded=r(e.EventEmitter,e.eventie)}(window);
-
 
 /*!
-  jQuery Wookmark plugin
-  @name jquery.wookmark.js
-  @author Christoph Ono (chri@sto.ph or @gbks)
-  @author Sebastian Helzle (sebastian@helzle.net or @sebobo)
-  @version 1.4.8
-  @date 07/08/2013
-  @category jQuery plugin
-  @copyright (c) 2009-2014 Christoph Ono (www.wookmark.com)
-  @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
-*/
-(function (factory) {
-  if (typeof define === 'function' && define.amd)
-    define(['jquery'], factory);
-  else
-    factory(jQuery);
-}(function ($) {
-  var Wookmark, defaultOptions, __bind;
+ * EventEmitter v4.2.6 - git.io/ee
+ * Oliver Caldwell
+ * MIT license
+ * @preserve
+ */
 
-  __bind = function(fn, me) {
-    return function() {
-      return fn.apply(me, arguments);
-    };
+(function () {
+	
+
+	/**
+	 * Class for managing events.
+	 * Can be extended to provide event functionality in other classes.
+	 *
+	 * @class EventEmitter Manages event registering and emitting.
+	 */
+	function EventEmitter() {}
+
+	// Shortcuts to improve speed and size
+	var proto = EventEmitter.prototype;
+	var exports = this;
+	var originalGlobalValue = exports.EventEmitter;
+
+	/**
+	 * Finds the index of the listener for the event in it's storage array.
+	 *
+	 * @param {Function[]} listeners Array of listeners to search through.
+	 * @param {Function} listener Method to look for.
+	 * @return {Number} Index of the specified listener, -1 if not found
+	 * @api private
+	 */
+	function indexOfListener(listeners, listener) {
+		var i = listeners.length;
+		while (i--) {
+			if (listeners[i].listener === listener) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	/**
+	 * Alias a method while keeping the context correct, to allow for overwriting of target method.
+	 *
+	 * @param {String} name The name of the target method.
+	 * @return {Function} The aliased method
+	 * @api private
+	 */
+	function alias(name) {
+		return function aliasClosure() {
+			return this[name].apply(this, arguments);
+		};
+	}
+
+	/**
+	 * Returns the listener array for the specified event.
+	 * Will initialise the event object and listener arrays if required.
+	 * Will return an object if you use a regex search. The object contains keys for each matched event. So /ba[rz]/ might return an object containing bar and baz. But only if you have either defined them with defineEvent or added some listeners to them.
+	 * Each property in the object response is an array of listener functions.
+	 *
+	 * @param {String|RegExp} evt Name of the event to return the listeners from.
+	 * @return {Function[]|Object} All listener functions for the event.
+	 */
+	proto.getListeners = function getListeners(evt) {
+		var events = this._getEvents();
+		var response;
+		var key;
+
+		// Return a concatenated array of all matching events if
+		// the selector is a regular expression.
+		if (typeof evt === 'object') {
+			response = {};
+			for (key in events) {
+				if (events.hasOwnProperty(key) && evt.test(key)) {
+					response[key] = events[key];
+				}
+			}
+		}
+		else {
+			response = events[evt] || (events[evt] = []);
+		}
+
+		return response;
+	};
+
+	/**
+	 * Takes a list of listener objects and flattens it into a list of listener functions.
+	 *
+	 * @param {Object[]} listeners Raw listener objects.
+	 * @return {Function[]} Just the listener functions.
+	 */
+	proto.flattenListeners = function flattenListeners(listeners) {
+		var flatListeners = [];
+		var i;
+
+		for (i = 0; i < listeners.length; i += 1) {
+			flatListeners.push(listeners[i].listener);
+		}
+
+		return flatListeners;
+	};
+
+	/**
+	 * Fetches the requested listeners via getListeners but will always return the results inside an object. This is mainly for internal use but others may find it useful.
+	 *
+	 * @param {String|RegExp} evt Name of the event to return the listeners from.
+	 * @return {Object} All listener functions for an event in an object.
+	 */
+	proto.getListenersAsObject = function getListenersAsObject(evt) {
+		var listeners = this.getListeners(evt);
+		var response;
+
+		if (listeners instanceof Array) {
+			response = {};
+			response[evt] = listeners;
+		}
+
+		return response || listeners;
+	};
+
+	/**
+	 * Adds a listener function to the specified event.
+	 * The listener will not be added if it is a duplicate.
+	 * If the listener returns true then it will be removed after it is called.
+	 * If you pass a regular expression as the event name then the listener will be added to all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to attach the listener to.
+	 * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.addListener = function addListener(evt, listener) {
+		var listeners = this.getListenersAsObject(evt);
+		var listenerIsWrapped = typeof listener === 'object';
+		var key;
+
+		for (key in listeners) {
+			if (listeners.hasOwnProperty(key) && indexOfListener(listeners[key], listener) === -1) {
+				listeners[key].push(listenerIsWrapped ? listener : {
+					listener: listener,
+					once: false
+				});
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of addListener
+	 */
+	proto.on = alias('addListener');
+
+	/**
+	 * Semi-alias of addListener. It will add a listener that will be
+	 * automatically removed after it's first execution.
+	 *
+	 * @param {String|RegExp} evt Name of the event to attach the listener to.
+	 * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.addOnceListener = function addOnceListener(evt, listener) {
+		return this.addListener(evt, {
+			listener: listener,
+			once: true
+		});
+	};
+
+	/**
+	 * Alias of addOnceListener.
+	 */
+	proto.once = alias('addOnceListener');
+
+	/**
+	 * Defines an event name. This is required if you want to use a regex to add a listener to multiple events at once. If you don't do this then how do you expect it to know what event to add to? Should it just add to every possible match for a regex? No. That is scary and bad.
+	 * You need to tell it what event names should be matched by a regex.
+	 *
+	 * @param {String} evt Name of the event to create.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.defineEvent = function defineEvent(evt) {
+		this.getListeners(evt);
+		return this;
+	};
+
+	/**
+	 * Uses defineEvent to define multiple events.
+	 *
+	 * @param {String[]} evts An array of event names to define.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.defineEvents = function defineEvents(evts) {
+		for (var i = 0; i < evts.length; i += 1) {
+			this.defineEvent(evts[i]);
+		}
+		return this;
+	};
+
+	/**
+	 * Removes a listener function from the specified event.
+	 * When passed a regular expression as the event name, it will remove the listener from all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to remove the listener from.
+	 * @param {Function} listener Method to remove from the event.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.removeListener = function removeListener(evt, listener) {
+		var listeners = this.getListenersAsObject(evt);
+		var index;
+		var key;
+
+		for (key in listeners) {
+			if (listeners.hasOwnProperty(key)) {
+				index = indexOfListener(listeners[key], listener);
+
+				if (index !== -1) {
+					listeners[key].splice(index, 1);
+				}
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of removeListener
+	 */
+	proto.off = alias('removeListener');
+
+	/**
+	 * Adds listeners in bulk using the manipulateListeners method.
+	 * If you pass an object as the second argument you can add to multiple events at once. The object should contain key value pairs of events and listeners or listener arrays. You can also pass it an event name and an array of listeners to be added.
+	 * You can also pass it a regular expression to add the array of listeners to all events that match it.
+	 * Yeah, this function does quite a bit. That's probably a bad thing.
+	 *
+	 * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add to multiple events at once.
+	 * @param {Function[]} [listeners] An optional array of listener functions to add.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.addListeners = function addListeners(evt, listeners) {
+		// Pass through to manipulateListeners
+		return this.manipulateListeners(false, evt, listeners);
+	};
+
+	/**
+	 * Removes listeners in bulk using the manipulateListeners method.
+	 * If you pass an object as the second argument you can remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+	 * You can also pass it an event name and an array of listeners to be removed.
+	 * You can also pass it a regular expression to remove the listeners from all events that match it.
+	 *
+	 * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to remove from multiple events at once.
+	 * @param {Function[]} [listeners] An optional array of listener functions to remove.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.removeListeners = function removeListeners(evt, listeners) {
+		// Pass through to manipulateListeners
+		return this.manipulateListeners(true, evt, listeners);
+	};
+
+	/**
+	 * Edits listeners in bulk. The addListeners and removeListeners methods both use this to do their job. You should really use those instead, this is a little lower level.
+	 * The first argument will determine if the listeners are removed (true) or added (false).
+	 * If you pass an object as the second argument you can add/remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+	 * You can also pass it an event name and an array of listeners to be added/removed.
+	 * You can also pass it a regular expression to manipulate the listeners of all events that match it.
+	 *
+	 * @param {Boolean} remove True if you want to remove listeners, false if you want to add.
+	 * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add/remove from multiple events at once.
+	 * @param {Function[]} [listeners] An optional array of listener functions to add/remove.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.manipulateListeners = function manipulateListeners(remove, evt, listeners) {
+		var i;
+		var value;
+		var single = remove ? this.removeListener : this.addListener;
+		var multiple = remove ? this.removeListeners : this.addListeners;
+
+		// If evt is an object then pass each of it's properties to this method
+		if (typeof evt === 'object' && !(evt instanceof RegExp)) {
+			for (i in evt) {
+				if (evt.hasOwnProperty(i) && (value = evt[i])) {
+					// Pass the single listener straight through to the singular method
+					if (typeof value === 'function') {
+						single.call(this, i, value);
+					}
+					else {
+						// Otherwise pass back to the multiple function
+						multiple.call(this, i, value);
+					}
+				}
+			}
+		}
+		else {
+			// So evt must be a string
+			// And listeners must be an array of listeners
+			// Loop over it and pass each one to the multiple method
+			i = listeners.length;
+			while (i--) {
+				single.call(this, evt, listeners[i]);
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Removes all listeners from a specified event.
+	 * If you do not specify an event then all listeners will be removed.
+	 * That means every event will be emptied.
+	 * You can also pass a regex to remove all events that match it.
+	 *
+	 * @param {String|RegExp} [evt] Optional name of the event to remove all listeners for. Will remove from every event if not passed.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.removeEvent = function removeEvent(evt) {
+		var type = typeof evt;
+		var events = this._getEvents();
+		var key;
+
+		// Remove different things depending on the state of evt
+		if (type === 'string') {
+			// Remove all listeners for the specified event
+			delete events[evt];
+		}
+		else if (type === 'object') {
+			// Remove all events matching the regex.
+			for (key in events) {
+				if (events.hasOwnProperty(key) && evt.test(key)) {
+					delete events[key];
+				}
+			}
+		}
+		else {
+			// Remove all listeners in all events
+			delete this._events;
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of removeEvent.
+	 *
+	 * Added to mirror the node API.
+	 */
+	proto.removeAllListeners = alias('removeEvent');
+
+	/**
+	 * Emits an event of your choice.
+	 * When emitted, every listener attached to that event will be executed.
+	 * If you pass the optional argument array then those arguments will be passed to every listener upon execution.
+	 * Because it uses `apply`, your array of arguments will be passed as if you wrote them out separately.
+	 * So they will not arrive within the array on the other side, they will be separate.
+	 * You can also pass a regular expression to emit to all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+	 * @param {Array} [args] Optional array of arguments to be passed to each listener.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.emitEvent = function emitEvent(evt, args) {
+		var listeners = this.getListenersAsObject(evt);
+		var listener;
+		var i;
+		var key;
+		var response;
+
+		for (key in listeners) {
+			if (listeners.hasOwnProperty(key)) {
+				i = listeners[key].length;
+
+				while (i--) {
+					// If the listener returns true then it shall be removed from the event
+					// The function is executed either with a basic call or an apply if there is an args array
+					listener = listeners[key][i];
+
+					if (listener.once === true) {
+						this.removeListener(evt, listener.listener);
+					}
+
+					response = listener.listener.apply(this, args || []);
+
+					if (response === this._getOnceReturnValue()) {
+						this.removeListener(evt, listener.listener);
+					}
+				}
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of emitEvent
+	 */
+	proto.trigger = alias('emitEvent');
+
+	/**
+	 * Subtly different from emitEvent in that it will pass its arguments on to the listeners, as opposed to taking a single array of arguments to pass on.
+	 * As with emitEvent, you can pass a regex in place of the event name to emit to all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+	 * @param {...*} Optional additional arguments to be passed to each listener.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.emit = function emit(evt) {
+		var args = Array.prototype.slice.call(arguments, 1);
+		return this.emitEvent(evt, args);
+	};
+
+	/**
+	 * Sets the current value to check against when executing listeners. If a
+	 * listeners return value matches the one set here then it will be removed
+	 * after execution. This value defaults to true.
+	 *
+	 * @param {*} value The new value to check for when executing listeners.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.setOnceReturnValue = function setOnceReturnValue(value) {
+		this._onceReturnValue = value;
+		return this;
+	};
+
+	/**
+	 * Fetches the current value to check against when executing listeners. If
+	 * the listeners return value matches this one then it should be removed
+	 * automatically. It will return true by default.
+	 *
+	 * @return {*|Boolean} The current value to check for or the default, true.
+	 * @api private
+	 */
+	proto._getOnceReturnValue = function _getOnceReturnValue() {
+		if (this.hasOwnProperty('_onceReturnValue')) {
+			return this._onceReturnValue;
+		}
+		else {
+			return true;
+		}
+	};
+
+	/**
+	 * Fetches the events object and creates one if required.
+	 *
+	 * @return {Object} The events storage object.
+	 * @api private
+	 */
+	proto._getEvents = function _getEvents() {
+		return this._events || (this._events = {});
+	};
+
+	/**
+	 * Reverts the global {@link EventEmitter} to its previous value and returns a reference to this version.
+	 *
+	 * @return {Function} Non conflicting EventEmitter class.
+	 */
+	EventEmitter.noConflict = function noConflict() {
+		exports.EventEmitter = originalGlobalValue;
+		return EventEmitter;
+	};
+
+	// Expose the class either via AMD, CommonJS or the global object
+	if (typeof define === 'function' && define.amd) {
+		define('eventEmitter/EventEmitter',[],function () {
+			return EventEmitter;
+		});
+	}
+	else if (typeof module === 'object' && module.exports){
+		module.exports = EventEmitter;
+	}
+	else {
+		this.EventEmitter = EventEmitter;
+	}
+}.call(this));
+
+/*!
+ * eventie v1.0.4
+ * event binding helper
+ *   eventie.bind( elem, 'click', myFn )
+ *   eventie.unbind( elem, 'click', myFn )
+ */
+
+/*jshint browser: true, undef: true, unused: true */
+/*global define: false */
+
+( function( window ) {
+
+
+
+var docElem = document.documentElement;
+
+var bind = function() {};
+
+function getIEEvent( obj ) {
+  var event = window.event;
+  // add event.target
+  event.target = event.target || event.srcElement || obj;
+  return event;
+}
+
+if ( docElem.addEventListener ) {
+  bind = function( obj, type, fn ) {
+    obj.addEventListener( type, fn, false );
   };
-
-  // Wookmark default options
-  defaultOptions = {
-    align: 'center',
-    autoResize: false,
-    comparator: null,
-    container: $('body'),
-    direction: undefined,
-    ignoreInactiveItems: true,
-    itemWidth: 0,
-    fillEmptySpace: false,
-    flexibleWidth: 0,
-    offset: 2,
-    outerOffset: 0,
-    onLayoutChanged: undefined,
-    possibleFilters: [],
-    resizeDelay: 50,
-    verticalOffset: undefined
+} else if ( docElem.attachEvent ) {
+  bind = function( obj, type, fn ) {
+    obj[ type + fn ] = fn.handleEvent ?
+      function() {
+        var event = getIEEvent( obj );
+        fn.handleEvent.call( fn, event );
+      } :
+      function() {
+        var event = getIEEvent( obj );
+        fn.call( obj, event );
+      };
+    obj.attachEvent( "on" + type, obj[ type + fn ] );
   };
+}
 
-  // Function for executing css writes to dom on the next animation frame if supported
-  var executeNextFrame = window.requestAnimationFrame || function(callback) {callback();},
-      $window = $(window);
+var unbind = function() {};
 
-  function bulkUpdateCSS(data) {
-    executeNextFrame(function() {
-      var i, item;
-      for (i = 0; i < data.length; i++) {
-        item = data[i];
-        item.obj.css(item.css);
-      }
+if ( docElem.removeEventListener ) {
+  unbind = function( obj, type, fn ) {
+    obj.removeEventListener( type, fn, false );
+  };
+} else if ( docElem.detachEvent ) {
+  unbind = function( obj, type, fn ) {
+    obj.detachEvent( "on" + type, obj[ type + fn ] );
+    try {
+      delete obj[ type + fn ];
+    } catch ( err ) {
+      // can't delete window object properties
+      obj[ type + fn ] = undefined;
+    }
+  };
+}
+
+var eventie = {
+  bind: bind,
+  unbind: unbind
+};
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( 'eventie/eventie',eventie );
+} else {
+  // browser global
+  window.eventie = eventie;
+}
+
+})( this );
+
+/*!
+ * imagesLoaded v3.1.8
+ * JavaScript is all like "You images are done yet or what?"
+ * MIT License
+ */
+
+( function( window, factory ) { 
+  // universal module definition
+
+  /*global define: false, module: false, require: false */
+
+  if ( typeof define === 'function' && define.amd ) {
+    // AMD
+    define( [
+      'eventEmitter/EventEmitter',
+      'eventie/eventie'
+    ], function( EventEmitter, eventie ) {
+      return factory( window, EventEmitter, eventie );
+    });
+  } else if ( typeof exports === 'object' ) {
+    // CommonJS
+    module.exports = factory(
+      window,
+      require('wolfy87-eventemitter'),
+      require('eventie')
+    );
+  } else {
+    // browser global
+    window.imagesLoaded = factory(
+      window,
+      window.EventEmitter,
+      window.eventie
+    );
+  }
+
+})( window,
+
+// --------------------------  factory -------------------------- //
+
+function factory( window, EventEmitter, eventie ) {
+
+
+
+var $ = window.jQuery;
+var console = window.console;
+var hasConsole = typeof console !== 'undefined';
+
+// -------------------------- helpers -------------------------- //
+
+// extend objects
+function extend( a, b ) {
+  for ( var prop in b ) {
+    a[ prop ] = b[ prop ];
+  }
+  return a;
+}
+
+var objToString = Object.prototype.toString;
+function isArray( obj ) {
+  return objToString.call( obj ) === '[object Array]';
+}
+
+// turn element or nodeList into an array
+function makeArray( obj ) {
+  var ary = [];
+  if ( isArray( obj ) ) {
+    // use object if already an array
+    ary = obj;
+  } else if ( typeof obj.length === 'number' ) {
+    // convert nodeList to array
+    for ( var i=0, len = obj.length; i < len; i++ ) {
+      ary.push( obj[i] );
+    }
+  } else {
+    // array of single index
+    ary.push( obj );
+  }
+  return ary;
+}
+
+  // -------------------------- imagesLoaded -------------------------- //
+
+  /**
+   * @param {Array, Element, NodeList, String} elem
+   * @param {Object or Function} options - if function, use as callback
+   * @param {Function} onAlways - callback function
+   */
+  function ImagesLoaded( elem, options, onAlways ) {
+    // coerce ImagesLoaded() without new, to be new ImagesLoaded()
+    if ( !( this instanceof ImagesLoaded ) ) {
+      return new ImagesLoaded( elem, options );
+    }
+    // use elem as selector string
+    if ( typeof elem === 'string' ) {
+      elem = document.querySelectorAll( elem );
+    }
+
+    this.elements = makeArray( elem );
+    this.options = extend( {}, this.options );
+
+    if ( typeof options === 'function' ) {
+      onAlways = options;
+    } else {
+      extend( this.options, options );
+    }
+
+    if ( onAlways ) {
+      this.on( 'always', onAlways );
+    }
+
+    this.getImages();
+
+    if ( $ ) {
+      // add jQuery Deferred object
+      this.jqDeferred = new $.Deferred();
+    }
+
+    // HACK check async to allow time to bind listeners
+    var _this = this;
+    setTimeout( function() {
+      _this.check();
     });
   }
 
-  function cleanFilterName(filterName) {
-    return $.trim(filterName).toLowerCase();
+  ImagesLoaded.prototype = new EventEmitter();
+
+  ImagesLoaded.prototype.options = {};
+
+  ImagesLoaded.prototype.getImages = function() {
+    this.images = [];
+
+    // filter & find items if we have an item selector
+    for ( var i=0, len = this.elements.length; i < len; i++ ) {
+      var elem = this.elements[i];
+      // filter siblings
+      if ( elem.nodeName === 'IMG' ) {
+        this.addImage( elem );
+      }
+      // find children
+      // no non-element nodes, #143
+      var nodeType = elem.nodeType;
+      if ( !nodeType || !( nodeType === 1 || nodeType === 9 || nodeType === 11 ) ) {
+        continue;
+      }
+      var childElems = elem.querySelectorAll('img');
+      // concat childElems to filterFound array
+      for ( var j=0, jLen = childElems.length; j < jLen; j++ ) {
+        var img = childElems[j];
+        this.addImage( img );
+      }
+    }
+  };
+
+  /**
+   * @param {Image} img
+   */
+  ImagesLoaded.prototype.addImage = function( img ) {
+    var loadingImage = new LoadingImage( img );
+    this.images.push( loadingImage );
+  };
+
+  ImagesLoaded.prototype.check = function() {
+    var _this = this;
+    var checkedCount = 0;
+    var length = this.images.length;
+    this.hasAnyBroken = false;
+    // complete if no images
+    if ( !length ) {
+      this.complete();
+      return;
+    }
+
+    function onConfirm( image, message ) {
+      if ( _this.options.debug && hasConsole ) {
+        console.log( 'confirm', image, message );
+      }
+
+      _this.progress( image );
+      checkedCount++;
+      if ( checkedCount === length ) {
+        _this.complete();
+      }
+      return true; // bind once
+    }
+
+    for ( var i=0; i < length; i++ ) {
+      var loadingImage = this.images[i];
+      loadingImage.on( 'confirm', onConfirm );
+      loadingImage.check();
+    }
+  };
+
+  ImagesLoaded.prototype.progress = function( image ) {
+    this.hasAnyBroken = this.hasAnyBroken || !image.isLoaded;
+    // HACK - Chrome triggers event before object properties have changed. #83
+    var _this = this;
+    setTimeout( function() {
+      _this.emit( 'progress', _this, image );
+      if ( _this.jqDeferred && _this.jqDeferred.notify ) {
+        _this.jqDeferred.notify( _this, image );
+      }
+    });
+  };
+
+  ImagesLoaded.prototype.complete = function() {
+    var eventName = this.hasAnyBroken ? 'fail' : 'done';
+    this.isComplete = true;
+    var _this = this;
+    // HACK - another setTimeout so that confirm happens after progress
+    setTimeout( function() {
+      _this.emit( eventName, _this );
+      _this.emit( 'always', _this );
+      if ( _this.jqDeferred ) {
+        var jqMethod = _this.hasAnyBroken ? 'reject' : 'resolve';
+        _this.jqDeferred[ jqMethod ]( _this );
+      }
+    });
+  };
+
+  // -------------------------- jquery -------------------------- //
+
+  if ( $ ) {
+    $.fn.imagesLoaded = function( options, callback ) {
+      var instance = new ImagesLoaded( this, options, callback );
+      return instance.jqDeferred.promise( $(this) );
+    };
   }
 
-  // Main wookmark plugin class
-  Wookmark = (function() {
 
-    function Wookmark(handler, options) {
-      // Instance variables.
-      this.handler = handler;
-      this.columns = this.containerWidth = this.resizeTimer = null;
-      this.activeItemCount = 0;
-      this.itemHeightsDirty = true;
-      this.placeholders = [];
+  // --------------------------  -------------------------- //
 
-      $.extend(true, this, defaultOptions, options);
+  function LoadingImage( img ) {
+    this.img = img;
+  }
 
-      this.verticalOffset = this.verticalOffset || this.offset;
+  LoadingImage.prototype = new EventEmitter();
 
-      // Bind instance methods
-      this.update = __bind(this.update, this);
-      this.onResize = __bind(this.onResize, this);
-      this.onRefresh = __bind(this.onRefresh, this);
-      this.getItemWidth = __bind(this.getItemWidth, this);
-      this.layout = __bind(this.layout, this);
-      this.layoutFull = __bind(this.layoutFull, this);
-      this.layoutColumns = __bind(this.layoutColumns, this);
-      //this.filter = __bind(this.filter, this);
-      this.clear = __bind(this.clear, this);
-      this.getActiveItems = __bind(this.getActiveItems, this);
-      this.refreshPlaceholders = __bind(this.refreshPlaceholders, this);
-      this.sortElements = __bind(this.sortElements, this);
-      //this.updateFilterClasses = __bind(this.updateFilterClasses, this);
-
-      // Initial update of the filter classes
-      //this.updateFilterClasses();
-
-      // Listen to resize event if requested.
-      if (this.autoResize)
-        $window.bind('resize.wookmark', this.onResize);
-
-      this.container.bind('refreshWookmark', this.onRefresh);
+  LoadingImage.prototype.check = function() {
+    // first check cached any previous images that have same src
+    var resource = cache[ this.img.src ] || new Resource( this.img.src );
+    if ( resource.isConfirmed ) {
+      this.confirm( resource.isLoaded, 'cached was confirmed' );
+      return;
     }
 
-	/*
-    Wookmark.prototype.updateFilterClasses = function() {
-      // Collect filter data
-      var i = 0, j = 0, k = 0, filterClasses = {}, itemFilterClasses,
-          $item, filterClass, possibleFilters = this.possibleFilters, possibleFilter;
+    // If complete is true and browser supports natural sizes,
+    // try to check for image status manually.
+    if ( this.img.complete && this.img.naturalWidth !== undefined ) {
+      // report based on naturalWidth
+      this.confirm( this.img.naturalWidth !== 0, 'naturalWidth' );
+      return;
+    }
 
-      for (; i < this.handler.length; i++) {
-        $item = this.handler.eq(i);
+    // If none of the checks above matched, simulate loading on detached element.
+    var _this = this;
+    resource.on( 'confirm', function( resrc, message ) {
+      _this.confirm( resrc.isLoaded, message );
+      return true;
+    });
 
-        // Read filter classes and globally store each filter class as object and the fitting items in the array
-        itemFilterClasses = $item.data('filterClass');
-        if (typeof itemFilterClasses == 'object' && itemFilterClasses.length > 0) {
-          for (j = 0; j < itemFilterClasses.length; j++) {
-            filterClass = cleanFilterName(itemFilterClasses[j]);
+    resource.check();
+  };
 
-            if (typeof(filterClasses[filterClass]) === 'undefined') {
-              filterClasses[filterClass] = [];
-            }
-            filterClasses[filterClass].push($item[0]);
-          }
+  LoadingImage.prototype.confirm = function( isLoaded, message ) {
+    this.isLoaded = isLoaded;
+    this.emit( 'confirm', this, message );
+  };
+
+  // -------------------------- Resource -------------------------- //
+
+  // Resource checks each src, only once
+  // separate class from LoadingImage to prevent memory leaks. See #115
+
+  var cache = {};
+
+  function Resource( src ) {
+    this.src = src;
+    // add to cache
+    cache[ src ] = this;
+  }
+
+  Resource.prototype = new EventEmitter();
+
+  Resource.prototype.check = function() {
+    // only trigger checking once
+    if ( this.isChecked ) {
+      return;
+    }
+    // simulate loading on detached element
+    var proxyImage = new Image();
+    eventie.bind( proxyImage, 'load', this );
+    eventie.bind( proxyImage, 'error', this );
+    proxyImage.src = this.src;
+    // set flag
+    this.isChecked = true;
+  };
+
+  // ----- events ----- //
+
+  // trigger specified handler for event type
+  Resource.prototype.handleEvent = function( event ) {
+    var method = 'on' + event.type;
+    if ( this[ method ] ) {
+      this[ method ]( event );
+    }
+  };
+
+  Resource.prototype.onload = function( event ) {
+    this.confirm( true, 'onload' );
+    this.unbindProxyEvents( event );
+  };
+
+  Resource.prototype.onerror = function( event ) {
+    this.confirm( false, 'onerror' );
+    this.unbindProxyEvents( event );
+  };
+
+  // ----- confirm ----- //
+
+  Resource.prototype.confirm = function( isLoaded, message ) {
+    this.isConfirmed = true;
+    this.isLoaded = isLoaded;
+    this.emit( 'confirm', this, message );
+  };
+
+  Resource.prototype.unbindProxyEvents = function( event ) {
+    eventie.unbind( event.target, 'load', this );
+    eventie.unbind( event.target, 'error', this );
+  };
+
+  // -----  ----- //
+
+  return ImagesLoaded;
+
+});
+
+
+
+/*!
+ * Masonry PACKAGED v3.3.1
+ * Cascading grid layout library
+ * http://masonry.desandro.com
+ * MIT License
+ * by David DeSandro
+ */
+
+/**
+ * Bridget makes jQuery widgets
+ * v1.1.0
+ * MIT license
+ */
+
+( function( window ) {
+
+
+
+// -------------------------- utils -------------------------- //
+
+var slice = Array.prototype.slice;
+
+function noop() {}
+
+// -------------------------- definition -------------------------- //
+
+function defineBridget( $ ) {
+
+// bail if no jQuery
+if ( !$ ) {
+  return;
+}
+
+// -------------------------- addOptionMethod -------------------------- //
+
+/**
+ * adds option method -> $().plugin('option', {...})
+ * @param {Function} PluginClass - constructor class
+ */
+function addOptionMethod( PluginClass ) {
+  // don't overwrite original option method
+  if ( PluginClass.prototype.option ) {
+    return;
+  }
+
+  // option setter
+  PluginClass.prototype.option = function( opts ) {
+    // bail out if not an object
+    if ( !$.isPlainObject( opts ) ){
+      return;
+    }
+    this.options = $.extend( true, this.options, opts );
+  };
+}
+
+// -------------------------- plugin bridge -------------------------- //
+
+// helper function for logging errors
+// $.error breaks jQuery chaining
+var logError = typeof console === 'undefined' ? noop :
+  function( message ) {
+    console.error( message );
+  };
+
+/**
+ * jQuery plugin bridge, access methods like $elem.plugin('method')
+ * @param {String} namespace - plugin name
+ * @param {Function} PluginClass - constructor class
+ */
+function bridge( namespace, PluginClass ) {
+  // add to jQuery fn namespace
+  $.fn[ namespace ] = function( options ) {
+    if ( typeof options === 'string' ) {
+      // call plugin method when first argument is a string
+      // get arguments for method
+      var args = slice.call( arguments, 1 );
+
+      for ( var i=0, len = this.length; i < len; i++ ) {
+        var elem = this[i];
+        var instance = $.data( elem, namespace );
+        if ( !instance ) {
+          logError( "cannot call methods on " + namespace + " prior to initialization; " +
+            "attempted to call '" + options + "'" );
+          continue;
+        }
+        if ( !$.isFunction( instance[options] ) || options.charAt(0) === '_' ) {
+          logError( "no such method '" + options + "' for " + namespace + " instance" );
+          continue;
+        }
+
+        // trigger method with arguments
+        var returnValue = instance[ options ].apply( instance, args );
+
+        // break look and return first value if provided
+        if ( returnValue !== undefined ) {
+          return returnValue;
         }
       }
-
-      for (; k < possibleFilters.length; k++) {
-        possibleFilter = cleanFilterName(possibleFilters[k]);
-        if (!(possibleFilter in filterClasses)) {
-          filterClasses[possibleFilter] = [];
-        }
-      }
-
-      this.filterClasses = filterClasses;
-    }; */
-
-    // Method for updating the plugins options
-    Wookmark.prototype.update = function(options) {
-      this.itemHeightsDirty = true;
-      $.extend(true, this, options);
-    };
-
-    // This timer ensures that layout is not continuously called as window is being dragged.
-    Wookmark.prototype.onResize = function() {
-      clearTimeout(this.resizeTimer);
-      this.itemHeightsDirty = this.flexibleWidth !== 0;
-      this.resizeTimer = setTimeout(this.layout, this.resizeDelay);
-    };
-
-    // Marks the items heights as dirty and does a relayout
-    Wookmark.prototype.onRefresh = function() {
-      this.itemHeightsDirty = true;
-      this.layout();
-    };
-
-    /**
-     * Filters the active items with the given string filters.
-     * @param filters array of string
-     * @param mode 'or' or 'and'
-     */
-	/*
-    Wookmark.prototype.filter = function(filters, mode, dryRun) {
-      var activeFilters = [], activeFiltersLength, activeItems = $(),
-          i, j, k, filter;
-
-      filters = filters || [];
-      mode = mode || 'or';
-      dryRun = dryRun || false;
-
-      if (filters.length) {
-        // Collect active filters
-        for (i = 0; i < filters.length; i++) {
-          filter = cleanFilterName(filters[i]);
-          if (filter in this.filterClasses) {
-            activeFilters.push(this.filterClasses[filter]);
-          }
-        }
-
-        // Get items for active filters with the selected mode
-        activeFiltersLength = activeFilters.length;
-        if (mode == 'or' || activeFiltersLength == 1) {
-          // Set all items in all active filters active
-          for (i = 0; i < activeFiltersLength; i++) {
-            activeItems = activeItems.add(activeFilters[i]);
-          }
-        } else if (mode == 'and') {
-          var shortestFilter = activeFilters[0],
-              itemValid = true, foundInFilter,
-              currentItem, currentFilter;
-
-          // Find shortest filter class
-          for (i = 1; i < activeFiltersLength; i++) {
-            if (activeFilters[i].length < shortestFilter.length) {
-              shortestFilter = activeFilters[i];
-            }
-          }
-
-          // Iterate over shortest filter and find elements in other filter classes
-          shortestFilter = shortestFilter || [];
-          for (i = 0; i < shortestFilter.length; i++) {
-            currentItem = shortestFilter[i];
-            itemValid = true;
-
-            for (j = 0; j < activeFilters.length && itemValid; j++) {
-              currentFilter = activeFilters[j];
-              if (shortestFilter == currentFilter) continue;
-
-              // Search for current item in each active filter class
-              for (k = 0, foundInFilter = false; k < currentFilter.length && !foundInFilter; k++) {
-                foundInFilter = currentFilter[k] == currentItem;
-              }
-              itemValid &= foundInFilter;
-            }
-            if (itemValid)
-              activeItems.push(shortestFilter[i]);
-          }
-        }
-        // Hide inactive items
-        if (!dryRun)
-          this.handler.not(activeItems).addClass('inactive');
-      } else {
-        // Show all items if no filter is selected
-        activeItems = this.handler;
-      }
-
-      // Show active items
-      if (!dryRun) {
-        activeItems.removeClass('inactive');
-        // Unset columns and refresh grid for a full layout
-        this.columns = null;
-        this.layout();
-      }
-      return activeItems;
-    };
-	*/
-
-    /**
-     * Creates or updates existing placeholders to create columns of even height
-     */
-    Wookmark.prototype.refreshPlaceholders = function(columnWidth, sideOffset) {
-      var i = this.placeholders.length,
-          $placeholder, $lastColumnItem,
-          columnsLength = this.columns.length, column,
-          height, top, innerOffset,
-          containerHeight = this.container.innerHeight();
-
-      for (; i < columnsLength; i++) {
-        $placeholder = $('<div class="wookmark-placeholder"/>').appendTo(this.container);
-        this.placeholders.push($placeholder);
-      }
-
-      innerOffset = this.offset + parseInt(this.placeholders[0].css('borderLeftWidth'), 10) * 2;
-
-      for (i = 0; i < this.placeholders.length; i++) {
-        $placeholder = this.placeholders[i];
-        column = this.columns[i];
-
-        if (i >= columnsLength || !column[column.length - 1]) {
-          $placeholder.css('display', 'none');
+      // return this if no return value
+      return this;
+    } else {
+      return this.each( function() {
+        var instance = $.data( this, namespace );
+        if ( instance ) {
+          // apply options & init
+          instance.option( options );
+          instance._init();
         } else {
-          $lastColumnItem = column[column.length - 1];
-          if (!$lastColumnItem) continue;
-          top = $lastColumnItem.data('wookmark-top') + $lastColumnItem.data('wookmark-height') + this.verticalOffset;
-          height = containerHeight - top - innerOffset;
-
-          $placeholder.css({
-            position: 'absolute',
-            display: height > 0 ? 'block' : 'none',
-            left: i * columnWidth + sideOffset,
-            top: top,
-            width: columnWidth - innerOffset,
-            height: height
-          });
+          // initialize new instance
+          instance = new PluginClass( this, options );
+          $.data( this, namespace, instance );
         }
-      }
-    };
+      });
+    }
+  };
 
-    // Method the get active items which are not disabled and visible
-    Wookmark.prototype.getActiveItems = function() {
-      return this.ignoreInactiveItems ? this.handler.not('.inactive') : this.handler;
-    };
+}
 
-    // Method to get the standard item width
-    Wookmark.prototype.getItemWidth = function() {
-      var itemWidth = this.itemWidth,
-          innerWidth = this.container.width() - 2 * this.outerOffset,
-          firstElement = this.handler.eq(0),
-          flexibleWidth = this.flexibleWidth;
+// -------------------------- bridget -------------------------- //
 
-      if (this.itemWidth === undefined || this.itemWidth === 0 && !this.flexibleWidth) {
-        itemWidth = firstElement.outerWidth();
-      }
-      else if (typeof this.itemWidth == 'string' && this.itemWidth.indexOf('%') >= 0) {
-        itemWidth = parseFloat(this.itemWidth) / 100 * innerWidth;
-      }
+/**
+ * converts a Prototypical class into a proper jQuery plugin
+ *   the class must have a ._init method
+ * @param {String} namespace - plugin name, used in $().pluginName
+ * @param {Function} PluginClass - constructor class
+ */
+$.bridget = function( namespace, PluginClass ) {
+  addOptionMethod( PluginClass );
+  bridge( namespace, PluginClass );
+};
 
-      // Calculate flexible item width if option is set
-      if (flexibleWidth) {
-        if (typeof flexibleWidth == 'string' && flexibleWidth.indexOf('%') >= 0) {
-          flexibleWidth = parseFloat(flexibleWidth) / 100 * innerWidth;
-        }
+return $.bridget;
 
-        // Find highest column count
-        var paddedInnerWidth = (innerWidth + this.offset),
-            flexibleColumns = ~~(0.5 + paddedInnerWidth / (flexibleWidth + this.offset)),
-            fixedColumns = ~~(paddedInnerWidth / (itemWidth + this.offset)),
-            columns = Math.max(flexibleColumns, fixedColumns),
-            columnWidth = Math.min(flexibleWidth, ~~((innerWidth - (columns - 1) * this.offset) / columns));
+}
 
-        itemWidth = Math.max(itemWidth, columnWidth);
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( 'jquery-bridget/jquery.bridget',[ 'jquery' ], defineBridget );
+} else if ( typeof exports === 'object' ) {
+  defineBridget( require('jquery') );
+} else {
+  // get jquery from browser global
+  defineBridget( window.jQuery );
+}
 
-        // Stretch items to fill calculated width
-        this.handler.css('width', itemWidth);
-      }
+})( window );
 
-      return itemWidth;
-    };
+/*!
+ * eventie v1.0.6
+ * event binding helper
+ *   eventie.bind( elem, 'click', myFn )
+ *   eventie.unbind( elem, 'click', myFn )
+ * MIT license
+ */
 
-    // Main layout method.
-    Wookmark.prototype.layout = function(force) {
-      // Do nothing if container isn't visible
-      if (!this.container.is(':visible')) return;
+/*jshint browser: true, undef: true, unused: true */
+/*global define: false, module: false */
 
-      // Calculate basic layout parameters.
-      var columnWidth = this.getItemWidth() + this.offset,
-          containerWidth = this.container.width(),
-          innerWidth = containerWidth - 2 * this.outerOffset,
-          columns = ~~((innerWidth + this.offset) / columnWidth),
-          offset = 0, maxHeight = 0, i = 0,
-          activeItems = this.getActiveItems(),
-          activeItemsLength = activeItems.length,
-          $item;
+( function( window ) {
 
-      // Cache item height
-      if (this.itemHeightsDirty || !this.container.data('itemHeightsInitialized')) {
-        for (; i < activeItemsLength; i++) {
-          $item = activeItems.eq(i);
-          $item.data('wookmark-height', $item.outerHeight());
-        }
-        this.itemHeightsDirty = false;
-        this.container.data('itemHeightsInitialized', true);
-      }
 
-      // Use less columns if there are to few items
-      columns = Math.max(1, Math.min(columns, activeItemsLength));
 
-      // Calculate the offset based on the alignment of columns to the parent container
-      offset = this.outerOffset;
-      if (this.align == 'center') {
-        offset += ~~(0.5 + (innerWidth - (columns * columnWidth - this.offset)) >> 1);
-      }
+var docElem = document.documentElement;
 
-      // Get direction for positioning
-      this.direction = this.direction || (this.align == 'right' ? 'right' : 'left');
+var bind = function() {};
 
-      // If container and column count hasn't changed, we can only update the columns.
-      if (!force && this.columns !== null && this.columns.length == columns && this.activeItemCount == activeItemsLength) {
-        maxHeight = this.layoutColumns(columnWidth, offset);
-      } else {
-        maxHeight = this.layoutFull(columnWidth, columns, offset);
-      }
-      this.activeItemCount = activeItemsLength;
+function getIEEvent( obj ) {
+  var event = window.event;
+  // add event.target
+  event.target = event.target || event.srcElement || obj;
+  return event;
+}
 
-      // Set container height to height of the grid.
-      this.container.css('height', maxHeight);
+if ( docElem.addEventListener ) {
+  bind = function( obj, type, fn ) {
+    obj.addEventListener( type, fn, false );
+  };
+} else if ( docElem.attachEvent ) {
+  bind = function( obj, type, fn ) {
+    obj[ type + fn ] = fn.handleEvent ?
+      function() {
+        var event = getIEEvent( obj );
+        fn.handleEvent.call( fn, event );
+      } :
+      function() {
+        var event = getIEEvent( obj );
+        fn.call( obj, event );
+      };
+    obj.attachEvent( "on" + type, obj[ type + fn ] );
+  };
+}
 
-      // Update placeholders
-      if (this.fillEmptySpace) {
-        this.refreshPlaceholders(columnWidth, offset);
-      }
+var unbind = function() {};
 
-      if (this.onLayoutChanged !== undefined && typeof this.onLayoutChanged === 'function') {
-        this.onLayoutChanged();
-      }
-    };
+if ( docElem.removeEventListener ) {
+  unbind = function( obj, type, fn ) {
+    obj.removeEventListener( type, fn, false );
+  };
+} else if ( docElem.detachEvent ) {
+  unbind = function( obj, type, fn ) {
+    obj.detachEvent( "on" + type, obj[ type + fn ] );
+    try {
+      delete obj[ type + fn ];
+    } catch ( err ) {
+      // can't delete window object properties
+      obj[ type + fn ] = undefined;
+    }
+  };
+}
+
+var eventie = {
+  bind: bind,
+  unbind: unbind
+};
+
+// ----- module definition ----- //
+
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( 'eventie/eventie',eventie );
+} else if ( typeof exports === 'object' ) {
+  // CommonJS
+  module.exports = eventie;
+} else {
+  // browser global
+  window.eventie = eventie;
+}
+
+})( window );
+
+/*!
+ * EventEmitter v4.2.11 - git.io/ee
+ * Unlicense - http://unlicense.org/
+ * Oliver Caldwell - http://oli.me.uk/
+ * @preserve
+ */
+
+;(function () {
+    
 
     /**
-     * Sort elements with configurable comparator
+     * Class for managing events.
+     * Can be extended to provide event functionality in other classes.
+     *
+     * @class EventEmitter Manages event registering and emitting.
      */
-    Wookmark.prototype.sortElements = function(elements) {
-      return typeof(this.comparator) === 'function' ? elements.sort(this.comparator) : elements;
-    };
+    function EventEmitter() {}
+
+    // Shortcuts to improve speed and size
+    var proto = EventEmitter.prototype;
+    var exports = this;
+    var originalGlobalValue = exports.EventEmitter;
 
     /**
-     * Perform a full layout update.
+     * Finds the index of the listener for the event in its storage array.
+     *
+     * @param {Function[]} listeners Array of listeners to search through.
+     * @param {Function} listener Method to look for.
+     * @return {Number} Index of the specified listener, -1 if not found
+     * @api private
      */
-    Wookmark.prototype.layoutFull = function(columnWidth, columns, offset) {
-      var $item, i = 0, k = 0,
-          activeItems = $.makeArray(this.getActiveItems()),
-          length = activeItems.length,
-          shortest = null, shortestIndex = null,
-          sideOffset, heights = [], itemBulkCSS = [],
-          leftAligned = this.align == 'left' ? true : false;
-
-      this.columns = [];
-
-      // Sort elements before layouting
-      activeItems = this.sortElements(activeItems);
-
-      // Prepare arrays to store height of columns and items.
-      while (heights.length < columns) {
-        heights.push(this.outerOffset);
-        this.columns.push([]);
-      }
-
-      // Loop over items.
-      for (; i < length; i++ ) {
-        $item = $(activeItems[i]);
-
-        // Find the shortest column.
-        shortest = heights[0];
-        shortestIndex = 0;
-        for (k = 0; k < columns; k++) {
-          if (heights[k] < shortest) {
-            shortest = heights[k];
-            shortestIndex = k;
-          }
-        }
-        $item.data('wookmark-top', shortest);
-
-        // stick to left side if alignment is left and this is the first column
-        sideOffset = offset;
-        if (shortestIndex > 0 || !leftAligned)
-          sideOffset += shortestIndex * columnWidth;
-
-        // Position the item.
-        (itemBulkCSS[i] = {
-          obj: $item,
-          css: {
-            position: 'absolute',
-            top: shortest
-          }
-        }).css[this.direction] = sideOffset;
-
-        // Update column height and store item in shortest column
-        heights[shortestIndex] += $item.data('wookmark-height') + this.verticalOffset;
-        this.columns[shortestIndex].push($item);
-      }
-
-      bulkUpdateCSS(itemBulkCSS);
-
-      // Return longest column
-      return Math.max.apply(Math, heights);
-    };
-
-    /**
-     * This layout method only updates the vertical position of the
-     * existing column assignments.
-     */
-    Wookmark.prototype.layoutColumns = function(columnWidth, offset) {
-      var heights = [], itemBulkCSS = [],
-          i = 0, k = 0, j = 0, currentHeight,
-          column, $item, itemData, sideOffset;
-
-      for (; i < this.columns.length; i++) {
-        heights.push(this.outerOffset);
-        column = this.columns[i];
-        sideOffset = i * columnWidth + offset;
-        currentHeight = heights[i];
-
-        for (k = 0; k < column.length; k++, j++) {
-          $item = column[k].data('wookmark-top', currentHeight);
-          (itemBulkCSS[j] = {
-            obj: $item,
-            css: {
-              top: currentHeight
+    function indexOfListener(listeners, listener) {
+        var i = listeners.length;
+        while (i--) {
+            if (listeners[i].listener === listener) {
+                return i;
             }
-          }).css[this.direction] = sideOffset;
-
-          currentHeight += $item.data('wookmark-height') + this.verticalOffset;
         }
-        heights[i] = currentHeight;
-      }
 
-      bulkUpdateCSS(itemBulkCSS);
+        return -1;
+    }
 
-      // Return longest column
-      return Math.max.apply(Math, heights);
+    /**
+     * Alias a method while keeping the context correct, to allow for overwriting of target method.
+     *
+     * @param {String} name The name of the target method.
+     * @return {Function} The aliased method
+     * @api private
+     */
+    function alias(name) {
+        return function aliasClosure() {
+            return this[name].apply(this, arguments);
+        };
+    }
+
+    /**
+     * Returns the listener array for the specified event.
+     * Will initialise the event object and listener arrays if required.
+     * Will return an object if you use a regex search. The object contains keys for each matched event. So /ba[rz]/ might return an object containing bar and baz. But only if you have either defined them with defineEvent or added some listeners to them.
+     * Each property in the object response is an array of listener functions.
+     *
+     * @param {String|RegExp} evt Name of the event to return the listeners from.
+     * @return {Function[]|Object} All listener functions for the event.
+     */
+    proto.getListeners = function getListeners(evt) {
+        var events = this._getEvents();
+        var response;
+        var key;
+
+        // Return a concatenated array of all matching events if
+        // the selector is a regular expression.
+        if (evt instanceof RegExp) {
+            response = {};
+            for (key in events) {
+                if (events.hasOwnProperty(key) && evt.test(key)) {
+                    response[key] = events[key];
+                }
+            }
+        }
+        else {
+            response = events[evt] || (events[evt] = []);
+        }
+
+        return response;
     };
 
     /**
-     * Clear event listeners and time outs and the instance itself
+     * Takes a list of listener objects and flattens it into a list of listener functions.
+     *
+     * @param {Object[]} listeners Raw listener objects.
+     * @return {Function[]} Just the listener functions.
      */
-    Wookmark.prototype.clear = function() {
-      clearTimeout(this.resizeTimer);
-      $window.unbind('resize.wookmark', this.onResize);
-      this.container.unbind('refreshWookmark', this.onRefresh);
-      this.handler.wookmarkInstance = null;
+    proto.flattenListeners = function flattenListeners(listeners) {
+        var flatListeners = [];
+        var i;
+
+        for (i = 0; i < listeners.length; i += 1) {
+            flatListeners.push(listeners[i].listener);
+        }
+
+        return flatListeners;
     };
 
-    return Wookmark;
+    /**
+     * Fetches the requested listeners via getListeners but will always return the results inside an object. This is mainly for internal use but others may find it useful.
+     *
+     * @param {String|RegExp} evt Name of the event to return the listeners from.
+     * @return {Object} All listener functions for an event in an object.
+     */
+    proto.getListenersAsObject = function getListenersAsObject(evt) {
+        var listeners = this.getListeners(evt);
+        var response;
+
+        if (listeners instanceof Array) {
+            response = {};
+            response[evt] = listeners;
+        }
+
+        return response || listeners;
+    };
+
+    /**
+     * Adds a listener function to the specified event.
+     * The listener will not be added if it is a duplicate.
+     * If the listener returns true then it will be removed after it is called.
+     * If you pass a regular expression as the event name then the listener will be added to all events that match it.
+     *
+     * @param {String|RegExp} evt Name of the event to attach the listener to.
+     * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.addListener = function addListener(evt, listener) {
+        var listeners = this.getListenersAsObject(evt);
+        var listenerIsWrapped = typeof listener === 'object';
+        var key;
+
+        for (key in listeners) {
+            if (listeners.hasOwnProperty(key) && indexOfListener(listeners[key], listener) === -1) {
+                listeners[key].push(listenerIsWrapped ? listener : {
+                    listener: listener,
+                    once: false
+                });
+            }
+        }
+
+        return this;
+    };
+
+    /**
+     * Alias of addListener
+     */
+    proto.on = alias('addListener');
+
+    /**
+     * Semi-alias of addListener. It will add a listener that will be
+     * automatically removed after its first execution.
+     *
+     * @param {String|RegExp} evt Name of the event to attach the listener to.
+     * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.addOnceListener = function addOnceListener(evt, listener) {
+        return this.addListener(evt, {
+            listener: listener,
+            once: true
+        });
+    };
+
+    /**
+     * Alias of addOnceListener.
+     */
+    proto.once = alias('addOnceListener');
+
+    /**
+     * Defines an event name. This is required if you want to use a regex to add a listener to multiple events at once. If you don't do this then how do you expect it to know what event to add to? Should it just add to every possible match for a regex? No. That is scary and bad.
+     * You need to tell it what event names should be matched by a regex.
+     *
+     * @param {String} evt Name of the event to create.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.defineEvent = function defineEvent(evt) {
+        this.getListeners(evt);
+        return this;
+    };
+
+    /**
+     * Uses defineEvent to define multiple events.
+     *
+     * @param {String[]} evts An array of event names to define.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.defineEvents = function defineEvents(evts) {
+        for (var i = 0; i < evts.length; i += 1) {
+            this.defineEvent(evts[i]);
+        }
+        return this;
+    };
+
+    /**
+     * Removes a listener function from the specified event.
+     * When passed a regular expression as the event name, it will remove the listener from all events that match it.
+     *
+     * @param {String|RegExp} evt Name of the event to remove the listener from.
+     * @param {Function} listener Method to remove from the event.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.removeListener = function removeListener(evt, listener) {
+        var listeners = this.getListenersAsObject(evt);
+        var index;
+        var key;
+
+        for (key in listeners) {
+            if (listeners.hasOwnProperty(key)) {
+                index = indexOfListener(listeners[key], listener);
+
+                if (index !== -1) {
+                    listeners[key].splice(index, 1);
+                }
+            }
+        }
+
+        return this;
+    };
+
+    /**
+     * Alias of removeListener
+     */
+    proto.off = alias('removeListener');
+
+    /**
+     * Adds listeners in bulk using the manipulateListeners method.
+     * If you pass an object as the second argument you can add to multiple events at once. The object should contain key value pairs of events and listeners or listener arrays. You can also pass it an event name and an array of listeners to be added.
+     * You can also pass it a regular expression to add the array of listeners to all events that match it.
+     * Yeah, this function does quite a bit. That's probably a bad thing.
+     *
+     * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add to multiple events at once.
+     * @param {Function[]} [listeners] An optional array of listener functions to add.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.addListeners = function addListeners(evt, listeners) {
+        // Pass through to manipulateListeners
+        return this.manipulateListeners(false, evt, listeners);
+    };
+
+    /**
+     * Removes listeners in bulk using the manipulateListeners method.
+     * If you pass an object as the second argument you can remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+     * You can also pass it an event name and an array of listeners to be removed.
+     * You can also pass it a regular expression to remove the listeners from all events that match it.
+     *
+     * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to remove from multiple events at once.
+     * @param {Function[]} [listeners] An optional array of listener functions to remove.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.removeListeners = function removeListeners(evt, listeners) {
+        // Pass through to manipulateListeners
+        return this.manipulateListeners(true, evt, listeners);
+    };
+
+    /**
+     * Edits listeners in bulk. The addListeners and removeListeners methods both use this to do their job. You should really use those instead, this is a little lower level.
+     * The first argument will determine if the listeners are removed (true) or added (false).
+     * If you pass an object as the second argument you can add/remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+     * You can also pass it an event name and an array of listeners to be added/removed.
+     * You can also pass it a regular expression to manipulate the listeners of all events that match it.
+     *
+     * @param {Boolean} remove True if you want to remove listeners, false if you want to add.
+     * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add/remove from multiple events at once.
+     * @param {Function[]} [listeners] An optional array of listener functions to add/remove.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.manipulateListeners = function manipulateListeners(remove, evt, listeners) {
+        var i;
+        var value;
+        var single = remove ? this.removeListener : this.addListener;
+        var multiple = remove ? this.removeListeners : this.addListeners;
+
+        // If evt is an object then pass each of its properties to this method
+        if (typeof evt === 'object' && !(evt instanceof RegExp)) {
+            for (i in evt) {
+                if (evt.hasOwnProperty(i) && (value = evt[i])) {
+                    // Pass the single listener straight through to the singular method
+                    if (typeof value === 'function') {
+                        single.call(this, i, value);
+                    }
+                    else {
+                        // Otherwise pass back to the multiple function
+                        multiple.call(this, i, value);
+                    }
+                }
+            }
+        }
+        else {
+            // So evt must be a string
+            // And listeners must be an array of listeners
+            // Loop over it and pass each one to the multiple method
+            i = listeners.length;
+            while (i--) {
+                single.call(this, evt, listeners[i]);
+            }
+        }
+
+        return this;
+    };
+
+    /**
+     * Removes all listeners from a specified event.
+     * If you do not specify an event then all listeners will be removed.
+     * That means every event will be emptied.
+     * You can also pass a regex to remove all events that match it.
+     *
+     * @param {String|RegExp} [evt] Optional name of the event to remove all listeners for. Will remove from every event if not passed.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.removeEvent = function removeEvent(evt) {
+        var type = typeof evt;
+        var events = this._getEvents();
+        var key;
+
+        // Remove different things depending on the state of evt
+        if (type === 'string') {
+            // Remove all listeners for the specified event
+            delete events[evt];
+        }
+        else if (evt instanceof RegExp) {
+            // Remove all events matching the regex.
+            for (key in events) {
+                if (events.hasOwnProperty(key) && evt.test(key)) {
+                    delete events[key];
+                }
+            }
+        }
+        else {
+            // Remove all listeners in all events
+            delete this._events;
+        }
+
+        return this;
+    };
+
+    /**
+     * Alias of removeEvent.
+     *
+     * Added to mirror the node API.
+     */
+    proto.removeAllListeners = alias('removeEvent');
+
+    /**
+     * Emits an event of your choice.
+     * When emitted, every listener attached to that event will be executed.
+     * If you pass the optional argument array then those arguments will be passed to every listener upon execution.
+     * Because it uses `apply`, your array of arguments will be passed as if you wrote them out separately.
+     * So they will not arrive within the array on the other side, they will be separate.
+     * You can also pass a regular expression to emit to all events that match it.
+     *
+     * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+     * @param {Array} [args] Optional array of arguments to be passed to each listener.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.emitEvent = function emitEvent(evt, args) {
+        var listeners = this.getListenersAsObject(evt);
+        var listener;
+        var i;
+        var key;
+        var response;
+
+        for (key in listeners) {
+            if (listeners.hasOwnProperty(key)) {
+                i = listeners[key].length;
+
+                while (i--) {
+                    // If the listener returns true then it shall be removed from the event
+                    // The function is executed either with a basic call or an apply if there is an args array
+                    listener = listeners[key][i];
+
+                    if (listener.once === true) {
+                        this.removeListener(evt, listener.listener);
+                    }
+
+                    response = listener.listener.apply(this, args || []);
+
+                    if (response === this._getOnceReturnValue()) {
+                        this.removeListener(evt, listener.listener);
+                    }
+                }
+            }
+        }
+
+        return this;
+    };
+
+    /**
+     * Alias of emitEvent
+     */
+    proto.trigger = alias('emitEvent');
+
+    /**
+     * Subtly different from emitEvent in that it will pass its arguments on to the listeners, as opposed to taking a single array of arguments to pass on.
+     * As with emitEvent, you can pass a regex in place of the event name to emit to all events that match it.
+     *
+     * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+     * @param {...*} Optional additional arguments to be passed to each listener.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.emit = function emit(evt) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        return this.emitEvent(evt, args);
+    };
+
+    /**
+     * Sets the current value to check against when executing listeners. If a
+     * listeners return value matches the one set here then it will be removed
+     * after execution. This value defaults to true.
+     *
+     * @param {*} value The new value to check for when executing listeners.
+     * @return {Object} Current instance of EventEmitter for chaining.
+     */
+    proto.setOnceReturnValue = function setOnceReturnValue(value) {
+        this._onceReturnValue = value;
+        return this;
+    };
+
+    /**
+     * Fetches the current value to check against when executing listeners. If
+     * the listeners return value matches this one then it should be removed
+     * automatically. It will return true by default.
+     *
+     * @return {*|Boolean} The current value to check for or the default, true.
+     * @api private
+     */
+    proto._getOnceReturnValue = function _getOnceReturnValue() {
+        if (this.hasOwnProperty('_onceReturnValue')) {
+            return this._onceReturnValue;
+        }
+        else {
+            return true;
+        }
+    };
+
+    /**
+     * Fetches the events object and creates one if required.
+     *
+     * @return {Object} The events storage object.
+     * @api private
+     */
+    proto._getEvents = function _getEvents() {
+        return this._events || (this._events = {});
+    };
+
+    /**
+     * Reverts the global {@link EventEmitter} to its previous value and returns a reference to this version.
+     *
+     * @return {Function} Non conflicting EventEmitter class.
+     */
+    EventEmitter.noConflict = function noConflict() {
+        exports.EventEmitter = originalGlobalValue;
+        return EventEmitter;
+    };
+
+    // Expose the class either via AMD, CommonJS or the global object
+    if (typeof define === 'function' && define.amd) {
+        define('eventEmitter/EventEmitter',[],function () {
+            return EventEmitter;
+        });
+    }
+    else if (typeof module === 'object' && module.exports){
+        module.exports = EventEmitter;
+    }
+    else {
+        exports.EventEmitter = EventEmitter;
+    }
+}.call(this));
+
+/*!
+ * getStyleProperty v1.0.4
+ * original by kangax
+ * http://perfectionkills.com/feature-testing-css-properties/
+ * MIT license
+ */
+
+/*jshint browser: true, strict: true, undef: true */
+/*global define: false, exports: false, module: false */
+
+( function( window ) {
+
+
+
+var prefixes = 'Webkit Moz ms Ms O'.split(' ');
+var docElemStyle = document.documentElement.style;
+
+function getStyleProperty( propName ) {
+  if ( !propName ) {
+    return;
+  }
+
+  // test standard property first
+  if ( typeof docElemStyle[ propName ] === 'string' ) {
+    return propName;
+  }
+
+  // capitalize
+  propName = propName.charAt(0).toUpperCase() + propName.slice(1);
+
+  // test vendor specific properties
+  var prefixed;
+  for ( var i=0, len = prefixes.length; i < len; i++ ) {
+    prefixed = prefixes[i] + propName;
+    if ( typeof docElemStyle[ prefixed ] === 'string' ) {
+      return prefixed;
+    }
+  }
+}
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( 'get-style-property/get-style-property',[],function() {
+    return getStyleProperty;
+  });
+} else if ( typeof exports === 'object' ) {
+  // CommonJS for Component
+  module.exports = getStyleProperty;
+} else {
+  // browser global
+  window.getStyleProperty = getStyleProperty;
+}
+
+})( window );
+
+/*!
+ * getSize v1.2.2
+ * measure size of elements
+ * MIT license
+ */
+
+/*jshint browser: true, strict: true, undef: true, unused: true */
+/*global define: false, exports: false, require: false, module: false, console: false */
+
+( function( window, undefined ) {
+
+
+
+// -------------------------- helpers -------------------------- //
+
+// get a number from a string, not a percentage
+function getStyleSize( value ) {
+  var num = parseFloat( value );
+  // not a percent like '100%', and a number
+  var isValid = value.indexOf('%') === -1 && !isNaN( num );
+  return isValid && num;
+}
+
+function noop() {}
+
+var logError = typeof console === 'undefined' ? noop :
+  function( message ) {
+    console.error( message );
+  };
+
+// -------------------------- measurements -------------------------- //
+
+var measurements = [
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
+  'borderLeftWidth',
+  'borderRightWidth',
+  'borderTopWidth',
+  'borderBottomWidth'
+];
+
+function getZeroSize() {
+  var size = {
+    width: 0,
+    height: 0,
+    innerWidth: 0,
+    innerHeight: 0,
+    outerWidth: 0,
+    outerHeight: 0
+  };
+  for ( var i=0, len = measurements.length; i < len; i++ ) {
+    var measurement = measurements[i];
+    size[ measurement ] = 0;
+  }
+  return size;
+}
+
+
+
+function defineGetSize( getStyleProperty ) {
+
+// -------------------------- setup -------------------------- //
+
+var isSetup = false;
+
+var getStyle, boxSizingProp, isBoxSizeOuter;
+
+/**
+ * setup vars and functions
+ * do it on initial getSize(), rather than on script load
+ * For Firefox bug https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+ */
+function setup() {
+  // setup once
+  if ( isSetup ) {
+    return;
+  }
+  isSetup = true;
+
+  var getComputedStyle = window.getComputedStyle;
+  getStyle = ( function() {
+    var getStyleFn = getComputedStyle ?
+      function( elem ) {
+        return getComputedStyle( elem, null );
+      } :
+      function( elem ) {
+        return elem.currentStyle;
+      };
+
+      return function getStyle( elem ) {
+        var style = getStyleFn( elem );
+        if ( !style ) {
+          logError( 'Style returned ' + style +
+            '. Are you running this code in a hidden iframe on Firefox? ' +
+            'See http://bit.ly/getsizebug1' );
+        }
+        return style;
+      };
   })();
 
-  $.fn.wookmark = function(options) {
-    // Create a wookmark instance if not available
-    if (!this.wookmarkInstance) {
-      this.wookmarkInstance = new Wookmark(this, options || {});
+  // -------------------------- box sizing -------------------------- //
+
+  boxSizingProp = getStyleProperty('boxSizing');
+
+  /**
+   * WebKit measures the outer-width on style.width on border-box elems
+   * IE & Firefox measures the inner-width
+   */
+  if ( boxSizingProp ) {
+    var div = document.createElement('div');
+    div.style.width = '200px';
+    div.style.padding = '1px 2px 3px 4px';
+    div.style.borderStyle = 'solid';
+    div.style.borderWidth = '1px 2px 3px 4px';
+    div.style[ boxSizingProp ] = 'border-box';
+
+    var body = document.body || document.documentElement;
+    body.appendChild( div );
+    var style = getStyle( div );
+
+    isBoxSizeOuter = getStyleSize( style.width ) === 200;
+    body.removeChild( div );
+  }
+
+}
+
+// -------------------------- getSize -------------------------- //
+
+function getSize( elem ) {
+  setup();
+
+  // use querySeletor if elem is string
+  if ( typeof elem === 'string' ) {
+    elem = document.querySelector( elem );
+  }
+
+  // do not proceed on non-objects
+  if ( !elem || typeof elem !== 'object' || !elem.nodeType ) {
+    return;
+  }
+
+  var style = getStyle( elem );
+
+  // if hidden, everything is 0
+  if ( style.display === 'none' ) {
+    return getZeroSize();
+  }
+
+  var size = {};
+  size.width = elem.offsetWidth;
+  size.height = elem.offsetHeight;
+
+  var isBorderBox = size.isBorderBox = !!( boxSizingProp &&
+    style[ boxSizingProp ] && style[ boxSizingProp ] === 'border-box' );
+
+  // get all measurements
+  for ( var i=0, len = measurements.length; i < len; i++ ) {
+    var measurement = measurements[i];
+    var value = style[ measurement ];
+    value = mungeNonPixel( elem, value );
+    var num = parseFloat( value );
+    // any 'auto', 'medium' value will be 0
+    size[ measurement ] = !isNaN( num ) ? num : 0;
+  }
+
+  var paddingWidth = size.paddingLeft + size.paddingRight;
+  var paddingHeight = size.paddingTop + size.paddingBottom;
+  var marginWidth = size.marginLeft + size.marginRight;
+  var marginHeight = size.marginTop + size.marginBottom;
+  var borderWidth = size.borderLeftWidth + size.borderRightWidth;
+  var borderHeight = size.borderTopWidth + size.borderBottomWidth;
+
+  var isBorderBoxSizeOuter = isBorderBox && isBoxSizeOuter;
+
+  // overwrite width and height if we can get it from style
+  var styleWidth = getStyleSize( style.width );
+  if ( styleWidth !== false ) {
+    size.width = styleWidth +
+      // add padding and border unless it's already including it
+      ( isBorderBoxSizeOuter ? 0 : paddingWidth + borderWidth );
+  }
+
+  var styleHeight = getStyleSize( style.height );
+  if ( styleHeight !== false ) {
+    size.height = styleHeight +
+      // add padding and border unless it's already including it
+      ( isBorderBoxSizeOuter ? 0 : paddingHeight + borderHeight );
+  }
+
+  size.innerWidth = size.width - ( paddingWidth + borderWidth );
+  size.innerHeight = size.height - ( paddingHeight + borderHeight );
+
+  size.outerWidth = size.width + marginWidth;
+  size.outerHeight = size.height + marginHeight;
+
+  return size;
+}
+
+// IE8 returns percent values, not pixels
+// taken from jQuery's curCSS
+function mungeNonPixel( elem, value ) {
+  // IE8 and has percent value
+  if ( window.getComputedStyle || value.indexOf('%') === -1 ) {
+    return value;
+  }
+  var style = elem.style;
+  // Remember the original values
+  var left = style.left;
+  var rs = elem.runtimeStyle;
+  var rsLeft = rs && rs.left;
+
+  // Put in the new values to get a computed value out
+  if ( rsLeft ) {
+    rs.left = elem.currentStyle.left;
+  }
+  style.left = value;
+  value = style.pixelLeft;
+
+  // Revert the changed values
+  style.left = left;
+  if ( rsLeft ) {
+    rs.left = rsLeft;
+  }
+
+  return value;
+}
+
+return getSize;
+
+}
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD for RequireJS
+  define( 'get-size/get-size',[ 'get-style-property/get-style-property' ], defineGetSize );
+} else if ( typeof exports === 'object' ) {
+  // CommonJS for Component
+  module.exports = defineGetSize( require('desandro-get-style-property') );
+} else {
+  // browser global
+  window.getSize = defineGetSize( window.getStyleProperty );
+}
+
+})( window );
+
+/*!
+ * docReady v1.0.4
+ * Cross browser DOMContentLoaded event emitter
+ * MIT license
+ */
+
+/*jshint browser: true, strict: true, undef: true, unused: true*/
+/*global define: false, require: false, module: false */
+
+( function( window ) {
+
+
+
+var document = window.document;
+// collection of functions to be triggered on ready
+var queue = [];
+
+function docReady( fn ) {
+  // throw out non-functions
+  if ( typeof fn !== 'function' ) {
+    return;
+  }
+
+  if ( docReady.isReady ) {
+    // ready now, hit it
+    fn();
+  } else {
+    // queue function when ready
+    queue.push( fn );
+  }
+}
+
+docReady.isReady = false;
+
+// triggered on various doc ready events
+function onReady( event ) {
+  // bail if already triggered or IE8 document is not ready just yet
+  var isIE8NotReady = event.type === 'readystatechange' && document.readyState !== 'complete';
+  if ( docReady.isReady || isIE8NotReady ) {
+    return;
+  }
+
+  trigger();
+}
+
+function trigger() {
+  docReady.isReady = true;
+  // process queue
+  for ( var i=0, len = queue.length; i < len; i++ ) {
+    var fn = queue[i];
+    fn();
+  }
+}
+
+function defineDocReady( eventie ) {
+  // trigger ready if page is ready
+  if ( document.readyState === 'complete' ) {
+    trigger();
+  } else {
+    // listen for events
+    eventie.bind( document, 'DOMContentLoaded', onReady );
+    eventie.bind( document, 'readystatechange', onReady );
+    eventie.bind( window, 'load', onReady );
+  }
+
+  return docReady;
+}
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( 'doc-ready/doc-ready',[ 'eventie/eventie' ], defineDocReady );
+} else if ( typeof exports === 'object' ) {
+  module.exports = defineDocReady( require('eventie') );
+} else {
+  // browser global
+  window.docReady = defineDocReady( window.eventie );
+}
+
+})( window );
+
+/**
+ * matchesSelector v1.0.3
+ * matchesSelector( element, '.selector' )
+ * MIT license
+ */
+
+/*jshint browser: true, strict: true, undef: true, unused: true */
+/*global define: false, module: false */
+
+( function( ElemProto ) {
+
+  
+
+  var matchesMethod = ( function() {
+    // check for the standard method name first
+    if ( ElemProto.matches ) {
+      return 'matches';
+    }
+    // check un-prefixed
+    if ( ElemProto.matchesSelector ) {
+      return 'matchesSelector';
+    }
+    // check vendor prefixes
+    var prefixes = [ 'webkit', 'moz', 'ms', 'o' ];
+
+    for ( var i=0, len = prefixes.length; i < len; i++ ) {
+      var prefix = prefixes[i];
+      var method = prefix + 'MatchesSelector';
+      if ( ElemProto[ method ] ) {
+        return method;
+      }
+    }
+  })();
+
+  // ----- match ----- //
+
+  function match( elem, selector ) {
+    return elem[ matchesMethod ]( selector );
+  }
+
+  // ----- appendToFragment ----- //
+
+  function checkParent( elem ) {
+    // not needed if already has parent
+    if ( elem.parentNode ) {
+      return;
+    }
+    var fragment = document.createDocumentFragment();
+    fragment.appendChild( elem );
+  }
+
+  // ----- query ----- //
+
+  // fall back to using QSA
+  // thx @jonathantneal https://gist.github.com/3062955
+  function query( elem, selector ) {
+    // append to fragment if no parent
+    checkParent( elem );
+
+    // match elem with all selected elems of parent
+    var elems = elem.parentNode.querySelectorAll( selector );
+    for ( var i=0, len = elems.length; i < len; i++ ) {
+      // return true if match
+      if ( elems[i] === elem ) {
+        return true;
+      }
+    }
+    // otherwise return false
+    return false;
+  }
+
+  // ----- matchChild ----- //
+
+  function matchChild( elem, selector ) {
+    checkParent( elem );
+    return match( elem, selector );
+  }
+
+  // ----- matchesSelector ----- //
+
+  var matchesSelector;
+
+  if ( matchesMethod ) {
+    // IE9 supports matchesSelector, but doesn't work on orphaned elems
+    // check for that
+    var div = document.createElement('div');
+    var supportsOrphans = match( div, 'div' );
+    matchesSelector = supportsOrphans ? match : matchChild;
+  } else {
+    matchesSelector = query;
+  }
+
+  // transport
+  if ( typeof define === 'function' && define.amd ) {
+    // AMD
+    define( 'matches-selector/matches-selector',[],function() {
+      return matchesSelector;
+    });
+  } else if ( typeof exports === 'object' ) {
+    module.exports = matchesSelector;
+  }
+  else {
+    // browser global
+    window.matchesSelector = matchesSelector;
+  }
+
+})( Element.prototype );
+
+/**
+ * Fizzy UI utils v1.0.1
+ * MIT license
+ */
+
+/*jshint browser: true, undef: true, unused: true, strict: true */
+
+( function( window, factory ) {
+  /*global define: false, module: false, require: false */
+  
+  // universal module definition
+
+  if ( typeof define == 'function' && define.amd ) {
+    // AMD
+    define( 'fizzy-ui-utils/utils',[
+      'doc-ready/doc-ready',
+      'matches-selector/matches-selector'
+    ], function( docReady, matchesSelector ) {
+      return factory( window, docReady, matchesSelector );
+    });
+  } else if ( typeof exports == 'object' ) {
+    // CommonJS
+    module.exports = factory(
+      window,
+      require('doc-ready'),
+      require('desandro-matches-selector')
+    );
+  } else {
+    // browser global
+    window.fizzyUIUtils = factory(
+      window,
+      window.docReady,
+      window.matchesSelector
+    );
+  }
+
+}( window, function factory( window, docReady, matchesSelector ) {
+
+
+
+var utils = {};
+
+// ----- extend ----- //
+
+// extends objects
+utils.extend = function( a, b ) {
+  for ( var prop in b ) {
+    a[ prop ] = b[ prop ];
+  }
+  return a;
+};
+
+// ----- modulo ----- //
+
+utils.modulo = function( num, div ) {
+  return ( ( num % div ) + div ) % div;
+};
+
+// ----- isArray ----- //
+  
+var objToString = Object.prototype.toString;
+utils.isArray = function( obj ) {
+  return objToString.call( obj ) == '[object Array]';
+};
+
+// ----- makeArray ----- //
+
+// turn element or nodeList into an array
+utils.makeArray = function( obj ) {
+  var ary = [];
+  if ( utils.isArray( obj ) ) {
+    // use object if already an array
+    ary = obj;
+  } else if ( obj && typeof obj.length == 'number' ) {
+    // convert nodeList to array
+    for ( var i=0, len = obj.length; i < len; i++ ) {
+      ary.push( obj[i] );
+    }
+  } else {
+    // array of single index
+    ary.push( obj );
+  }
+  return ary;
+};
+
+// ----- indexOf ----- //
+
+// index of helper cause IE8
+utils.indexOf = Array.prototype.indexOf ? function( ary, obj ) {
+    return ary.indexOf( obj );
+  } : function( ary, obj ) {
+    for ( var i=0, len = ary.length; i < len; i++ ) {
+      if ( ary[i] === obj ) {
+        return i;
+      }
+    }
+    return -1;
+  };
+
+// ----- removeFrom ----- //
+
+utils.removeFrom = function( ary, obj ) {
+  var index = utils.indexOf( ary, obj );
+  if ( index != -1 ) {
+    ary.splice( index, 1 );
+  }
+};
+
+// ----- isElement ----- //
+
+// http://stackoverflow.com/a/384380/182183
+utils.isElement = ( typeof HTMLElement == 'function' || typeof HTMLElement == 'object' ) ?
+  function isElementDOM2( obj ) {
+    return obj instanceof HTMLElement;
+  } :
+  function isElementQuirky( obj ) {
+    return obj && typeof obj == 'object' &&
+      obj.nodeType == 1 && typeof obj.nodeName == 'string';
+  };
+
+// ----- setText ----- //
+
+utils.setText = ( function() {
+  var setTextProperty;
+  function setText( elem, text ) {
+    // only check setTextProperty once
+    setTextProperty = setTextProperty || ( document.documentElement.textContent !== undefined ? 'textContent' : 'innerText' );
+    elem[ setTextProperty ] = text;
+  }
+  return setText;
+})();
+
+// ----- getParent ----- //
+
+utils.getParent = function( elem, selector ) {
+  while ( elem != document.body ) {
+    elem = elem.parentNode;
+    if ( matchesSelector( elem, selector ) ) {
+      return elem;
+    }
+  }
+};
+
+// ----- getQueryElement ----- //
+
+// use element as selector string
+utils.getQueryElement = function( elem ) {
+  if ( typeof elem == 'string' ) {
+    return document.querySelector( elem );
+  }
+  return elem;
+};
+
+// ----- handleEvent ----- //
+
+// enable .ontype to trigger from .addEventListener( elem, 'type' )
+utils.handleEvent = function( event ) {
+  var method = 'on' + event.type;
+  if ( this[ method ] ) {
+    this[ method ]( event );
+  }
+};
+
+// ----- filterFindElements ----- //
+
+utils.filterFindElements = function( elems, selector ) {
+  // make array of elems
+  elems = utils.makeArray( elems );
+  var ffElems = [];
+
+  for ( var i=0, len = elems.length; i < len; i++ ) {
+    var elem = elems[i];
+    // check that elem is an actual element
+    if ( !utils.isElement( elem ) ) {
+      continue;
+    }
+    // filter & find items if we have a selector
+    if ( selector ) {
+      // filter siblings
+      if ( matchesSelector( elem, selector ) ) {
+        ffElems.push( elem );
+      }
+      // find children
+      var childElems = elem.querySelectorAll( selector );
+      // concat childElems to filterFound array
+      for ( var j=0, jLen = childElems.length; j < jLen; j++ ) {
+        ffElems.push( childElems[j] );
+      }
     } else {
-      this.wookmarkInstance.update(options || {});
+      ffElems.push( elem );
+    }
+  }
+
+  return ffElems;
+};
+
+// ----- debounceMethod ----- //
+
+utils.debounceMethod = function( _class, methodName, threshold ) {
+  // original method
+  var method = _class.prototype[ methodName ];
+  var timeoutName = methodName + 'Timeout';
+
+  _class.prototype[ methodName ] = function() {
+    var timeout = this[ timeoutName ];
+    if ( timeout ) {
+      clearTimeout( timeout );
+    }
+    var args = arguments;
+
+    var _this = this;
+    this[ timeoutName ] = setTimeout( function() {
+      method.apply( _this, args );
+      delete _this[ timeoutName ];
+    }, threshold || 100 );
+  };
+};
+
+// ----- htmlInit ----- //
+
+// http://jamesroberts.name/blog/2010/02/22/string-functions-for-javascript-trim-to-camel-case-to-dashed-and-to-underscore/
+utils.toDashed = function( str ) {
+  return str.replace( /(.)([A-Z])/g, function( match, $1, $2 ) {
+    return $1 + '-' + $2;
+  }).toLowerCase();
+};
+
+var console = window.console;
+/**
+ * allow user to initialize classes via .js-namespace class
+ * htmlInit( Widget, 'widgetName' )
+ * options are parsed from data-namespace-option attribute
+ */
+utils.htmlInit = function( WidgetClass, namespace ) {
+  docReady( function() {
+    var dashedNamespace = utils.toDashed( namespace );
+    var elems = document.querySelectorAll( '.js-' + dashedNamespace );
+    var dataAttr = 'data-' + dashedNamespace + '-options';
+
+    for ( var i=0, len = elems.length; i < len; i++ ) {
+      var elem = elems[i];
+      var attr = elem.getAttribute( dataAttr );
+      var options;
+      try {
+        options = attr && JSON.parse( attr );
+      } catch ( error ) {
+        // log error, do not initialize
+        if ( console ) {
+          console.error( 'Error parsing ' + dataAttr + ' on ' +
+            elem.nodeName.toLowerCase() + ( elem.id ? '#' + elem.id : '' ) + ': ' +
+            error );
+        }
+        continue;
+      }
+      // initialize
+      var instance = new WidgetClass( elem, options );
+      // make available via $().data('layoutname')
+      var jQuery = window.jQuery;
+      if ( jQuery ) {
+        jQuery.data( elem, namespace, instance );
+      }
+    }
+  });
+};
+
+// -----  ----- //
+
+return utils;
+
+}));
+
+/**
+ * Outlayer Item
+ */
+
+( function( window, factory ) {
+  
+  // universal module definition
+  if ( typeof define === 'function' && define.amd ) {
+    // AMD
+    define( 'outlayer/item',[
+        'eventEmitter/EventEmitter',
+        'get-size/get-size',
+        'get-style-property/get-style-property',
+        'fizzy-ui-utils/utils'
+      ],
+      function( EventEmitter, getSize, getStyleProperty, utils ) {
+        return factory( window, EventEmitter, getSize, getStyleProperty, utils );
+      }
+    );
+  } else if (typeof exports === 'object') {
+    // CommonJS
+    module.exports = factory(
+      window,
+      require('wolfy87-eventemitter'),
+      require('get-size'),
+      require('desandro-get-style-property'),
+      require('fizzy-ui-utils')
+    );
+  } else {
+    // browser global
+    window.Outlayer = {};
+    window.Outlayer.Item = factory(
+      window,
+      window.EventEmitter,
+      window.getSize,
+      window.getStyleProperty,
+      window.fizzyUIUtils
+    );
+  }
+
+}( window, function factory( window, EventEmitter, getSize, getStyleProperty, utils ) {
+
+
+// ----- helpers ----- //
+
+var getComputedStyle = window.getComputedStyle;
+var getStyle = getComputedStyle ?
+  function( elem ) {
+    return getComputedStyle( elem, null );
+  } :
+  function( elem ) {
+    return elem.currentStyle;
+  };
+
+
+function isEmptyObj( obj ) {
+  for ( var prop in obj ) {
+    return false;
+  }
+  prop = null;
+  return true;
+}
+
+// -------------------------- CSS3 support -------------------------- //
+
+var transitionProperty = getStyleProperty('transition');
+var transformProperty = getStyleProperty('transform');
+var supportsCSS3 = transitionProperty && transformProperty;
+var is3d = !!getStyleProperty('perspective');
+
+var transitionEndEvent = {
+  WebkitTransition: 'webkitTransitionEnd',
+  MozTransition: 'transitionend',
+  OTransition: 'otransitionend',
+  transition: 'transitionend'
+}[ transitionProperty ];
+
+// properties that could have vendor prefix
+var prefixableProperties = [
+  'transform',
+  'transition',
+  'transitionDuration',
+  'transitionProperty'
+];
+
+// cache all vendor properties
+var vendorProperties = ( function() {
+  var cache = {};
+  for ( var i=0, len = prefixableProperties.length; i < len; i++ ) {
+    var prop = prefixableProperties[i];
+    var supportedProp = getStyleProperty( prop );
+    if ( supportedProp && supportedProp !== prop ) {
+      cache[ prop ] = supportedProp;
+    }
+  }
+  return cache;
+})();
+
+// -------------------------- Item -------------------------- //
+
+function Item( element, layout ) {
+  if ( !element ) {
+    return;
+  }
+
+  this.element = element;
+  // parent layout class, i.e. Masonry, Isotope, or Packery
+  this.layout = layout;
+  this.position = {
+    x: 0,
+    y: 0
+  };
+
+  this._create();
+}
+
+// inherit EventEmitter
+utils.extend( Item.prototype, EventEmitter.prototype );
+
+Item.prototype._create = function() {
+  // transition objects
+  this._transn = {
+    ingProperties: {},
+    clean: {},
+    onEnd: {}
+  };
+
+  this.css({
+    position: 'absolute'
+  });
+};
+
+// trigger specified handler for event type
+Item.prototype.handleEvent = function( event ) {
+  var method = 'on' + event.type;
+  if ( this[ method ] ) {
+    this[ method ]( event );
+  }
+};
+
+Item.prototype.getSize = function() {
+  this.size = getSize( this.element );
+};
+
+/**
+ * apply CSS styles to element
+ * @param {Object} style
+ */
+Item.prototype.css = function( style ) {
+  var elemStyle = this.element.style;
+
+  for ( var prop in style ) {
+    // use vendor property if available
+    var supportedProp = vendorProperties[ prop ] || prop;
+    elemStyle[ supportedProp ] = style[ prop ];
+  }
+};
+
+ // measure position, and sets it
+Item.prototype.getPosition = function() {
+  var style = getStyle( this.element );
+  var layoutOptions = this.layout.options;
+  var isOriginLeft = layoutOptions.isOriginLeft;
+  var isOriginTop = layoutOptions.isOriginTop;
+  var xValue = style[ isOriginLeft ? 'left' : 'right' ];
+  var yValue = style[ isOriginTop ? 'top' : 'bottom' ];
+  var x = parseInt( xValue, 10 );
+  var y = parseInt( yValue, 10 );
+  // convert percent to pixels
+  var layoutSize = this.layout.size;
+  x = xValue.indexOf('%') != -1 ? ( x / 100 ) * layoutSize.width : x;
+  y = yValue.indexOf('%') != -1 ? ( y / 100 ) * layoutSize.height : y;
+
+  // clean up 'auto' or other non-integer values
+  x = isNaN( x ) ? 0 : x;
+  y = isNaN( y ) ? 0 : y;
+  // remove padding from measurement
+  x -= isOriginLeft ? layoutSize.paddingLeft : layoutSize.paddingRight;
+  y -= isOriginTop ? layoutSize.paddingTop : layoutSize.paddingBottom;
+
+  this.position.x = x;
+  this.position.y = y;
+};
+
+// set settled position, apply padding
+Item.prototype.layoutPosition = function() {
+  var layoutSize = this.layout.size;
+  var layoutOptions = this.layout.options;
+  var style = {};
+
+  // x
+  var xPadding = layoutOptions.isOriginLeft ? 'paddingLeft' : 'paddingRight';
+  var xProperty = layoutOptions.isOriginLeft ? 'left' : 'right';
+  var xResetProperty = layoutOptions.isOriginLeft ? 'right' : 'left';
+
+  var x = this.position.x + layoutSize[ xPadding ];
+  // set in percentage or pixels
+  style[ xProperty ] = this.getXValue( x );
+  // reset other property
+  style[ xResetProperty ] = '';
+
+  // y
+  var yPadding = layoutOptions.isOriginTop ? 'paddingTop' : 'paddingBottom';
+  var yProperty = layoutOptions.isOriginTop ? 'top' : 'bottom';
+  var yResetProperty = layoutOptions.isOriginTop ? 'bottom' : 'top';
+
+  var y = this.position.y + layoutSize[ yPadding ];
+  // set in percentage or pixels
+  style[ yProperty ] = this.getYValue( y );
+  // reset other property
+  style[ yResetProperty ] = '';
+
+  this.css( style );
+  this.emitEvent( 'layout', [ this ] );
+};
+
+Item.prototype.getXValue = function( x ) {
+  var layoutOptions = this.layout.options;
+  return layoutOptions.percentPosition && !layoutOptions.isHorizontal ?
+    ( ( x / this.layout.size.width ) * 100 ) + '%' : x + 'px';
+};
+
+Item.prototype.getYValue = function( y ) {
+  var layoutOptions = this.layout.options;
+  return layoutOptions.percentPosition && layoutOptions.isHorizontal ?
+    ( ( y / this.layout.size.height ) * 100 ) + '%' : y + 'px';
+};
+
+
+Item.prototype._transitionTo = function( x, y ) {
+  this.getPosition();
+  // get current x & y from top/left
+  var curX = this.position.x;
+  var curY = this.position.y;
+
+  var compareX = parseInt( x, 10 );
+  var compareY = parseInt( y, 10 );
+  var didNotMove = compareX === this.position.x && compareY === this.position.y;
+
+  // save end position
+  this.setPosition( x, y );
+
+  // if did not move and not transitioning, just go to layout
+  if ( didNotMove && !this.isTransitioning ) {
+    this.layoutPosition();
+    return;
+  }
+
+  var transX = x - curX;
+  var transY = y - curY;
+  var transitionStyle = {};
+  transitionStyle.transform = this.getTranslate( transX, transY );
+
+  this.transition({
+    to: transitionStyle,
+    onTransitionEnd: {
+      transform: this.layoutPosition
+    },
+    isCleaning: true
+  });
+};
+
+Item.prototype.getTranslate = function( x, y ) {
+  // flip cooridinates if origin on right or bottom
+  var layoutOptions = this.layout.options;
+  x = layoutOptions.isOriginLeft ? x : -x;
+  y = layoutOptions.isOriginTop ? y : -y;
+  x = this.getXValue( x );
+  y = this.getYValue( y );
+
+  if ( is3d ) {
+    return 'translate3d(' + x + ', ' + y + ', 0)';
+  }
+
+  return 'translate(' + x + ', ' + y + ')';
+};
+
+// non transition + transform support
+Item.prototype.goTo = function( x, y ) {
+  this.setPosition( x, y );
+  this.layoutPosition();
+};
+
+// use transition and transforms if supported
+Item.prototype.moveTo = supportsCSS3 ?
+  Item.prototype._transitionTo : Item.prototype.goTo;
+
+Item.prototype.setPosition = function( x, y ) {
+  this.position.x = parseInt( x, 10 );
+  this.position.y = parseInt( y, 10 );
+};
+
+// ----- transition ----- //
+
+/**
+ * @param {Object} style - CSS
+ * @param {Function} onTransitionEnd
+ */
+
+// non transition, just trigger callback
+Item.prototype._nonTransition = function( args ) {
+  this.css( args.to );
+  if ( args.isCleaning ) {
+    this._removeStyles( args.to );
+  }
+  for ( var prop in args.onTransitionEnd ) {
+    args.onTransitionEnd[ prop ].call( this );
+  }
+};
+
+/**
+ * proper transition
+ * @param {Object} args - arguments
+ *   @param {Object} to - style to transition to
+ *   @param {Object} from - style to start transition from
+ *   @param {Boolean} isCleaning - removes transition styles after transition
+ *   @param {Function} onTransitionEnd - callback
+ */
+Item.prototype._transition = function( args ) {
+  // redirect to nonTransition if no transition duration
+  if ( !parseFloat( this.layout.options.transitionDuration ) ) {
+    this._nonTransition( args );
+    return;
+  }
+
+  var _transition = this._transn;
+  // keep track of onTransitionEnd callback by css property
+  for ( var prop in args.onTransitionEnd ) {
+    _transition.onEnd[ prop ] = args.onTransitionEnd[ prop ];
+  }
+  // keep track of properties that are transitioning
+  for ( prop in args.to ) {
+    _transition.ingProperties[ prop ] = true;
+    // keep track of properties to clean up when transition is done
+    if ( args.isCleaning ) {
+      _transition.clean[ prop ] = true;
+    }
+  }
+
+  // set from styles
+  if ( args.from ) {
+    this.css( args.from );
+    // force redraw. http://blog.alexmaccaw.com/css-transitions
+    var h = this.element.offsetHeight;
+    // hack for JSHint to hush about unused var
+    h = null;
+  }
+  // enable transition
+  this.enableTransition( args.to );
+  // set styles that are transitioning
+  this.css( args.to );
+
+  this.isTransitioning = true;
+
+};
+
+// dash before all cap letters, including first for
+// WebkitTransform => -webkit-transform
+function toDashedAll( str ) {
+  return str.replace( /([A-Z])/g, function( $1 ) {
+    return '-' + $1.toLowerCase();
+  });
+}
+
+var transitionProps = 'opacity,' +
+  toDashedAll( vendorProperties.transform || 'transform' );
+
+Item.prototype.enableTransition = function(/* style */) {
+  // HACK changing transitionProperty during a transition
+  // will cause transition to jump
+  if ( this.isTransitioning ) {
+    return;
+  }
+
+  // make `transition: foo, bar, baz` from style object
+  // HACK un-comment this when enableTransition can work
+  // while a transition is happening
+  // var transitionValues = [];
+  // for ( var prop in style ) {
+  //   // dash-ify camelCased properties like WebkitTransition
+  //   prop = vendorProperties[ prop ] || prop;
+  //   transitionValues.push( toDashedAll( prop ) );
+  // }
+  // enable transition styles
+  this.css({
+    transitionProperty: transitionProps,
+    transitionDuration: this.layout.options.transitionDuration
+  });
+  // listen for transition end event
+  this.element.addEventListener( transitionEndEvent, this, false );
+};
+
+Item.prototype.transition = Item.prototype[ transitionProperty ? '_transition' : '_nonTransition' ];
+
+// ----- events ----- //
+
+Item.prototype.onwebkitTransitionEnd = function( event ) {
+  this.ontransitionend( event );
+};
+
+Item.prototype.onotransitionend = function( event ) {
+  this.ontransitionend( event );
+};
+
+// properties that I munge to make my life easier
+var dashedVendorProperties = {
+  '-webkit-transform': 'transform',
+  '-moz-transform': 'transform',
+  '-o-transform': 'transform'
+};
+
+Item.prototype.ontransitionend = function( event ) {
+  // disregard bubbled events from children
+  if ( event.target !== this.element ) {
+    return;
+  }
+  var _transition = this._transn;
+  // get property name of transitioned property, convert to prefix-free
+  var propertyName = dashedVendorProperties[ event.propertyName ] || event.propertyName;
+
+  // remove property that has completed transitioning
+  delete _transition.ingProperties[ propertyName ];
+  // check if any properties are still transitioning
+  if ( isEmptyObj( _transition.ingProperties ) ) {
+    // all properties have completed transitioning
+    this.disableTransition();
+  }
+  // clean style
+  if ( propertyName in _transition.clean ) {
+    // clean up style
+    this.element.style[ event.propertyName ] = '';
+    delete _transition.clean[ propertyName ];
+  }
+  // trigger onTransitionEnd callback
+  if ( propertyName in _transition.onEnd ) {
+    var onTransitionEnd = _transition.onEnd[ propertyName ];
+    onTransitionEnd.call( this );
+    delete _transition.onEnd[ propertyName ];
+  }
+
+  this.emitEvent( 'transitionEnd', [ this ] );
+};
+
+Item.prototype.disableTransition = function() {
+  this.removeTransitionStyles();
+  this.element.removeEventListener( transitionEndEvent, this, false );
+  this.isTransitioning = false;
+};
+
+/**
+ * removes style property from element
+ * @param {Object} style
+**/
+Item.prototype._removeStyles = function( style ) {
+  // clean up transition styles
+  var cleanStyle = {};
+  for ( var prop in style ) {
+    cleanStyle[ prop ] = '';
+  }
+  this.css( cleanStyle );
+};
+
+var cleanTransitionStyle = {
+  transitionProperty: '',
+  transitionDuration: ''
+};
+
+Item.prototype.removeTransitionStyles = function() {
+  // remove transition
+  this.css( cleanTransitionStyle );
+};
+
+// ----- show/hide/remove ----- //
+
+// remove element from DOM
+Item.prototype.removeElem = function() {
+  this.element.parentNode.removeChild( this.element );
+  // remove display: none
+  this.css({ display: '' });
+  this.emitEvent( 'remove', [ this ] );
+};
+
+Item.prototype.remove = function() {
+  // just remove element if no transition support or no transition
+  if ( !transitionProperty || !parseFloat( this.layout.options.transitionDuration ) ) {
+    this.removeElem();
+    return;
+  }
+
+  // start transition
+  var _this = this;
+  this.once( 'transitionEnd', function() {
+    _this.removeElem();
+  });
+  this.hide();
+};
+
+Item.prototype.reveal = function() {
+  delete this.isHidden;
+  // remove display: none
+  this.css({ display: '' });
+
+  var options = this.layout.options;
+
+  var onTransitionEnd = {};
+  var transitionEndProperty = this.getHideRevealTransitionEndProperty('visibleStyle');
+  onTransitionEnd[ transitionEndProperty ] = this.onRevealTransitionEnd;
+
+  this.transition({
+    from: options.hiddenStyle,
+    to: options.visibleStyle,
+    isCleaning: true,
+    onTransitionEnd: onTransitionEnd
+  });
+};
+
+Item.prototype.onRevealTransitionEnd = function() {
+  // check if still visible
+  // during transition, item may have been hidden
+  if ( !this.isHidden ) {
+    this.emitEvent('reveal');
+  }
+};
+
+/**
+ * get style property use for hide/reveal transition end
+ * @param {String} styleProperty - hiddenStyle/visibleStyle
+ * @returns {String}
+ */
+Item.prototype.getHideRevealTransitionEndProperty = function( styleProperty ) {
+  var optionStyle = this.layout.options[ styleProperty ];
+  // use opacity
+  if ( optionStyle.opacity ) {
+    return 'opacity';
+  }
+  // get first property
+  for ( var prop in optionStyle ) {
+    return prop;
+  }
+};
+
+Item.prototype.hide = function() {
+  // set flag
+  this.isHidden = true;
+  // remove display: none
+  this.css({ display: '' });
+
+  var options = this.layout.options;
+
+  var onTransitionEnd = {};
+  var transitionEndProperty = this.getHideRevealTransitionEndProperty('hiddenStyle');
+  onTransitionEnd[ transitionEndProperty ] = this.onHideTransitionEnd;
+
+  this.transition({
+    from: options.visibleStyle,
+    to: options.hiddenStyle,
+    // keep hidden stuff hidden
+    isCleaning: true,
+    onTransitionEnd: onTransitionEnd
+  });
+};
+
+Item.prototype.onHideTransitionEnd = function() {
+  // check if still hidden
+  // during transition, item may have been un-hidden
+  if ( this.isHidden ) {
+    this.css({ display: 'none' });
+    this.emitEvent('hide');
+  }
+};
+
+Item.prototype.destroy = function() {
+  this.css({
+    position: '',
+    left: '',
+    right: '',
+    top: '',
+    bottom: '',
+    transition: '',
+    transform: ''
+  });
+};
+
+return Item;
+
+}));
+
+/*!
+ * Outlayer v1.4.1
+ * the brains and guts of a layout library
+ * MIT license
+ */
+
+( function( window, factory ) {
+  
+  // universal module definition
+
+  if ( typeof define == 'function' && define.amd ) {
+    // AMD
+    define( 'outlayer/outlayer',[
+        'eventie/eventie',
+        'eventEmitter/EventEmitter',
+        'get-size/get-size',
+        'fizzy-ui-utils/utils',
+        './item'
+      ],
+      function( eventie, EventEmitter, getSize, utils, Item ) {
+        return factory( window, eventie, EventEmitter, getSize, utils, Item);
+      }
+    );
+  } else if ( typeof exports == 'object' ) {
+    // CommonJS
+    module.exports = factory(
+      window,
+      require('eventie'),
+      require('wolfy87-eventemitter'),
+      require('get-size'),
+      require('fizzy-ui-utils'),
+      require('./item')
+    );
+  } else {
+    // browser global
+    window.Outlayer = factory(
+      window,
+      window.eventie,
+      window.EventEmitter,
+      window.getSize,
+      window.fizzyUIUtils,
+      window.Outlayer.Item
+    );
+  }
+
+}( window, function factory( window, eventie, EventEmitter, getSize, utils, Item ) {
+
+
+// ----- vars ----- //
+
+var console = window.console;
+var jQuery = window.jQuery;
+var noop = function() {};
+
+// -------------------------- Outlayer -------------------------- //
+
+// globally unique identifiers
+var GUID = 0;
+// internal store of all Outlayer intances
+var instances = {};
+
+
+/**
+ * @param {Element, String} element
+ * @param {Object} options
+ * @constructor
+ */
+function Outlayer( element, options ) {
+  var queryElement = utils.getQueryElement( element );
+  if ( !queryElement ) {
+    if ( console ) {
+      console.error( 'Bad element for ' + this.constructor.namespace +
+        ': ' + ( queryElement || element ) );
+    }
+    return;
+  }
+  this.element = queryElement;
+  // add jQuery
+  if ( jQuery ) {
+    this.$element = jQuery( this.element );
+  }
+
+  // options
+  this.options = utils.extend( {}, this.constructor.defaults );
+  this.option( options );
+
+  // add id for Outlayer.getFromElement
+  var id = ++GUID;
+  this.element.outlayerGUID = id; // expando
+  instances[ id ] = this; // associate via id
+
+  // kick it off
+  this._create();
+
+  if ( this.options.isInitLayout ) {
+    this.layout();
+  }
+}
+
+// settings are for internal use only
+Outlayer.namespace = 'outlayer';
+Outlayer.Item = Item;
+
+// default options
+Outlayer.defaults = {
+  containerStyle: {
+    position: 'relative'
+  },
+  isInitLayout: true,
+  isOriginLeft: true,
+  isOriginTop: true,
+  isResizeBound: true,
+  isResizingContainer: true,
+  // item options
+  transitionDuration: '0.4s',
+  hiddenStyle: {
+    opacity: 0,
+    transform: 'scale(0.001)'
+  },
+  visibleStyle: {
+    opacity: 1,
+    transform: 'scale(1)'
+  }
+};
+
+// inherit EventEmitter
+utils.extend( Outlayer.prototype, EventEmitter.prototype );
+
+/**
+ * set options
+ * @param {Object} opts
+ */
+Outlayer.prototype.option = function( opts ) {
+  utils.extend( this.options, opts );
+};
+
+Outlayer.prototype._create = function() {
+  // get items from children
+  this.reloadItems();
+  // elements that affect layout, but are not laid out
+  this.stamps = [];
+  this.stamp( this.options.stamp );
+  // set container style
+  utils.extend( this.element.style, this.options.containerStyle );
+
+  // bind resize method
+  if ( this.options.isResizeBound ) {
+    this.bindResize();
+  }
+};
+
+// goes through all children again and gets bricks in proper order
+Outlayer.prototype.reloadItems = function() {
+  // collection of item elements
+  this.items = this._itemize( this.element.children );
+};
+
+
+/**
+ * turn elements into Outlayer.Items to be used in layout
+ * @param {Array or NodeList or HTMLElement} elems
+ * @returns {Array} items - collection of new Outlayer Items
+ */
+Outlayer.prototype._itemize = function( elems ) {
+
+  var itemElems = this._filterFindItemElements( elems );
+  var Item = this.constructor.Item;
+
+  // create new Outlayer Items for collection
+  var items = [];
+  for ( var i=0, len = itemElems.length; i < len; i++ ) {
+    var elem = itemElems[i];
+    var item = new Item( elem, this );
+    items.push( item );
+  }
+
+  return items;
+};
+
+/**
+ * get item elements to be used in layout
+ * @param {Array or NodeList or HTMLElement} elems
+ * @returns {Array} items - item elements
+ */
+Outlayer.prototype._filterFindItemElements = function( elems ) {
+  return utils.filterFindElements( elems, this.options.itemSelector );
+};
+
+/**
+ * getter method for getting item elements
+ * @returns {Array} elems - collection of item elements
+ */
+Outlayer.prototype.getItemElements = function() {
+  var elems = [];
+  for ( var i=0, len = this.items.length; i < len; i++ ) {
+    elems.push( this.items[i].element );
+  }
+  return elems;
+};
+
+// ----- init & layout ----- //
+
+/**
+ * lays out all items
+ */
+Outlayer.prototype.layout = function() {
+
+  this._resetLayout();
+  this._manageStamps();
+
+  // don't animate first layout
+  var isInstant = this.options.isLayoutInstant !== undefined ?
+    this.options.isLayoutInstant : !this._isLayoutInited;
+  this.layoutItems( this.items, isInstant );
+
+  // flag for initalized
+  this._isLayoutInited = true;
+};
+
+// _init is alias for layout
+Outlayer.prototype._init = Outlayer.prototype.layout;
+
+/**
+ * logic before any new layout
+ */
+Outlayer.prototype._resetLayout = function() {
+  this.getSize();
+};
+
+
+Outlayer.prototype.getSize = function() {
+  this.size = getSize( this.element );
+};
+
+/**
+ * get measurement from option, for columnWidth, rowHeight, gutter
+ * if option is String -> get element from selector string, & get size of element
+ * if option is Element -> get size of element
+ * else use option as a number
+ *
+ * @param {String} measurement
+ * @param {String} size - width or height
+ * @private
+ */
+Outlayer.prototype._getMeasurement = function( measurement, size ) {
+  var option = this.options[ measurement ];
+  var elem;
+  if ( !option ) {
+    // default to 0
+    this[ measurement ] = 0;
+  } else {
+    // use option as an element
+    if ( typeof option === 'string' ) {
+      elem = this.element.querySelector( option );
+    } else if ( utils.isElement( option ) ) {
+      elem = option;
+    }
+    // use size of element, if element
+    this[ measurement ] = elem ? getSize( elem )[ size ] : option;
+  }
+};
+
+/**
+ * layout a collection of item elements
+ * @api public
+ */
+Outlayer.prototype.layoutItems = function( items, isInstant ) {
+  items = this._getItemsForLayout( items );
+
+  this._layoutItems( items, isInstant );
+
+  this._postLayout();
+};
+
+/**
+ * get the items to be laid out
+ * you may want to skip over some items
+ * @param {Array} items
+ * @returns {Array} items
+ */
+Outlayer.prototype._getItemsForLayout = function( items ) {
+  var layoutItems = [];
+  for ( var i=0, len = items.length; i < len; i++ ) {
+    var item = items[i];
+    if ( !item.isIgnored ) {
+      layoutItems.push( item );
+    }
+  }
+  return layoutItems;
+};
+
+/**
+ * layout items
+ * @param {Array} items
+ * @param {Boolean} isInstant
+ */
+Outlayer.prototype._layoutItems = function( items, isInstant ) {
+  this._emitCompleteOnItems( 'layout', items );
+
+  if ( !items || !items.length ) {
+    // no items, emit event with empty array
+    return;
+  }
+
+  var queue = [];
+
+  for ( var i=0, len = items.length; i < len; i++ ) {
+    var item = items[i];
+    // get x/y object from method
+    var position = this._getItemLayoutPosition( item );
+    // enqueue
+    position.item = item;
+    position.isInstant = isInstant || item.isLayoutInstant;
+    queue.push( position );
+  }
+
+  this._processLayoutQueue( queue );
+};
+
+/**
+ * get item layout position
+ * @param {Outlayer.Item} item
+ * @returns {Object} x and y position
+ */
+Outlayer.prototype._getItemLayoutPosition = function( /* item */ ) {
+  return {
+    x: 0,
+    y: 0
+  };
+};
+
+/**
+ * iterate over array and position each item
+ * Reason being - separating this logic prevents 'layout invalidation'
+ * thx @paul_irish
+ * @param {Array} queue
+ */
+Outlayer.prototype._processLayoutQueue = function( queue ) {
+  for ( var i=0, len = queue.length; i < len; i++ ) {
+    var obj = queue[i];
+    this._positionItem( obj.item, obj.x, obj.y, obj.isInstant );
+  }
+};
+
+/**
+ * Sets position of item in DOM
+ * @param {Outlayer.Item} item
+ * @param {Number} x - horizontal position
+ * @param {Number} y - vertical position
+ * @param {Boolean} isInstant - disables transitions
+ */
+Outlayer.prototype._positionItem = function( item, x, y, isInstant ) {
+  if ( isInstant ) {
+    // if not transition, just set CSS
+    item.goTo( x, y );
+  } else {
+    item.moveTo( x, y );
+  }
+};
+
+/**
+ * Any logic you want to do after each layout,
+ * i.e. size the container
+ */
+Outlayer.prototype._postLayout = function() {
+  this.resizeContainer();
+};
+
+Outlayer.prototype.resizeContainer = function() {
+  if ( !this.options.isResizingContainer ) {
+    return;
+  }
+  var size = this._getContainerSize();
+  if ( size ) {
+    this._setContainerMeasure( size.width, true );
+    this._setContainerMeasure( size.height, false );
+  }
+};
+
+/**
+ * Sets width or height of container if returned
+ * @returns {Object} size
+ *   @param {Number} width
+ *   @param {Number} height
+ */
+Outlayer.prototype._getContainerSize = noop;
+
+/**
+ * @param {Number} measure - size of width or height
+ * @param {Boolean} isWidth
+ */
+Outlayer.prototype._setContainerMeasure = function( measure, isWidth ) {
+  if ( measure === undefined ) {
+    return;
+  }
+
+  var elemSize = this.size;
+  // add padding and border width if border box
+  if ( elemSize.isBorderBox ) {
+    measure += isWidth ? elemSize.paddingLeft + elemSize.paddingRight +
+      elemSize.borderLeftWidth + elemSize.borderRightWidth :
+      elemSize.paddingBottom + elemSize.paddingTop +
+      elemSize.borderTopWidth + elemSize.borderBottomWidth;
+  }
+
+  measure = Math.max( measure, 0 );
+  this.element.style[ isWidth ? 'width' : 'height' ] = measure + 'px';
+};
+
+/**
+ * emit eventComplete on a collection of items events
+ * @param {String} eventName
+ * @param {Array} items - Outlayer.Items
+ */
+Outlayer.prototype._emitCompleteOnItems = function( eventName, items ) {
+  var _this = this;
+  function onComplete() {
+    _this.dispatchEvent( eventName + 'Complete', null, [ items ] );
+  }
+
+  var count = items.length;
+  if ( !items || !count ) {
+    onComplete();
+    return;
+  }
+
+  var doneCount = 0;
+  function tick() {
+    doneCount++;
+    if ( doneCount === count ) {
+      onComplete();
+    }
+  }
+
+  // bind callback
+  for ( var i=0, len = items.length; i < len; i++ ) {
+    var item = items[i];
+    item.once( eventName, tick );
+  }
+};
+
+/**
+ * emits events via eventEmitter and jQuery events
+ * @param {String} type - name of event
+ * @param {Event} event - original event
+ * @param {Array} args - extra arguments
+ */
+Outlayer.prototype.dispatchEvent = function( type, event, args ) {
+  // add original event to arguments
+  var emitArgs = event ? [ event ].concat( args ) : args;
+  this.emitEvent( type, emitArgs );
+
+  if ( jQuery ) {
+    // set this.$element
+    this.$element = this.$element || jQuery( this.element );
+    if ( event ) {
+      // create jQuery event
+      var $event = jQuery.Event( event );
+      $event.type = type;
+      this.$element.trigger( $event, args );
+    } else {
+      // just trigger with type if no event available
+      this.$element.trigger( type, args );
+    }
+  }
+};
+
+// -------------------------- ignore & stamps -------------------------- //
+
+
+/**
+ * keep item in collection, but do not lay it out
+ * ignored items do not get skipped in layout
+ * @param {Element} elem
+ */
+Outlayer.prototype.ignore = function( elem ) {
+  var item = this.getItem( elem );
+  if ( item ) {
+    item.isIgnored = true;
+  }
+};
+
+/**
+ * return item to layout collection
+ * @param {Element} elem
+ */
+Outlayer.prototype.unignore = function( elem ) {
+  var item = this.getItem( elem );
+  if ( item ) {
+    delete item.isIgnored;
+  }
+};
+
+/**
+ * adds elements to stamps
+ * @param {NodeList, Array, Element, or String} elems
+ */
+Outlayer.prototype.stamp = function( elems ) {
+  elems = this._find( elems );
+  if ( !elems ) {
+    return;
+  }
+
+  this.stamps = this.stamps.concat( elems );
+  // ignore
+  for ( var i=0, len = elems.length; i < len; i++ ) {
+    var elem = elems[i];
+    this.ignore( elem );
+  }
+};
+
+/**
+ * removes elements to stamps
+ * @param {NodeList, Array, or Element} elems
+ */
+Outlayer.prototype.unstamp = function( elems ) {
+  elems = this._find( elems );
+  if ( !elems ){
+    return;
+  }
+
+  for ( var i=0, len = elems.length; i < len; i++ ) {
+    var elem = elems[i];
+    // filter out removed stamp elements
+    utils.removeFrom( this.stamps, elem );
+    this.unignore( elem );
+  }
+
+};
+
+/**
+ * finds child elements
+ * @param {NodeList, Array, Element, or String} elems
+ * @returns {Array} elems
+ */
+Outlayer.prototype._find = function( elems ) {
+  if ( !elems ) {
+    return;
+  }
+  // if string, use argument as selector string
+  if ( typeof elems === 'string' ) {
+    elems = this.element.querySelectorAll( elems );
+  }
+  elems = utils.makeArray( elems );
+  return elems;
+};
+
+Outlayer.prototype._manageStamps = function() {
+  if ( !this.stamps || !this.stamps.length ) {
+    return;
+  }
+
+  this._getBoundingRect();
+
+  for ( var i=0, len = this.stamps.length; i < len; i++ ) {
+    var stamp = this.stamps[i];
+    this._manageStamp( stamp );
+  }
+};
+
+// update boundingLeft / Top
+Outlayer.prototype._getBoundingRect = function() {
+  // get bounding rect for container element
+  var boundingRect = this.element.getBoundingClientRect();
+  var size = this.size;
+  this._boundingRect = {
+    left: boundingRect.left + size.paddingLeft + size.borderLeftWidth,
+    top: boundingRect.top + size.paddingTop + size.borderTopWidth,
+    right: boundingRect.right - ( size.paddingRight + size.borderRightWidth ),
+    bottom: boundingRect.bottom - ( size.paddingBottom + size.borderBottomWidth )
+  };
+};
+
+/**
+ * @param {Element} stamp
+**/
+Outlayer.prototype._manageStamp = noop;
+
+/**
+ * get x/y position of element relative to container element
+ * @param {Element} elem
+ * @returns {Object} offset - has left, top, right, bottom
+ */
+Outlayer.prototype._getElementOffset = function( elem ) {
+  var boundingRect = elem.getBoundingClientRect();
+  var thisRect = this._boundingRect;
+  var size = getSize( elem );
+  var offset = {
+    left: boundingRect.left - thisRect.left - size.marginLeft,
+    top: boundingRect.top - thisRect.top - size.marginTop,
+    right: thisRect.right - boundingRect.right - size.marginRight,
+    bottom: thisRect.bottom - boundingRect.bottom - size.marginBottom
+  };
+  return offset;
+};
+
+// -------------------------- resize -------------------------- //
+
+// enable event handlers for listeners
+// i.e. resize -> onresize
+Outlayer.prototype.handleEvent = function( event ) {
+  var method = 'on' + event.type;
+  if ( this[ method ] ) {
+    this[ method ]( event );
+  }
+};
+
+/**
+ * Bind layout to window resizing
+ */
+Outlayer.prototype.bindResize = function() {
+  // bind just one listener
+  if ( this.isResizeBound ) {
+    return;
+  }
+  eventie.bind( window, 'resize', this );
+  this.isResizeBound = true;
+};
+
+/**
+ * Unbind layout to window resizing
+ */
+Outlayer.prototype.unbindResize = function() {
+  if ( this.isResizeBound ) {
+    eventie.unbind( window, 'resize', this );
+  }
+  this.isResizeBound = false;
+};
+
+// original debounce by John Hann
+// http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+
+// this fires every resize
+Outlayer.prototype.onresize = function() {
+  if ( this.resizeTimeout ) {
+    clearTimeout( this.resizeTimeout );
+  }
+
+  var _this = this;
+  function delayed() {
+    _this.resize();
+    delete _this.resizeTimeout;
+  }
+
+  this.resizeTimeout = setTimeout( delayed, 100 );
+};
+
+// debounced, layout on resize
+Outlayer.prototype.resize = function() {
+  // don't trigger if size did not change
+  // or if resize was unbound. See #9
+  if ( !this.isResizeBound || !this.needsResizeLayout() ) {
+    return;
+  }
+
+  this.layout();
+};
+
+/**
+ * check if layout is needed post layout
+ * @returns Boolean
+ */
+Outlayer.prototype.needsResizeLayout = function() {
+  var size = getSize( this.element );
+  // check that this.size and size are there
+  // IE8 triggers resize on body size change, so they might not be
+  var hasSizes = this.size && size;
+  return hasSizes && size.innerWidth !== this.size.innerWidth;
+};
+
+// -------------------------- methods -------------------------- //
+
+/**
+ * add items to Outlayer instance
+ * @param {Array or NodeList or Element} elems
+ * @returns {Array} items - Outlayer.Items
+**/
+Outlayer.prototype.addItems = function( elems ) {
+  var items = this._itemize( elems );
+  // add items to collection
+  if ( items.length ) {
+    this.items = this.items.concat( items );
+  }
+  return items;
+};
+
+/**
+ * Layout newly-appended item elements
+ * @param {Array or NodeList or Element} elems
+ */
+Outlayer.prototype.appended = function( elems ) {
+  var items = this.addItems( elems );
+  if ( !items.length ) {
+    return;
+  }
+  // layout and reveal just the new items
+  this.layoutItems( items, true );
+  this.reveal( items );
+};
+
+/**
+ * Layout prepended elements
+ * @param {Array or NodeList or Element} elems
+ */
+Outlayer.prototype.prepended = function( elems ) {
+  var items = this._itemize( elems );
+  if ( !items.length ) {
+    return;
+  }
+  // add items to beginning of collection
+  var previousItems = this.items.slice(0);
+  this.items = items.concat( previousItems );
+  // start new layout
+  this._resetLayout();
+  this._manageStamps();
+  // layout new stuff without transition
+  this.layoutItems( items, true );
+  this.reveal( items );
+  // layout previous items
+  this.layoutItems( previousItems );
+};
+
+/**
+ * reveal a collection of items
+ * @param {Array of Outlayer.Items} items
+ */
+Outlayer.prototype.reveal = function( items ) {
+  this._emitCompleteOnItems( 'reveal', items );
+
+  var len = items && items.length;
+  for ( var i=0; len && i < len; i++ ) {
+    var item = items[i];
+    item.reveal();
+  }
+};
+
+/**
+ * hide a collection of items
+ * @param {Array of Outlayer.Items} items
+ */
+Outlayer.prototype.hide = function( items ) {
+  this._emitCompleteOnItems( 'hide', items );
+
+  var len = items && items.length;
+  for ( var i=0; len && i < len; i++ ) {
+    var item = items[i];
+    item.hide();
+  }
+};
+
+/**
+ * reveal item elements
+ * @param {Array}, {Element}, {NodeList} items
+ */
+Outlayer.prototype.revealItemElements = function( elems ) {
+  var items = this.getItems( elems );
+  this.reveal( items );
+};
+
+/**
+ * hide item elements
+ * @param {Array}, {Element}, {NodeList} items
+ */
+Outlayer.prototype.hideItemElements = function( elems ) {
+  var items = this.getItems( elems );
+  this.hide( items );
+};
+
+/**
+ * get Outlayer.Item, given an Element
+ * @param {Element} elem
+ * @param {Function} callback
+ * @returns {Outlayer.Item} item
+ */
+Outlayer.prototype.getItem = function( elem ) {
+  // loop through items to get the one that matches
+  for ( var i=0, len = this.items.length; i < len; i++ ) {
+    var item = this.items[i];
+    if ( item.element === elem ) {
+      // return item
+      return item;
+    }
+  }
+};
+
+/**
+ * get collection of Outlayer.Items, given Elements
+ * @param {Array} elems
+ * @returns {Array} items - Outlayer.Items
+ */
+Outlayer.prototype.getItems = function( elems ) {
+  elems = utils.makeArray( elems );
+  var items = [];
+  for ( var i=0, len = elems.length; i < len; i++ ) {
+    var elem = elems[i];
+    var item = this.getItem( elem );
+    if ( item ) {
+      items.push( item );
+    }
+  }
+
+  return items;
+};
+
+/**
+ * remove element(s) from instance and DOM
+ * @param {Array or NodeList or Element} elems
+ */
+Outlayer.prototype.remove = function( elems ) {
+  var removeItems = this.getItems( elems );
+
+  this._emitCompleteOnItems( 'remove', removeItems );
+
+  // bail if no items to remove
+  if ( !removeItems || !removeItems.length ) {
+    return;
+  }
+
+  for ( var i=0, len = removeItems.length; i < len; i++ ) {
+    var item = removeItems[i];
+    item.remove();
+    // remove item from collection
+    utils.removeFrom( this.items, item );
+  }
+};
+
+// ----- destroy ----- //
+
+// remove and disable Outlayer instance
+Outlayer.prototype.destroy = function() {
+  // clean up dynamic styles
+  var style = this.element.style;
+  style.height = '';
+  style.position = '';
+  style.width = '';
+  // destroy items
+  for ( var i=0, len = this.items.length; i < len; i++ ) {
+    var item = this.items[i];
+    item.destroy();
+  }
+
+  this.unbindResize();
+
+  var id = this.element.outlayerGUID;
+  delete instances[ id ]; // remove reference to instance by id
+  delete this.element.outlayerGUID;
+  // remove data for jQuery
+  if ( jQuery ) {
+    jQuery.removeData( this.element, this.constructor.namespace );
+  }
+
+};
+
+// -------------------------- data -------------------------- //
+
+/**
+ * get Outlayer instance from element
+ * @param {Element} elem
+ * @returns {Outlayer}
+ */
+Outlayer.data = function( elem ) {
+  elem = utils.getQueryElement( elem );
+  var id = elem && elem.outlayerGUID;
+  return id && instances[ id ];
+};
+
+
+// -------------------------- create Outlayer class -------------------------- //
+
+/**
+ * create a layout class
+ * @param {String} namespace
+ */
+Outlayer.create = function( namespace, options ) {
+  // sub-class Outlayer
+  function Layout() {
+    Outlayer.apply( this, arguments );
+  }
+  // inherit Outlayer prototype, use Object.create if there
+  if ( Object.create ) {
+    Layout.prototype = Object.create( Outlayer.prototype );
+  } else {
+    utils.extend( Layout.prototype, Outlayer.prototype );
+  }
+  // set contructor, used for namespace and Item
+  Layout.prototype.constructor = Layout;
+
+  Layout.defaults = utils.extend( {}, Outlayer.defaults );
+  // apply new options
+  utils.extend( Layout.defaults, options );
+  // keep prototype.settings for backwards compatibility (Packery v1.2.0)
+  Layout.prototype.settings = {};
+
+  Layout.namespace = namespace;
+
+  Layout.data = Outlayer.data;
+
+  // sub-class Item
+  Layout.Item = function LayoutItem() {
+    Item.apply( this, arguments );
+  };
+
+  Layout.Item.prototype = new Item();
+
+  // -------------------------- declarative -------------------------- //
+
+  utils.htmlInit( Layout, namespace );
+
+  // -------------------------- jQuery bridge -------------------------- //
+
+  // make into jQuery plugin
+  if ( jQuery && jQuery.bridget ) {
+    jQuery.bridget( namespace, Layout );
+  }
+
+  return Layout;
+};
+
+// ----- fin ----- //
+
+// back in global
+Outlayer.Item = Item;
+
+return Outlayer;
+
+}));
+
+
+/*!
+ * Masonry v3.3.1
+ * Cascading grid layout library
+ * http://masonry.desandro.com
+ * MIT License
+ * by David DeSandro
+ */
+
+( function( window, factory ) {
+  
+  // universal module definition
+  if ( typeof define === 'function' && define.amd ) {
+    // AMD
+    define( [
+        'outlayer/outlayer',
+        'get-size/get-size',
+        'fizzy-ui-utils/utils'
+      ],
+      factory );
+  } else if ( typeof exports === 'object' ) {
+    // CommonJS
+    module.exports = factory(
+      require('outlayer'),
+      require('get-size'),
+      require('fizzy-ui-utils')
+    );
+  } else {
+    // browser global
+    window.Masonry = factory(
+      window.Outlayer,
+      window.getSize,
+      window.fizzyUIUtils
+    );
+  }
+
+}( window, function factory( Outlayer, getSize, utils ) {
+
+
+
+// -------------------------- masonryDefinition -------------------------- //
+
+  // create an Outlayer layout class
+  var Masonry = Outlayer.create('masonry');
+
+  Masonry.prototype._resetLayout = function() {
+	
+    this.getSize();
+    this._getMeasurement( 'columnWidth', 'outerWidth' );
+    this._getMeasurement( 'gutter', 'outerWidth' );
+    this.measureColumns();
+
+    // reset column Y
+    var i = this.cols;
+    this.colYs = [];
+    while (i--) {
+      this.colYs.push( 0 );
     }
 
-    // Apply layout
-    this.wookmarkInstance.layout(true);
-
-    // Display items (if hidden) and return jQuery object to maintain chainability
-    return this.show();
+    this.maxY = 0;
   };
+
+  Masonry.prototype.measureColumns = function() {
+    this.getContainerWidth();
+    // if columnWidth is 0, default to outerWidth of first item
+    if ( !this.columnWidth ) {
+      var firstItem = this.items[0];
+      var firstItemElem = firstItem && firstItem.element;
+      // columnWidth fall back to item of first element
+      this.columnWidth = firstItemElem && getSize( firstItemElem ).outerWidth ||
+        // if first elem has no width, default to size of container
+        this.containerWidth;
+    }
+
+    var columnWidth = this.columnWidth += this.gutter;
+
+    // calculate columns
+    var containerWidth = this.containerWidth + this.gutter;
+    var cols = containerWidth / columnWidth;
+    // fix rounding errors, typically with gutters
+    var excess = columnWidth - containerWidth % columnWidth;
+    // if overshoot is less than a pixel, round up, otherwise floor it
+    var mathMethod = excess && excess < 1 ? 'round' : 'floor';
+    cols = Math[ mathMethod ]( cols );
+    this.cols = Math.max( cols, 1 );
+  };
+
+  Masonry.prototype.getContainerWidth = function() {
+    // container is parent if fit width
+    var container = this.options.isFitWidth ? this.element.parentNode : this.element;
+    // check that this.size and size are there
+    // IE8 triggers resize on body size change, so they might not be
+    var size = getSize( container );
+    this.containerWidth = size && size.innerWidth;
+  };
+
+  Masonry.prototype._getItemLayoutPosition = function( item ) {
+    item.getSize();
+    // how many columns does this brick span
+    var remainder = item.size.outerWidth % this.columnWidth;
+    var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
+    // round if off by 1 pixel, otherwise use ceil
+    var colSpan = Math[ mathMethod ]( item.size.outerWidth / this.columnWidth );
+    colSpan = Math.min( colSpan, this.cols );
+
+    var colGroup = this._getColGroup( colSpan );
+    // get the minimum Y value from the columns
+    var minimumY = Math.min.apply( Math, colGroup );
+    var shortColIndex = utils.indexOf( colGroup, minimumY );
+
+    // position the brick
+    var position = {
+      x: this.columnWidth * shortColIndex,
+      y: minimumY
+    };
+
+    // apply setHeight to necessary columns
+    var setHeight = minimumY + item.size.outerHeight;
+    var setSpan = this.cols + 1 - colGroup.length;
+    for ( var i = 0; i < setSpan; i++ ) {
+      this.colYs[ shortColIndex + i ] = setHeight;
+    }
+
+    return position;
+  };
+
+  /**
+   * @param {Number} colSpan - number of columns the element spans
+   * @returns {Array} colGroup
+   */
+  Masonry.prototype._getColGroup = function( colSpan ) {
+    if ( colSpan < 2 ) {
+      // if brick spans only one column, use all the column Ys
+      return this.colYs;
+    }
+
+    var colGroup = [];
+    // how many different places could this brick fit horizontally
+    var groupCount = this.cols + 1 - colSpan;
+    // for each group potential horizontal position
+    for ( var i = 0; i < groupCount; i++ ) {
+      // make an array of colY values for that one group
+      var groupColYs = this.colYs.slice( i, i + colSpan );
+      // and get the max value of the array
+      colGroup[i] = Math.max.apply( Math, groupColYs );
+    }
+    return colGroup;
+  };
+
+  Masonry.prototype._manageStamp = function( stamp ) {
+    var stampSize = getSize( stamp );
+    var offset = this._getElementOffset( stamp );
+    // get the columns that this stamp affects
+    var firstX = this.options.isOriginLeft ? offset.left : offset.right;
+    var lastX = firstX + stampSize.outerWidth;
+    var firstCol = Math.floor( firstX / this.columnWidth );
+    firstCol = Math.max( 0, firstCol );
+    var lastCol = Math.floor( lastX / this.columnWidth );
+    // lastCol should not go over if multiple of columnWidth #425
+    lastCol -= lastX % this.columnWidth ? 0 : 1;
+    lastCol = Math.min( this.cols - 1, lastCol );
+    // set colYs to bottom of the stamp
+    var stampMaxY = ( this.options.isOriginTop ? offset.top : offset.bottom ) +
+      stampSize.outerHeight;
+    for ( var i = firstCol; i <= lastCol; i++ ) {
+      this.colYs[i] = Math.max( stampMaxY, this.colYs[i] );
+    }
+  };
+
+  Masonry.prototype._getContainerSize = function() {
+    this.maxY = Math.max.apply( Math, this.colYs );
+    var size = {
+      height: this.maxY
+    };
+
+    if ( this.options.isFitWidth ) {
+      size.width = this._getContainerFitWidth();
+    }
+
+    return size;
+  };
+
+  Masonry.prototype._getContainerFitWidth = function() {
+    var unusedCols = 0;
+    // count unused columns
+    var i = this.cols;
+    while ( --i ) {
+      if ( this.colYs[i] !== 0 ) {
+        break;
+      }
+      unusedCols++;
+    }
+    // fit container to columns that have been used
+    return ( this.cols - unusedCols ) * this.columnWidth - this.gutter;
+  };
+
+  Masonry.prototype.needsResizeLayout = function() {
+    var previousWidth = this.containerWidth;
+    this.getContainerWidth();
+    return previousWidth !== this.containerWidth;
+  };
+
+  return Masonry;
+
 }));
+
+
+
 
 
 /*! Magnific Popup - v1.0.0 - 2015-01-03
@@ -2638,9 +6210,11 @@ Share = (function(superClass) {
 });
 
 
-//Youmax 8.0 - http://codecanyon.net/item/youmax-youtube-channel-on-your-website/9989505
+//Youmax 9.0 - http://codecanyon.net/item/youmax-youtube-channel-on-your-website/9989505
 
 var youmaxLoggedInUser = {};
+var layoutResizeTimer;
+var $youmaxGrid;
 
 (function ($) {
 	
@@ -2740,6 +6314,77 @@ var youmaxLoggedInUser = {};
 		});
 	},
 
+	
+	//get videos of Vimeo Group
+	getVimeoGroupVideos = function (groupId,pageToken,$youmaxContainer) {
+		//console.log('inside getVimeoGroupVideos');
+		var pageTokenUrl = "";
+		var loadMoreFlag = false;
+		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		var maxResults = youmax_global_options.maxResults;
+		//console.log('getVimeoUserVideos pageToken-'+pageToken);
+		if(null!=pageToken) {
+			pageTokenUrl = "&"+pageToken;
+			loadMoreFlag = true;
+		}
+		
+		//console.log("groupId-"+groupId);
+		
+		apiVimeoVideosURL = "https://api.vimeo.com/groups/"+groupId+"/videos?access_token="+youmax_global_options.vimeoAccessToken+"&per_page="+maxResults+pageTokenUrl;
+		
+		//console.log('getVimeoUserVideos apiVimeoVideosURL-'+apiVimeoVideosURL);
+		
+		$.ajax({
+			url: apiVimeoVideosURL,
+			type: "GET",
+			async: true,
+			cache: true,
+			dataType: 'json',
+			success: function(response) { insertVimeoVideos(response,loadMoreFlag,$youmaxContainer);},
+			error: function(html) { alert(html); 
+				//console.log(html);
+			},
+			beforeSend: setHeader
+		});
+	},
+	
+
+	//get videos of Vimeo Album
+	getVimeoAlbumVideos = function (albumId,pageToken,$youmaxContainer) {
+		//console.log('inside getVimeoAlbumVideos');
+		var pageTokenUrl = "";
+		var loadMoreFlag = false;
+		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		var maxResults = youmax_global_options.maxResults;
+		//console.log('getVimeoUserVideos pageToken-'+pageToken);
+		if(null!=pageToken) {
+			pageTokenUrl = "&"+pageToken;
+			loadMoreFlag = true;
+		}
+		
+		//console.log("albumId-"+albumId);
+		
+		apiVimeoVideosURL = "https://api.vimeo.com/albums/"+albumId+"/videos?access_token="+youmax_global_options.vimeoAccessToken+"&per_page="+maxResults+pageTokenUrl;
+		
+		//console.log('getVimeoUserVideos apiVimeoVideosURL-'+apiVimeoVideosURL);
+		
+		$.ajax({
+			url: apiVimeoVideosURL,
+			type: "GET",
+			async: true,
+			cache: true,
+			dataType: 'json',
+			success: function(response) { insertVimeoVideos(response,loadMoreFlag,$youmaxContainer);},
+			error: function(html) { alert(html); 
+				//console.log(html);
+			},
+			beforeSend: setHeader
+		});
+	},
+	
+
+	
+	
 	//get videos of any playlist using youtube API
 	getChannelEvents = function (channelId,pageToken,$youmaxContainer) {
 		//console.log('inside getChannelEvents');
@@ -2842,7 +6487,7 @@ var youmaxLoggedInUser = {};
 				async: true,
 				cache: true,
 				dataType: 'jsonp',
-				success: function(response) { insertSearchVideos(response,$youmaxContainer,false,true);},
+				success: function(response) { insertSearchVideos(response,$youmaxContainer,false,true,loadMoreFlag);},
 				error: function(html) { alert(html); },
 				beforeSend: setHeader
 			});
@@ -2882,7 +6527,8 @@ var youmaxLoggedInUser = {};
 				$youmaxContainer.data('cache',cache);
 				$youmaxContainer.data('cacheindex',cacheIndex);
 				$youmaxContainer.find('#youmax-next-div').data('nextpagetoken',eventCache.nextPageToken);
-				handlePagination($youmaxContainer,"next");
+				//handlePagination($youmaxContainer,"next");
+				paginationWrapper($youmaxContainer,"next");
 			} else {
 				//load more
 				insertSearchVideos(eventCache,$youmaxContainer,false,true);
@@ -2983,7 +6629,7 @@ var youmaxLoggedInUser = {};
 		var loadMoreFlag = false;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var apiKey = youmax_global_options.apiKey;
-		var maxResults = youmax_global_options.maxResults;
+		var maxComments = youmax_global_options.maxComments;
 		//console.log('getVideoComments pageToken-'+pageToken);
 		if(null!=pageToken) {
 			pageTokenUrl = "&pageToken="+pageToken;
@@ -2995,7 +6641,7 @@ var youmaxLoggedInUser = {};
 			loadMoreFlag = true;
 		}*/
 		
-		apiVideoCommentsURL = "https://www.googleapis.com/youtube/v3/commentThreads?part=id%2Csnippet&videoId="+videoId+pageTokenUrl+"&maxResults="+maxResults+"&key="+apiKey+"&order="+youmax_global_options.commentOrder;
+		apiVideoCommentsURL = "https://www.googleapis.com/youtube/v3/commentThreads?part=id%2Csnippet&videoId="+videoId+pageTokenUrl+"&maxResults="+maxComments+"&key="+apiKey+"&order="+youmax_global_options.commentOrder;
 		
 		//console.log('getVideoComments apiVideoCommentsURL-'+apiVideoCommentsURL);
 		
@@ -3018,7 +6664,7 @@ var youmaxLoggedInUser = {};
 		var loadMoreFlag = false;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var apiKey = youmax_global_options.apiKey;
-		var maxResults = youmax_global_options.maxResults;
+		var maxComments = youmax_global_options.maxComments;
 		//console.log('getVideoComments pageToken-'+pageToken);
 		if(null!=pageToken) {
 			pageTokenUrl = "&"+pageToken;
@@ -3030,7 +6676,7 @@ var youmaxLoggedInUser = {};
 			loadMoreFlag = true;
 		}*/
 		
-		apiVideoCommentsURL = "https://api.vimeo.com/videos/"+videoId+"/comments?per_page="+maxResults+"&access_token="+youmax_global_options.vimeoAccessToken+"&sort=date"+pageTokenUrl;
+		apiVideoCommentsURL = "https://api.vimeo.com/videos/"+videoId+"/comments?per_page="+maxComments+"&access_token="+youmax_global_options.vimeoAccessToken+"&sort=date"+pageTokenUrl;
 		//youmax_global_options.commentOrder
 		
 		//console.log('getVideoComments apiVideoCommentsURL-'+apiVideoCommentsURL);
@@ -3120,7 +6766,15 @@ var youmaxLoggedInUser = {};
 				
 		//select
 		$youmaxContainer.append('<div id="youmax-select-box"><select id="youmax-select"></select></div>');
-	
+		
+		//top ad space
+		if(youmax_global_options.showTopAdSpace) {
+			//console.log("showing ad");
+			//console.log($youmaxContainer.find('#youmax-top-ad'));
+			//$youmaxTopAd =  $youmaxContainer.find('#youmax-top-ad').wrap('<div class="youmax-ad-space">');
+			$youmaxContainer.append('<div class="youmax-ad-space">'+youmax_global_options.topAdHtml+'</div>');		
+		}
+		
 		if(youmax_global_options.displayVideo != 'popup') {
 			//encloser video
 			//$youmaxContainer.append('<div id="youmax-encloser"><div class="fluid-width-video-wrapper" style="padding-top:'+(youmax_global_options.aspectRatio*100)+'%;"><iframe id="youmax-encloser-video" style="width:100%;" src="" frameborder="0" allowfullscreen></iframe></div><div id="youmax-encloser-comment-wrapper"><div id="photo-detail-holder"><div class="photo-popup-title"></div><div class="photo-popup-description"></div><div class="photo-popup-stats"><span class="media-views"></span><span class="media-likes"> </span><span class="media-uploaded"></span></div> <div class="youmax-show-button-wrapper"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button">Show Comments</div></div> <div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment youmax-commentbox-holder"><textarea class="youmax-comment-textbox" placeholder="Share your Thoughts..."></textarea><button type="button" class="youmax-add-comment-button"><i class="fa fa-sign-in fa-2x"></i></button><div type="button" class="youmax-share-video-button"><i class="fa fa-share fa-2x"></i></div></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button">Load More Comments</div></div> </div> </div></div>');
@@ -3148,19 +6802,21 @@ var youmaxLoggedInUser = {};
 		
 		if(youmax_global_options.loadMode=="loadmore") {
 			//load more
-			$youmaxContainer.append('<button type="button" id="youmax-load-more-div" '+buttonClass+'><i class="fa fa-plus fa-5x"></i></button>');
+			$youmaxContainer.append('<button type="button" id="youmax-load-more-div" '+buttonClass+'></button>');
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
 		} else if(youmax_global_options.loadMode=="paginate-bottom") {
 			//pagination
-			$youmaxContainer.append('<div class="youmax-pagination"><div class="youmax-pagination-button-wrapper youmax-left-wrapper"><button type="button" id="youmax-previous-div" '+buttonClass+'><i class="fa fa-caret-left fa-5x"></i></button></div><div class="youmax-pagination-button-wrapper youmax-right-wrapper"><button type="button" id="youmax-next-div" '+buttonClass+'><i class="fa fa-caret-right fa-5x"></i></button></div></div>');
+			$youmaxContainer.append('<div class="youmax-pagination"><div class="youmax-pagination-button-wrapper youmax-left-wrapper"><button type="button" id="youmax-previous-div" '+buttonClass+'></button></div><div class="youmax-pagination-button-wrapper youmax-right-wrapper"><button type="button" id="youmax-next-div" '+buttonClass+'></button></div></div>');
 			$youmaxNextDiv = $youmaxContainer.find('#youmax-next-div');
 			$youmaxPreviousDiv = $youmaxContainer.find('#youmax-previous-div');
 		}  else if(youmax_global_options.loadMode=="paginate-sides") {
 			//pagination
-			$youmaxContainer.append('<div class="youmax-pagination-button-wrapper youmax-left-wrapper youmax-side-nav"><button type="button" id="youmax-previous-div" '+buttonClass+'><i class="fa fa-caret-left fa-5x"></i></button></div><div class="youmax-pagination-button-wrapper youmax-right-wrapper youmax-side-nav"><button type="button" id="youmax-next-div" '+buttonClass+'><i class="fa fa-caret-right fa-5x"></i></button></div>');
+			$youmaxContainer.append('<div class="youmax-pagination-button-wrapper youmax-left-wrapper youmax-side-nav"><button type="button" id="youmax-previous-div" '+buttonClass+'></button></div><div class="youmax-pagination-button-wrapper youmax-right-wrapper youmax-side-nav"><button type="button" id="youmax-next-div" '+buttonClass+'></button></div>');
 			$youmaxNextDiv = $youmaxContainer.find('#youmax-next-div');
 			$youmaxPreviousDiv = $youmaxContainer.find('#youmax-previous-div');
 		} 
+		
+		resetLoadMoreButton($youmaxContainer);
 		
 		if(null!=$youmaxLoadMoreDiv) {
 			$youmaxLoadMoreDiv.data('nextpagetoken','');
@@ -3171,13 +6827,15 @@ var youmaxLoggedInUser = {};
 		
 		if(null!=$youmaxPreviousDiv) {
 			$youmaxPreviousDiv.click(function(){
-				handlePagination($youmaxContainer,"previous");
+				paginationWrapper($youmaxContainer,"previous");
+				//handlePagination($youmaxContainer,"previous");
 			});
 		}
 		
 		if(null!=$youmaxNextDiv) {
 			$youmaxNextDiv.click(function(){
-				handlePagination($youmaxContainer,"next");
+				paginationWrapper($youmaxContainer,"next");
+				//handlePagination($youmaxContainer,"next");
 			});
 		}
 		
@@ -3202,13 +6860,19 @@ var youmaxLoggedInUser = {};
 			loadMoreComments($youmaxContainer);
 		});	*/
 		
+		if(youmax_global_options.displayVideo=="popup") {
+			$youmaxPlayBox = $('body');
+			$youmaxPlayBox.off('click','.youmax-show-button');
+			$youmaxPlayBox.off('click','.youmax-add-comment-button');
+		} else {
+			$youmaxPlayBox = $youmaxContainer;
+		}
 		
-		$youmaxContainer.on('click','.youmax-show-button',function(){
+		$youmaxPlayBox.on('click','.youmax-show-button',function(){
 			displayComments(this.id,$youmaxContainer);
 		});
 		
-		
-		$youmaxContainer.on('click','.youmax-more-button',function(){
+		$youmaxPlayBox.on('click','.youmax-more-button',function(){
 			loadMoreComments($youmaxContainer);
 		});
 		
@@ -3217,7 +6881,7 @@ var youmaxLoggedInUser = {};
 		//load Google API for Login
 		$.getScript("https://apis.google.com/js/client:platform.js").done(function(data, textStatus) {
 			//console.log('Google API Loaded');
-			$youmaxContainer.on('click','.youmax-add-comment-button',function(){
+			$youmaxPlayBox.on('click','.youmax-add-comment-button',function(){
 				handleComments(this,$youmaxContainer);
 			});
 			
@@ -3251,6 +6915,30 @@ var youmaxLoggedInUser = {};
 				//$(this).find(".youmax-playlist-video-count-wrapper").show();
 				//$(this).find(".youmax-clean-playlist-title").hide();
 			});
+		} else {
+		
+			//for all skins except clean - show play icon on thumbnails hover
+			//also video display mode should not be thumbnail
+			if (youmax_global_options.displayVideo!="thumbnail") {
+				if(youmax_global_options.playIconType && youmax_global_options.playIconType!='default') {
+					$youmaxContainer.on('mouseenter','.youmax-thumbnail-image-wrapper',function(){
+						$(this).find(".youmax-play-overlay").addClass('youmax-play-hover');
+					});
+
+					$youmaxContainer.on('mouseleave','.youmax-thumbnail-image-wrapper',function(){
+						$(this).find(".youmax-play-overlay").removeClass('youmax-play-hover');
+					});
+				} else {
+					$youmaxContainer.on('mouseenter','.youmax-thumbnail-image-wrapper',function(){
+						$(this).find(".youmax-play-overlay").show();
+					});
+
+					$youmaxContainer.on('mouseleave','.youmax-thumbnail-image-wrapper',function(){
+						$(this).find(".youmax-play-overlay").hide();
+					});
+				}
+			}
+
 		}
 		
 		$youmaxContainer.on('click','#youmax-back-to-playlists',function(){
@@ -3269,8 +6957,65 @@ var youmaxLoggedInUser = {};
 		});
 		
 		
+		$(window).resize(function() {
+			clearTimeout(layoutResizeTimer);
+			layoutResizeTimer = setTimeout(function(){
+				$('body').find('.youmax').each(function(){
+					$ymaxContainer = $(this);
+					//console.log("setting media queries");
+					setMediaQueries($ymaxContainer.width(),$ymaxContainer);
+				});
+				
+				setTimeout(function(){
+					$('body').find('.youmax').each(function(){
+						$ymaxContainer = $(this);
+						ymax_global_options = $ymaxContainer.data('youmax_global_options');
+						//remove date for trend skin if not enough space
+						if(ymax_global_options.skin.indexOf('trend')!=-1 && ($ymaxContainer.find('#tiles li:first-child').width())<280) {
+							$ymaxContainer.find('.youmax-video-list-date').hide();
+						} else {
+							$ymaxContainer.find('.youmax-video-list-date').show();
+						}
+						//console.log("updaing msonry layout");
+						$ymaxContainer.find('ul').masonry('layout'); 
+					});
+				}, youmax_global_options.updateLayoutDelay);
+				
+				
+			}, youmax_global_options.updateLayoutDelay);
+		});
 		
+		//Adding this as a Safety Net
+		$(window).on('load', function(){
+			setTimeout(function(){
+				$('body').find('.youmax').each(function(){
+					$(this).find('ul').masonry('layout'); 
+				});
+			}, youmax_global_options.updateLayoutDelay);
+		});	
+	
 		
+	},
+	
+	paginationWrapper = function($youmaxContainer,handle) {
+		
+		if(handle=="previous") {
+			pauseLoadMoreButton($youmaxContainer,"previous");
+		} else {
+			pauseLoadMoreButton($youmaxContainer);
+		}
+		
+		$youmaxContainerList = $youmaxContainer.find('ul#tiles');
+		var current_height = $youmaxContainerList.height();
+		$youmaxContainerList.parent('#youmax-video-list-div').css('min-height',current_height);		
+		$youmaxContainerList.find('li').addClass("youmax-dying");//.fadeTo(200, 0.3, function(){
+			//setTimeout(function(){
+				//handlePagination($youmaxContainer,handle);
+			//}, 1000);
+		//});
+		
+		handlePagination($youmaxContainer,handle);
+	
 	},
 	
 	handlePagination = function($youmaxContainer,handle) {
@@ -3285,7 +7030,9 @@ var youmaxLoggedInUser = {};
 			paging:{
 				next:"youmax-generated"
 			}
-		};
+		};		
+		
+		//setMinimumContainerHeight($youmaxContainer);
 		
 		cache = $youmaxContainer.data('cache');
 		cacheIndex = $youmaxContainer.data('cacheindex');				
@@ -3311,34 +7058,46 @@ var youmaxLoggedInUser = {};
 				
 				youtubeResponse.items = (cache.slice(tempCacheIndex,tempCacheIndex+youmax_global_options.maxResults));
 				vimeoResponse.data = (cache.slice(tempCacheIndex,tempCacheIndex+youmax_global_options.maxResults));
+				
+				setTimeout(function(){
+					if(tabId.indexOf("youtube_channel_uploads_")!=-1) {
+						insertPlaylistVideos(youtubeResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("youtube_channel_playlists_")!=-1) {
+						insertChannelPlaylists(youtubeResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("youtube_channel_search_")!=-1) {
+						eventType = $(".youmax-tab-hover").data("eventtype");
+						isEvent = false;
+						if(null!=eventType && eventType!="") {
+							isEvent = true;
+						}
+						insertSearchVideos(youtubeResponse,$youmaxContainer,false,isEvent,true,true);
+					} else if(tabId.indexOf("youtube_channel_events_")!=-1) {
+						insertSearchVideos(youtubeResponse,$youmaxContainer,false,true,true,true);
+					} else if(tabId.indexOf("youtube_playlist_videos_")!=-1) {
+						insertPlaylistVideos(youtubeResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_user_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_channel_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_group_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_album_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("query_")!=-1) {
 						
-				if(tabId.indexOf("youtube_channel_uploads_")!=-1) {
-					insertPlaylistVideos(youtubeResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("youtube_channel_playlists_")!=-1) {
-					insertChannelPlaylists(youtubeResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("youtube_channel_search_")!=-1) {
-					eventType = $(".youmax-tab-hover").data("eventtype");
-					isEvent = false;
-					if(null!=eventType && eventType!="") {
-						isEvent = true;
-					}
-					insertSearchVideos(youtubeResponse,$youmaxContainer,false,isEvent);
-				} else if(tabId.indexOf("youtube_channel_events_")!=-1) {
-					insertSearchVideos(youtubeResponse,$youmaxContainer,false,true);
-				} else if(tabId.indexOf("youtube_playlist_videos_")!=-1) {
-					insertPlaylistVideos(youtubeResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("vimeo_user_videos_")!=-1) {
-					insertVimeoVideos(vimeoResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("vimeo_channel_videos_")!=-1) {
-					insertVimeoVideos(vimeoResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("query_")!=-1) {
+					}	
 					
-				}				
+				}, youmax_global_options.minimumFadeTimeout);
 				
 				cacheIndex = cacheIndex - youmax_global_options.maxResults;
 				//console.log("cacheIndex > "+cacheIndex);
 			} else {
-				$youmaxContainer.find('#youmax-previous-div').html('<i class="fa fa-close fa-5x"></i>');
+				if(youmax_global_options.showTextInsteadOfIcons) {
+					$youmaxContainer.find('#youmax-previous-div').removeClass('youmax-load-more-div-click').html('Done');
+				} else {
+					$youmaxContainer.find('#youmax-previous-div').removeClass('youmax-load-more-div-click').html('<i class="fa fa-close fa-5x"></i>');
+				}
+				$youmaxContainer.find('ul#tiles li').removeClass("youmax-dying").fadeTo(0, 1);
 			}
 		
 		
@@ -3354,29 +7113,34 @@ var youmaxLoggedInUser = {};
 				youtubeResponse.items = (cache.slice(tempCacheIndex,tempCacheIndex+youmax_global_options.maxResults));
 				vimeoResponse.data = (cache.slice(tempCacheIndex,tempCacheIndex+youmax_global_options.maxResults));
 
-				if(tabId.indexOf("youtube_channel_uploads_")!=-1) {
-					insertPlaylistVideos(youtubeResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("youtube_channel_playlists_")!=-1) {
-					insertChannelPlaylists(youtubeResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("youtube_channel_search_")!=-1) {
-					eventType = $(".youmax-tab-hover").data("eventtype");
-					isEvent = false;
-					if(null!=eventType && eventType!="") {
-						isEvent = true;
+				setTimeout(function(){				
+					if(tabId.indexOf("youtube_channel_uploads_")!=-1) {
+						insertPlaylistVideos(youtubeResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("youtube_channel_playlists_")!=-1) {
+						insertChannelPlaylists(youtubeResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("youtube_channel_search_")!=-1) {
+						eventType = $(".youmax-tab-hover").data("eventtype");
+						isEvent = false;
+						if(null!=eventType && eventType!="") {
+							isEvent = true;
+						}
+						insertSearchVideos(youtubeResponse,$youmaxContainer,false,isEvent,true,true);
+					} else if(tabId.indexOf("youtube_channel_events_")!=-1) {
+						insertSearchVideos(youtubeResponse,$youmaxContainer,false,true,true,true);
+					} else if(tabId.indexOf("youtube_playlist_videos_")!=-1) {
+						insertPlaylistVideos(youtubeResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_user_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_channel_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_group_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("vimeo_album_videos_")!=-1) {
+						insertVimeoVideos(vimeoResponse,false,$youmaxContainer,true);
+					} else if(tabId.indexOf("query_")!=-1) {
+						
 					}
-					insertSearchVideos(youtubeResponse,$youmaxContainer,false,isEvent);
-				} else if(tabId.indexOf("youtube_channel_events_")!=-1) {
-					insertSearchVideos(youtubeResponse,$youmaxContainer,false,true);
-				} else if(tabId.indexOf("youtube_playlist_videos_")!=-1) {
-					insertPlaylistVideos(youtubeResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("vimeo_user_videos_")!=-1) {
-					insertVimeoVideos(vimeoResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("vimeo_channel_videos_")!=-1) {
-					insertVimeoVideos(vimeoResponse,false,$youmaxContainer);
-				} else if(tabId.indexOf("query_")!=-1) {
-					
-				}
-				
+				}, youmax_global_options.minimumFadeTimeout);
 				cacheIndex = cacheIndex + youmax_global_options.maxResults;
 				//console.log("cacheIndex > "+cacheIndex);
 			}
@@ -3400,23 +7164,28 @@ var youmaxLoggedInUser = {};
 		$(thisElement).html('<i class="fa fa-ellipsis-h fa-2x"></i>').attr('disabled','disabled');
 		//console.log('Button text - '+$(thisElement).text());
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		if(youmax_global_options.displayVideo=="popup") {
+			$youmaxPlayBox = $('.youmax-popup.mfp-gallery');
+		} else {
+			$youmaxPlayBox = $youmaxContainer;
+		}	
 
 		var youmaxAccessToken = youmaxLoggedInUser.youmaxAccessToken;
 		if(null!=youmaxAccessToken && youmaxAccessToken!="") {
 			//Token available
 			//getLoggedInUserDetails($youmaxContainer,youmaxAccessToken,youmax_global_options.apiKey);
 			
-			var comment = $youmaxContainer.find('.youmax-comment-textbox').val();
+			var comment = $youmaxPlayBox.find('.youmax-comment-textbox').val();
 			if(null==comment||comment.trim()=="") {
 				alert("Please enter a valid comment..");
-				$youmaxContainer.find('.youmax-add-comment-button').removeAttr('disabled').html('<i class="fa fa-send fa-2x"></i>');
+				$youmaxPlayBox.find('.youmax-add-comment-button').removeAttr('disabled').html('<i class="fa fa-send fa-2x"></i>');
 				return;
 			} else {
 				comment=comment.trim();
 			}
 			
-			videoId = $youmaxContainer.find(".youmax-encloser-comment-button.youmax-show-button").attr('id');
-			channelId = $youmaxContainer.find(".youmax-encloser-comment-button.youmax-show-button").data('channelid');
+			videoId = $youmaxPlayBox.find(".youmax-encloser-comment-button.youmax-show-button").attr('id');
+			channelId = $youmaxPlayBox.find(".youmax-encloser-comment-button.youmax-show-button").data('channelid');
 			
 			//remove "youtube_" from the video id
 			videoId = videoId.substring(videoId.indexOf("_")+1);
@@ -3507,14 +7276,20 @@ var youmaxLoggedInUser = {};
 				var authorName = data.snippet.topLevelComment.snippet.authorDisplayName;
 				var authorImage = data.snippet.topLevelComment.snippet.authorProfileImageUrl;
 				var youmax_translator_text = $youmaxContainer.data('youmax_translator_text');
+				var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+				if(youmax_global_options.displayVideo=="popup") {
+					$youmaxPlayBox = $('.youmax-popup.mfp-gallery');
+				} else {
+					$youmaxPlayBox = $youmaxContainer;
+				}	
 				
 				//Display added comment
-				$youmaxContainer.find("#youmax-encloser-comments").prepend('<div  class="youmax-video-comment"><div class="youmax-from"><div class="youmax-from-img" style="background-image:url(\''+authorImage+'\');"></div><div class="youmax-from-name">'+authorName+'</div><div class="youmax-published">'+youmax_translator_text.now+'</div></div><div class="youmax-comment"><span class="youmax-comment-content">'+comment+'</span><div></div>');				
+				$youmaxPlayBox.find("#youmax-encloser-comments").prepend('<div  class="youmax-video-comment"><div class="youmax-from"><div class="youmax-from-img" style="background-image:url(\''+authorImage+'\');"></div><div class="youmax-from-name">'+authorName+'</div><div class="youmax-published">'+youmax_translator_text.now+'</div></div><div class="youmax-comment"><span class="youmax-comment-content">'+comment+'</span><div></div>');				
 				
 				//getUserDetails(new Array(authorId),$youmaxContainer);
 				
-				$youmaxContainer.find('.youmax-add-comment-button').removeAttr('disabled').html('<i class="fa fa-send fa-2x"></i>');
-				$youmaxContainer.find('.youmax-comment-textbox').val('');
+				$youmaxPlayBox.find('.youmax-add-comment-button').removeAttr('disabled').html('<i class="fa fa-send fa-2x"></i>');
+				$youmaxPlayBox.find('.youmax-comment-textbox').val('');
 				//console.log("Success!!");
 				//console.log(data);
 				//console.log(status);
@@ -3571,7 +7346,13 @@ var youmaxLoggedInUser = {};
 			} else if(tabId.indexOf("vimeo_channel_videos_")!=-1) {
 				innerId=tabId.substring(21);
 				getVimeoChannelVideos(innerId,nextPageToken,$youmaxContainer);
-			} else if(tabId.indexOf("query_")!=-1) {
+			} else if(tabId.indexOf("vimeo_group_videos_")!=-1) {
+				innerId=tabId.substring(19);
+				getVimeoGroupVideos(innerId,nextPageToken,$youmaxContainer);
+			} else if(tabId.indexOf("vimeo_album_videos_")!=-1) {
+				innerId=tabId.substring(19);
+				getVimeoAlbumVideos(innerId,nextPageToken,$youmaxContainer);
+			}  else if(tabId.indexOf("query_")!=-1) {
 				innerId=tabId.substring(6);
 				getUserSearchVideos(innerId,nextPageToken,$youmaxContainer);	
 			}		
@@ -3583,18 +7364,43 @@ var youmaxLoggedInUser = {};
 		}
 	},
 	
-	pauseLoadMoreButton = function ($youmaxContainer) {
+	pauseLoadMoreButton = function ($youmaxContainer,direction) {
 	
 		var $youmaxLoadMoreDiv;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		
-		if(youmax_global_options.loadMode=="loadmore") {
-			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
-			$youmaxLoadMoreDiv.html('<i class="fa fa-ellipsis-h fa-5x"></i>');
-		} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
-			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-			$youmaxLoadMoreDiv.html('<i class="fa fa-ellipsis-h fa-5x"></i>');
-		}
+		if(youmax_global_options.showTextInsteadOfIcons) {
+
+			if(youmax_global_options.loadMode=="loadmore") {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
+				$youmaxLoadMoreDiv.html('Loading..');
+			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
+				if(direction=="previous") {
+					$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-previous-div');
+					$youmaxLoadMoreDiv.html('Loading..');
+				} else {
+					$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
+					$youmaxLoadMoreDiv.html('Loading..');
+				}
+			}		
+
+		} else {
+		
+			if(youmax_global_options.loadMode=="loadmore") {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
+				$youmaxLoadMoreDiv.html('<i class="fa fa-ellipsis-h fa-5x"></i>');
+			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
+				if(direction=="previous") {
+					$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-previous-div');
+					$youmaxLoadMoreDiv.html('<i class="fa fa-ellipsis-h fa-5x"></i>');
+				} else {
+					$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
+					$youmaxLoadMoreDiv.html('<i class="fa fa-ellipsis-h fa-5x"></i>');
+				}
+			}
+			
+		}		
+
 
 		$youmaxLoadMoreDiv.addClass('youmax-load-more-div-click');
 		
@@ -3607,12 +7413,28 @@ var youmaxLoggedInUser = {};
 		var $youmaxLoadMoreDiv;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		
-		if(youmax_global_options.loadMode=="loadmore") {
-			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
-			$youmaxLoadMoreDiv.html('<i class="fa fa-close fa-5x"></i>');
-		} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
-			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-			$youmaxLoadMoreDiv.html('<i class="fa fa-close fa-5x"></i>');
+		if(youmax_global_options.showTextInsteadOfIcons) {
+		
+			if(youmax_global_options.loadMode=="loadmore") {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
+				$youmaxLoadMoreDiv.html('All Done');
+			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
+				$youmaxLoadMoreDiv.html('Done');
+				$youmaxContainer.find('ul#tiles li').removeClass("youmax-dying").fadeTo(0, 1);
+			}
+			
+		} else {
+		
+			if(youmax_global_options.loadMode=="loadmore") {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
+				$youmaxLoadMoreDiv.html('<i class="fa fa-close fa-5x"></i>');
+			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
+				$youmaxLoadMoreDiv.html('<i class="fa fa-close fa-5x"></i>');
+				$youmaxContainer.find('ul#tiles li').removeClass("youmax-dying").fadeTo(0, 1);
+			}
+			
 		}
 
 		$youmaxLoadMoreDiv.removeClass('youmax-load-more-div-click');
@@ -3861,14 +7683,21 @@ var youmaxLoggedInUser = {};
 	
 	convertLikeCommentCount = convertViewCount,
 	
+	convertHeaderCounts = convertViewCountWithComma,
+	
 	//utility function to displaye view counts
 	convertViewCountWithComma = function(videoViewCount) {
-		//console.log("videoViewCount-"+videoViewCount);
+		
 		var videoResultCount = "";
 		
 		if(null==videoViewCount || videoViewCount=="0") {
 			return "";
 		}
+		
+		videoViewCount = ""+videoViewCount;
+		
+		//console.log("videoViewCount-"+videoViewCount);
+		//console.log("videoViewCount length-"+videoViewCount.length);
 		
 		while(videoViewCount.length>0) {
 			if(videoViewCount.length > 3) {
@@ -3952,12 +7781,12 @@ var youmaxLoggedInUser = {};
 		channelId = channelData.id;
 		channelTitle = channelData.snippet.title;
 		channelImage = channelData.snippet.thumbnails.default.url;
-		channelSubscribers = convertViewCount(channelData.statistics.subscriberCount);
-		channelViews = convertViewCount(channelData.statistics.viewCount);
+		channelSubscribers = convertHeaderCounts(channelData.statistics.subscriberCount);
+		channelViews = convertHeaderCounts(channelData.statistics.viewCount);
 		channelBackgroundImage = channelData.brandingSettings.image.bannerImageUrl;
 		//channelUploadsPlaylistId = channelData.contentDetails.relatedPlaylists.uploads;
 		
-		channelVideos = convertViewCount(channelData.statistics.videoCount);
+		channelVideos = convertHeaderCounts(channelData.statistics.videoCount);
 		channelDescription = channelData.snippet.description;
 		userWebsite = youmax_global_options.userWebsite;
 		
@@ -4107,19 +7936,18 @@ var youmaxLoggedInUser = {};
 
 		for(var i=0; i<videoArray.length; i++) {
 			videoId = videoArray[i].id;
-			videoViewCount = videoArray[i].statistics.viewCount;
-			videoViewCount = convertViewCountForThumbnail(videoViewCount);
+			videoViewCount_raw = videoArray[i].statistics.viewCount;
+			videoViewCount = convertViewCountForThumbnail(videoViewCount_raw);
 			videoDuration = videoArray[i].contentDetails.duration;
 			videoDuration = convertDuration(videoDuration);
 			videoDefinition = videoArray[i].contentDetails.definition.toUpperCase();
-			videoLikeCount = videoArray[i].statistics.likeCount;
-			videoLikeCount = convertLikeCommentCount(videoLikeCount);
-			videoCommentCount = videoArray[i].statistics.commentCount;
-			videoCommentCount = convertLikeCommentCount(videoCommentCount);
+			videoLikeCount_raw = videoArray[i].statistics.likeCount;
+			videoLikeCount = convertLikeCommentCount(videoLikeCount_raw);
+			videoCommentCount_raw = videoArray[i].statistics.commentCount;
+			videoCommentCount = convertLikeCommentCount(videoCommentCount_raw);
 			
 			
 			$videoThumbnail = $youmaxContainer.find('#youmax-video-list-div #youtube_'+videoId);
-			$videoThumbnail.find('.youmax-video-list-views').append(videoViewCount+' <span class="youmax-views-text">'+youmax_translator_text.views+'</span> ');
 			
 			$videoThumbnail.data("views",videoViewCount);
 			$videoThumbnail.data("likes",videoLikeCount);			
@@ -4137,12 +7965,19 @@ var youmaxLoggedInUser = {};
 					} else if (null!=scheduledStartTime) { //upcoming event
 						scheduledAt = convertDateFormat(scheduledStartTime);
 						$videoThumbnail.append('<div class="youmax-event-tag youmax-event-upcoming">Upcoming Event</div>');
-					} 		
+					}
 				}
 				
-				$videoThumbnail.append('<div class="youmax-duration"><i class="fa fa-heart fa-1x"></i>'+videoLikeCount+'</div>');
-				$videoThumbnail.append('<div class="youmax-definition"><i class="fa fa-volume-off fa-1x"></i>'+videoViewCount+'</div>');
-				$videoThumbnail.find(".youmax-clean-time").append(videoDuration);				
+				//not needed
+				//$videoThumbnail.find('.youmax-video-list-views').append(videoViewCount+' <span class="youmax-views-text">'+youmax_translator_text.views+'</span> ');				
+				
+				$videoThumbnail.find('.youmax-all-skin-views').empty().append(videoViewCount);
+				
+				$videoThumbnail.find('.youmax-all-skin-likes').empty().append(videoLikeCount);
+				
+				$videoThumbnail.find('.youmax-all-skin-comments').empty().append(videoCommentCount);				
+
+				$videoThumbnail.find(".youmax-clean-time").empty().append(videoDuration);				
 				
 			} else {
 				if(isEvent) {
@@ -4162,19 +7997,108 @@ var youmaxLoggedInUser = {};
 						$videoThumbnail.append('<div class="youmax-duration">'+scheduledAt+'</div>');
 					}
 				} else {
-					$videoThumbnail.append('<div class="youmax-duration">'+videoDuration+'</div>');
-					$videoThumbnail.append('<div class="youmax-definition">'+videoDefinition+'</div>');
+					$videoThumbnail.find('.youmax-duration').empty().append(videoDuration);
+					$videoThumbnail.find('.youmax-definition').empty().append(videoDefinition);
 				}
 				
-				if(youmax_global_options.skin.indexOf("block")!=-1) {
-					$videoThumbnail.append('<div class="youmax-like-comment-holder"><div class="youmax-like-box"><i class="fa fa-heart"></i>'+videoLikeCount+'</div><div class="youmax-comment-box"><i class="fa fa-comment"></i>'+videoCommentCount+'</div></div>');
+				if(youmax_global_options.skin.indexOf("list")!=-1) {
+				
+					$videoThumbnail.find('.youmax-all-skin-views').empty().append(videoViewCount);
+					
+					$videoThumbnail.find('.youmax-all-skin-likes').empty().append(videoLikeCount);
+					
+					$videoThumbnail.find('.youmax-all-skin-comments').empty().append(videoCommentCount);
+
+				} else if(youmax_global_options.skin.indexOf("trend")!=-1){
+				
+					video_uploaded = $videoThumbnail.data("videouploaded");
+					trend = getVideoTrend(videoViewCount_raw,videoLikeCount_raw,videoCommentCount_raw,video_uploaded,youmax_global_options.hotThreshold,youmax_global_options.trendingThreshold);
+					
+					//not needed
+					//link = $videoThumbnail.attr("id");
+					//link = "https://youtu.be/"+link.substring(link.indexOf("_")+1);
+					//$videoThumbnail.find('.youmax-thumbnail-link').attr('href', link);
+					
+					
+					if(trend=="trending") {
+						icon="fa-bolt";
+					} else if (trend=="hot") {
+						icon="fa-fire";
+					} else {
+						icon="fa-check";
+					}
+					
+					$videoThumbnail.find('.youmax-trend-holder').attr('class', 'youmax-trend-holder').empty().addClass('youmax-'+trend).append('<i class="fa '+icon+'"></i> <span class="youmax-trend-text">'+trend+'</span>');
+				
+					$videoThumbnail.find('.youmax-all-skin-views').empty().append(videoViewCount);
+					
+					$videoThumbnail.find('.youmax-all-skin-likes').empty().append(videoLikeCount);
+					
+					$videoThumbnail.find('.youmax-all-skin-comments').empty().append(videoCommentCount);
+
+				} else {
+					$videoThumbnail.find('.youmax-all-skin-views').empty().append(videoViewCount);
+					
+					if(youmax_global_options.skin.indexOf("block")!=-1) {
+						$videoThumbnail.find('.youmax-all-skin-likes').empty().append(videoLikeCount);
+						$videoThumbnail.find('.youmax-all-skin-comments').empty().append(videoCommentCount);
+					}
 				}
 			}
 		}
 		
-		if(youmax_global_options.skin.indexOf("block")!=-1) {
-			$(window).resize();
+		/*if(youmax_global_options.skin.indexOf("block")!=-1 || youmax_global_options.skin.indexOf("trend")!=-1) {
+			setTimeout(function(){
+				window.dispatchEvent(new CustomEvent("resize"));
+			}, youmax_global_options.updateLayoutDelay);
+		}*/
+	},
+	
+	getVideoTrend = function (views,likes,comments,time,hotThreshold,trendingThreshold) {
+		
+		if(null!=views && views!="") {
+			views = parseInt(views,10);
+		} else {
+			views = 0;
 		}
+		
+		if(null!=likes && likes!="") {
+			likes = parseInt(likes,10);
+		} else {
+			likes = 0;
+		}
+		
+		if(null!=comments && comments!="") {
+			comments = parseInt(comments,10);
+		} else {
+			comments = 0;
+		}
+		
+		dateDiffMS = Math.abs(new Date() - new Date(time));
+		//console.log(dateDiffMS);
+		
+		dateDiffDY = dateDiffMS/1000/60/60/24;
+		
+		var score = (views + 100*likes + 300*comments)/dateDiffDY;
+
+		//console.log('views: '+views);
+		//console.log('likes: '+likes);
+		//console.log('comments: '+comments);
+		
+		//console.log(views + 100*likes + 300*comments);
+		//console.log(dateDiffDY);
+		//console.log('score: '+score);
+
+		if(score>=hotThreshold) {
+			return "hot";
+		}
+		
+		if(score>=trendingThreshold) {
+			return "trending";
+		}
+		
+		return "classic";
+		
 	},
 
 	/* updated to v3 API - not needed
@@ -4201,12 +8125,20 @@ var youmaxLoggedInUser = {};
 	insertVideoComments = function(response,loadMoreFlag,$youmaxContainer) {
 		//console.log('insertVideoComments');
 		//console.log(response);
+
 		
-		
-		var $youmaxCommentHolder = $youmaxContainer.find('#youmax-encloser-comments');
+		var $youmaxCommentHolder;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var youmax_translator_text = $youmaxContainer.data("youmax_translator_text");
 
+		if(youmax_global_options.displayVideo=="popup") {
+			$youmaxPlayBox = $('.youmax-popup.mfp-gallery');			
+		} else {
+			$youmaxPlayBox = $youmaxContainer;			
+		}	
+
+		$youmaxCommentHolder = $youmaxPlayBox.find('#youmax-encloser-comments');		
+		
 		//console.log('loadMoreFlag-'+loadMoreFlag);
 		if(!loadMoreFlag) {
 			//empty earlier comments if not load more
@@ -4218,7 +8150,7 @@ var youmaxLoggedInUser = {};
 		
 		//page token logic
 		var nextPageToken = response.nextPageToken;
-		var $loadCommentsButton = $youmaxContainer.find('.youmax-encloser-comment-button.youmax-more-button');
+		var $loadCommentsButton = $youmaxPlayBox.find('.youmax-encloser-comment-button.youmax-more-button');
 		//console.log('nextPageToken-'+nextPageToken);
 		
 		if(null!=nextPageToken && nextPageToken!="undefined" && nextPageToken!="") {
@@ -4234,8 +8166,8 @@ var youmaxLoggedInUser = {};
 		//alert(videoArray.length);
 		if(null==commentArray||commentArray.length==0) {
 			$youmaxCommentHolder.append('<div id="" class="youmax-video-comment"><div class="youmax-comment" ><span class="youmax-comment-content" style="text-align:center;">No more comments found.</span><div></div>');
-			$youmaxContainer.find('.youmax-encloser-comment-button.youmax-more-button').data('nextpagetoken','');
-			resetLoadMoreComments($youmaxContainer);
+			$loadCommentsButton.data('nextpagetoken','');
+			resetLoadMoreComments($youmaxPlayBox,youmax_global_options);
 			return;
 		}
 		
@@ -4264,7 +8196,7 @@ var youmaxLoggedInUser = {};
 		}
 		
 		//getUserDetails(userIdArray,$youmaxContainer);
-		resetLoadMoreComments($youmaxContainer);
+		resetLoadMoreComments($youmaxPlayBox,youmax_global_options);
 		
 	},
 	
@@ -4275,10 +8207,17 @@ var youmaxLoggedInUser = {};
 		//console.log(response);
 		
 		
-		var $youmaxCommentHolder = $youmaxContainer.find('#youmax-encloser-comments');
+		var $youmaxCommentHolder;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var youmax_translator_text = $youmaxContainer.data("youmax_translator_text");
 
+		if(youmax_global_options.displayVideo=="popup") {
+			$youmaxPlayBox = $('.youmax-popup.mfp-gallery');			
+		} else {
+			$youmaxPlayBox = $youmaxContainer;			
+		}
+		$youmaxCommentHolder = $youmaxPlayBox.find('#youmax-encloser-comments');		
+		
 		//console.log('loadMoreFlag-'+loadMoreFlag);
 		if(!loadMoreFlag) {
 			//empty earlier comments if not load more
@@ -4290,7 +8229,7 @@ var youmaxLoggedInUser = {};
 		
 		//page token logic
 		var nextPageToken = response.paging.next;
-		var $loadCommentsButton = $youmaxContainer.find('.youmax-encloser-comment-button.youmax-more-button');
+		var $loadCommentsButton = $youmaxPlayBox.find('.youmax-encloser-comment-button.youmax-more-button');
 		//console.log('nextPageToken-'+nextPageToken);
 		
 		if(null!=nextPageToken && nextPageToken!="undefined" && nextPageToken!="") {
@@ -4303,8 +8242,8 @@ var youmaxLoggedInUser = {};
 		//alert(videoArray.length);
 		if(null==commentArray||commentArray.length==0) {
 			$youmaxCommentHolder.append('<div id="" class="youmax-video-comment"><div class="youmax-comment" ><span class="youmax-comment-content" style="text-align:center;">No more comments found.</span><div></div>');
-			$youmaxContainer.find('.youmax-encloser-comment-button.youmax-more-button').data('nextpagetoken','');
-			resetLoadMoreComments($youmaxContainer);
+			$loadCommentsButton.data('nextpagetoken','');
+			resetLoadMoreComments($youmaxPlayBox,youmax_global_options);
 			return;
 		}
 		
@@ -4330,18 +8269,59 @@ var youmaxLoggedInUser = {};
 		}
 		
 		//getUserDetails(userIdArray,$youmaxContainer);
-		resetLoadMoreComments($youmaxContainer);
+		resetLoadMoreComments($youmaxPlayBox,youmax_global_options);
 		
+	},
+	
+	processDescription = function(description) {
+	
+	
+		description = description.replace(/"/g, "'");
+		//console.log(description);
+		
+		//spotArray = description.match(/http(s)*:\/\/.+?(\s|\n|$)/g);
+		spotArray = description.match(/(http(s)*:\/\/|www\.).+?(\s|\n|$)/g);
+		
+		//console.log(description);
+		//console.log(spotArray);
+
+		//console.log(message);
+		//console.log(spotArray);
+		if(null!=spotArray) {
+			for(var i=0;i<spotArray.length;i++) {
+				spotArray[i] = spotArray[i].trim();
+				if(spotArray[i].indexOf("www.")==0) {
+					replaceLink = "http://"+spotArray[i];
+				} else {
+					replaceLink = spotArray[i];
+				}
+				description = description.replace(spotArray[i],"<a target='_blank' href='"+replaceLink+"' class='famax-link'>"+spotArray[i]+"</a>");
+			}
+		}
+	
+		//spotArray = description.match(/www\..+?(\s|\n|$)/g);
+		//spotArray = description.match(/(http(s)*:\/\/|www.).+?(\s|\n|$)/g);
+		
+		
+		/*if(null!=spotArray) {
+			for(var i=0;i<spotArray.length;i++) {
+				spotArray[i] = spotArray[i].trim();
+				description = description.replace(spotArray[i],"<a target='_blank' href='http://"+spotArray[i]+"' class='famax-link'>"+spotArray[i]+"</a>");
+			}
+		}*/
+	
+		return description;					
 	},
 	
 	
 	
 	//insert HTML for video thumbnails into youmax grid
-	insertPlaylistVideos = function(response,loadMoreFlag,$youmaxContainer) {
-		//console.log("insertPlaylistVideos");
-		//console.log(response);
+	insertPlaylistVideos = function(response,loadMoreFlag,$youmaxContainer,paginateFlag) {
+		//alert("insertPlaylistVideos");
+		//console.log(response.items);
 		var videoIdArray = [];
 		var $youmaxContainerList = $youmaxContainer.find('ul');
+		var item = '', paginate = false;
 		//console.log('loadMoreFlag-'+loadMoreFlag);
 		if(!loadMoreFlag) {
 			//$youmaxContainerList.empty();
@@ -4360,8 +8340,11 @@ var youmaxLoggedInUser = {};
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
 		} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-			$youmaxContainerList.empty();
-			
+			//$youmaxContainerList.empty();
+			if(loadMoreFlag) {
+				paginateFlag = true;
+			}			
+			loadMoreFlag = false;
 		} 
 
 		//console.log('nextPageToken-'+nextPageToken);
@@ -4374,12 +8357,17 @@ var youmaxLoggedInUser = {};
 			$youmaxLoadMoreDiv.data('nextpagetoken','');
 		}
 
-		//alert(videoArray.length);
+		//console.log(videoArray.length);
+		
 		for(var i=0; i<videoArray.length; i++) {
 			videoId = videoArray[i].snippet.resourceId.videoId;			
 			videoTitle = videoArray[i].snippet.title;
 			videoDescription = videoArray[i].snippet.description;
-			videoDescription = videoDescription.replace(/"/g, "'");
+			videoDescription = processDescription(videoDescription);
+
+			if($youmaxContainerList.find('#youtube_'+videoId).length>0) {
+				continue;
+			}
 			
 			channelId = videoArray[i].snippet.channelId;
 			
@@ -4394,13 +8382,25 @@ var youmaxLoggedInUser = {};
 			
 			videoIdArray.push(videoId);
 			
-			//console.log('videoUploaded-'+videoUploaded);
+			videoLink = "https://www.youtube.com/watch?v="+videoId;
 			
-			$youmaxContainerList.append('<li id="youtube_'+videoId+'" href="https://www.youtube.com/watch?v='+videoId+'" data-description="'+videoDescription+'" data-channelid="'+channelId+'"><img src="'+videoThumbnail+'"><p><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span><span class="youmax-view-date-holder"><span class="youmax-video-list-views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
+			//console.log('videoUploaded-'+videoUploaded);
+
+			item += createItem("youtube",videoId,videoTitle,videoDescription,null,null,null,videoUploaded,videoLink,videoThumbnail,null,null,channelId,youmax_global_options,youmax_translator_text);
+			
+			//$youmaxContainerList.append('<li id="youtube_'+videoId+'" data-description="'+videoDescription+'" data-channelid="'+channelId+'" data-videouploaded="'+videoUploaded+'" class="youmax-grid-item"><div class="youmax-thumbnail-image-wrapper"><img class="youmax-main-thumbnail" href="https://www.youtube.com/watch?v='+videoId+'" src="'+videoThumbnail+'" /><div class="youmax-play-overlay"><div class="youmax-play-icon-holder"><i class="fa fa-play"></i></div></div></div><p><span class="youmax-title-desc-holder"><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span></span><span class="youmax-view-date-holder"><span class="youmax-video-list-views" title="views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
+			
+			//item += ('<li id="youtube_'+videoId+'" data-description="'+videoDescription+'" data-channelid="'+channelId+'" data-videouploaded="'+videoUploaded+'" class="youmax-grid-item youmax-hidden"><div class="youmax-thumbnail-image-wrapper"><img class="youmax-main-thumbnail" href="https://www.youtube.com/watch?v='+videoId+'" src="'+videoThumbnail+'" /><div class="youmax-play-overlay"><div class="youmax-play-icon-holder"><i class="fa fa-play"></i></div></div></div><p><span class="youmax-title-desc-holder"><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span></span><span class="youmax-view-date-holder"><span class="youmax-video-list-views" title="views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
+			
+			
+			//$youmaxGrid.append( $items ).masonry( 'appended', $items );
 
 		}
+
+		$items = $(item);			
+		$youmaxContainerList.append($items);
 		
-		createGrid($youmaxContainer);
+		createGrid($youmaxContainer,"video",loadMoreFlag,paginateFlag,$items);
 		
 		getVideoStats(videoIdArray,$youmaxContainer);
 		
@@ -4424,11 +8424,11 @@ var youmaxLoggedInUser = {};
 
 
 	//insert HTML for video thumbnails into youmax grid
-	insertVimeoVideos = function(response,loadMoreFlag,$youmaxContainer) {
+	insertVimeoVideos = function(response,loadMoreFlag,$youmaxContainer,paginateFlag) {
 		//console.log("insertVimeoVideos");
 		//console.log(response);
 		
-		
+		var item='';
 		var $youmaxContainerList = $youmaxContainer.find('ul');
 		//console.log('loadMoreFlag-'+loadMoreFlag);
 		
@@ -4450,8 +8450,11 @@ var youmaxLoggedInUser = {};
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
 		} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-			$youmaxContainerList.empty();
-			
+			//$youmaxContainerList.empty();
+			if(loadMoreFlag) {
+				paginateFlag = true;
+			}			
+			loadMoreFlag = false;
 		}
 
 		//console.log('nextPageToken-'+nextPageToken);
@@ -4476,7 +8479,7 @@ var youmaxLoggedInUser = {};
 			if(null==videoDescription) {
 				videoDescription="";
 			} else {
-				videoDescription = videoDescription.replace(/"/g, "'");
+				videoDescription = processDescription(videoDescription);
 			}
 			
 			
@@ -4492,56 +8495,25 @@ var youmaxLoggedInUser = {};
 
 			//stats
 			
-			videoViewCount = videoArray[i].stats.plays;
-			if(null==videoViewCount) {
-				videoViewCount="Private";
-			} else {
-				videoViewCount = convertViewCountForThumbnail(videoViewCount);
-			}
+			videoViewCount_raw = videoArray[i].stats.plays;
 			
 			videoDuration = videoArray[i].duration;
-			videoDuration = convertVimeoDuration(videoDuration);
 			
-			videoLikeCount = videoArray[i].metadata.connections.likes.total;
-			videoLikeCount = convertLikeCommentCount(videoLikeCount);
+			videoLikeCount_raw = videoArray[i].metadata.connections.likes.total;
 			
-			videoCommentCount = videoArray[i].metadata.connections.comments.total;
-			videoCommentCount = convertLikeCommentCount(videoCommentCount);
-			
-			if(youmax_global_options.showVimeoLikesInsteadOfViews) {
-				primaryAttributeString = videoLikeCount+' <span class="youmax-views-text">'+youmax_translator_text.likes+'</span> ';
-			} else {
-				primaryAttributeString = videoViewCount+' <span class="youmax-views-text">'+youmax_translator_text.views+'</span> ';			
-			}
+			videoCommentCount_raw = videoArray[i].metadata.connections.comments.total;
 
-			item = '<li id="vimeo_'+videoId+'" href="'+videoLink+'" data-description="'+videoDescription+'" data-views="'+videoViewCount+'" data-likes="'+videoLikeCount+'" data-comments="'+videoCommentCount+'" ><img src="'+videoThumbnail+'"><p><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span><span class="youmax-view-date-holder"><span class="youmax-video-list-views">'+primaryAttributeString+'</span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time">'+videoDuration+'</span></span></div>';
+			item += createItem("vimeo",videoId,videoTitle,videoDescription,videoViewCount_raw,videoLikeCount_raw,videoCommentCount_raw,videoUploaded,videoLink,videoThumbnail,videoDuration,null,null,youmax_global_options,youmax_translator_text);
 			
-			
-			if(youmax_global_options.skin.indexOf("clean")!=-1) {
-				if(youmax_global_options.showVimeoLikesInsteadOfViews) {
-					item += '<div class="youmax-definition"><i class="fa fa-heart fa-1x"></i>'+videoLikeCount+'</div>';
-					item += '<div class="youmax-duration"><i class="fa fa-comment fa-1x"></i>'+videoCommentCount+'</div>';
-				} else {
-					item += '<div class="youmax-duration"><i class="fa fa-heart fa-1x"></i>'+videoLikeCount+'</div>';
-					item += '<div class="youmax-definition"><i class="fa fa-volume-off fa-1x"></i>'+videoViewCount+'</div>';
-				}
-			} else {
-				item += '<div class="youmax-duration">'+videoDuration+'</div>';
-				//item += '<div class="youmax-definition">'+videoDefinition+'</div>';
-				
-				if(youmax_global_options.skin.indexOf("block")!=-1) {
-					item += '<div class="youmax-like-comment-holder"><div class="youmax-like-box"><i class="fa fa-heart"></i>'+videoLikeCount+'</div><div class="youmax-comment-box"><i class="fa fa-comment"></i>'+videoCommentCount+'</div></div>';
-				}
-			}
-			
-			item += '</li>';
-
-			
-			$youmaxContainerList.append(item);
+			//$youmaxContainerList.append(item);
 
 		}
 		
-		createGrid($youmaxContainer);
+		$items = $(item);			
+		$youmaxContainerList.append($items);
+		
+		createGrid($youmaxContainer,"video",loadMoreFlag,paginateFlag,$items);
+		
 		
 		//getVideoStats(videoIdArray,$youmaxContainer);
 		
@@ -4564,13 +8536,137 @@ var youmaxLoggedInUser = {};
 	},
 
 	
+	createItem = function(network,videoId,videoTitle,videoDescription,videoViewCount_raw,videoLikeCount_raw,videoCommentCount_raw,videoUploaded,videoLink,videoThumbnail,videoDuration,videoDefinition,channelId,youmax_global_options,youmax_translator_text) {
+			//network = youtube|vimeo
+	
+			//console.log("creating item");
+			
+			var item = '';
+			
+			//processing where counts are provided - vimeo
+			if(null==videoViewCount_raw) {
+				videoViewCount="??";
+				videoViewCount_raw = 0;
+			} else {
+				videoViewCount = convertViewCountForThumbnail(videoViewCount_raw);
+			}
+			
+			if(null!=videoLikeCount_raw) {
+				videoLikeCount = convertLikeCommentCount(videoLikeCount_raw);
+			} else {
+				videoLikeCount="??";
+				videoLikeCount_raw = 0;
+			}
+
+			if(null!=videoCommentCount_raw) {
+				videoCommentCount = convertLikeCommentCount(videoCommentCount_raw);
+			} else {
+				videoCommentCount="??";
+				videoCommentCount_raw = 0;
+			}
+			
+			if(null!=videoDuration) {
+				if(network=="vimeo") {
+					videoDuration = convertVimeoDuration(videoDuration);
+				} else if(network=="youtube") {
+					//youtube never provides duration in first go..
+				}
+			} else {
+				videoDuration="??";
+			}
+			
+			
+			if(null==channelId) {
+				channelId = "";
+			}
+			
+			
+			if(network=="vimeo" && youmax_global_options.showVimeoLikesInsteadOfViews) {
+				primaryAttributeString = '<span class="youmax-list-thumbnail-icon"><i class="fa fa-heart"></i></span> <span class="youmax-thumbnail-primary-attribute">' + videoLikeCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.likes+'</span> ';
+			} else {
+				primaryAttributeString = '<span class="youmax-list-thumbnail-icon"><i class="fa fa fa-dot-circle-o"></i></span> <span class="youmax-all-skin-views">' + videoViewCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.views+'</span> ';
+			}
+			
+			if (youmax_global_options.displayVideo=="thumbnail") {
+				frame_source = generateFrameSource(videoId,network,false,youmax_global_options);				
+				videoThumbnailString = '<div class="fluid-width-video-wrapper" style="padding-top:'+(youmax_global_options.aspectRatio*100)+'%;"><iframe id="youmax-encloser-video" style="width:100%;" src="'+frame_source+'" frameborder="0" allowfullscreen></iframe></div>';
+			} else if (youmax_global_options.displayVideo=="link") {
+				videoThumbnailString = '<a href="'+videoLink+'" target="_blank"><img class="youmax-main-thumbnail" href="'+videoLink+'" src="'+videoThumbnail+'"></a>';
+			} else {
+				videoThumbnailString = '<img class="youmax-main-thumbnail" href="'+videoLink+'" src="'+videoThumbnail+'">';
+			}
+			
+
+			item = '<li id="'+network+'_'+videoId+'" data-description="'+videoDescription+'" data-views="'+videoViewCount+'" data-likes="'+videoLikeCount+'" data-comments="'+videoCommentCount+'" data-videouploaded="'+videoUploaded+'" data-channelid="'+channelId+'" class="youmax-grid-item youmax-hidden" ><div class="youmax-thumbnail-image-wrapper">'+videoThumbnailString+'<div class="youmax-play-overlay"><div class="youmax-play-icon-holder"><i class="fa fa-play"></i></div></div></div><p><span class="youmax-title-desc-holder"><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span></span>';
+			
+			if(youmax_global_options.skin.indexOf("list")!=-1) {
+			
+				item += '<span class="youmax-view-date-holder"><span class="youmax-video-list-views" title="views"><span class="youmax-list-thumbnail-icon"><i class="fa fa fa-dot-circle-o"></i></span> <span class="youmax-all-skin-views">' + videoViewCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.views+'</span></span> <span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span> <span class="youmax-video-list-likes" title="likes"> <span class="youmax-list-thumbnail-icon"><i class="fa fa fa-heart"></i></span> <span class="youmax-all-skin-likes">'+videoLikeCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.likes+'</span></span><span class="youmax-video-list-comments" title="comments"> <span class="youmax-list-thumbnail-icon"><i class="fa fa fa-comment"></i></span> <span class="youmax-all-skin-comments">'+videoCommentCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.comments+'</span></span></span></p>';
+				
+			} else if(youmax_global_options.skin.indexOf("trend")!=-1) {
+
+				
+				trend = getVideoTrend(videoViewCount_raw,videoLikeCount_raw,videoCommentCount_raw,videoUploaded,youmax_global_options.hotThreshold,youmax_global_options.trendingThreshold);
+				
+				if(trend=="trending") {
+					icon="fa-bolt";
+				} else if (trend=="hot") {
+					icon="fa-fire";
+				} else {
+					icon="fa-check";
+				}
+				
+				//<div class="youmax-trend-link-holder"></div>
+				item += '<span class="youmax-trend-link-holder"><span class="youmax-trend-holder youmax-'+trend+'"><i class="fa '+icon+'"></i> <span class="youmax-trend-text">'+trend+'</span></span>   <a class="youmax-thumbnail-link" href="'+videoLink+'" target="_blank"><span class="youmax-link"><i class="fa fa-link"></i></span></a></span>';
+
+				item += '<span class="youmax-view-date-holder"><span class="youmax-video-list-views" title="views"><span class="youmax-list-thumbnail-icon"><i class="fa fa fa-dot-circle-o"></i></span> <span class="youmax-all-skin-views">' + videoViewCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.views+'</span></span> <span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span> <span class="youmax-video-list-likes" title="likes"> <span class="youmax-list-thumbnail-icon"><i class="fa fa fa-heart"></i></span> <span class="youmax-all-skin-likes">'+videoLikeCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.likes+'</span></span><span class="youmax-video-list-comments" title="comments"> <span class="youmax-list-thumbnail-icon"><i class="fa fa fa-comment"></i></span> <span class="youmax-all-skin-comments">'+videoCommentCount+'</span> <span class="youmax-views-text">'+youmax_translator_text.comments+'</span></span></span></p>';
+			
+			} else {
+			
+				item += '<span class="youmax-view-date-holder"><span class="youmax-video-list-views" title="views">'+primaryAttributeString+'</span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p>';
+				
+			}
+			
+			if(youmax_global_options.skin.indexOf("clean")!=-1) {
+				if(network=="vimeo" && youmax_global_options.showVimeoLikesInsteadOfViews) {
+					item += '<div class="youmax-definition"><i class="fa fa-heart fa-1x"></i> <span class="youmax-all-skin-likes">'+videoLikeCount+'</span> </div>';
+					item += '<div class="youmax-duration"><i class="fa fa-comment fa-1x"></i> <span class="youmax-all-skin-comments">'+videoCommentCount+'</span> </div>';
+				} else {
+					item += '<div class="youmax-duration"><i class="fa fa-heart fa-1x"></i> <span class="youmax-all-skin-likes">'+videoLikeCount+'</span> </div>';
+					item += '<div class="youmax-definition"><i class="fa fa-volume-off fa-1x"></i> <span class="youmax-all-skin-views">'+videoViewCount+'</span> </div>';
+				}
+				
+				item += '<div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time">'+videoDuration+'</span></span></div>';
+				
+			} else {
+			
+				if (youmax_global_options.displayVideo!="thumbnail") {
+					item += '<div class="youmax-duration">'+videoDuration+'</div>';
+					
+					if(network=="youtube") {
+						item += '<div class="youmax-definition">'+videoDefinition+'</div>';
+					}
+				}
+				
+				if(youmax_global_options.skin.indexOf("block")!=-1) {
+					item += '<div class="youmax-like-comment-holder"><div class="youmax-like-box"><i class="fa fa-heart"></i> <span class="youmax-all-skin-likes">'+videoLikeCount+'</span></div><div class="youmax-comment-box"><i class="fa fa-comment"></i><span class="youmax-all-skin-comments">'+videoCommentCount+'</span></div></div>';
+				}
+			}
+			
+			item += '</li>';
+
+			return item;
+	
+	},
+	
 	
 	
 	//insert HTML for video thumbnails into youmax grid
-	insertChannelPlaylists = function(response,loadMoreFlag,$youmaxContainer) {
+	insertChannelPlaylists = function(response,loadMoreFlag,$youmaxContainer,paginateFlag) {
 		//console.log("insertChannelPlaylists");
 		//console.log(response);
 		//var videoIdArray = [];
+		var item = '';
 		var $youmaxContainerList = $youmaxContainer.find('ul');
 		//console.log('loadMoreFlag-'+loadMoreFlag);
 		if(!loadMoreFlag) {
@@ -4587,8 +8683,11 @@ var youmaxLoggedInUser = {};
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
 		} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
 			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-			$youmaxContainerList.empty();
-			
+			//$youmaxContainerList.empty();
+			if(loadMoreFlag) {
+				paginateFlag = true;
+			}			
+			loadMoreFlag = false;
 		} 
 
 		//console.log('nextPageToken-'+nextPageToken);
@@ -4617,14 +8716,17 @@ var youmaxLoggedInUser = {};
 			playlistUploaded = playlistArray[i].snippet.publishedAt;
 			//console.log('videoUploaded-'+videoUploaded);
 			
-			$youmaxContainerList.append('<li id="youtube_playlist_videos_'+playlistId+'" href="https://www.youtube.com/watch?v='+playlistId+'" ><img src="'+playlistThumbnail+'"><div class="youmax-playlist-video-count-wrapper"><div class="youmax-playlist-video-count-box"><span class="youmax-playlist-video-count">'+videoCount+'</span><br>VIDEOS<br><div class="youmax-playlist-line-wrapper"><span class="youmax-playlist-line"></span><br><span class="youmax-playlist-line"></span><br><span class="youmax-playlist-line"></span></div></div></div><p><span class="youmax-video-list-title">'+playlistTitle+'</span><span class="youmax-video-list-views youmax-video-list-date-playlist">'+getDateDiff(playlistUploaded,youmax_translator_text)+' </span></p><div class="youmax-clean-playlist-title">'+playlistTitle+'</div></li>');
+			item += '<li id="youtube_playlist_videos_'+playlistId+'" class="youmax-playlist-thumbnail youmax-grid-item youmax-hidden" ><div class="youmax-thumbnail-image-wrapper" ><img class="youmax-main-thumbnail" href="https://www.youtube.com/watch?v='+playlistId+'" src="'+playlistThumbnail+'"></div><div class="youmax-playlist-video-count-wrapper"><div class="youmax-playlist-video-count-box"><span class="youmax-playlist-video-count">'+videoCount+'</span><br>VIDEOS<br><div class="youmax-playlist-line-wrapper"><span class="youmax-playlist-line"></span><br><span class="youmax-playlist-line"></span><br><span class="youmax-playlist-line"></span></div></div></div><p><span class="youmax-video-list-title">'+playlistTitle+'</span><span class="youmax-video-list-views youmax-video-list-date-playlist">'+getDateDiff(playlistUploaded,youmax_translator_text)+' </span></p><div class="youmax-clean-playlist-title">'+playlistTitle+'</div></li>';
 
 			//$youmaxContainerList.append('<li id="'+videoId+'" href="https://www.youtube.com/watch?v='+videoId+'" ><img src="'+videoThumbnail+'"><p><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded)+'</span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
 
 		}
 		
-		createGrid($youmaxContainer,"playlist");
-
+		$items = $(item);
+		$youmaxContainerList.append($items);
+		
+		createGrid($youmaxContainer,"playlist",loadMoreFlag,paginateFlag,$items);
+		
 		if(youmax_global_options.loadMode.indexOf("paginate")!=-1 && (null==nextPageToken || nextPageToken.indexOf("youmax-generated")==-1)) {
 			if(playlistArray.length > 0) {
 				cache = $youmaxContainer.data('cache');
@@ -4663,15 +8765,15 @@ var youmaxLoggedInUser = {};
 		}
 
 		
-		insertSearchVideos(response,$youmaxContainer);
+		insertSearchVideos(response,$youmaxContainer,null,null,loadMoreFlag);
 	},
 
 	//insert HTML for video thumbnails into youmax grid
-	insertSearchVideos = function(response,$youmaxContainer,fileBasedSearch,isEvent) {
+	insertSearchVideos = function(response,$youmaxContainer,fileBasedSearch,isEvent,loadMoreFlag,paginateFlag) {
 		//console.log('inside insertSearchVideos - '+eventType);
 		//console.log("insertSearchVideos");
 		//console.log(response);
-		var videoIdArray = [];
+		var videoIdArray = [], item='';
 		var $youmaxContainerList = $youmaxContainer.find('ul');
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var youmax_translator_text = $youmaxContainer.data("youmax_translator_text");
@@ -4688,8 +8790,11 @@ var youmaxLoggedInUser = {};
 				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
 			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
 				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-				$youmaxContainerList.empty();
-				
+				//$youmaxContainerList.empty();
+				if(loadMoreFlag) {
+					paginateFlag = true;
+				}			
+				loadMoreFlag = false;
 			} 
 
 			//console.log('nextPageToken-'+nextPageToken);
@@ -4746,7 +8851,8 @@ var youmaxLoggedInUser = {};
 			videoUploaded = videoArray[i].snippet.publishedAt;
 			
 			videoDescription = videoArray[i].snippet.description;
-			videoDescription = videoDescription.replace(/"/g, "'");
+			videoDescription = processDescription(videoDescription);
+			
 			channelId = videoArray[i].snippet.channelId;
 
 			
@@ -4755,13 +8861,22 @@ var youmaxLoggedInUser = {};
 			//console.log('videoUploaded-'+videoUploaded);
 		
 			//$youmaxContainerList.append('<li id="'+videoId+'" href="https://www.youtube.com/watch?v='+videoId+'" ><img src="'+videoThumbnail+'"><p><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded)+'</span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
+			
+			videoLink = "https://www.youtube.com/watch?v="+videoId;
+			
+			item += createItem("youtube",videoId,videoTitle,videoDescription,null,null,null,videoUploaded,videoLink,videoThumbnail,null,null,channelId,youmax_global_options,youmax_translator_text);
 
-			$youmaxContainerList.append('<li id="youtube_'+videoId+'" href="https://www.youtube.com/watch?v='+videoId+'" data-description="'+videoDescription+'" data-channelid="'+channelId+'"><img src="'+videoThumbnail+'"><p><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span><span class="youmax-view-date-holder"><span class="youmax-video-list-views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
+
+			//$youmaxContainerList.append('<li id="youtube_'+videoId+'" data-description="'+videoDescription+'" data-channelid="'+channelId+'" data-videouploaded="'+videoUploaded+'" class="youmax-grid-item youmax-hidden" ><div class="youmax-thumbnail-image-wrapper"><img class="youmax-main-thumbnail" href="https://www.youtube.com/watch?v='+videoId+'" src="'+videoThumbnail+'"><div class="youmax-play-overlay"><div class="youmax-play-icon-holder"><i class="fa fa-play"></i></div></div></div><p><span class="youmax-title-desc-holder"><span class="youmax-video-list-title">'+videoTitle+'</span><span class="youmax-video-list-description">'+videoDescription+'</span></span><span class="youmax-view-date-holder"><span class="youmax-video-list-views" title="views"></span><span class="youmax-views-date-separator">|</span><span class="youmax-video-list-date">'+getDateDiff(videoUploaded,youmax_translator_text)+'</span></span></p><div class="youmax-clean-overlay-holder"><span class="youmax-clean-title">'+videoTitle+'</span><span class="youmax-clean-time"></span></span></div></li>');
 
 			
 		}
+
+		$items = $(item);
+		$youmaxContainerList.append($items);
 		
-		createGrid($youmaxContainer);
+		createGrid($youmaxContainer,"video",loadMoreFlag,paginateFlag,$items);
+
 		
 		getVideoStats(videoIdArray,$youmaxContainer,isEvent);
 
@@ -4877,44 +8992,119 @@ var youmaxLoggedInUser = {};
 	},*/
 	
 	//create grid layout using Wookmark plugin
-	createGrid = function($youmaxContainer,itemType) {
+	createGrid = function($youmaxContainer,itemType,loadMoreFlag,paginateFlag,$items) {
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');	
 		var $youmaxContainerList = $youmaxContainer.find('ul');
-		$youmaxContainerList.imagesLoaded(function() {			
 		
+		
+		
+		/*
+		var options = {
+		  autoResize: true, // This will auto-update the layout when the browser window is resized.
+		  //container: $youmaxContainer.find('#youmax-video-list-div'), // Optional, used for some extra CSS styling
+		  offset: youmax_global_options.innerOffset, // Optional, the distance between grid items
+		  itemWidth: youmax_global_options.minItemWidth, // Optional, the width of a grid item
+		  flexibleWidth : youmax_global_options.maxItemWidth,
+		  outerOffset: youmax_global_options.outerOffset
+		};
+
+		var youmax_wookmark;*/
+			
+		//$youmaxContainerList.imagesLoaded(function() {
+		$youmaxContainerList.imagesLoaded().always(function() {
+			
 			$youmaxContainer.find('.youmax-loading-div').remove();
 			
-			var options = {
+			$youmaxContainerList.find("li.youmax-hidden").removeClass("youmax-hidden");
+			
+			//console.log("images loaded");
+			//$youmaxContainerList.css("opacity","1");
+			
+			//youmax_wookmark = $youmaxContainerList.wookmark(options);
+			//setTimeout(function(){ youmax_wookmark.wookmarkInstance.updateOptions(); }, youmax_global_options.updateLayoutDelay);
+			
+			if(loadMoreFlag) {
+				//console.log("load more grid");
+				$youmaxContainerList.masonry('appended',$items);
+			} else if (paginateFlag) {
+				
+				//console.log("paginate grid");
+				$oldItems = $youmaxContainerList.find('.youmax-dying');
+				//console.log($oldItems);
+				$youmaxContainerList.masonry('remove',$oldItems).masonry('layout');
+				$youmaxContainerList.masonry('appended',$items);
+				
+			} else {
+				
+				if(null!=$youmaxContainerList.data('masonry')) {
+					//console.log("destroying masonry");
+					$youmaxContainerList.masonry('destroy');
+				}
+				
+				//not sure why time delay is needed
+				//setTimeout(function(){
+					//console.log("creating grid");			
+					$youmaxGrid = $youmaxContainerList.masonry({
+						// options...
+						//itemSelector: '.grid-item',
+						columnWidth: '.youmax-grid-item',
+						percentPosition: true
+					});
+				//}, 100);
+				
+				//DO NOT REMOVE
+				setTimeout(function(){
+					//add option to do relayout for slow websites
+					//also used by list layout
+					console.log("Youmax Re-Layout");
+					$youmaxContainer.find('ul').masonry('layout'); 
+				}, youmax_global_options.updateLayoutDelay);
+				
+			}
+			
+			//my_wookmark.wookmarkInstance.layout(true);
+			//youmax_wookmark.wookmarkInstance.updateOptions();
+			
+			
+			/*var options = {
 			  autoResize: true, // This will auto-update the layout when the browser window is resized.
-			  container: $youmaxContainer.find('#youmax-video-list-div'), // Optional, used for some extra CSS styling
+			  //container: $youmaxContainer.find('#youmax-video-list-div'), // Optional, used for some extra CSS styling
 			  offset: youmax_global_options.innerOffset, // Optional, the distance between grid items
 			  itemWidth: youmax_global_options.minItemWidth, // Optional, the width of a grid item
 			  flexibleWidth : youmax_global_options.maxItemWidth,
 			  outerOffset: youmax_global_options.outerOffset
-			};
+			};*/
 
 			
-			var handler = $youmaxContainerList.find('li');
+			//var handler = $youmaxContainerList.find('li');
 			
 			// Call the layout function.
-			handler.wookmark(options);
+			//handler.wookmark(options);
+			//var wookmark = $youmaxContainerList.wookmark(options);
 			
 			if(itemType=="playlist") {
 				if(youmax_global_options.playlistAction=="playall") {
 					registerPopup($youmaxContainer,true);
 				} else {
-					$youmaxContainer.find('#youmax-video-list-div li').click(function(){
+					$youmaxContainer.find('#youmax-video-list-div .youmax-main-thumbnail').click(function(){
 						//console.log($youmaxEncloserIframe);
-						displayPlaylist(this.id,$youmaxContainer);	
-						youmax_current_playlist_name = $(this).find('.youmax-video-list-title').text();
+						$youmaxPlaylistThumbnail = $(this).parents("li").first();
+						youmaxPlaylistId = $youmaxPlaylistThumbnail.attr("id");
+						displayPlaylist(youmaxPlaylistId,$youmaxContainer);
+						youmax_current_playlist_name = $youmaxPlaylistThumbnail.find('.youmax-video-list-title').text();
 						$youmaxContainer.data('youmax_current_playlist_name',youmax_current_playlist_name);
-						$youmaxContainer.data('youmax_current_playlist_id',this.id);
+						$youmaxContainer.data('youmax_current_playlist_id',youmaxPlaylistId);
 					});
 				}
 			} else {
 				registerPopup($youmaxContainer);
 			}
 			resetLoadMoreButton($youmaxContainer);
+			
+			if(youmax_global_options.skin.indexOf('trend')!=-1 && ($youmaxContainer.find('#tiles li:first-child').width())<280) {
+				$youmaxContainer.find('.youmax-video-list-date').hide();
+			}
+			
 			
 		});
 	},
@@ -4924,23 +9114,44 @@ var youmaxLoggedInUser = {};
 		var $youmaxLoadMoreDiv;
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		
-		if(youmax_global_options.loadMode=="loadmore") {
-			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
-			$youmaxLoadMoreDiv.html('<i class="fa fa-plus fa-5x"></i>');
-		} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
-			$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
-			$youmaxLoadMoreDiv.html('<i class="fa fa-caret-right fa-5x"></i>');
-			$youmaxContainer.find('#youmax-previous-div').html('<i class="fa fa-caret-left fa-5x"></i>');
+		if(youmax_global_options.showTextInsteadOfIcons) {
+		
+			if(youmax_global_options.loadMode=="loadmore") {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
+				$youmaxLoadMoreDiv.html('Load More');
+			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
+				$youmaxLoadMoreDiv.html('Next');
+				$youmaxContainer.find('#youmax-previous-div').html('Previous');
+			}
+		
+		} else {
+		
+			if(youmax_global_options.loadMode=="loadmore") {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-load-more-div');
+				$youmaxLoadMoreDiv.html('<i class="fa fa-plus fa-5x"></i>');
+			} else if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
+				$youmaxLoadMoreDiv = $youmaxContainer.find('#youmax-next-div');
+				$youmaxLoadMoreDiv.html('<i class="fa fa-caret-right fa-5x"></i>');
+				$youmaxContainer.find('#youmax-previous-div').html('<i class="fa fa-caret-left fa-5x"></i>');
+			}
+		
 		}
-	
+		
 		$youmaxLoadMoreDiv.removeClass('youmax-load-more-div-click');
+		$youmaxContainer.find('#youmax-previous-div').removeClass('youmax-load-more-div-click');
 			
 	},
 	
-	resetLoadMoreComments = function($youmaxContainer) {
-		var $youmaxMoreButton = $youmaxContainer.find(".youmax-encloser-comment-button.youmax-more-button");
+	resetLoadMoreComments = function($youmaxPlayBox,youmax_global_options) {
+		var $youmaxMoreButton = $youmaxPlayBox.find(".youmax-encloser-comment-button.youmax-more-button");
 		$youmaxMoreButton.removeClass('youmax-load-more-comments-clicked');
-		$youmaxMoreButton.html('<i class="fa fa-plus fa-3x"></i>');
+		
+		if(youmax_global_options.showTextInsteadOfIcons) {
+			$youmaxMoreButton.html('Load More Comments');
+		} else {
+			$youmaxMoreButton.html('<i class="fa fa-plus fa-3x"></i>');
+		}
 	},
 	
 	//register video popup on video thumbnails
@@ -4979,8 +9190,18 @@ var youmaxLoggedInUser = {};
 				vimeo_frame_source+="?autoplay=1";
 			}
 			
+			if(youmax_global_options.showTextInsteadOfIcons) {
+				youmaxExtraPopupClasses = 'youmax-text-instead-of-icons';
+				youmaxShowCommentsText = 'Show Comments';
+				youmaxMoreCommentsText = 'Load More Comments';				
+			} else {
+				youmaxExtraPopupClasses = '';
+				youmaxShowCommentsText = '<i class="fa fa-comments fa-3x"></i>';
+				youmaxMoreCommentsText = '<i class="fa fa-plus fa-3x"></i>';
+			}	
 			
-			$youmaxContainer.find('#youmax-video-list-div li').magnificPopup({
+			
+			$youmaxContainer.find('#youmax-video-list-div .youmax-main-thumbnail').magnificPopup({
 				type:'iframe',
 				gallery: {
 					enabled:true
@@ -4990,7 +9211,7 @@ var youmaxLoggedInUser = {};
 					'<div class="mfp-close"></div>'+
 					'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
 					//'<div id="youmax-encloser-comment-wrapper" class="youmax-encloser-comment-wrapper-popup"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button">Show Comments</div><div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment"><textarea class="youmax-comment-textbox" placeholder="Share your Thoughts..."></textarea><button type="button" class="youmax-add-comment-button">G+ Sign In</button></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button">Load More Comments</div></div></div>'+
-					'<div id="photo-detail-holder"><div class="photo-popup-title"></div><div class="photo-popup-description"></div><div class="photo-popup-stats"><span class="media-views"></span><span class="media-likes"> </span><span class="media-uploaded"></span></div> <div class="youmax-show-button-wrapper"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button"><i class="fa fa-comments fa-3x"></i></div></div> <div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment youmax-commentbox-holder"><textarea class="youmax-comment-textbox" placeholder="'+youmax_translator_text.thoughts+'"></textarea><button type="button" class="youmax-add-comment-button"><i class="fa fa-sign-in fa-2x"></i></button><div type="button" class="youmax-share-video-button"><i class="fa fa-share fa-2x"></i></div></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button"><i class="fa fa-plus fa-3x"></i></div></div> </div>'+
+					'<div id="photo-detail-holder"><div class="photo-popup-title"></div><div class="photo-popup-description photo-popup-description-limited"></div><div class="youmax-full-description-button-wrapper"><div class="youmax-full-description-button">More..</div></div><div class="photo-popup-stats"><div class="media-views"></div><div class="media-likes"> </div><div class="media-uploaded"></div> <div type="button" class="youmax-share-video-button"><i class="fa fa-share-alt fa-2x"></i></div></div>  <div class="youmax-show-button-wrapper"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button">'+youmaxShowCommentsText+'</div></div> <div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment youmax-commentbox-holder"><textarea class="youmax-comment-textbox" placeholder="'+youmax_translator_text.thoughts+'"></textarea><button type="button" class="youmax-add-comment-button"><i class="fa fa-google-plus fa-2x"></i><span class="youmax-google-login-text">Login</span></button></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button">'+youmaxMoreCommentsText+'</div></div> </div>'+
 					'</div>',
 					patterns: {
 						youtube: {
@@ -5003,20 +9224,20 @@ var youmaxLoggedInUser = {};
 				},
 				preloader:false,
 				showCloseBtn: true, 
-				closeBtnInside: false, 
+				closeBtnInside: true, 
 				closeOnContentClick: false, 
 				closeOnBgClick: true, 
 				enableEscapeKey: true, 
 				modal: false, 
 				alignTop: youmax_global_options.alignPopupToTop, 
 				removalDelay: 100, 
-				mainClass: ' ',
-				prependTo: $youmaxContainer.get(),
+				mainClass: 'youmax-popup '+youmaxExtraPopupClasses,
+				//prependTo: $youmaxContainer.get(),
 				callbacks: {
 					change: function(template, values, item) {
 						// Triggers each time when content of popup changes
 						//console.log('open:',item);
-						var $baseElement = $(this.currItem.el.context);
+						var $baseElement = $(this.currItem.el.context).parents("li").first();
 						//console.log("$baseElement",$baseElement);
 						displayVideoData($baseElement,$youmaxContainer);
 						
@@ -5031,10 +9252,10 @@ var youmaxLoggedInUser = {};
 			//display inline video
 			//http://www.youtube.com/embed/%id%?rel=0&autoplay=1
 			//var $youmaxEncloserIframe = $youmaxContainer.find('#youmax-encloser-video');
-			$youmaxContainer.find('#youmax-video-list-div li').click(function() {
+			$youmaxContainer.find('#youmax-video-list-div .youmax-main-thumbnail').click(function() {
 				//console.log($youmaxEncloserIframe);
 				
-				$baseElement = $(this);
+				$baseElement = $(this).parents("li").first();
 				displayInlineVideo($baseElement,true,true,$youmaxContainer,isPlaylist);
 			
 			});
@@ -5043,8 +9264,14 @@ var youmaxLoggedInUser = {};
 				//videoId = $youmaxContainer.find('#youmax-video-list-div li:first').attr('id');
 				//displayInlineVideo(videoId,false,false,$youmaxContainer);
 				setTimeout(function(){
-					$youmaxContainer.find('#youmax-video-list-div li:first').click();
+					//$youmaxContainer.find('#youmax-video-list-div li:first .youmax-main-thumbnail').click();
+					$baseElement = $youmaxContainer.find('#youmax-video-list-div li:first');
+					displayInlineVideo($baseElement,false,true,$youmaxContainer,isPlaylist);
 				}, 100);
+				
+				youmax_global_options.displayFirstVideoOnLoad=false;
+				$youmaxContainer.data('youmax_global_options',youmax_global_options);
+
 			}
 			
 			if(youmax_global_options.displayVideo=="inline" && youmax_global_options.featuredVideo!="") {
@@ -5067,9 +9294,40 @@ var youmaxLoggedInUser = {};
 				$youmaxContainer.data('youmax_global_options',youmax_global_options);
 			}
 
+		} else if (youmax_global_options.displayVideo=="thumbnail") {
+			
+			//do nothing - already handled during insert item
+			
+			/*$youmaxContainer.find('#youmax-video-list-div .youmax-main-thumbnail').click(function() {
+				//console.log($youmaxEncloserIframe);
+				
+				$baseElement = $(this).parents("li").first();
+				displayThumbnailVideo($baseElement,true,true,$youmaxContainer,isPlaylist);
+			
+			});*/
+			
 		}
 	
 	},
+	
+	
+/*
+	displayThumbnailVideo = function($baseElement,scrollToVideo,generateLink,$youmaxContainer,isPlaylist) {
+	
+		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		var youmax_translator_text = $youmaxContainer.data('youmax_translator_text');
+		
+		video_id_with_type = $baseElement.attr("id");		
+		video_type = video_id_with_type.substring(0,video_id_with_type.indexOf("_"));
+		video_id = video_id_with_type.substring(video_id_with_type.indexOf("_")+1);		
+		frame_source = generateFrameSource(video_id,video_type,isPlaylist,$youmaxContainer);
+		
+		
+		$baseElement.find('.youmax-thumbnail-image-wrapper').empty().append('<div class="fluid-width-video-wrapper" style="padding-top:'+(youmax_global_options.aspectRatio*100)+'%;"><iframe id="youmax-encloser-video" style="width:100%;" src="'+frame_source+'" frameborder="0" allowfullscreen></iframe></div>');
+		
+
+	},
+*/		
 	
 	
 	displayVideoData = function($baseElement,$youmaxContainer) {
@@ -5078,7 +9336,6 @@ var youmaxLoggedInUser = {};
 		var youmax_translator_text = $youmaxContainer.data("youmax_translator_text");
 		
 		//var tabId = $youmaxContainer.find(".youmax-tab-hover").attr("id");
-		
 		
 		video_likes = $baseElement.data("likes");
 		video_comments = $baseElement.data("comments");
@@ -5094,36 +9351,43 @@ var youmaxLoggedInUser = {};
 
 
 		setTimeout(function(){
+
+			if(youmax_global_options.displayVideo=="popup") {
+				$youmaxPlayBox = $('.youmax-popup.mfp-gallery');
+				//console.log($youmaxPlayBox);
+			} else {
+				$youmaxPlayBox = $youmaxContainer;
+			}
 		
 			if(null!=video_title) {
-				$youmaxContainer.find('.photo-popup-title').html(video_title);
+				$youmaxPlayBox.find('.photo-popup-title').html(video_title);
 			}
 			
 			if(null!=video_description) {
 				video_description = video_description.replace(/\n/g,"<br>");
-				$youmaxContainer.find('.photo-popup-description').html(video_description);
+				$youmaxPlayBox.find('.photo-popup-description').html(video_description);
 			}
 			
 			if(youmax_global_options.showVimeoLikesInsteadOfViews && video_type=="vimeo") {
 				if(null!=video_comments) {
-					$youmaxContainer.find('.media-likes').html(video_comments+" "+youmax_translator_text.comments);
+					$youmaxPlayBox.find('.media-likes').html('<i class="fa fa-comment"></i>'+video_comments+" "+youmax_translator_text.comments);
 				}
 				
 				if(null!=video_views) {
-					$youmaxContainer.find('.media-views').html(video_likes+" "+youmax_translator_text.likes);
+					$youmaxPlayBox.find('.media-views').html('<i class="fa fa-heart"></i>'+video_likes+" "+youmax_translator_text.likes);
 				}
 			} else {
 				if(null!=video_likes) {
-					$youmaxContainer.find('.media-likes').html(video_likes+" "+youmax_translator_text.likes);
+					$youmaxPlayBox.find('.media-likes').html('<i class="fa fa-heart"></i>'+video_likes+" "+youmax_translator_text.likes);
 				}
 				
 				if(null!=video_views) {
-					$youmaxContainer.find('.media-views').html(video_views+" "+youmax_translator_text.views);
+					$youmaxPlayBox.find('.media-views').html('<i class="fa fa-video-camera"></i>'+video_views+" "+youmax_translator_text.views);
 				}
 			}
 			
 			if(null!=video_uploaded) {
-				$youmaxContainer.find('.media-uploaded').html(video_uploaded);
+				$youmaxPlayBox.find('.media-uploaded').html('<i class="fa fa-clock-o"></i>'+video_uploaded);
 			}
 			
 			
@@ -5135,10 +9399,21 @@ var youmaxLoggedInUser = {};
 			//console.log('videoId-'+videoId);
 			//console.log($youmaxContainer);
 			
-			$youmaxContainer.find('.youmax-show-button.youmax-popup-show-button').attr('id',video_id_with_type).show();
-			$youmaxContainer.find('.youmax-show-button.youmax-popup-show-button').data('channelid',channel_id);
-			$youmaxContainer.find('.youmax-encloser-comment-button.youmax-more-button').data('start-index',1);
-			$youmaxContainer.find('#youmax-encloser-comment-holder').hide();
+			$descriptionBox = $youmaxPlayBox.find('.photo-popup-description');
+			if($descriptionBox.height()<250) {
+				$youmaxPlayBox.find('.youmax-full-description-button-wrapper').hide();
+			} else {
+				$youmaxPlayBox.find('.youmax-full-description-button').click(function(){
+					$descriptionBox.removeClass('photo-popup-description-limited');
+					$(this).hide();
+				});
+			}
+			
+			
+			$youmaxPlayBox.find('.youmax-show-button.youmax-popup-show-button').attr('id',video_id_with_type).show();
+			$youmaxPlayBox.find('.youmax-show-button.youmax-popup-show-button').data('channelid',channel_id);
+			$youmaxPlayBox.find('.youmax-encloser-comment-button.youmax-more-button').data('start-index',1);
+			$youmaxPlayBox.find('#youmax-encloser-comment-holder').hide();
 			
 			if(youmax_global_options.autoLoadComments) {
 				displayComments(video_id_with_type,$youmaxContainer);
@@ -5174,14 +9449,14 @@ var youmaxLoggedInUser = {};
 				},
 				ui: {
 					flyout: 'top center',
-					button_text: '<i class="fa fa-2x fa-share"></i>'
+					button_text: '<i class="fa fa-2x fa-share-alt"></i>'
 				},
 				url: shareLink
 			};
 
-			new Share('.youmax-share-video-button', config);
+			new Share('.youmax-share-video-button', config).open();
 		
-		}, 100);	
+		}, 100);
 
 	},
 	
@@ -5190,17 +9465,25 @@ var youmaxLoggedInUser = {};
 		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var youmax_translator_text = $youmaxContainer.data('youmax_translator_text');
 		
-		$youmaxContainer.find("#youmax-encloser").empty().append('<div class="fluid-width-video-wrapper" style="padding-top:'+(youmax_global_options.aspectRatio*100)+'%;"><iframe id="youmax-encloser-video" style="width:100%;" src="" frameborder="0" allowfullscreen></iframe></div><div id="youmax-encloser-comment-wrapper"><div id="photo-detail-holder"><div class="photo-popup-title"></div><div class="photo-popup-description"></div><div class="photo-popup-stats"><span class="media-views"></span><span class="media-likes"> </span><span class="media-uploaded"></span></div> <div class="youmax-show-button-wrapper"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button"><i class="fa fa-comments fa-3x"></i></div></div> <div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment youmax-commentbox-holder"><textarea class="youmax-comment-textbox" placeholder="'+youmax_translator_text.thoughts+'"></textarea><button type="button" class="youmax-add-comment-button"><i class="fa fa-sign-in fa-2x"></i></button><div type="button" class="youmax-share-video-button"><i class="fa fa-share fa-2x"></i></div></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button"><i class="fa fa-plus fa-3x"></i></div></div> </div> </div>');
+		//$youmaxContainer.find("#youmax-encloser").empty().append('<div class="fluid-width-video-wrapper" style="padding-top:'+(youmax_global_options.aspectRatio*100)+'%;"><iframe id="youmax-encloser-video" style="width:100%;" src="" frameborder="0" allowfullscreen></iframe></div><div id="youmax-encloser-comment-wrapper"><div id="photo-detail-holder"><div class="photo-popup-title"></div><div class="photo-popup-description photo-popup-description-limited"></div><div class="youmax-full-description-button-wrapper"><div class="youmax-full-description-button">More</div></div><div class="photo-popup-stats"><span class="media-views"></span><span class="media-likes"> </span><span class="media-uploaded"></span></div> <div class="youmax-show-button-wrapper"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button"><i class="fa fa-comments fa-3x"></i></div></div> <div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment youmax-commentbox-holder"><textarea class="youmax-comment-textbox" placeholder="'+youmax_translator_text.thoughts+'"></textarea><button type="button" class="youmax-add-comment-button"><i class="fa fa-sign-in fa-2x"></i></button><div type="button" class="youmax-share-video-button"><i class="fa fa-share fa-2x"></i></div></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button"><i class="fa fa-plus fa-3x"></i></div></div> </div> </div>');
 
+		if(youmax_global_options.showTextInsteadOfIcons) {
+			youmaxExtraPopupClasses = 'youmax-text-instead-of-icons';
+			youmaxShowCommentsText = 'Show Comments';
+			youmaxMoreCommentsText = 'Load More Comments';				
+		} else {
+			youmaxExtraPopupClasses = '';
+			youmaxShowCommentsText = '<i class="fa fa-comments fa-3x"></i>';
+			youmaxMoreCommentsText = '<i class="fa fa-plus fa-3x"></i>';
+		}	
+		
+		$youmaxContainer.find("#youmax-encloser").empty().append('<div class="fluid-width-video-wrapper" style="padding-top:'+(youmax_global_options.aspectRatio*100)+'%;"><iframe id="youmax-encloser-video" style="width:100%;" src="" frameborder="0" allowfullscreen></iframe></div><div id="youmax-encloser-comment-wrapper"> <div id="photo-detail-holder"><div class="photo-popup-title"></div><div class="photo-popup-description photo-popup-description-limited"></div><div class="youmax-full-description-button-wrapper"><div class="youmax-full-description-button">More..</div></div><div class="photo-popup-stats"><div class="media-views"></div><div class="media-likes"> </div><div class="media-uploaded"></div> <div type="button" class="youmax-share-video-button"><i class="fa fa-share-alt fa-2x"></i></div></div>  <div class="youmax-show-button-wrapper"><div class="youmax-encloser-comment-button youmax-show-button youmax-popup-show-button">'+youmaxShowCommentsText+'</div></div> <div id="youmax-encloser-comment-holder" class="youmax-encloser-comment-holder-popup"><div class="youmax-video-comment youmax-commentbox-holder"><textarea class="youmax-comment-textbox" placeholder="'+youmax_translator_text.thoughts+'"></textarea><button type="button" class="youmax-add-comment-button"><i class="fa fa-google-plus fa-2x"></i><span class="youmax-google-login-text">Login</span></button></div><div id="youmax-encloser-comments"></div><div class="youmax-encloser-comment-button youmax-more-button">'+youmaxMoreCommentsText+'</div></div></div> </div>');
+
+		
 		//$youmaxEncloserIframe = $(this).parent().parent().prev().find('#youmax-encloser-video');
 		$youmaxEncloserIframe = $youmaxContainer.find('#youmax-encloser-video');
 		$youmaxEncloserIframe.attr("src","");
-		$youmaxEncloserIframe.parents("#youmax-encloser").show();
-		
-		if(scrollToVideo) {
-			$('html, body').animate({scrollTop: $youmaxEncloserIframe.offset().top - 50},'slow');
-		}
-		
+		$youmaxEncloserIframe.parents("#youmax-encloser").show();		
 		
 		
 		
@@ -5212,12 +9495,15 @@ var youmaxLoggedInUser = {};
 			//$youmaxEncloserIframe.show();
 		
 		
-		frame_source = generateFrameSource(video_id,video_type,isPlaylist,$youmaxContainer);
+		frame_source = generateFrameSource(video_id,video_type,isPlaylist,youmax_global_options);
 		$youmaxEncloserIframe.attr("src",frame_source);
 				
 		
 		displayVideoData($baseElement,$youmaxContainer);
 		
+		if(scrollToVideo) {
+			$('html, body').animate({scrollTop: $youmaxEncloserIframe.offset().top - 50},'slow');
+		}
 		
 		
 		//5.0 comments --------------------
@@ -5261,15 +9547,16 @@ var youmaxLoggedInUser = {};
 	
 	},
 	
-	generateFrameSource = function(video_id,video_type,isPlaylist,$youmaxContainer) {
+	generateFrameSource = function(video_id,video_type,isPlaylist,youmax_global_options) {
 	
 		//var tabId = $youmaxContainer.find(".youmax-tab-hover").attr("id");
-		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		//var youmax_global_options = $youmaxContainer.data('youmax_global_options');
 		var frame_source="";
 		
 		
 		if(video_type=="youtube") {
 			if(isPlaylist) {
+				video_id = video_id.substring(video_id.indexOf("playlist_videos_")+16);
 				frame_source = youmax_global_options.videoProtocol + "//www.youtube.com/embed?listType=playlist&list="+video_id+"&rel=0";
 			} else {
 				frame_source = youmax_global_options.videoProtocol + "//www.youtube.com/embed/"+video_id+"?rel=0";
@@ -5454,7 +9741,7 @@ var youmaxLoggedInUser = {};
 				async: true,
 				cache: true,
 				dataType: 'jsonp',
-				success: function(response) { insertSearchVideos(response,$youmaxContainer,false,isEvent);},
+				success: function(response) { insertSearchVideos(response,$youmaxContainer,false,isEvent,loadMoreFlag);},
 				error: function(html) { alert(html); },
 				beforeSend: setHeader
 			});
@@ -5565,7 +9852,7 @@ var youmaxLoggedInUser = {};
 				async: true,
 				cache: true,
 				dataType: 'jsonp',
-				success: function(response) { insertSearchVideos(response,$youmaxContainer,true);},
+				success: function(response) { insertSearchVideos(response,$youmaxContainer,true,null,loadMoreFlag);},
 				error: function(html) { alert(html); },
 				beforeSend: setHeader
 			});
@@ -5590,52 +9877,56 @@ var youmaxLoggedInUser = {};
 	
 	displayComments = function(video_id_with_type, $youmaxContainer) {
 
+		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		if(youmax_global_options.displayVideo=="popup") {
+			$youmaxPlayBox = $('.youmax-popup.mfp-gallery');
+		} else {
+			$youmaxPlayBox = $youmaxContainer;
+		}
+
 		video_type = video_id_with_type.substring(0,video_id_with_type.indexOf("_"));
 		video_id = video_id_with_type.substring(video_id_with_type.indexOf("_")+1);	
 	
-		$youmaxContainer.find(".youmax-encloser-comment-button.youmax-show-button").hide();
-		$youmaxContainer.find("#youmax-encloser-comment-holder").show();
-		//$youmaxContainer.find("#youmax-encloser-comments").empty().append("<br><br><br><br><br>Loading...<br><br><br><br><br>");
-		$youmaxContainer.find("#youmax-encloser-comments").empty().append("<div class='youmax-loading-comments-div'>loading...</div>");
-		//showLoader($youmaxContainer);
-		var tabId = $youmaxContainer.find(".youmax-tab-hover").attr("id");
+		$youmaxPlayBox.find(".youmax-encloser-comment-button.youmax-show-button").hide();
+		$youmaxPlayBox.find("#youmax-encloser-comment-holder").show();
+		$youmaxPlayBox.find("#youmax-encloser-comments").empty().append("<div class='youmax-loading-comments-div'>loading...</div>");
+
 		
 		if(video_type=="youtube") {
 			getYoutubeVideoComments(video_id,$youmaxContainer);
 		} else if(video_type=="vimeo") {
 			getVimeoVideoComments(video_id,$youmaxContainer);
 			
-			$youmaxContainer.find(".youmax-comment-textbox").attr("disabled","disabled").addClass("youmax-disabled");
-			$youmaxContainer.find(".youmax-add-comment-button").attr("disabled","disabled").addClass("youmax-disabled");
+			$youmaxPlayBox.find(".youmax-comment-textbox").attr("disabled","disabled").addClass("youmax-disabled");
+			$youmaxPlayBox.find(".youmax-add-comment-button").attr("disabled","disabled").addClass("youmax-disabled");
 		}
-		
-		/*
-		if(playlistId.indexOf("search")!=-1) {
-			getSearchVideos(playlistId,null,$youmaxContainer);
-		} else if(playlistId.indexOf("playlists")!=-1) {
-			getChannelPlaylists(playlistId,null,$youmaxContainer);
-		} else {
-			getPlaylistVideos(playlistId,null,$youmaxContainer);			
-		}*/
-		
-		/*$youmaxContainer.find('.youmax-tab').removeClass('youmax-tab-hover');	
-		$('#'+playlistId).addClass('youmax-tab-hover');
-		$youmaxContainer.find('#youmax-select').val(playlistId);*/
 
 	},
 
 	loadMoreComments = function($youmaxContainer) {
 	
-		var $youmaxMoreButton = $youmaxContainer.find(".youmax-encloser-comment-button.youmax-more-button");
+		var youmax_global_options = $youmaxContainer.data('youmax_global_options');
+		if(youmax_global_options.displayVideo=="popup") {
+			$youmaxPlayBox = $('.youmax-popup.mfp-gallery');
+		} else {
+			$youmaxPlayBox = $youmaxContainer;
+		}	
+	
+		var $youmaxMoreButton = $youmaxPlayBox.find(".youmax-encloser-comment-button.youmax-more-button");
 		$youmaxMoreButton.addClass('youmax-load-more-comments-clicked');
-		$youmaxMoreButton.html('<i class="fa fa-ellipsis-h fa-3x"></i>');
-		//var tabId = $youmaxContainer.find(".youmax-tab-hover").attr("id");
+		
+		if(youmax_global_options.showTextInsteadOfIcons) {
+			$youmaxMoreButton.html('Loading..');
+		} else {
+			$youmaxMoreButton.html('<i class="fa fa-ellipsis-h fa-3x"></i>');
+		}
+		
 		var nextPageToken = $youmaxMoreButton.data('nextpagetoken');
 		//var startIndex = parseInt($youmaxMoreButton.data('start-index'),10);
 		
 		if(null!=nextPageToken && nextPageToken!="undefined" && nextPageToken!="") {
 			
-			video_id_with_type = $youmaxContainer.find(".youmax-encloser-comment-button.youmax-show-button").attr('id');
+			video_id_with_type = $youmaxPlayBox.find(".youmax-encloser-comment-button.youmax-show-button").attr('id');
 			video_type = video_id_with_type.substring(0,video_id_with_type.indexOf("_"));
 			video_id = video_id_with_type.substring(video_id_with_type.indexOf("_")+1);	
 			
@@ -5649,7 +9940,11 @@ var youmaxLoggedInUser = {};
 			//$('html, body').animate({scrollTop: $youmaxCommentHolder.offset().top - 50},'slow');
 		} else {
 			$youmaxMoreButton.removeClass('youmax-load-more-comments-clicked');
-			$youmaxMoreButton.html('<i class="fa fa-close fa-3x"></i>');
+			if(youmax_global_options.showTextInsteadOfIcons) {
+				$youmaxMoreButton.html('All Done');
+			} else {
+				$youmaxMoreButton.html('<i class="fa fa-close fa-3x"></i>');
+			}
 		}
 		
 	},
@@ -5704,6 +9999,12 @@ var youmaxLoggedInUser = {};
 		} else if(tabId.indexOf("vimeo_channel_videos_")!=-1) {
 			innerId=tabId.substring(21);
 			getVimeoChannelVideos(innerId,null,$youmaxContainer);
+		} else if(tabId.indexOf("vimeo_group_videos_")!=-1) {
+			innerId=tabId.substring(19);
+			getVimeoGroupVideos(innerId,null,$youmaxContainer);
+		} else if(tabId.indexOf("vimeo_album_videos_")!=-1) {
+			innerId=tabId.substring(19);
+			getVimeoAlbumVideos(innerId,null,$youmaxContainer);
 		} else if(tabId.indexOf("query_")!=-1) {
 			innerId=tabId.substring(6);
 			getUserSearchVideos(innerId,null,$youmaxContainer);	
@@ -5738,7 +10039,7 @@ var youmaxLoggedInUser = {};
 			"ago":"ago",
 			"now":"just now",
 			"thoughts":"Share your Thoughts...",
-			"comments":"Comments"
+			"comments":"comments"
 		};
 		
 		$youmaxContainer.data("youmax_translator_text",youmax_translator_text);
@@ -5868,6 +10169,7 @@ var youmaxLoggedInUser = {};
 			for(i=0; i<youmax_global_options.youtube_channel_search.length; i++) {
 				
 				dataString = '';
+				suffix = (new Date()).getTime();
 
 				if(youmax_global_options.doNotSelectTabsByDefault) {
 					youmax_global_options.youtube_channel_search[i].selected = false;
@@ -5875,7 +10177,7 @@ var youmaxLoggedInUser = {};
 				
 				//restrictToChannels
 				if(youmax_global_options.youtube_channel_search[i].restrictToChannels!=null) {
-					channelId = scrapeChannelId(youmax_global_options.youtube_channel_search[i].restrictToChannels,"youtube_channel_search_"+i,$youmaxContainer,youmax_global_options.youtube_channel_search[i].selected);
+					channelId = scrapeChannelId(youmax_global_options.youtube_channel_search[i].restrictToChannels,"youtube_channel_search_"+suffix,$youmaxContainer,youmax_global_options.youtube_channel_search[i].selected);
 					dataString += ' data-restricttochannels="'+channelId+'"';
 				} else {
 					dataString += ' data-restricttochannels=""';
@@ -5919,12 +10221,12 @@ var youmaxLoggedInUser = {};
 				}
 
 				
-				$tabContainer.append('<span id="youtube_channel_search_'+i+'" class="youmax-tab" '+dataString+' >'+youmax_global_options.youtube_channel_search[i].name.replace(/%20/g,' ')+'</span>');
+				$tabContainer.append('<span id="youtube_channel_search_'+suffix+'" class="youmax-tab" '+dataString+' >'+youmax_global_options.youtube_channel_search[i].name.replace(/%20/g,' ')+'</span>');
 				
-				$selectConatiner.append('<option value="youtube_channel_search_'+i+'" class="youmax-option-highlight" '+dataString+' >'+youmax_global_options.youtube_channel_search[i].name.replace(/%20/g,' ')+'</option>');
+				$selectConatiner.append('<option value="youtube_channel_search_'+suffix+'" class="youmax-option-highlight" '+dataString+' >'+youmax_global_options.youtube_channel_search[i].name.replace(/%20/g,' ')+'</option>');
 				
 				if(youmax_global_options.youtube_channel_search[i].selected) {
-					$tabContainer.find('#youtube_channel_search_'+i).click();
+					$tabContainer.find('#youtube_channel_search_'+suffix).click();
 				}			
 				
 			}
@@ -5985,7 +10287,7 @@ var youmaxLoggedInUser = {};
 		}
 
 		//Vimeo Channel Tabs
-		if(null!=youmax_global_options.vimeo_channel_videos) {				
+		if(null!=youmax_global_options.vimeo_channel_videos) {
 			for(i=0; i<youmax_global_options.vimeo_channel_videos.length; i++) {
 
 				if(youmax_global_options.doNotSelectTabsByDefault) {
@@ -6010,6 +10312,65 @@ var youmaxLoggedInUser = {};
 				
 			}
 		}
+		
+		
+
+		//Vimeo Group Tabs
+		if(null!=youmax_global_options.vimeo_group_videos) {
+			for(i=0; i<youmax_global_options.vimeo_group_videos.length; i++) {
+
+				if(youmax_global_options.doNotSelectTabsByDefault) {
+					youmax_global_options.vimeo_group_videos[i].selected = false;
+				}
+			
+				s=youmax_global_options.vimeo_group_videos[i].url.indexOf("vimeo.com/groups/");
+				if(s!=-1) {
+					vimeoId = youmax_global_options.vimeo_group_videos[i].url.substring(s+17);
+				} else {
+					vimeoId = "null";
+					alert("Could Not Find Vimeo Group.."+youmax_global_options.vimeo_group_videos[i].url);
+				}
+				
+				$tabContainer.append('<span id="vimeo_group_videos_'+vimeoId+'" class="youmax-tab" >'+youmax_global_options.vimeo_group_videos[i].name.replace(/%20/g,' ')+'</span>');
+				
+				$selectConatiner.append('<option value="vimeo_group_videos_'+vimeoId+'" class="youmax-option-highlight" >'+youmax_global_options.vimeo_group_videos[i].name.replace(/%20/g,' ')+'</option>');
+				
+				if(youmax_global_options.vimeo_group_videos[i].selected) {
+					$tabContainer.find('#vimeo_group_videos_'+vimeoId).click();
+				}			
+				
+			}
+		}
+				
+		
+		
+		//Vimeo Album Tabs
+		if(null!=youmax_global_options.vimeo_album_videos) {
+			for(i=0; i<youmax_global_options.vimeo_album_videos.length; i++) {
+
+				if(youmax_global_options.doNotSelectTabsByDefault) {
+					youmax_global_options.vimeo_album_videos[i].selected = false;
+				}
+			
+				s=youmax_global_options.vimeo_album_videos[i].url.indexOf("vimeo.com/album/");
+				if(s!=-1) {
+					vimeoId = youmax_global_options.vimeo_album_videos[i].url.substring(s+16);
+				} else {
+					vimeoId = "null";
+					alert("Could Not Find Vimeo Album.."+youmax_global_options.vimeo_album_videos[i].url);
+				}
+				
+				$tabContainer.append('<span id="vimeo_album_videos_'+vimeoId+'" class="youmax-tab" >'+youmax_global_options.vimeo_album_videos[i].name.replace(/%20/g,' ')+'</span>');
+				
+				$selectConatiner.append('<option value="vimeo_album_videos_'+vimeoId+'" class="youmax-option-highlight" >'+youmax_global_options.vimeo_album_videos[i].name.replace(/%20/g,' ')+'</option>');
+				
+				if(youmax_global_options.vimeo_album_videos[i].selected) {
+					$tabContainer.find('#vimeo_album_videos_'+vimeoId).click();
+				}			
+				
+			}
+		}
+		
 	
 	},
 	
@@ -6155,6 +10516,145 @@ var youmaxLoggedInUser = {};
 			
 			$youmaxContainer.addClass("newpage");
 		}
+	},
+	
+	setMediaQueries = function(containerWidth,$youmaxContainer) {
+	
+		$youmaxContainer.removeClass("gt1400 gt1350 gt1300 gt1250 gt1200 gt1150 gt1100 gt1050 gt1000 gt950 gt900 lt1400 lt1350 lt1300 lt1250 lt1200 lt1150 lt1100 lt1050 lt1000 lt950 lt900 lt850 lt800 lt750 lt700 lt650 lt600 lt550 lt500 lt450 lt400");
+		
+		//adding media queries manually
+		
+		//greater than classes
+		if(containerWidth>1250) {
+			$youmaxContainer.addClass("gt1400");
+		}
+
+		if(containerWidth>1250) {
+			$youmaxContainer.addClass("gt1350");
+		}
+
+		if(containerWidth>1250) {
+			$youmaxContainer.addClass("gt1300");
+		}
+
+		if(containerWidth>1250) {
+			$youmaxContainer.addClass("gt1250");
+		}
+
+		if(containerWidth>1200) {
+			$youmaxContainer.addClass("gt1200");
+		}
+
+		if(containerWidth>1150) {
+			$youmaxContainer.addClass("gt1150");
+		}
+
+		if(containerWidth>1100) {
+			$youmaxContainer.addClass("gt1100");
+		}
+
+		if(containerWidth>1050) {
+			$youmaxContainer.addClass("gt1050");
+		}
+
+		if(containerWidth>1000) {
+			$youmaxContainer.addClass("gt1000");
+		}
+		
+		if(containerWidth>950) {
+			$youmaxContainer.addClass("gt950");
+		}
+		
+		if(containerWidth>900) {
+			$youmaxContainer.addClass("gt900");
+		}
+		
+		//less than classes
+		if(containerWidth<1250) {
+			$youmaxContainer.addClass("lt1400");
+		}		
+
+		if(containerWidth<1250) {
+			$youmaxContainer.addClass("lt1350");
+		}		
+
+		if(containerWidth<1250) {
+			$youmaxContainer.addClass("lt1300");
+		}		
+
+		if(containerWidth<1250) {
+			$youmaxContainer.addClass("lt1250");
+		}		
+
+		if(containerWidth<1200) {
+			$youmaxContainer.addClass("lt1200");
+		}		
+
+		if(containerWidth<1150) {
+			$youmaxContainer.addClass("lt1150");
+		}		
+
+		if(containerWidth<1100) {
+			$youmaxContainer.addClass("lt1100");
+		}		
+
+		if(containerWidth<1050) {
+			$youmaxContainer.addClass("lt1050");
+		}		
+
+		if(containerWidth<1000) {
+			$youmaxContainer.addClass("lt1000");
+		}		
+
+		if(containerWidth<950) {
+			$youmaxContainer.addClass("lt950");
+		}		
+
+		if(containerWidth<900) {
+			$youmaxContainer.addClass("lt900");
+		}
+
+		if(containerWidth<850) {
+			$youmaxContainer.addClass("lt850");
+		}
+
+		if(containerWidth<800) {
+			$youmaxContainer.addClass("lt800");			
+		}
+
+		if(containerWidth<750) {
+			$youmaxContainer.addClass("lt750");			
+		}
+
+		if(containerWidth<700) {
+			$youmaxContainer.addClass("lt700");			
+		}
+
+		if(containerWidth<650) {
+			$youmaxContainer.addClass("lt650");			
+		}
+
+		if(containerWidth<600) {
+			$youmaxContainer.addClass("lt600");			
+		}
+
+		if(containerWidth<550) {
+			$youmaxContainer.addClass("lt550");
+		}
+		
+		if(containerWidth<500) {
+			$youmaxContainer.addClass("lt500");
+		}
+		
+		if(containerWidth<450) {
+			$youmaxContainer.addClass("lt450");
+		}	
+	
+		if(containerWidth<400) {
+			$youmaxContainer.addClass("lt400");
+		}	
+	
+	
 	};
 
 
@@ -6170,11 +10670,12 @@ var youmaxLoggedInUser = {};
 		//Get CSS for Skins
 		//console.log('options.skin-'+options.skin);
 		options.skin = options.skin||"block";
-		if(options.skin=="white" || options.skin=="grey" || options.skin=="blue" || options.skin=="clean" || options.skin=="block") {
+		if(options.skin.indexOf("white")!=-1 || options.skin.indexOf("grey")!=-1 || options.skin.indexOf("blue")!=-1 || options.skin.indexOf("clean")!=-1 || options.skin.indexOf("block")!=-1 || options.skin.indexOf("list")!=-1 || options.skin.indexOf("trend")!=-1) {
+			skin_file = options.skin.replace(/\d+$/, "");
 			if (document.createStyleSheet){
-                document.createStyleSheet("./css/youmax_"+options.skin+".min.css");
+                document.createStyleSheet("./css/youmax_"+skin_file+".min.css");
             } else {
-                $("head").append("<link rel='stylesheet' href='./css/youmax_"+options.skin+".min.css' type='text/css' />");
+                $("head").append("<link rel='stylesheet' href='./css/youmax_"+skin_file+".min.css' type='text/css' />");
             }
 		} else {
 			//don't load any styles
@@ -6186,10 +10687,12 @@ var youmaxLoggedInUser = {};
 		youmax_global_options.channel = options.channel||'https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w';
 		youmax_global_options.clientId = options.clientId||'237485577723-lndqepqthdb3lh4gec2skvpfaii9sgh0.apps.googleusercontent.com';
 		youmax_global_options.maxResults = options.maxResults||18;
-		youmax_global_options.innerOffset = options.innerOffset||25;
+		
+		//removed because Grid is now updated
+		/*youmax_global_options.innerOffset = options.innerOffset||25;
 		youmax_global_options.outerOffset = options.outerOffset||35;
 		youmax_global_options.minItemWidth = options.minItemWidth||250;
-		youmax_global_options.maxItemWidth = options.maxItemWidth||400;
+		youmax_global_options.maxItemWidth = options.maxItemWidth||400;*/
 		
 		//5.0 - can be popup|inline|newpage
 		youmax_global_options.displayVideo = options.displayVideo||'popup';
@@ -6208,7 +10711,7 @@ var youmaxLoggedInUser = {};
 		youmax_global_options.videoProtocol = options.videoProtocol||"http:";
 		youmax_global_options.featuredVideo = options.featuredVideo||"";
 		youmax_global_options.searchBoxScope = options.searchBoxScope||"channel";
-		youmax_global_options.autoLoadComments = options.autoLoadComments;
+		youmax_global_options.autoLoadComments = options.autoLoadComments||false;
 		youmax_global_options.alignPopupToTop = options.alignPopupToTop;
 		
 		//added in 7.0
@@ -6241,7 +10744,6 @@ var youmaxLoggedInUser = {};
 		
 		//added in 8.0
 		youmax_global_options.vimeoAccessToken = options.vimeoAccessToken||'c289d754a132ca07051aaf931ef0de33'; 
-		
 		youmax_global_options.youtube_channel_uploads = options.youtube_channel_uploads; 
 		youmax_global_options.youtube_channel_playlists = options.youtube_channel_playlists; 
 		youmax_global_options.youtube_channel_events = options.youtube_channel_events; 
@@ -6249,9 +10751,56 @@ var youmaxLoggedInUser = {};
 		youmax_global_options.youtube_playlist_videos = options.youtube_playlist_videos; 
 		youmax_global_options.vimeo_user_videos = options.vimeo_user_videos; 
 		youmax_global_options.vimeo_channel_videos = options.vimeo_channel_videos; 
-		
+		youmax_global_options.vimeo_group_videos = options.vimeo_group_videos; 
+		youmax_global_options.vimeo_album_videos = options.vimeo_album_videos; 
 		youmax_global_options.showVimeoLikesInsteadOfViews = options.showVimeoLikesInsteadOfViews||false; 
+		
+		//added in 8.2
+		youmax_global_options.updateLayoutDelay = options.updateLayoutDelay||500; 
+		youmax_global_options.hotThreshold = options.hotThreshold||300;
+		youmax_global_options.trendingThreshold = options.trendingThreshold||100;
 
+		//added in 8.4
+		youmax_global_options.minimumFadeTimeout = options.minimumFadeTimeout||1000; 
+		youmax_global_options.showTopAdSpace = options.showTopAdSpace||false;
+		youmax_global_options.topAdHtml = options.topAdHtml||'';
+		
+		youmax_global_options.fourColumnContainerWidth = options.fourColumnContainerWidth||'1150px';
+		youmax_global_options.threeColumnContainerWidth = options.threeColumnContainerWidth||'1000px';
+		youmax_global_options.twoColumnContainerWidth = options.twoColumnContainerWidth||'750px';
+		youmax_global_options.oneColumnContainerWidth = options.oneColumnContainerWidth||'500px';		
+
+		youmax_global_options.fiveColumnThumbnailWidth = options.fiveColumnThumbnailWidth||'18%';
+		youmax_global_options.fiveColumnThumbnailLeftRightMargin = options.fiveColumnThumbnailLeftRightMargin||'1%';
+		
+		youmax_global_options.fourColumnThumbnailWidth = options.fourColumnThumbnailWidth||'23%';
+		youmax_global_options.fourColumnThumbnailLeftRightMargin = options.fourColumnThumbnailLeftRightMargin||'1%';
+
+		youmax_global_options.threeColumnThumbnailWidth = options.threeColumnThumbnailWidth||'30.3%';
+		youmax_global_options.threeColumnThumbnailLeftRightMargin = options.threeColumnThumbnailLeftRightMargin||'1.5%';
+
+		youmax_global_options.twoColumnThumbnailWidth = options.twoColumnThumbnailWidth||'46%';
+		youmax_global_options.twoColumnThumbnailLeftRightMargin = options.twoColumnThumbnailLeftRightMargin||'2%';
+
+		youmax_global_options.oneColumnThumbnailWidth = options.oneColumnThumbnailWidth||'95%';
+		youmax_global_options.oneColumnThumbnailLeftRightMargin = options.oneColumnThumbnailLeftRightMargin||'2.5%';
+		
+		youmax_global_options.thumbnailBottomMargin = options.thumbnailBottomMargin||'25px';
+		youmax_global_options.containerLeftRightMargin = options.containerLeftRightMargin||'2%';
+
+		//added in 8.5
+		youmax_global_options.hideDefinition = options.hideDefinition||false; 
+		youmax_global_options.playIconType = options.playIconType||'default'; 
+
+		//added in 9.0
+		youmax_global_options.showTextInsteadOfIcons = options.showTextInsteadOfIcons||false;
+		youmax_global_options.maxComments = options.maxComments||7;
+		youmax_global_options.headerCountType = options.headerCountType||"abbr"; //comma or abbr 
+		
+		
+		
+		
+		
 		//set global options
 		$youmaxContainer.data('youmax_global_options',youmax_global_options);
 
@@ -6267,6 +10816,12 @@ var youmaxLoggedInUser = {};
 			convertLikeCommentCount = convertViewCountWithComma;	
 		} else {
 			convertLikeCommentCount = convertViewCount;
+		}
+		
+		if(youmax_global_options.headerCountType == "comma") {
+			convertHeaderCounts = convertViewCountWithComma;	
+		} else {
+			convertHeaderCounts = convertViewCount;
 		}
 		
 		/*if(youmax_global_options.loadMode.indexOf("paginate")!=-1) {
@@ -6286,9 +10841,9 @@ var youmaxLoggedInUser = {};
 			youmax_global_options.showTitleInVideoPlayer = true;
 		}
 		
-		if(null==youmax_global_options.autoLoadComments || youmax_global_options.autoLoadComments==="") {
+		/*if(null==youmax_global_options.autoLoadComments || youmax_global_options.autoLoadComments==="") {
 			youmax_global_options.autoLoadComments = true;
-		}
+		}*/
 		
 		if(null==youmax_global_options.alignPopupToTop || youmax_global_options.alignPopupToTop==="") {
 			youmax_global_options.alignPopupToTop = true;
@@ -6298,6 +10853,15 @@ var youmaxLoggedInUser = {};
 			youmax_global_options.alwaysUseDropdown = true;
 		}
 		
+		if(youmax_global_options.skin.indexOf("list")!=-1) {
+			youmax_global_options.fourColumnContainerWidth = '5000px';
+			youmax_global_options.threeColumnContainerWidth = '5000px';
+			youmax_global_options.twoColumnContainerWidth = '5000px';
+			youmax_global_options.oneColumnContainerWidth = '1400px';
+			
+			youmax_global_options.oneColumnThumbnailWidth = '97%';
+			youmax_global_options.oneColumnThumbnailLeftRightMargin = '1.5%';
+		}
 		
 		
 		
@@ -6328,7 +10892,7 @@ var youmaxLoggedInUser = {};
 		$youmaxContainer.css('max-width',(options.maxContainerWidth)+'px');
 		
 		var custom_styles = "";
-		
+		var youmaxElementId = '#'+$youmaxContainer.attr('id')+' ';
 		//Adding styles for wide video mode
 		if(youmax_global_options.videoMode=="wide") {
 			custom_styles += '#youmax-encloser {max-width: 100% !important;} #youmax-encloser-comment-wrapper {max-width: 880px;margin: 20px auto auto;}';
@@ -6337,14 +10901,16 @@ var youmaxLoggedInUser = {};
 		//Adding styles for widget mode
 		if(youmax_global_options.widgetMode) {
 			$youmaxContainer.addClass("youmax-widget");
-			/*custom_styles += '#youmax-header-title,#youmax-header-bio,#youmax-header-website,#youmax-header-counts,.youmax-channel-data-holder {display: none !important;}.youmax-channel-icon img {margin-bottom: 0px;height: 140px; margin-left:20px;}#youmax-header-wrapper>a {width: 100%;margin: 0px;}.youmax-channel-icon {width: 100%;text-align: center;}button#youmax-load-more-div {width: 90px;height: 90px;}#youmax-load-more-div i {font-size: 45px;padding-left: 2px;} #youmax-encloser {margin-top: 30px;}';
-			
-			if(youmax_global_options.skin=="clean") {
-				custom_styles += 'div#youmax-header-info {width: 100% !important;padding: 0px !important;} .youmax-subscribe-clean-wrapper {width: 100%;margin-left: 0px;} .youmax-subscribe {left: 0;right: 0;width: 115px;} #youmax, .youmax {padding-top: 10px;padding-bottom: 30px;}';
-			} else {
-				custom_styles += '.youmax-subscribe {left: 0;right: 0;width: 115px;top: 120px;}.youmax-channel-icon img {margin-top: 10px;height: 110px;}';
-			}*/
 		}
+		
+		//Adding styles for Text instead of Icon mode
+		if(youmax_global_options.showTextInsteadOfIcons) {
+			$youmaxContainer.addClass("youmax-text-instead-of-icons");
+		}
+		
+		
+		
+		
 		
 		//adding styles for hide header
 		if(youmax_global_options.hideHeader) {
@@ -6358,12 +10924,12 @@ var youmaxLoggedInUser = {};
 		
 		//adding styles for hide comments
 		if(youmax_global_options.hideComments) {
-			custom_styles += '#youmax-encloser-comment-holder,.youmax-show-button-wrapper{display:none !important;}';
+			custom_styles += '#youmax-encloser-comment-holder,.youmax-show-button-wrapper{display:none !important;} .photo-popup-stats {border-bottom: none !important;}';
 		}
 		
 		//adding styles for hide video details
 		if(youmax_global_options.hideVideoDetails) {
-			custom_styles += '.photo-popup-title,.photo-popup-description,.photo-popup-stats{display:none !important;}';
+			custom_styles += youmaxElementId+'.photo-popup-title,'+youmaxElementId+'.photo-popup-description,'+youmaxElementId+'.photo-popup-stats{display:none !important;}';
 		}
 		
 		//hide complete video detail holder
@@ -6386,37 +10952,74 @@ var youmaxLoggedInUser = {};
 			custom_styles += '#youmax-video-list-div{min-height:'+youmax_global_options.minVideoContainerHeight+'px;}';
 		}
 		
-		//adding media queries manually if maxContainerWidth is very low (widget mode)
-		if(options.maxContainerWidth<900) {
-			$youmaxContainer.addClass("lt900");
+		//adding styles to hide definition
+		if(youmax_global_options.hideDefinition) {
+			custom_styles += '.youmax-definition{display:none !important;}';
+		}
+		
+		//adding styles to show fixed play icon
+		if(youmax_global_options.playIconType=="white_grey_combo") {
+			custom_styles += '.youmax-play-overlay {display: block !important;background-color: rgba(0,0,0,0) !important;} .youmax-play-icon-holder { background-color: rgba(255,255,255,0.85);border: none !important;} .youmax-play-icon-holder i {color: #878787;padding: 15px 0 0 19px !important;font-size: 20px !important;} .youmax-play-hover .youmax-play-icon-holder{transition: 0.3s; background-color: #CF1F1F !important;} .youmax-play-hover i{color: white !important;}';
+		} else if(youmax_global_options.playIconType=="white_black_combo") {
+			custom_styles += '.youmax-play-overlay {display: block !important;} .youmax-play-hover .youmax-play-icon-holder {background-color: #CF1F1F !important;border-color: #CF1F1F !important;} .youmax-play-hover.youmax-play-overlay {background-color: rgba(0,0,0,0);}';
+		} else if(youmax_global_options.playIconType=="no_icon") {
+			custom_styles += '.youmax-play-overlay {display: none !important;}';
 		}
 
-		if(options.maxContainerWidth<800) {
-			$youmaxContainer.addClass("lt800");			
-		}
+		
 
-		if(options.maxContainerWidth<650) {
-			$youmaxContainer.addClass("lt650");
+		
+		//setting width qantifiers
+		//setMediaQueries(options.maxContainerWidth,$youmaxContainer);
+		setMediaQueries($youmaxContainer.width(),$youmaxContainer);
+		
+		
+		//adding media queries based on column thresholds
+		
+		custom_styles += '.youmax-grid-item {margin-bottom: '+youmax_global_options.thumbnailBottomMargin+';} #youmax-video-list-div {padding-left: '+youmax_global_options.containerLeftRightMargin+';padding-right: '+youmax_global_options.containerLeftRightMargin+';}';
+		
+		youmax_global_options.fourColumnContainerWidth = youmax_global_options.fourColumnContainerWidth.replace('px','');
+		custom_styles += '.gt'+youmax_global_options.fourColumnContainerWidth+' .youmax-grid-item {width: '+youmax_global_options.fiveColumnThumbnailWidth+'; margin-left: '+youmax_global_options.fiveColumnThumbnailLeftRightMargin+'; margin-right: '+youmax_global_options.fiveColumnThumbnailLeftRightMargin+';} .lt'+youmax_global_options.fourColumnContainerWidth+' .youmax-grid-item {width: '+youmax_global_options.fourColumnThumbnailWidth+'; margin-left: '+youmax_global_options.fourColumnThumbnailLeftRightMargin+';margin-right: '+youmax_global_options.fourColumnThumbnailLeftRightMargin+';}';
+		
+		youmax_global_options.threeColumnContainerWidth = youmax_global_options.threeColumnContainerWidth.replace('px','');
+		custom_styles += '.lt'+youmax_global_options.threeColumnContainerWidth+' .youmax-grid-item {width: '+youmax_global_options.threeColumnThumbnailWidth+'; margin-left: '+youmax_global_options.threeColumnThumbnailLeftRightMargin+';margin-right: '+youmax_global_options.threeColumnThumbnailLeftRightMargin+';}';
+		
+		youmax_global_options.twoColumnContainerWidth = youmax_global_options.twoColumnContainerWidth.replace('px','');
+		custom_styles += '.lt'+youmax_global_options.twoColumnContainerWidth+' .youmax-grid-item {width: '+youmax_global_options.twoColumnThumbnailWidth+'; margin-left: '+youmax_global_options.twoColumnThumbnailLeftRightMargin+';margin-right: '+youmax_global_options.twoColumnThumbnailLeftRightMargin+';}';
+		
+		youmax_global_options.oneColumnContainerWidth = youmax_global_options.oneColumnContainerWidth.replace('px','');
+		custom_styles += '.lt'+youmax_global_options.oneColumnContainerWidth+' .youmax-grid-item {width: '+youmax_global_options.oneColumnThumbnailWidth+'; margin-left: '+youmax_global_options.oneColumnThumbnailLeftRightMargin+';margin-right: '+youmax_global_options.oneColumnThumbnailLeftRightMargin+';}';
+
+		if(youmax_global_options.skin=="block1") {
+			custom_styles += 'span.youmax-view-date-holder, .youmax-like-comment-holder {display: none !important;} #tiles li p {padding-bottom: 5px !important;} .youmax-duration {bottom: 125px !important;}';
+		} else if(youmax_global_options.skin=="block2") {
+			custom_styles += '.youmax-like-comment-holder {display: none !important;} #tiles li p {padding-bottom: 6px !important;} .youmax-duration {bottom: 163px !important;}';
+		} else if(youmax_global_options.skin=="block3") {
+			custom_styles += 'span.youmax-view-date-holder {display: none !important;} #tiles li p {padding-bottom: 6px !important;} .youmax-duration {bottom: 155px !important;}';
+		} else if(youmax_global_options.skin=="block4") {
+			custom_styles += '#tiles li p, .youmax-like-comment-holder {display: none !important;} .youmax-duration {bottom: 10px !important;}';
+		} else if(youmax_global_options.skin=="trend1") {
+			custom_styles += 'span.youmax-trend-holder, .youmax-thumbnail-link, .youmax-trend-link-holder {display: none !important;} span.youmax-title-desc-holder {margin-bottom: 5px;}.youmax-duration {bottom: 165px !important;}';
+		} else if(youmax_global_options.skin=="trend2") {
+			custom_styles += 'span.youmax-view-date-holder {display: none !important;} span.youmax-trend-link-holder {border-top: 1px solid #e2e2e2;} span.youmax-trend-link-holder {padding-top: 5px;margin-top: 6px;} #tiles li p {padding-bottom: 5px !important;} .youmax-duration {bottom: 170px !important;}';
+		} else if(youmax_global_options.skin=="grey1" || youmax_global_options.skin=="white1" || youmax_global_options.skin=="blue1") {
+			custom_styles += 'span.youmax-view-date-holder {display: none !important;} span.youmax-video-list-title {height: 52px !important; padding-top: 4px !important;} .youmax-duration {bottom: 75px !important;}';
+		} else if(youmax_global_options.skin=="list1") {
+			custom_styles += 'span.youmax-view-date-holder {display: none !important;} .youmax-title-desc-holder {height: 120px !important;} .youmax-video-list-description { max-height: 80px !important;} .lt700 .youmax-title-desc-holder {height: 100px !important;} .lt700 .youmax-video-list-description {max-height: 60px !important;} .lt600 .youmax-video-list-description {display: inline-block !important;}';
 		}
 		
-		if(options.maxContainerWidth<450) {
-			$youmaxContainer.addClass("lt400");
-		}
 		
-		if(options.maxContainerWidth>1000) {
-			$youmaxContainer.addClass("gt100");
-		}
-		
-		
-		
+
 
 
 		$("head").append("<style class='youmax-added-styles'>"+custom_styles+"</style>");
 		
 		initTranlator($youmaxContainer);
-		
 
-		
+		//IE 10 mode
+		var doc = document.documentElement;
+		doc.setAttribute('data-useragent', navigator.userAgent);
+
 		
 		//return this for chaining
 		return this;
@@ -6429,7 +11032,7 @@ var youmaxLoggedInUser = {};
 
 function youmaxSaveToken(authResult) {
 	//console.log(authResult);
-	if (authResult['status']['signed_in']) {	
+	if (authResult['status']['signed_in']) {
 		youmaxLoggedInUser.youmaxAccessToken = authResult.access_token;
 		jQuery('.youmax-add-comment-button').removeAttr('disabled').html('<i class="fa fa-send fa-2x"></i>');
 		//console.log('User Signed in');

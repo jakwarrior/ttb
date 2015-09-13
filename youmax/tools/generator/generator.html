@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width">
+    <title>Youmax 9.0 - Generator</title>
+	
+	<link type="text/css" rel="stylesheet" href="./css/youmax-admin.css" />
+	
+	<!--jquery-->
+	<script src="./js/jquery-1.9.1.min.js"></script>
+	<script src="./js/jquery-ui.min.js"></script>
+	
+	<!--syntax highlighter-->
+	<link rel="stylesheet" href="./css/default.css">
+	<script src="./js/highlight.pack.js"></script>
+
+	<!--<script type="text/javascript" src="./js/shCore.js"></script>
+	<script type="text/javascript" src="./js/shBrushJScript.js"></script>	
+	<link href="./css/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="./css/shCoreDefault.css" rel="stylesheet" type="text/css" />
+	<link href="./css/shThemeDefault.css" rel="stylesheet" type="text/css" />	-->
+	
+	<style>
+	
+	body{
+	font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size:14px;
+	}
+
+.title-image {
+  background-image: url('http://demos.codehandling.com/youmax_demo/header.png');
+  width: 400px;
+  height: 60px;
+  max-width: 100%;
+  margin: auto;
+  background-position: center center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  background-repeat: no-repeat;
+}		
+
+
+.title-text {
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  font-family: Calibri;
+    margin-bottom: 15px;
+	    text-align: center;
+}
+
+#youmax-save-shortcode {
+
+background: #0091cd;
+    border-color: #0073aa;
+    -webkit-box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.6 );
+    box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.6 );
+    color: #fff;
+	    cursor: pointer;
+    border-width: 1px;
+}
+	
+.youmax-admin {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1100px;
+    margin: auto;
+}	
+
+code#generated_output_highlighted {
+    padding: 20px;
+}
+
+.remove_tab {
+    padding-top: 1px;
+}
+
+.control_holder input {
+    padding-left: 10px;
+}
+
+
+	</style>
+
+	</head>
+  <body>
+		<a href="http://www.codehandling.com/2015/01/youmax-40-bring-youtube-to-your-users.html"></a>
+			<div class="title-image"></div>
+			<div class="title-text">CODE GENERATOR</div>
+		
+		<div class="separator"></div>
+<br><br>	
+
+
+
+
+
+
+
+<div class="youmax-admin">
+
+	
+	<div id="tabs">
+	  <ul>
+		<li><a href="#tabs-1">Keys</a></li>
+		<li><a href="#tabs-2">Video Sources</a></li>
+		<li><a href="#tabs-3">Display Modes</a></li>
+		<li><a href="#tabs-4">Video Options</a></li>
+		<li><a href="#tabs-5">Likes & Comments</a></li>
+		<li><a href="#tabs-6">Hiding</a></li>
+		<li><a href="#tabs-7">Miscellaneous</a></li>
+		<li><a href="#tabs-8">Grid</a></li>
+	  </ul>
+	  <div id="tabs-1">
+		<p>
+		
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">YouTube API Key</span> 
+			<input type="text" id="api_key" value="AIzaSyDEm5wGLsWi2G3WG40re-DAJcWioQSpJ6o"/>
+			<span class="youmax-field-description">The API Key that you receive from Google API Console. Refer documentation for details.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">YouTube Client ID</span> 
+			<input type="text" id="client_id" value="237485577723-lndqepqthdb3lh4gec2skvpfaii9sgh0.apps.googleusercontent.com"/>
+			<span class="youmax-field-description">The Client ID that you receive from Google API Console. Used for adding comments via Youmax. Refer documentation for details.</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Vimeo Access Token</span> 
+			<input type="text" id="vimeo_access_token" value="c289d754a132ca07051aaf931ef0de33"/>
+			<span class="youmax-field-description">The Vimeo Access Token that you receive from Vimeo Developer Console. Used for displaying Vimeo videos. Refer documentation for details.</span>
+			</div>
+			<br>
+		
+		
+		
+		</p>
+	  </div>
+	  <div id="tabs-2">
+		<p>
+		
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">YouTube Channel URL to display <strong>Header</strong></span>
+			<input type="text" id="channel_url" value="https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w"/>
+			<span class="youmax-field-description">Only the Youmax Header will be displayed from this Channel URL. To display videos, add videos source below.</span>		
+			</div>
+			<br>
+				
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">Add Videos from any of the below Sources</span>
+			<div class="control_holder" style="margin-top: 5px; margin-bottom: 7px;">
+				<button class="tab-button" id="youmax_add_youtube_channel_uploads">YouTube Channel Uploads</button> 
+				<button class="tab-button" id="youmax_add_youtube_channel_playlists">YouTube Channel Playlists</button>
+				<button class="tab-button" id="youmax_add_youtube_channel_events">YouTube Channel Events</button>
+				<button class="tab-button" id="youmax_add_youtube_channel_search">YouTube Channel Search</button>
+				<button class="tab-button" id="youmax_add_youtube_playlist_videos">YouTube Playlist Videos</button>	
+				<button class="tab-button" id="youmax_add_vimeo_user_videos">Vimeo User Videos</button>
+				<button class="tab-button" id="youmax_add_vimeo_channel_videos">Vimeo Channel Videos</button>
+				<button class="tab-button" id="youmax_add_vimeo_album_videos">Vimeo Album Videos</button>
+				<button class="tab-button" id="youmax_add_vimeo_group_videos">Vimeo Group Videos</button>				
+			</div>
+			<span class="youmax-field-description">Add Videos from any of the above Sources into Youmax. Each Source will be displayed as a Tab or a dropdown item in Youmax.</span>
+			</div>
+		
+			<br>
+			<div id="tab_holder">
+
+			</div>
+			<br>
+		
+		
+		
+		</p>
+	  </div>
+	  <div id="tabs-3">
+		<p>
+		
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">Thumbnail Layout / Skin</span>
+			<select id="skin_type">
+				<option value="trend"  >Trend = title + desc + trend tags + link + views + likes + comments</option>
+				<option value="trend1" selected="selected" >Trend 1 = title + desc + views + likes + comments</option>
+				<option value="trend2"  >Trend 2 = title + desc + trend tags + link</option>
+				<option value="list"  >List = title + desc + views + likes + comments + date</option>
+				<option value="list1"  >List 1 = title + desc</option>
+				<option value="block"  >Block = title + desc + views + date + likes + comments</option>
+				<option value="block1"  >Block 1 = title + desc</option>
+				<option value="block2"  >Block 2 = title + desc + views + date</option>
+				<option value="block3"  >Block 3 = title + desc + likes + comments</option>
+				<option value="block4"  >Block 4 = only videos</option>
+				<option value="clean"  >Clean = title + views + likes</option>
+				<option value="grey"  >Grey = title + views + date</option>
+				<option value="grey1"  >Grey 1 = title</option>
+				<option value="white"  >White = title + views + date</option>
+				<option value="white1"  >White 1 = title</option>
+				<option value="blue"  >Blue = title + views + date</option>
+				<option value="blue1"  >Blue 1 = title</option>
+			</select>
+			<span class="youmax-field-description">Youmax skin or layout.</span>
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Widget Mode</span>
+			<input type="checkbox" id="widget_mode" />
+			<span class="youmax-field-description">Enable widget mode for showing Youmax in a sidebar - single column view</span>
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Loading Mode</span>
+			<select id="load_mode">
+				<option value="loadmore" selected="selected">Load More</option>
+				<option value="paginate-sides">Paginate Side</option>
+				<option value="paginate-bottom">Paginate Bottom</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Load Button Mode</span> - <br>1. Load More button <br>2. Left Right Pagination on Sides - Carousel Mode <br>3. Left Right Pagination at bottom</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Always use Dropdown instead of Tabs</span>
+			<input type="checkbox" id="always_use_dropdown" checked />
+			<span class="youmax-field-description">Show Search-Select Combo instead of Tabs</span>
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Loading Button's Size</span>
+			<select id="load_button_size">
+				<option value="large" selected="selected">Large</option>
+				<option value="small">Small</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Size of Load More Button / Pagination Buttons - </span><br>1. Small <br>2. Large</span>		
+			</div>
+			<br>
+
+
+		
+		
+		
+		</p>
+	  </div>
+	  <div id="tabs-4">
+		<p>
+			
+			
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">Video Display Mode</span>
+			<select id="display_video">
+				<option value="popup">Popup</option>
+				<option value="inline">Inline Top</option>
+				<option value="thumbnail" >Inline Thumbnail</option>
+				<option value="link" >Link to YouTube</option>				
+				<option value="newpage">New Page</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Video Display Mode - </span><br>1. Popup - show videos in a popup <br>2. Inline Top - show videos inside the Youmax widget at the top<br>3. Inline Thumbnail - show videos inside the video thumbnail itself <br>4. Link to YouTube - show videos on YouTube page in a new Tab <br/> 5. New Page - show videos on a new page in your website with a different link</span>
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Video Protocol</span>
+			<select id="video_protocol">
+				<option value="http:" selected="selected">HTTP</option>
+				<option value="https:">HTTPS</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Protocol under which videos will be displayed - </span><br>1. HTTP <br>2. HTTPS - for SSL websites</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Featured Video </span>
+			<input type="text" id="featured_video" value=""/>
+			<span class="youmax-field-description">Link to a YouTube video that will be displayed in the player when the Youmax widget loads. Works only for 'Inline' display mode.</span>		
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Use separate links for videos </span>
+			<input type="checkbox" id="link_new_pages"/>
+			<span class="youmax-field-description">Shows separate links for each video. Works only for 'New Page' display mode.</span>		
+			
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Video Size</span>
+			<select id="video_mode">
+				<option value="wide" selected="selected">Wide</option>
+				<option value="narrow">Narrow</option>
+			</select>
+			<span class="youmax-field-description">For very wide displays, video player width can be set to wide or narrow. Works only for 'Inline' or 'New Page' display mode.</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">AutoPlay video when thumbnail is clicked</span>
+			<input type="checkbox" id="auto_play_video"/>
+			<span class="youmax-field-description">Normally user will need to click on the big Play button on the Video player. With this option, video will start playing automatically when a thumbnail is clicked. </span>				
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Display first video on page load </span>
+			<input type="checkbox" id="display_first_video_on_load"/>
+			<span class="youmax-field-description">Displays the first video automatically in the Video player when Youmax loads or a new Tab is clicked. Works only for 'Inline' display mode.</span>				
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Playlist Action</span>
+			<select id="playlist_action">
+				<option value="showvideos" selected="selected">Show Videos</option>
+				<option value="playall">Play All</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">When a playlist thumbnail is clicked - </span><br>1. Show all Video Thumbnails in Youmax <br>2. Play the complete playlist in the Video player</span>				
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Video Player Theme</span>
+			<select id="video_player_theme">
+				<option value="dark" selected="selected">Dark</option>
+				<option value="light">Light</option>
+			</select>
+			<span class="youmax-field-description">Video player theme can be 'dark' or 'light'. Works only for YouTube player.</span>				
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Show Title above (with) Video Player</span>
+			<input type="checkbox" id="show_title_in_video_player" checked />
+			<span class="youmax-field-description">Video player will display title at the top. Works only for YouTube player.</span>
+			<br>
+			</div>
+			<br>
+					
+			
+			
+			
+			
+		</p>
+	  </div>
+	  <div id="tabs-5">
+		<p>
+
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Display comments automatically</span>
+			<input type="checkbox" id="auto_load_comments" />
+			<span class="youmax-field-description">Normally a user will have to click on 'Show Comments' button to display comments under the Video player. Setting this option will display comments automatically below the video player.</span>		
+			<br>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Comment Order</span>
+			<select id="comment_order">
+				<option value="time" selected="selected">Latest First</option>
+				<option value="relevance">Relevant First</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Order of Comments (only for YouTube) -</span><br>1. Recent First <br>2. Most Relevant First</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">View Count displayed as </span>
+			<select id="view_count_type">
+				<option value="abbr" selected="selected">Abbreviation</option>
+				<option value="comma">With Comma</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Video count display mode -</span><br>1. Abbreviation - Example: 104K <br>2. With Comma - Example: 104,000</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Like & Comment Count displayed as </span>
+			<select id="like_comment_count_type">
+				<option value="abbr" selected="selected">Abbreviation</option>
+				<option value="comma">With Comma</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Like & Comment count display mode -</span><br>1. Abbreviation - Example: 104K <br>2. With Comma - Example: 104,000</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Header Counts displayed as </span>
+			<select id="header_count_type">
+				<option value="abbr" selected="selected" >Abbreviation</option>
+				<option value="comma" >With Comma</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">This controls the Views & Subscriber counts in the Youmax Header -</span><br>1. Abbreviation - Example: 104K <br>2. With Comma - Example: 104,000</span>		
+			</div>
+			<br>						
+			
+			<div class="control_holder">
+			<span class="youmax-field-title">Show Vimeo Likes Instead Of Views</span>
+			<input type="checkbox" id="show_vimeo_likes_instead_of_views" />
+			<span class="youmax-field-description">Some Vimeo users hide their 'views' statistics for public. You can display 'likes' instead of 'views' with this option</span>		
+			</div>
+			<br>
+
+
+		</p>
+	  </div>
+	  <div id="tabs-6">
+		<p>
+
+		
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Header</span>
+			<input type="checkbox" id="hide_header" />
+			<span class="youmax-field-description">Hide the Youmax Header</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Navigation</span>
+			<input type="checkbox" id="hide_navigation" />
+			<span class="youmax-field-description">Hide the Youmax Navigation - Tabs and Dropdown below the header</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Comments</span>
+			<input type="checkbox" id="hide_comments" />
+			<span class="youmax-field-description">Hide Video Comments</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Video Thumbnails</span>
+			<input type="checkbox" id="hide_video_thumbnails" />
+			<span class="youmax-field-description">Hide Video Thumbnails - useful for displaying Single Video in a grand style</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Loading Buttons</span>
+			<input type="checkbox" id="hide_load_more" />
+			<span class="youmax-field-description">Hide the Loading button - Load More & Left Right Pagination</span>		
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Video Detail (in popup, below player)</span>
+			<input type="checkbox" id="hide_video_details" />
+			<span class="youmax-field-description">Hide Video Details that are displayed below the Video player - Title, Description and Stats</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Hide Video Definition</span>
+			<input type="checkbox" id="hide_definition" />
+			<span class="youmax-field-description">Hide the HD Tags that are displayed at the top left of Video Thumbnails</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Video Thumbnail's Play Icon Type</span>
+			<select id="play_icon_type">
+				<option value="default" selected="selected" >Default - Show Play Icon on Hover</option>
+				<option value="white_grey_combo" >Fixed Play Icon - Grey White Style</option>
+				<option value="white_black_combo" >Fixed Play Icon - White Black Style</option>
+				<option value="no_icon" >No Play Icon</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">The type of play icon that is displayed on video thumbnails. </span>		
+			</div>
+			<br>			
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Show Text instead of Icons</span>
+			<input type="checkbox" id="show_text_instead_of_icons" />
+			<span class="youmax-field-description">All buttons where icons are displayed will show text messages. This affects Load More button, Pagination button, Show Comments button and Load More Comments button</span>
+			</div>
+			<br>
+					
+		
+
+		</p>
+	  </div>
+	  <div id="tabs-7">
+		<p>
+
+
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Search Box scope</span>
+			<select id="search_box_scope">
+				<option value="channel">Channel</option>
+				<option value="global">Global</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">Scope of the Search box (only for YouTube) - </span><br>1. Channel - will search only in the channel <br>2. Global - will search complete YouTube</span>
+			</div>
+			<br>
+
+			
+			<div class="control_holder">
+			<span class="youmax-field-title">Align Popup to Top</span>
+			<input type="checkbox" id="align_popup_to_top" checked />
+			<span class="youmax-field-description">Popup will be aligned to top with this option. Normally it is vertically aligned at the center.</span>
+			</div>
+			<br>
+
+
+
+			<div class="control_holder">
+			<span class="youmax-field-title">User Website Link</span>
+			<input type="text" id="user_website" value=""/>
+			<span class="youmax-field-description">Link to a User website - Displayed with the Clean Skin Header.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Sharing Link</span>
+			<select id="share_link">
+				<option value="video" selected="selected">Video</option>
+				<option value="website">Website</option>
+			</select>
+			<span class="youmax-field-description"><span class="youmax-opening-description">The link to share with the Sharing buttons -</span><br>1. Video - will share the link to the video<br>2. Website - will share the link to your website</span>		
+			</div>
+			<br>
+				
+		
+		
+		
+		</p>
+	  </div>
+	  <div id="tabs-8">
+		<p>
+
+		
+		
+			<div class="control_holder">
+			<span class="youmax-field-title">Maximum Results in one Load</span>
+			<input type="text" id="max_results" value="18"/>
+			<span class="youmax-field-description">Maximum Items to be displayed in a Single Load.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Maximum Comments in one Load</span>
+			<input type="text" id="max_comments" value="7"/>
+			<span class="youmax-field-description">Maximum Comments to be displayed in a Single Load.</span>
+			</div>
+			<br>
+			
+			
+			<div class="little-separator">Responsive Options</div>
+
+
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Minimum Youmax width under which you will see a 4-column layout</span>
+			<input type="text" id="four_column_container_width" value="1150px"/>
+			<span class="youmax-field-description">Minimum Youmax width under which you will see a 4-column layout. When Youmax width is above this value, you will get a 5-column layout. <br>Must be in multiples of 50. Example: 1200px</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Minimum Youmax width under which you will see a 3-column layout</span>
+			<input type="text" id="three_column_container_width" value="1000px"/>
+			<span class="youmax-field-description">Minimum Youmax width under which you will see a 3-column layout. When Youmax width is above this value, you will get a 4-column layout. <br>Must be in multiples of 50. Example: 1050px</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Minimum Youmax width under which you will see a 2-column layout</span>
+			<input type="text" id="two_column_container_width" value="750px"/>
+			<span class="youmax-field-description">Minimum Youmax width under which you will see a 2-column layout. When Youmax width is above this value, you will get a 3-column layout. <br>Must be in multiples of 50. Example: 800px</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Minimum Youmax width under which you will see a 1-column layout</span>
+			<input type="text" id="one_column_container_width" value="500px"/>
+			<span class="youmax-field-description">Minimum Youmax width under which you will see a 1-column layout. When Youmax width is above this value, you will get a 2-column layout. <br>Must be in multiples of 50. Example: 450px</span>
+			</div>
+			<br>
+
+			<div class="little-separator">5 Column Grid</div>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Width of video thumbnails in 5-column layout</span>
+			<input type="text" id="five_column_thumbnail_width" value="18%"/>
+			<span class="youmax-field-description">Width of video thumbnails in 5-column layout.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Left & Right Margins of video thumbnails in 5-column layout</span>
+			<input type="text" id="five_column_thumbnail_left_right_margin" value="1%"/>
+			<span class="youmax-field-description">Left & Right Margins of video thumbnails in 5-column layout.</span>
+			</div>
+			<br>
+
+			<div class="little-separator">4 Column Grid</div>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Width of video thumbnails in 4-column layout</span>
+			<input type="text" id="four_column_thumbnail_width" value="23%"/>
+			<span class="youmax-field-description">Width of video thumbnails in 4-column layout.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Left & Right Margins of video thumbnails in 4-column layout</span>
+			<input type="text" id="four_column_thumbnail_left_right_margin" value="1%"/>
+			<span class="youmax-field-description">Left & Right Margins of video thumbnails in 4-column layout.</span>
+			</div>
+			<br>
+
+
+			<div class="little-separator">3 Column Grid</div>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Width of video thumbnails in 3-column layout</span>
+			<input type="text" id="three_column_thumbnail_width" value="30.3%"/>
+			<span class="youmax-field-description">Width of video thumbnails in 3-column layout.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Left & Right Margins of video thumbnails in 3-column layout</span>
+			<input type="text" id="three_column_thumbnail_left_right_margin" value="1.5%"/>
+			<span class="youmax-field-description">Left & Right Margins of video thumbnails in 3-column layout.</span>
+			</div>
+			<br>
+
+
+			<div class="little-separator">2 Column Grid</div>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Width of video thumbnails in 2-column layout</span>
+			<input type="text" id="two_column_thumbnail_width" value="46%"/>
+			<span class="youmax-field-description">Width of video thumbnails in 2-column layout.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Left & Right Margins of video thumbnails in 2-column layout</span>
+			<input type="text" id="two_column_thumbnail_left_right_margin" value="2%"/>
+			<span class="youmax-field-description">Left & Right Margins of video thumbnails in 2-column layout.</span>
+			</div>
+			<br>
+
+
+			<div class="little-separator">1 Column Grid</div>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Width of video thumbnails in 1-column layout</span>
+			<input type="text" id="one_column_thumbnail_width" value="95%"/>
+			<span class="youmax-field-description">Width of video thumbnails in 1-column layout</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Left & Right Margins of video thumbnails in 1-column layout</span>
+			<input type="text" id="one_column_thumbnail_left_right_margin" value="2.5%"/>
+			<span class="youmax-field-description">Left & Right Margins of video thumbnails in 1-column layout</span>
+			</div>
+			<br>
+
+
+			<div class="little-separator">More Grid Options</div>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Bottom margin of Thumbnails in any Layout</span>
+			<input type="text" id="thumbnail_bottom_margin" value="25px"/>
+			<span class="youmax-field-description">Bottom margin of Thumbnails in any Layout.</span>
+			</div>
+			<br>
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Left & Right Margins of Video Container</span>
+			<input type="text" id="container_left_right_margin" value="2%"/>
+			<span class="youmax-field-description">Left & Right Margins of Video Container.</span>
+			</div>
+			<br>
+
+
+			<div class="control_holder">
+			<span class="youmax-field-title">Maximum width of Youmax </span>
+			<input type="text" id="max_container_width" value="1080"/>
+			<span class="youmax-field-description">Maximum width of Youmax container. Normally Youmax is at 100% width. You can use this option to limit the maximum width Youmax can achieve.</span>
+			</div>
+			<br>
+				
+
+
+		</p>
+	  </div>
+		
+	</div>
+	
+	
+	<input id="youmax-save-shortcode" type="button" class="button-primary" value="Generate Code" onclick="generateJquery();" />
+	
+	<br><br>
+	<pre ><code class="html" id="generated_output_highlighted">...</code></pre>
+
+
+</div>
+
+
+
+
+
+<br><br>	
+
+
+<br/><br/>
+
+</div>
+
+<!--<a href="http://demos.codehandling.com/youmax_wp_doc/youmax-wordpress-documentation.html">Documentation for Youmax WordPress</a>-->
+<a style="text-align: center;display: block;" href="http://demos.codehandling.com/youmax_js_doc/youmax-javascript-documentation.html">Documentation for Youmax Javascript</a>
+
+<br/><br/><br/>
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+
+<script>
+var tab_count = 2;
+
+		$youtube_channel_uploads_defaults = {
+			'name' 		: 'Uploads',
+			'url'  		: 'https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w',
+			'selected'	: 'false'
+		};
+
+		$youtube_channel_playlists_defaults = {
+			'name' 		: 'Playlists',
+			'url'  		: 'https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w',
+			'selected'	: 'false'
+		};
+
+		$youtube_channel_events_defaults = {
+			'name' 		: 'Events',
+			'url'  		: 'https://www.youtube.com/channel/UCvqRdlKsE5Q8mf8YXbdIJLw',
+			'selected'	: 'false'
+		};
+
+		$youtube_channel_search_defaults = {
+			'name' 						: 'Search',
+			'restrict_to_channels' 		: 'https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w',
+			'related_to'  				: '',
+			'search_query'  			: 'inside out',
+			'search_order'  			: 'date',
+			'event_type'  				: '',
+			'selected'					: 'false'
+		};
+		
+		$youtube_playlist_videos_defaults = {
+			'name' 		: 'Videos',
+			'url'  		: 'https://www.youtube.com/playlist?list=PLXWu0OP8--WQBIFNjw_PuF_PEIc0KE4xa',
+			'selected'	: 'false'
+		};
+		
+		$vimeo_user_videos_defaults = {
+			'name' 		: 'Vimeo User',
+			'url'  		: 'https://vimeo.com/alexgrigg',
+			'selected'	: 'false'
+		};
+		
+		$vimeo_channel_videos_defaults = {
+			'name' 		: 'Vimeo Channel',
+			'url'  		: 'https://vimeo.com/channels/staffpicks',
+			'selected'	: 'false'
+		};
+		
+		$vimeo_album_videos_defaults = {
+			'name' 		: 'Vimeo Album',
+			'url'  		: 'https://vimeo.com/album/1820347',
+			'selected'	: 'false'
+		};
+		
+		$vimeo_group_videos_defaults = {
+			'name' 		: 'Vimeo Group',
+			'url'  		: 'https://vimeo.com/groups/motion',
+			'selected'	: 'false'
+		};
+		
+		
+		
+/*
+function addYoutubeChannelUploads() {
+
+	$('#tab_holder').append('<div class="youmax_tab youtube_channel_uploads"><div class="control_holder"><b>YouTube Channel Uploads</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Uploads"/></div><br><div class="control_holder">Channel URL<input type="text" id="channel_url_'+tab_count+'" value="https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w"/></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div> <br><div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+function addYoutubeChannelPlaylists() {
+
+	$('#tab_holder').append('<div class="youmax_tab youtube_channel_playlists"><div class="control_holder"><b>YouTube Channel Playlists</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Playlists"/></div><br><div class="control_holder">Channel URL<input type="text" id="channel_url_'+tab_count+'" value="https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w"/></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div> <br><div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+function addYoutubeChannelEvents() {
+
+	$('#tab_holder').append('<div class="youmax_tab youtube_channel_events"><div class="control_holder"><b>YouTube Channel Events</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Events"/></div><br><div class="control_holder">Channel URL<input type="text" id="channel_url_'+tab_count+'" value="https://www.youtube.com/channel/UCvqRdlKsE5Q8mf8YXbdIJLw"/></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div> <br><div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+function addYoutubeChannelSearch() {
+
+	$('#tab_holder').append('<div class="youmax_tab youtube_channel_search"><div class="control_holder"><b>YouTube Channel Search</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Search"/></div><br><div class="control_holder">Restrict to Channels<input type="text" id="search_restrict_'+tab_count+'" value="https://www.youtube.com/channel/UC_IRYSp4auq7hKLvziWVH6w"/></div><br><div class="control_holder">Related To Video<input type="text" id="search_related_'+tab_count+'" value=""/></div><br><div class="control_holder">Search Query<input type="text" id="search_query_'+tab_count+'" value="inside out"/></div><br><div class="control_holder">Search Order<select id="search_order_'+tab_count+'"><option value="date" selected="selected">Date</option><option value="rating">Rating</option><option value="relevance">Relevance</option><option value="title">Title</option><option value="viewCount">View Count</option></select></div><br>       <div class="control_holder">Event Type<select id="search_events_'+tab_count+'"><option value="" selected="selected">None</option><option value="upcoming">Upcoming</option><option value="live">Live</option><option value="completed">Completed</option></select></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div><br>  <div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+function addYoutubePlaylistVideos() {
+
+	$('#tab_holder').append('<div class="youmax_tab youtube_playlist_videos"><div class="control_holder"><b>YouTube Playlist Videos</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Videos"/></div><br><div class="control_holder">Playlist URL<input type="text" id="playlist_url_'+tab_count+'" value="https://www.youtube.com/playlist?list=PLXWu0OP8--WQBIFNjw_PuF_PEIc0KE4xa"/></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div> <br><div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+function addVimeoUserVideos() {
+
+	$('#tab_holder').append('<div class="youmax_tab vimeo_user_videos"><div class="control_holder"><b>Vimeo User Videos</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Vimeo User"/></div><br><div class="control_holder">User URL<input type="text" id="user_url_'+tab_count+'" value="https://vimeo.com/alexgrigg"/></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div> <br><div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+function addVimeoChannelVideos() {
+
+	$('#tab_holder').append('<div class="youmax_tab vimeo_channel_videos"><div class="control_holder"><b>Vimeo Channel Videos</b></div><br><div class="control_holder">Tab Name <span class="mandatory">*</span><input type="text" id="tab_name_'+tab_count+'" value="Vimeo Channel"/></div><br><div class="control_holder">User URL<input type="text" id="channel_url_'+tab_count+'" value="https://vimeo.com/channels/staffpicks"/></div><br>  <div class="control_holder">Selected by Default<input type="checkbox" id="selected_tab_'+tab_count+'" /></div> <br><div class="remove_tab">x</div></div>');
+	tab_count++;
+
+}
+
+*/
+
+
+
+$('#tab_holder').on('click','.remove_tab',function(){
+	jQuery(this).parents('.youmax_tab').first().remove();
+});
+
+
+function generateJquery() {
+	$('#generated_output_highlighted').text('');
+	
+	var youtube_channel_uploads_exist=false,youtube_channel_playlists_exist=false,youtube_channel_events_exist=false,youtube_channel_search_exist=false,youtube_playlist_videos_exist=false,vimeo_user_videos_exist=false,vimeo_channel_videos_exist=false,vimeo_album_videos_exist=false,vimeo_group_videos_exist=false;
+	var jqueryCall = '$("#youmax").youmax({ \n\n';
+	
+	if($('#api_key').data("changed")) {
+		jqueryCall+='apiKey:"'+$('#api_key').val().trim()+'", \n';
+	}
+
+	if($('#vimeo_access_token').data("changed")) {
+	jqueryCall+='vimeoAccessToken:"'+$('#vimeo_access_token').val().trim()+'", \n';
+	}
+	
+	if($('#client_id').data("changed")) {
+	jqueryCall+='clientId:"'+$('#client_id').val().trim()+'", \n';	
+	}
+	
+	if($('#channel_url').data("changed")) {
+	jqueryCall+='channel:"'+$('#channel_url').val().trim()+'", \n';
+	}
+	
+	//youtube_channel_uploads
+	$youtube_channel_uploads = $('.youtube_channel_uploads');
+	if(null!=$youtube_channel_uploads && $youtube_channel_uploads.length>0) {
+		jqueryCall+='  youtube_channel_uploads:[ \n'
+		$('.youtube_channel_uploads').each(function(i,v){
+			$tab = $(this);
+
+			jqueryCall+='    { \n';
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=channel_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			youtube_channel_uploads_exist=true;
+
+		});
+		if(youtube_channel_uploads_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+	
+	//youtube_channel_playlists
+	$youtube_channel_playlists = $('.youtube_channel_playlists');
+	if(null!=$youtube_channel_playlists && $youtube_channel_playlists.length>0) {	
+		jqueryCall+='  youtube_channel_playlists:[ \n'
+		$('.youtube_channel_playlists').each(function(i,v){
+			$tab = $(this);
+
+			jqueryCall+='    { \n';			
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=channel_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			youtube_channel_playlists_exist=true;
+
+		});
+		if(youtube_channel_playlists_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+
+	//youtube_channel_events
+	$youtube_channel_events = $('.youtube_channel_events');
+	if(null!=$youtube_channel_events && $youtube_channel_events.length>0) {		
+		jqueryCall+='  youtube_channel_events:[ \n'
+		$('.youtube_channel_events').each(function(i,v){
+			$tab = $(this);
+			
+			jqueryCall+='    { \n';			
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=channel_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+' \n';
+
+			jqueryCall += '    }, \n\n';
+			youtube_channel_events_exist=true;
+
+		});
+		if(youtube_channel_events_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+	
+	
+	//youtube_channel_search
+	$youtube_channel_search = $('.youtube_channel_search');
+	if(null!=$youtube_channel_search && $youtube_channel_search.length>0) {
+		jqueryCall+='  youtube_channel_search:[ \n'
+		$('.youtube_channel_search').each(function(i,v){
+			$searchTab = $(this);
+			
+			jqueryCall+='    { \n';						
+			jqueryCall+='      name:"'+$searchTab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      restrictToChannels:"'+$searchTab.find('input[id^=search_restrict_]').val().trim()+'", \n';
+			jqueryCall+='      relatedTo:"'+$searchTab.find('input[id^=search_related_]').val().trim()+'", \n';
+			jqueryCall+='      searchQuery:"'+$searchTab.find('input[id^=search_query_]').val().trim()+'", \n';
+			jqueryCall+='      searchOrder:"'+$searchTab.find('select[id^=search_order_]').find(':selected').val()+'", \n';
+			jqueryCall+='      eventType:"'+$searchTab.find('select[id^=search_events_]').find(':selected').val()+'", \n';
+			selected = $searchTab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+			
+			jqueryCall += '    }, \n\n';
+			youtube_channel_search_exist=true;
+		});
+		
+		if(youtube_channel_search_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+
+	//youtube_playlist_videos
+	$youtube_playlist_videos = $('.youtube_playlist_videos');
+	if(null!=$youtube_playlist_videos && $youtube_playlist_videos.length>0) {
+		jqueryCall+='  youtube_playlist_videos:[ \n'
+		$('.youtube_playlist_videos').each(function(i,v){
+			$tab = $(this);
+			
+			jqueryCall+='    { \n';						
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=playlist_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			youtube_playlist_videos_exist=true;
+
+		});
+		if(youtube_playlist_videos_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+	
+	//vimeo_user_videos
+	$vimeo_user_videos = $('.vimeo_user_videos');
+	if(null!=$vimeo_user_videos && $vimeo_user_videos.length>0) {
+		jqueryCall+='  vimeo_user_videos:[ \n'
+		$('.vimeo_user_videos').each(function(i,v){
+			$tab = $(this);
+			
+			jqueryCall+='    { \n';						
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=user_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			vimeo_user_videos_exist=true;
+
+		});
+		if(vimeo_user_videos_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+	
+	//vimeo_channel_videos
+	$vimeo_channel_videos = $('.vimeo_channel_videos');
+	if(null!=$vimeo_channel_videos && $vimeo_channel_videos.length>0) {
+		jqueryCall+='  vimeo_channel_videos:[ \n'
+		$('.vimeo_channel_videos').each(function(i,v){
+			$tab = $(this);
+			
+			jqueryCall+='    { \n';						
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=channel_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			vimeo_channel_videos_exist=true;
+
+		});
+		if(vimeo_channel_videos_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+
+	
+	//vimeo_album_videos
+	$vimeo_album_videos = $('.vimeo_album_videos');
+	if(null!=$vimeo_album_videos && $vimeo_album_videos.length>0) {
+		jqueryCall+='  vimeo_album_videos:[ \n'
+		$('.vimeo_album_videos').each(function(i,v){
+			$tab = $(this);
+			
+			jqueryCall+='    { \n';						
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=channel_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			vimeo_album_videos_exist=true;
+
+		});
+		if(vimeo_album_videos_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+	
+
+	//vimeo_group_videos
+	$vimeo_group_videos = $('.vimeo_group_videos');
+	if(null!=$vimeo_group_videos && $vimeo_group_videos.length>0) {
+		jqueryCall+='  vimeo_group_videos:[ \n'
+		$('.vimeo_group_videos').each(function(i,v){
+			$tab = $(this);
+			
+			jqueryCall+='    { \n';						
+			jqueryCall+='      name:"'+$tab.find('input[id^=tab_name_]').val().trim()+'", \n';
+			jqueryCall+='      url:"'+$tab.find('input[id^=channel_url_]').val().trim()+'", \n';
+			selected = $tab.find('input[id^=selected_tab_]').is(':checked')?'true':'false';
+			jqueryCall+='      selected:'+selected+'\n';
+
+			jqueryCall += '    }, \n\n';
+			vimeo_group_videos_exist=true;
+
+		});
+		if(vimeo_group_videos_exist) {
+			jqueryCall=jqueryCall.slice(0,-1);
+		}
+		jqueryCall+='  ], \n\n'
+	}
+	
+	
+	//jqueryCall+='selectedTab:"'+$('#selected_tab').val().trim()+'", \n';
+
+	if($('#display_video').data("changed")) {
+	jqueryCall+='  displayVideo:"'+$('#display_video').find(':selected').val()+'", \n';
+	}
+	
+	if($('#always_use_dropdown').data("changed")) {
+	always_use_dropdown = $('#always_use_dropdown').is(':checked')?'true':'false';
+	jqueryCall+='  alwaysUseDropdown:'+always_use_dropdown+', \n';
+	}
+	
+	if($('#auto_play_video').data("changed")) {
+	auto_play_video = $('#auto_play_video').is(':checked')?'true':'false';
+	jqueryCall+='  autoPlayVideo:'+auto_play_video+', \n';
+	}
+	
+	if($('#display_first_video_on_load').data("changed")) {
+	display_first_video_on_load = $('#display_first_video_on_load').is(':checked')?'true':'false';
+	jqueryCall+='  displayFirstVideoOnLoad:'+display_first_video_on_load+', \n';
+	}
+	
+	if($('#skin_type').data("changed")) {
+	jqueryCall+='  skin:"'+$('#skin_type').find(':selected').val()+'", \n';
+	}
+	
+	//6.0
+
+	if($('#search_box_scope').data("changed")) {
+	jqueryCall+='  searchBoxScope:"'+$('#search_box_scope').find(':selected').val()+'", \n';
+	}
+	
+	if($('#play_icon_type').data("changed")) {
+	jqueryCall+='  playIconType:"'+$('#play_icon_type').find(':selected').val()+'", \n';
+	}
+	
+	if($('#link_new_pages').data("changed")) {
+	link_new_pages = $('#link_new_pages').is(':checked')?'true':'false';
+	jqueryCall+='  linkNewPages:'+link_new_pages+', \n';
+	}
+	
+	if($('#auto_load_comments').data("changed")) {
+	auto_load_comments = $('#auto_load_comments').is(':checked')?'true':'false';
+	jqueryCall+='  autoLoadComments:'+auto_load_comments+', \n';
+	}
+	
+	if($('#featured_video').data("changed")) {
+	jqueryCall+='  featuredVideo:"'+$('#featured_video').val().trim()+'", \n';
+	}
+	
+	//7.0
+
+	if($('#align_popup_to_top').data("changed")) {
+	align_popup_to_top = $('#align_popup_to_top').is(':checked')?'true':'false';
+	jqueryCall+='  alignPopupToTop:'+align_popup_to_top+', \n';
+	}
+	
+	if($('#video_protocol').data("changed")) {
+	jqueryCall+='  videoProtocol:"'+$('#video_protocol').find(':selected').val()+'", \n';
+	}
+	
+	if($('#comment_order').data("changed")) {
+	jqueryCall+='  commentOrder:"'+$('#comment_order').find(':selected').val()+'", \n';
+	}
+	
+	if($('#playlist_search_file').data("changed")) {
+	jqueryCall+='  playlistSearchFile:"'+$('#playlist_search_file').val().trim()+'", \n';
+	}
+	
+	if($('#user_website').data("changed")) {
+	jqueryCall+='  userWebsite:"'+$('#user_website').val().trim()+'", \n';
+	}
+	
+	if($('#video_mode').data("changed")) {
+	jqueryCall+='  videoMode:"'+$('#video_mode').find(':selected').val()+'", \n';
+	}
+	
+	if($('#share_link').data("changed")) {
+	jqueryCall+='  shareLink:"'+$('#share_link').find(':selected').val()+'", \n';
+	}
+	
+	if($('#widget_mode').data("changed")) {
+	widget_mode = $('#widget_mode').is(':checked')?'true':'false';
+	jqueryCall+='  widgetMode:'+widget_mode+', \n';
+	}
+	
+	
+	if($('#view_count_type').data("changed")) {
+	jqueryCall+='  viewCountType:"'+$('#view_count_type').find(':selected').val()+'", \n';
+	}
+	
+	if($('#like_comment_count_type').data("changed")) {
+	jqueryCall+='  likeCommentCountType:"'+$('#like_comment_count_type').find(':selected').val()+'", \n';
+	}
+	
+	if($('#header_count_type').data("changed")) {
+	jqueryCall+='  headerCountType:"'+$('#header_count_type').find(':selected').val()+'", \n';
+	}
+	
+	
+	
+	
+	if($('#load_mode').data("changed")) {
+	jqueryCall+='  loadMode:"'+$('#load_mode').find(':selected').val()+'", \n';
+	}
+	
+	if($('#load_button_size').data("changed")) {
+	jqueryCall+='  loadButtonSize:"'+$('#load_button_size').find(':selected').val()+'", \n';
+	}
+	
+	if($('#playlist_action').data("changed")) {
+	jqueryCall+='  playlistAction:"'+$('#playlist_action').find(':selected').val()+'", \n';
+	}
+	
+	if($('#video_player_theme').data("changed")) {
+	jqueryCall+='  videoPlayerTheme:"'+$('#video_player_theme').find(':selected').val()+'", \n';
+	}
+	
+	/*if($('#min_video_container_height').data("changed")) {
+	jqueryCall+='minVideoContainerHeight:"'+$('#min_video_container_height').val().trim()+'", \n';
+	}*/
+	
+	if($('#translator_file').data("changed")) {
+	jqueryCall+='  translatorFile:"'+$('#translator_file').val().trim()+'", \n';	
+	}
+	
+	
+	//show_events = $('#show_events').is(':checked')?'true':'false';
+	//jqueryCall+='showEvents:'+show_events+', \n';
+	
+	if($('#hide_header').data("changed")) {
+	hide_header = $('#hide_header').is(':checked')?'true':'false';
+	jqueryCall+='  hideHeader:'+hide_header+', \n';
+	}
+	
+	if($('#hide_navigation').data("changed")) {
+	hide_navigation = $('#hide_navigation').is(':checked')?'true':'false';
+	jqueryCall+='  hideNavigation:'+hide_navigation+', \n';
+	}
+	
+	if($('#hide_comments').data("changed")) {
+	hide_comments = $('#hide_comments').is(':checked')?'true':'false';
+	jqueryCall+='  hideComments:'+hide_comments+', \n';
+	}
+	
+	if($('#hide_video_thumbnails').data("changed")) {
+	hide_video_thumbnails = $('#hide_video_thumbnails').is(':checked')?'true':'false';
+	jqueryCall+='  hideVideoThumbnails:'+hide_video_thumbnails+', \n';
+	}
+	
+	if($('#hide_load_more').data("changed")) {
+	hide_load_more = $('#hide_load_more').is(':checked')?'true':'false';
+	jqueryCall+='  hideLoadMore:'+hide_load_more+', \n';
+	} 
+	
+	if($('#hide_video_details').data("changed")) {
+	hide_video_details = $('#hide_video_details').is(':checked')?'true':'false';
+	jqueryCall+='  hideVideoDetails:'+hide_video_details+', \n';
+	}
+	
+	if($('#hide_definition').data("changed")) {
+	hide_definition = $('#hide_definition').is(':checked')?'true':'false';
+	jqueryCall+='  hideDefinition:'+hide_definition+', \n';
+	}
+	
+	if($('#show_text_instead_of_icons').data("changed")) {
+	show_text_instead_of_icons = $('#show_text_instead_of_icons').is(':checked')?'true':'false';
+	jqueryCall+='  showTextInsteadOfIcons:'+show_text_instead_of_icons+', \n';
+	}
+	
+	if($('#show_title_in_video_player').data("changed")) {
+	show_title_in_video_player = $('#show_title_in_video_player').is(':checked')?'true':'false';
+	jqueryCall+='  showTitleInVideoPlayer:'+show_title_in_video_player+', \n';
+	}
+	
+	if($('#show_vimeo_likes_instead_of_views').data("changed")) {
+	show_vimeo_likes_instead_of_views = $('#show_vimeo_likes_instead_of_views').is(':checked')?'true':'false';
+	jqueryCall+='  showVimeoLikesInsteadOfViews:'+show_vimeo_likes_instead_of_views+', \n';
+	}
+	
+	//old
+	if($('#max_results').data("changed")) {
+	jqueryCall+='  maxResults:'+$('#max_results').val().trim()+', \n';
+	}
+
+	if($('#max_comments').data("changed")) {
+	jqueryCall+='  maxComments:'+$('#max_comments').val().trim()+', \n';
+	}
+
+/*	
+	if($('#inner_offset').data("changed")) {
+	jqueryCall+='innerOffset:'+$('#inner_offset').val().trim()+',';
+	}
+	
+	if($('#outer_offset').data("changed")) {
+	jqueryCall+='outerOffset:'+$('#outer_offset').val().trim()+',';
+	}
+	
+	if($('#min_item_width').data("changed")) {
+	jqueryCall+='minItemWidth:'+$('#min_item_width').val().trim()+',';
+	}
+	
+	if($('#max_item_width').data("changed")) {
+	jqueryCall+='maxItemWidth:'+$('#max_item_width').val().trim()+',';
+	}
+*/
+
+
+
+
+
+	if($('#four_column_container_width').data("changed")) {				
+		jqueryCall+='  fourColumnContainerWidth:"'+$('#four_column_container_width').val().trim()+'", \n';
+	}
+	
+	if($('#three_column_container_width').data("changed")) {				
+		jqueryCall+='  threeColumnContainerWidth:"'+$('#three_column_container_width').val().trim()+'", \n';
+	}
+	
+	if($('#two_column_container_width').data("changed")) {				
+		jqueryCall+='  twoColumnContainerWidth:"'+$('#two_column_container_width').val().trim()+'", \n';
+	}
+	
+	if($('#one_column_container_width').data("changed")) {				
+		jqueryCall+='  oneColumnContainerWidth:"'+$('#one_column_container_width').val().trim()+'", \n';
+	}
+	
+
+	if($('#five_column_thumbnail_width').data("changed")) {				
+		jqueryCall+='  fiveColumnThumbnailWidth=:'+$('#five_column_thumbnail_width').val().trim()+'", \n';
+	}
+
+	if($('#five_column_thumbnail_left_right_margin').data("changed")) {				
+		jqueryCall+='  fiveColumnThumbnailLeftRightMargin:"'+$('#five_column_thumbnail_left_right_margin').val().trim()+'", \n';
+	}
+	
+	
+	if($('#four_column_thumbnail_width').data("changed")) {				
+		jqueryCall+='  fourColumnThumbnailWidth:"'+$('#four_column_thumbnail_width').val().trim()+'", \n';
+	}
+
+	if($('#four_column_thumbnail_left_right_margin').data("changed")) {				
+		jqueryCall+='  fourColumnThumbnailLeftRightMargin:"'+$('#four_column_thumbnail_left_right_margin').val().trim()+'", \n';
+	}
+	
+
+	if($('#three_column_thumbnail_width').data("changed")) {				
+		jqueryCall+='  threeColumnThumbnailWidth:"'+$('#three_column_thumbnail_width').val().trim()+'", \n';
+	}
+
+	if($('#three_column_thumbnail_left_right_margin').data("changed")) {				
+		jqueryCall+='  threeColumnThumbnailLeftRightMargin:"'+$('#three_column_thumbnail_left_right_margin').val().trim()+'", \n';
+	}
+	
+	if($('#two_column_thumbnail_width').data("changed")) {				
+		jqueryCall+='  twoColumnThumbnailWidth:"'+$('#two_column_thumbnail_width').val().trim()+'", \n';
+	}
+
+	if($('#two_column_thumbnail_left_right_margin').data("changed")) {				
+		jqueryCall+='  twoColumnThumbnailLeftRightMargin:"'+$('#two_column_thumbnail_left_right_margin').val().trim()+'", \n';
+	}
+	
+	
+	if($('#one_column_thumbnail_width').data("changed")) {				
+		jqueryCall+='  oneColumnThumbnailWidth:"'+$('#one_column_thumbnail_width').val().trim()+'", \n';
+	}
+
+	if($('#one_column_thumbnail_left_right_margin').data("changed")) {				
+		jqueryCall+='  oneColumnThumbnailLeftRightMargin:"'+$('#one_column_thumbnail_left_right_margin').val().trim()+'", \n';
+	}
+	
+	
+	if($('#thumbnail_bottom_margin').data("changed")) {				
+		jqueryCall+='  thumbnailBottomMargin:"'+$('#thumbnail_bottom_margin').val().trim()+'", \n';
+	}
+
+	if($('#container_left_right_margin').data("changed")) {				
+		jqueryCall+='  containerLeftRightMargin:"'+$('#container_left_right_margin').val().trim()+'", \n';
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	if($('#max_container_width').data("changed")) {
+	jqueryCall+='  maxContainerWidth:'+$('#max_container_width').val().trim()+' \n';
+	}
+	
+	jqueryCall+='\n});';
+	
+	
+	var skin_type = $('#skin_type').find(':selected').val().replace(/\d+/g, '');
+	
+	scriptLink = '<!-- Include in your head section -->\n<!-- Include jQuery if not present already -->\n<script src="/path/to/jquery-1.9.1.min.js"><\/script>\n\n<!-- Include Youmax -->\n<script src="/path/to/jquery.youmax.min.js"><\/script>\n\n<!-- Include Youmax Styles -->\n<link rel="stylesheet" href="/path/to/youmax_'+skin_type+'.min.css"/> \n\n . \n . \n\n\n';
+	
+	//$('#generated_output_for_js_header').html(scriptLink);
+	
+	
+
+	jqueryCall = scriptLink + '<!-- Include in your body section -->\n<div id="youmax" class="youmax"><\/div> \n\n . \n . \n\n\n<script type="text/javascript">\n'+jqueryCall+'\n<\/script>';
+	
+	//jqueryCall = jqueryCall.replace(/</g,'&lt;');
+	//jqueryCall = jqueryCall.replace(/>/g,'&gt;');
+	
+	
+	
+	
+	$('#generated_output_highlighted').empty();
+	$('#generated_output_highlighted').text(jqueryCall);
+	//SyntaxHighlighter.highlight();
+	
+	$('#generated_output_highlighted').each(function(i, block) {
+		hljs.highlightBlock(block);
+	});
+
+	
+}
+
+
+$(document).ready(function(){
+	jQuery( "#tabs" ).tabs();
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_youtube_channel_uploads',function(){
+		addYoutubeChannelUploads($youtube_channel_uploads_defaults);
+		alert("YouTube Channel Uploads Added! \nScroll down and add your Channel URL");
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_youtube_channel_playlists',function(){
+		addYoutubeChannelPlaylists($youtube_channel_playlists_defaults);
+		alert("YouTube Channel Playlists Added! \nScroll down and add your Channel URL");		
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_youtube_channel_events',function(){
+		addYoutubeChannelEvents($youtube_channel_events_defaults);
+		alert("YouTube Channel Events Added! \nScroll down and add your Channel URL");		
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_youtube_channel_search',function(){
+		addYoutubeChannelSearch($youtube_channel_search_defaults);
+		alert("YouTube Channel Search Added! \nScroll down and add your Channel URL");		
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_youtube_playlist_videos',function(){
+		addYoutubePlaylistVideos($youtube_playlist_videos_defaults);
+		alert("YouTube Playlist Videos Added! \nScroll down and add your Playlist URL");		
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_vimeo_user_videos',function(){
+		addVimeoUserVideos($vimeo_user_videos_defaults);
+		alert("Vimeo User Videos Added! \nScroll down and add your Vimeo User URL");		
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_vimeo_channel_videos',function(){
+		addVimeoChannelVideos($vimeo_channel_videos_defaults);
+		alert("Vimeo Channel Videos Added! \nScroll down and add your Vimeo Channel URL");				
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_vimeo_album_videos',function(){
+		addVimeoAlbumVideos($vimeo_album_videos_defaults);
+		alert("Vimeo Album Videos Added! \nScroll down and add your Vimeo Album URL");				
+	});	
+	
+	jQuery('.youmax-admin').on('click','#youmax_add_vimeo_group_videos',function(){
+		addVimeoGroupVideos($vimeo_group_videos_defaults);
+		alert("Vimeo Group Videos Added! \nScroll down and add your Vimeo Group URL");				
+	});	
+	
+	
+
+	$(".control_holder select, .control_holder input").change(function(){
+		$(this).data("changed",true);
+	});
+	
+});
+
+
+function addYoutubeChannelUploads(defaults) {
+
+	console.log("defaults",defaults);
+	
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab youtube_channel_uploads"><div class="control_holder"><b>YouTube Channel Uploads</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">YouTube Channel URL</span><input type="text" id="channel_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div></div>');
+	tab_count++;
+
+}
+
+function addYoutubeChannelPlaylists(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab youtube_channel_playlists"><div class="control_holder"><b>YouTube Channel Playlists</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">YouTube Channel URL</span><input type="text" id="channel_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+function addYoutubeChannelEvents(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab youtube_channel_events"><div class="control_holder"><b>YouTube Channel Events</b><div class="remove_tab">x</div></div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">YouTube Channel URL</span><input type="text" id="channel_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+function addYoutubeChannelSearch(defaults) {
+
+	console.log(defaults);
+	
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab youtube_channel_search"><div class="control_holder"><b>YouTube Channel Search</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">Restrict to Channel</span><input type="text" id="search_restrict_'+tab_count+'" value="'+defaults.restrict_to_channels+'"/><span class="youmax-field-description">YouTube Channel URL - the search will be restricted to this channel.</span></div><br><div class="control_holder"><span class="youmax-field-title">Related To Video</span><input type="text" id="search_related_'+tab_count+'" value="'+defaults.related_to+'"/><span class="youmax-field-description">YouTube Video URL - videos similar to this video will be searched.</span></div><br><div class="control_holder"><span class="youmax-field-title">Search Query</span><input type="text" id="search_query_'+tab_count+'" value="'+defaults.search_query+'"/><span class="youmax-field-description">The search text.</span></div><br><div class="control_holder"><span class="youmax-field-title">Search Order</span><select id="search_order_'+tab_count+'"><option value="date" selected="selected">Date</option><option value="rating">Rating</option><option value="relevance">Relevance</option><option value="title">Title</option><option value="viewCount">View Count</option></select><span class="youmax-field-description">Order in which the search results will be displayed.</span></div><br>       <div class="control_holder"><span class="youmax-field-title">Event Type</span><select id="search_events_'+tab_count+'"><option value="" selected="selected">None</option><option value="upcoming">Upcoming</option><option value="live">Live</option><option value="completed">Completed</option></select><span class="youmax-field-description">Use this field to search live, upcoming or completed broadcasts.</span></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div></div>');
+	
+	jQuery("#search_order_"+tab_count).val(defaults.search_order);	
+	jQuery("#search_events_"+tab_count).val(defaults.event_type);	
+	
+	tab_count++;
+
+}
+
+function addYoutubePlaylistVideos(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab youtube_playlist_videos"><div class="control_holder"><b>YouTube Playlist Videos</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">YouTube Playlist URL</span><input type="text" id="playlist_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+function addVimeoUserVideos(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab vimeo_user_videos"><div class="control_holder"><b>Vimeo User Videos</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">Vimeo User URL</span><input type="text" id="user_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+function addVimeoChannelVideos(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab vimeo_channel_videos"><div class="control_holder"><b>Vimeo Channel Videos</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">Vimeo User URL</span><input type="text" id="channel_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+
+function addVimeoAlbumVideos(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab vimeo_album_videos"><div class="control_holder"><b>Vimeo Album Videos</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">Vimeo Album URL</span><input type="text" id="channel_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+
+function addVimeoGroupVideos(defaults) {
+
+	selected_string="";
+	if(defaults.selected=="true") {
+		selected_string="checked";
+	}
+
+	jQuery('#tab_holder').append('<div class="youmax_tab vimeo_group_videos"><div class="control_holder"><b>Vimeo Group Videos</b> <div class="remove_tab">x</div> </div><br><div class="control_holder"><span class="youmax-field-title">Tab Name</span><input type="text" id="tab_name_'+tab_count+'" value="'+defaults.name+'"/></div><br><div class="control_holder"><span class="youmax-field-title">Vimeo Group URL</span><input type="text" id="channel_url_'+tab_count+'" value="'+defaults.url+'"/></div><br>  <div class="control_holder"><span class="youmax-field-title">Selected by Default</span><input type="checkbox" id="selected_tab_'+tab_count+'" '+selected_string+' /><span class="youmax-field-description">Show videos from this source by default when Youmax loads.</span></div> </div>');
+	tab_count++;
+
+}
+
+
+
+
+
+
+</script>
+
+
+  </body>
+</html>
+
+
+
