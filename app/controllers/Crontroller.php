@@ -1,5 +1,8 @@
 <?php
 
+require "twitteroauth/autoload.php";
+use Abraham\TwitterOAuth\TwitterOAuth;
+
 class Crontroller extends Controller {
 
 	function afterroute() {
@@ -94,6 +97,11 @@ class Crontroller extends Controller {
 		//print_r($NotProcessedActus);
 		libxml_use_internal_errors(true);
 		ob_start();
+
+        $connection = new TwitterOAuth($this->f3->get('consumerKey'), $this->f3->get('consumerSecret'), $this->f3->get('accessToken'), $this->f3->get('accessTokenSecret'));
+        $connection->get("account/verify_credentials");
+
+        $configuration = $connection->get("help/configuration");
 
 		foreach($NotProcessedActus as $NPA) {
 			$processActu = array();
@@ -277,6 +285,24 @@ class Crontroller extends Controller {
 			$NPA->save();
 			echo "\n\n\n\n\n";
 
+            if (isset($configuration->short_url_length)) {
+                //error_log($configuration->short_url_length);
+
+                $nbChar = 140 - $configuration->short_url_length - 3;
+                //error_log($nbChar);
+
+                $news = strip_tags($processHTMLfinal);
+                //error_log($news);
+                $news2 = substr($news, 0, $nbChar);
+                //error_log($news2);
+                $news2 .= "[.]";
+                //error_log($news2);
+
+                $tweet = $news2 . "http://thetartuffebay.org/gibbactu/id/" . $NPA->id;
+                error_log($tweet);
+
+                $connection->post("statuses/update", array("status" => $tweet));
+            }
 		}
 
 		$myStr = ob_get_contents();

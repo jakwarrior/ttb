@@ -267,7 +267,7 @@ class AdminController extends Controller
             }
         } else {
             // si erreur, on tente de passer par un proxy pour faire la requête
-            $proxy_host = '212.47.235.81:3129';
+            $proxy_host = '218.189.26.20:8080';
 
             curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
             curl_setopt($ch, CURLOPT_PROXY, $proxy_host);
