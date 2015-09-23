@@ -101,7 +101,9 @@ class Crontroller extends Controller {
         $connection = new TwitterOAuth($this->f3->get('consumerKey'), $this->f3->get('consumerSecret'), $this->f3->get('accessToken'), $this->f3->get('accessTokenSecret'));
         $connection->get("account/verify_credentials");
 
-        $configuration = $connection->get("help/configuration");
+        if ($this->f3->get('enableTwitter') == "true") {
+            $configuration = $connection->get("help/configuration");
+        }
 
 		foreach($NotProcessedActus as $NPA) {
 			$processActu = array();
@@ -285,23 +287,22 @@ class Crontroller extends Controller {
 			$NPA->save();
 			echo "\n\n\n\n\n";
 
-            if (isset($configuration->short_url_length)) {
-                //error_log($configuration->short_url_length);
+            if ($this->f3->get('enableTwitter') == "true") {
+                if (isset($configuration->short_url_length)) {
+                    $nbChar = 140 - $configuration->short_url_length - 3;
+                    $news = strip_tags($processHTMLfinal);
 
-                $nbChar = 140 - $configuration->short_url_length - 3;
-                //error_log($nbChar);
+                    if (strlen($news) > ($nbChar + 3)) {
+                        $news2 = substr($news, 0, $nbChar);
+                        $news2 .= "..|";
+                    } else {
+                        $news2 = $news;
+                        $news2 .= " | ";
+                    }
 
-                $news = strip_tags($processHTMLfinal);
-                //error_log($news);
-                $news2 = substr($news, 0, $nbChar);
-                //error_log($news2);
-                $news2 .= "[.]";
-                //error_log($news2);
-
-                $tweet = $news2 . "http://thetartuffebay.org/gibbactu/id/" . $NPA->id;
-                error_log($tweet);
-
-                $connection->post("statuses/update", array("status" => $tweet));
+                    $tweet = $news2 . "http://www.thetartuffebay.org/gibbactu/id/" . $NPA->id;
+                    $connection->post("statuses/update", array("status" => $tweet));
+                }
             }
 		}
 

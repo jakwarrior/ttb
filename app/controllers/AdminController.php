@@ -3,6 +3,9 @@
 /*ini_set("log_errors", 1);
 ini_set("error_log", "/tmp/php-error.log");*/
 
+require "twitteroauth/autoload.php";
+use Abraham\TwitterOAuth\TwitterOAuth;
+
 class AdminController extends Controller
 {
 
@@ -87,6 +90,7 @@ class AdminController extends Controller
 
             if ($games->id) {
                 $GamesID[] = $games->id;
+                $tmpGame = $games->name;
 
             } else {
 
@@ -102,6 +106,7 @@ class AdminController extends Controller
                 $games->api_date = $value['date'];
                 $games->save();
                 $GamesID[] = $games->id;
+                $tmpGame = $games->name;
             }
 
             $games->reset();
@@ -134,6 +139,7 @@ class AdminController extends Controller
         $newCR->hfr_post_id = $crProcessed['hfr_post_id'];
         $newCR->hfr_user_id = $crProcessed['hfr_user_id'];
         $newCR->username = $crProcessed['username'];
+        $tmpUsername = $newCR->username;
         $newCR->content = htmlentities($crProcessed['content']);
         $newCR->content_raw = $crProcessed['content_raw'];
         $newCR->date_posted = $crProcessed['date_posted'];
@@ -158,6 +164,31 @@ class AdminController extends Controller
             $CrGame->game_id = $gid;
             $CrGame->save();
             $CrGame->reset();
+        }
+
+        if ($this->f3->get('enableTwitter') == "true") {
+
+            $connection = new TwitterOAuth($this->f3->get('consumerKey'), $this->f3->get('consumerSecret'), $this->f3->get('accessToken'), $this->f3->get('accessTokenSecret'));
+            $connection->get("account/verify_credentials");
+
+            $configuration = $connection->get("help/configuration");
+
+            if (isset($configuration->short_url_length)) {
+
+                $nbChar = 140 - $configuration->short_url_length - 3;
+                $CR = "CR de " . $tmpGame . " par " . $tmpUsername;
+
+                if (strlen($CR) > ($nbChar + 3)) {
+                    $CR2 = substr($CR, 0, $nbChar);
+                    $CR2 .= "..|";
+                } else {
+                    $CR2 = $CR;
+                    $CR2 .= " | ";
+                }
+
+                $tweet = $CR2 . "http://www.thetartuffebay.org/crotypedia/" . $CRID;
+                $connection->post("statuses/update", array("status" => $tweet));
+            }
         }
 
         echo 'CR ajouté > <a target="_blank" href="/crotypedia/' . $CRID . '">voir sur le site</a>';
@@ -315,11 +346,5 @@ class AdminController extends Controller
         //print_r($manage);
 
         echo json_encode($return);
-    }
-
-    function startsWith($haystack, $needle)
-    {
-        // search backwards starting from haystack length characters from the end
-        return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
     }
 }
