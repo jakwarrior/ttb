@@ -88,6 +88,12 @@ class Controller {
                         'tcolor' => 'white',
                         'icon' => 'url(/ui/images/mods.png)');
 
+        $menu[] = array('title' => 'Sondages',
+                        'url' =>   $this->f3->get('ALIASES.sondages'),
+                        'color' => 'rgb(100, 65, 165)',
+                        'tcolor' => 'white',
+                        'icon' => 'url(/ui/images/poll.png)');
+
         $menu[] = array('title' => 'Topic PC',
                         /*'url' =>   $this->f3->get('ALIASES.tupc_list'),*/
                         'url' => 'http://forum.hardware.fr/hfr/JeuxVideo/PC/joueurs-downgrade-edition-sujet_177180_1.htm',
