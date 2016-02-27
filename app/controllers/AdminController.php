@@ -275,6 +275,7 @@ class AdminController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_USERAGENT,'TheTartuffeBayFaitUneRequeteAGiantBomb');
 
         $html = curl_exec($ch);
         $manage = (array)json_decode($html);
@@ -294,11 +295,10 @@ class AdminController extends Controller
                 if (!property_exists($result, 'date')) {
                     unset($manage['results'][$k]);
                 }
-
             }
         } else {
             // si erreur, on tente de passer par un proxy pour faire la requête
-            $proxy_host = '218.189.26.20:8080';
+            $proxy_host = 'tetcorporation.fr:8432';
 
             curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
             curl_setopt($ch, CURLOPT_PROXY, $proxy_host);
