@@ -7,13 +7,15 @@
 
 		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
 
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="ui/jquery-ui/jquery-ui.css">
         <script src="ui/jquery-ui/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="ui/js/ttb.js"></script>
+        
+        <link rel="alternate" type="application/rss+xml" title="Le RSS 100% tartuffe" href="{{ @ALIASES.rss_all }}" />
 
         <check if="{{ \Base::instance()->exists('includeJsCssAccount') && (@includeJsCssAccount == 'true') }}">
             <true>

@@ -2,36 +2,38 @@
 // @name        HFR HTML5 viewer
 // @description webm embed
 // @include     http://forum.hardware.fr/*
-// @version     1.1.5
+// @version     1.1.6
 // @grant       none
+// @icon        http://reho.st/self/40f387c9f48884a57e8bbe05e108ed4bd59b72ce.png
 // @downloadURL http://www.thetartuffebay.org/mod/HFR_HTML5_viewer.user.js
 // @updateURL   http://www.thetartuffebay.org/mod/HFR_HTML5_viewer.user.js
 // ==/UserScript==
 
 //Version 1 : affichage directement dans HFR des liens vers des fichiers webm/mp4/gifv/ogv |  S'il y a un lien qui pointe sur des gif sur imgur, le script remplace automatiquement le gif par le gifv plus rapide à télécharger.
-//Version 1.1 : auto-mute de toutes les vidéos | les vidéos ne sont plus affichées dans les citations | tous les gif sur imgur dans les balises "img" sont automatiquement remplacés par leur équivalent gifv plus rapide à télécharger 
+//Version 1.1 : auto-mute de toutes les vidéos | les vidéos ne sont plus affichées dans les citations | tous les gif sur imgur dans les balises "img" sont automatiquement remplacés par leur équivalent gifv plus rapide à télécharger
 //   | support direct de gfycat | ajout d'un saut de ligne avant et après les vidéos
 //Version 1.1.1 : correction d'un bug sous FF
 //Version 1.1.2 : correction d'un bug dans le cas où l'url contiendrait "webm" ou une autre extension
 //Version 1.1.3 : ajout de @downloadURL et @updateURL
 //Version 1.1.4 : affichage de la source de la vidéo sous celle-ci | si une vidéo est plus large que la largeur de la page, elle est redimensionnée à la taille max de la page
 //Version 1.1.5 : le calcul se fait sur le nodeValue et non le href pour éviter un bug
+//Version 1.1.6 : correction bug gfycat
 
-'use strict';
+"use strict";
 
 var global;
 
 function main()
-{   
+{
     var videos = document.querySelectorAll('.spoiler a, .messCase2 > div[id] > p > a');
 
     for (var i = 0; i < videos.length; i++)
     {
         var link = videos[i].href;
-        var link2 = videos[i].firstChild.nodeValue
+        var link2 = videos[i].firstChild.nodeValue;
         var reg=/\.[0-9a-z]+$/i;
         var extension = reg.exec(link2);
-        
+
         if (link.length > 0) {
             if (extension)
             {
@@ -80,17 +82,17 @@ function main()
                     video.controls= true;
 
                     var source = document.createElement('source');
-                    source.src = "http://zippy.gfycat.com/" + res[res.length-1] + ".webm";
+                    source.src = "https://zippy.gfycat.com/" + res[res.length-1] + ".webm";
                     source.type = "video/webm";
                     video.appendChild(source);
 
                     var source2 = document.createElement('source');
-                    source2.src = "http://fat.gfycat.com/" + res[res.length-1] + ".webm";
+                    source2.src = "https://fat.gfycat.com/" + res[res.length-1] + ".webm";
                     source2.type = "video/webm";
                     video.appendChild(source2);
 
                     var source3 = document.createElement('source');
-                    source3.src = "http://giant.gfycat.com/" + res[res.length-1] + ".webm";
+                    source3.src = "https://giant.gfycat.com/" + res[res.length-1] + ".webm";
                     source3.type = "video/webm";
                     video.appendChild(source3);
 
@@ -104,10 +106,10 @@ function main()
             }
         }
     }
-       
+
     var myVideos = document.querySelectorAll('video');
     global = myVideos;
-    
+
     for (var i = 0; i < myVideos.length; i++)
     {
         if (myVideos[i]) {
@@ -120,7 +122,7 @@ function naturalSize() {
     for (var i = 0; i < global.length; i++)
     {
         if (global[i] && global[i].videoWidth > 0)
-        {           
+        {
             if (global[i].videoWidth >= global[i].parentNode.offsetWidth) {
                 global[i].style.width = "100%";
                 global[i].style.height = "auto";
@@ -147,20 +149,20 @@ window.onload = main;
 (function imgur2() {
   var links = document.querySelectorAll('img');
   for (var i = 0; i < links.length; i++) {
-    
+
     var a = links.item(i);
     var b = a.src.indexOf("i.imgur.com");
-    if (a.src && b > -1 && a.src.match(/\.gif$/i)) 
+    if (a.src && b > -1 && a.src.match(/\.gif$/i))
     {
         var parent = a.parentElement;
-        
+
         var video = document.createElement('video');
         video.src = a.src.replace("gif", "mp4");
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
         video.controls= false;
-        
+
         parent.replaceChild(video, a);
     }
   }

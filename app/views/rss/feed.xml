@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
 <channel>
-  <title>thetartuffebay.org - {{ @feed_title}}</title>
+  <title>TheTartuffeBay.org - {{ @feed_title}}</title>
   <atom:link href="http://www.{{ @feed_url}}" rel="self" type="application/rss+xml"/>
   <link>http://{{ @site }}</link>
-  <description>Le sanctuaire des tartuffes</description>
+  <description>Le RSS 100% tartuffe</description>
   <language>fr-fr</language>
   <sy:updatePeriod>hourly</sy:updatePeriod>
   <sy:updateFrequency>3</sy:updateFrequency>
@@ -11,7 +12,14 @@
   <ttl>60</ttl>
   <repeat group="{{ @feeds }}" value="{{ @item }}">
     <item>
-      <title><check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }}</check><check if="{{ @item['type'] == 'cr'}}">CR {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }}</check></title> <link>http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}</link>
+      <title>
+          <check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }} par {{@item['username']}}</check>
+          <check if="{{ @item['type'] == 'cr'}}">CR de {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }} par {{@item['username']}}</check>
+      </title>
+        <link>
+        <check if="{{ @item['type'] == 'actu'}}">http://www.{{ @site }}/gibbactu/id/{{@item['id']}}</check>
+        <check if="{{ @item['type'] == 'cr'}}">http://www.{{ @site }}/crotypedia/{{@item['id']}}</check>
+        </link>
       <pubDate>{{ date(DATE_RSS, strtotime(@item['date_posted']) ) }}</pubDate>
       <dc:creator>
       <![CDATA[ {{ htmlspecialchars(@item['username'], ENT_QUOTES) }} ]]>

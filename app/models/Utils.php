@@ -74,17 +74,17 @@ class Utils extends Controller
                     $video->setAttribute('controls', '');
 
                     $source = $doc->createElement('source');
-                    $source->setAttribute('src', 'http://zippy.gfycat.com/' . $res[count($res)-1] . '.webm');
+                    $source->setAttribute('src', 'https://zippy.gfycat.com/' . $res[count($res)-1] . '.webm');
                     $source->setAttribute('type', 'video/webm');
                     $video->appendChild($source);
 
                     $source2 = $doc->createElement('source');
-                    $source2->setAttribute('src', 'http://fat.gfycat.com/' . $res[count($res)-1] . '.webm');
+                    $source2->setAttribute('src', 'https://fat.gfycat.com/' . $res[count($res)-1] . '.webm');
                     $source2->setAttribute('type', 'video/webm');
                     $video->appendChild($source2);
 
                     $source3 = $doc->createElement('source');
-                    $source3->setAttribute('src', 'http://giant.gfycat.com/' . $res[count($res)-1] . '.webm');
+                    $source3->setAttribute('src', 'https://giant.gfycat.com/' . $res[count($res)-1] . '.webm');
                     $source3->setAttribute('type', 'video/webm');
                     $video->appendChild($source3);
 
@@ -101,7 +101,7 @@ class Utils extends Controller
 
                     if (isset($match[1]))
                     {
-                        $address = 'http://www.youtube.com/embed/' . $match[1];
+                        $address = 'https://www.youtube.com/embed/' . $match[1];
 
                         $container = $doc->createElement('div');
                         $container->setAttribute('class', 'video-container');
