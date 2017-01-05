@@ -1,5 +1,5 @@
 <div class="gibbactus">
-	{{ @item['content'] | raw | esc }}
+	{{ @item['content'] | raw }}
 
 	<a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}" class="date" id="{{ @item['id'] }}" target="_blank">
 		{{ @item['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@item['date_posted']) ) }} &#8675;

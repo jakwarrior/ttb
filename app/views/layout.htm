@@ -5,29 +5,29 @@
 		<title><check if="{{ isset(@site_title) }}">{{ @site_title }}</check><check if="{{ !isset(@site_title) }}">{{ @site }}</check></title>
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
 
-		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="/ui/css/theme.css" type="text/css" />
 
 		<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="ui/jquery-ui/jquery-ui.css">
-        <script src="ui/jquery-ui/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="ui/js/ttb.js"></script>
+        <link rel="stylesheet" href="/ui/jquery-ui/jquery-ui.css">
+        <script src="/ui/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/ui/js/ttb.js"></script>
         
         <link rel="alternate" type="application/rss+xml" title="Le RSS 100% tartuffe" href="{{ @ALIASES.rss_all }}" />
 
         <check if="{{ \Base::instance()->exists('includeJsCssAccount') && (@includeJsCssAccount == 'true') }}">
             <true>
-                <script type="text/javascript" src="ui/js/sha512.js"></script>
-                <link rel="stylesheet" href="ui/css/pure-min.css" type="text/css" />
-                <link rel="stylesheet" href="ui/css/menu.css" type="text/css" />
+                <script type="text/javascript" src="/ui/js/sha512.js"></script>
+                <link rel="stylesheet" href="/ui/css/pure-min.css" type="text/css" />
+                <link rel="stylesheet" href="/ui/css/menu.css" type="text/css" />
             </true>
         </check>
 
         <check if="{{ \Base::instance()->exists('includeJsCssEdition') && (@includeJsCssEdition == 'true') }}">
             <true>
-                <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+                <script src="/tinymce/js/tinymce/tinymce.min.js"></script>
             </true>
         </check>
 
@@ -41,23 +41,23 @@
 
         <check if="{{ \Base::instance()->exists('includeJsCssAgenda') && (@includeJsCssAgenda == 'true') }}">
             <true>
-                <script type="text/javascript" src="ui/js/jquery-ui-timepicker-addon.js"></script>
-                <link rel="stylesheet" href="ui/css/jquery-ui-timepicker-addon.css" type="text/css" />
+                <script type="text/javascript" src="/ui/js/jquery-ui-timepicker-addon.js"></script>
+                <link rel="stylesheet" href="/ui/css/jquery-ui-timepicker-addon.css" type="text/css" />
             </true>
         </check>
 
         <check if="{{ \Base::instance()->exists('includeJsCssImportCr') && (@includeJsCssImportCr == 'true') }}">
             <true>
-                <link rel="stylesheet" href="ui/css/loading-bar.css" type="text/css" />
-                <link rel="stylesheet" href="lib/code.css" type="text/css" />
-                <link rel="stylesheet" href="ui/css/admin.css" type="text/css" />
+                <link rel="stylesheet" href="/ui/css/loading-bar.css" type="text/css" />
+                <link rel="stylesheet" href="/lib/code.css" type="text/css" />
+                <link rel="stylesheet" href="/ui/css/admin.css" type="text/css" />
                 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
             </true>
         </check>
 
-        <script type="text/javascript" src="ui/js/jquery.magnific-popup.js"></script>
-        <link rel="stylesheet" href="ui/css/magnific-popup.css" type="text/css" />
-        <script type="text/javascript" src="ui/js/jquery.simplemodal.1.4.4.min.js"></script>
+        <script type="text/javascript" src="/ui/js/jquery.magnific-popup.js"></script>
+        <link rel="stylesheet" href="/ui/css/magnific-popup.css" type="text/css" />
+        <script type="text/javascript" src="/ui/js/jquery.simplemodal.1.4.4.min.js"></script>
 
 		<link rel="shortcut icon" href="http://www.thetartuffebay.org/favicon.ico?v=4" />
 

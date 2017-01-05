@@ -12,7 +12,7 @@
     </div>
 
     <div class="gibbactus">
-        {{ @page['content'] | raw | esc }}
+        {{ @page['content'] | raw }}
 
         <a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@page['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@page['hfr_post_id']}}" class="date" id="{{ @page['id'] }}" target="_blank">
             {{ @page['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@page['date_posted']) ) }} &#8675;
