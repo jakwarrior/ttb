@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
 <channel>
   <title>TheTartuffeBay.org - {{ @feed_title}}</title>
@@ -12,14 +11,7 @@
   <ttl>60</ttl>
   <repeat group="{{ @feeds }}" value="{{ @item }}">
     <item>
-      <title>
-          <check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }} par {{@item['username']}}</check>
-          <check if="{{ @item['type'] == 'cr'}}">CR de {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }} par {{@item['username']}}</check>
-      </title>
-        <link>
-        <check if="{{ @item['type'] == 'actu'}}">http://www.{{ @site }}/gibbactu/id/{{@item['id']}}</check>
-        <check if="{{ @item['type'] == 'cr'}}">http://www.{{ @site }}/crotypedia/{{@item['id']}}</check>
-        </link>
+      <title><check if="{{ @item['type'] == 'actu'}}">Gibb'Actu de {{ date('H\hi', strtotime(@item['date_posted']) ) }} par {{@item['username']}}</check><check if="{{ @item['type'] == 'cr'}}">CR de {{ htmlspecialchars(html_entity_decode(@item['games']), ENT_QUOTES) }} par {{@item['username']}}</check></title><link><check if="{{ @item['type'] == 'actu'}}">http://www.{{ @site }}/gibbactu/id/{{@item['id']}}</check><check if="{{ @item['type'] == 'cr'}}">http://www.{{ @site }}/crotypedia/{{@item['id']}}</check></link>
       <pubDate>{{ date(DATE_RSS, strtotime(@item['date_posted']) ) }}</pubDate>
       <dc:creator>
       <![CDATA[ {{ htmlspecialchars(@item['username'], ENT_QUOTES) }} ]]>
