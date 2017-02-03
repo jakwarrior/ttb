@@ -1,7 +1,7 @@
 <div class="gibbactus">
 	{{ @item['content'] | raw }}
 
-	<a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}" class="date" id="{{ @item['id'] }}" target="_blank">
+	<a href="/gibbactu/id/{{@item['id']}}" class="date" id="{{ @item['id'] }}">
 		{{ @item['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@item['date_posted']) ) }} &#8675;
 	</a>
 
@@ -10,7 +10,11 @@
                     && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')
                     && isset(@item['checkActuPossession']) && (@item['checkActuPossession'] == 'true')) }}">
         <true>
-            <br><br><a href="{{@ALIASES.actus_list . '/edit/' . @item['id']}}" class="edit">Éditer &rsaquo;</a>
+            <br><br><a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}" target="_blank" class="edit">Lire sur HFR &rsaquo;</a>
+            <br><a href="{{@ALIASES.actus_list . '/edit/' . @item['id']}}" class="edit">Éditer &rsaquo;</a>
         </true>
+        <false>
+            <br><br><a href="http://forum.hardware.fr/forum2.php?config=hfr.inc&amp;cat=5&amp;subcat=249&amp;post=177180&amp;page=1&amp;p=1&amp;sondage=&amp;owntopic=&amp;trash=&amp;trash_post=&amp;print=&amp;numreponse={{@item['hfr_post_id']}}&amp;quote_only=0&amp;new=0&amp;nojs=0#t{{@item['hfr_post_id']}}" target="_blank" class="edit">Lire sur HFR &rsaquo;</a>
+        </false>
     </check>
 </div>
