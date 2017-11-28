@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name        HFR_Gibbactu
 // @description Les gibbactus, what else
-// @include     http://forum.hardware.fr/*
-// @version     1.0.0
+// @include     https://forum.hardware.fr/*
+// @version     1.0.1
 // @grant       none
 // @downloadURL http://www.thetartuffebay.org/mod/HFR_Gibbactu.user.js
 // @updateURL   http://www.thetartuffebay.org/mod/HFR_Gibbactu.user.js

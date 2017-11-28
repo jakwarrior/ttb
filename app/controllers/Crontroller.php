@@ -25,7 +25,7 @@ class Crontroller extends Controller {
 		$cron = $crons->load(array('name = ?','gibbactu'));
 
 		//On va récupérer les messages :
-		$url = "http://forum.hardware.fr/forum2.php?post=177180&cat=5&config=hfr.inc&cache=&page=1&sondage=0&owntopic=0&word=GIBBACTU&firstnum=". $cron->last_id ."&currentnum=0&filter=1";
+		$url = "https://forum.hardware.fr/forum2.php?post=177180&cat=5&config=hfr.inc&cache=&page=1&sondage=0&owntopic=0&word=GIBBACTU&firstnum=". $cron->last_id ."&currentnum=0&filter=1";
 		//echo $url."<br/>";
 
         //echo "SERVER_ADDR : ".$_SERVER['SERVER_ADDR']."<br/>";;
@@ -270,7 +270,7 @@ class Crontroller extends Controller {
 			$processHTMLfinal = htmlentities(str_replace("<p><br>", '<p>', html_entity_decode($processHTMLfinal)));
 			//
 
-			$processHTMLfinal = htmlentities(str_replace('href="/hfr/', 'target="_blank" href="http://forum.hardware.fr/hfr/', html_entity_decode($processHTMLfinal)));
+			$processHTMLfinal = htmlentities(str_replace('href="/hfr/', 'target="_blank" href="https://forum.hardware.fr/hfr/', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/style="[a-zA-Z0-9:;\.\s\(\)\-\,]*"/i', '', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/onload="[^\"]+"/i', 'onload="return;"', html_entity_decode($processHTMLfinal)));
 			$processHTMLfinal = htmlentities(preg_replace('/title="[^\"]+"/i', '', html_entity_decode($processHTMLfinal)));

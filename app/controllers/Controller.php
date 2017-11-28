@@ -96,7 +96,7 @@ class Controller {
 
         $menu[] = array('title' => 'Topic PC',
                         /*'url' =>   $this->f3->get('ALIASES.tupc_list'),*/
-                        'url' => 'http://forum.hardware.fr/hfr/JeuxVideo/PC/joueurs-downgrade-edition-sujet_177180_1.htm',
+                        'url' => 'https://forum.hardware.fr/hfr/JeuxVideo/PC/joueurs-downgrade-edition-sujet_177180_1.htm',
                         'color' => '#f18f18',
                         'tcolor' => 'white',
                         'icon' => 'url(/ui/images/hfr.png)');

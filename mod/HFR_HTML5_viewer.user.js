@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name        HFR HTML5 viewer
 // @description webm embed
-// @include     http://forum.hardware.fr/*
-// @version     1.1.6
+// @include     https://forum.hardware.fr/*
+// @version     1.1.7
 // @grant       none
 // @icon        http://reho.st/self/40f387c9f48884a57e8bbe05e108ed4bd59b72ce.png
 // @downloadURL http://www.thetartuffebay.org/mod/HFR_HTML5_viewer.user.js
@@ -18,6 +18,7 @@
 //Version 1.1.4 : affichage de la source de la vidéo sous celle-ci | si une vidéo est plus large que la largeur de la page, elle est redimensionnée à la taille max de la page
 //Version 1.1.5 : le calcul se fait sur le nodeValue et non le href pour éviter un bug
 //Version 1.1.6 : correction bug gfycat
+//Version 1.1.7 : correction pour passage du forum en HTTPS
 
 "use strict";
 

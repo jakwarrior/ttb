@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name HFR_Video_Link_Replacer_TTB_Edition
-// @version 0.1.8
+// @version 0.1.9
 // @namespace http://noledgedis.com/
 // @description Replace a youtube, dailymotion or vimeo link by an embed video
-// @include http://forum.hardware.fr/*
+// @include https://forum.hardware.fr/*
 // @grant GM_info
 // @grant GM_deleteValue
 // @grant GM_getValue

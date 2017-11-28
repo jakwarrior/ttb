@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name          [HFR] Flux RSS TTB Edition
-// @version       1.0.1
+// @version       1.0.2
 // @description   permet d'avoir les infos de son choix en direct
 // @icon          http://reho.st/self/40f387c9f48884a57e8bbe05e108ed4bd59b72ce.png
 // @downloadURL   http://www.thetartuffebay.org/mod/HFR_Flux_RSS_TTB.user.js
 // @updateURL     http://www.thetartuffebay.org/mod/HFR_Flux_RSS_TTB.user.js
-// @include       http://forum.hardware.fr/*
+// @include       https://forum.hardware.fr/*
 // @noframes
 // @grant         GM_info
 // @grant         GM_deleteValue
@@ -56,7 +56,7 @@ if (typeof GM_getValue("TTBRSS_speed") === 'undefined') {
 }
 
 if (typeof GM_getValue("TTBRSS_icon") === 'undefined') {
-	GM_setValue("TTBRSS_icon", "http://forum-images.hardware.fr/icones/redface.gif");
+	GM_setValue("TTBRSS_icon", "https://forum-images.hardware.fr/icones/redface.gif");
 }
 
 var getElementByXpath = function(path, element) {
