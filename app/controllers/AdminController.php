@@ -175,7 +175,7 @@ class AdminController extends Controller
 
             if (isset($configuration->short_url_length)) {
 
-                $nbChar = 140 - $configuration->short_url_length - 3;
+                $nbChar = 280 - $configuration->short_url_length - 3;
                 $CR = "CR de " . $tmpGame . " par " . $tmpUsername;
 
                 if (strlen($CR) > ($nbChar + 3)) {
@@ -269,18 +269,28 @@ class AdminController extends Controller
         $query = $request['term'];
 //,platforms:94
         $url = 'http://www.giantbomb.com/api/games/?api_key=' . $this->f3->get('giantbombAPI') . '&format=json&filter=name:' . urlencode($query) . ',platforms:94&field_list=id,name,image,original_release_date,expected_release_year&sort=name:asc';
-        //echo $url;
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_USERAGENT,'TheTartuffeBayFaitUneRequeteAGiantBomb');
+        $context = stream_context_create(['http' => ['user_agent' => 'TheTartuffeBayFaitUneRequeteAGiantBomb']]);
+        $response = file_get_contents($url, false, $context);
 
-        $html = curl_exec($ch);
-        $manage = (array)json_decode($html);
+        //$ch = curl_init();
+        //curl_setopt($ch, CURLOPT_URL, $url);
+        //curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 100);
+        //curl_setopt($ch, CURLOPT_TIMEOUT, 100);
+        //curl_setopt($ch, CURLOPT_USERAGENT,'TheTartuffeBayFaitUneRequeteAGiantBomb');
+
+        //$html = curl_exec($ch);
+        //error_log($html);
+        $manage = (array)json_decode($response);
+        //error_log( print_r($manage, TRUE) );
+
+        //unset($manage);
+        //error_log(isset($manage['results']));
 
         if (isset($manage['results'])) {
+            error_log("pas proxy");
             foreach ($manage['results'] as $k => $result) {
 
                 if ($result->original_release_date) $result->date_release = date('Y', strtotime($result->original_release_date));
@@ -297,14 +307,34 @@ class AdminController extends Controller
                 }
             }
         } else {
+            error_log("proxy");
             // si erreur, on tente de passer par un proxy pour faire la requête
-            $proxy_host = 'tetcorporation.fr:8432';
+            $proxy_host = '88.185.161.92:8432';
 
-            curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true);
-            curl_setopt($ch, CURLOPT_PROXY, $proxy_host);
+            // curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
+            //curl_setopt($ch, CURLOPT_PROXY, $proxy_host);
+            //curl_setopt($ch, CURLOPT_URL, $url);
 
-            $html = curl_exec($ch);
-            $manage = (array)json_decode($html);
+            //curl_setopt($ch, CURLOPT_PROXY, '88.185.161.92');
+            //curl_setopt($ch, CURLOPT_PROXYPORT, '8432');
+
+            $opts = array(
+                'http'=>array(
+                    'method'=>"GET",
+                    'proxy' => 'tcp://88.185.161.92:8432',
+                    'request_fulluri' => true,
+                    'user_agent' => 'TheTartuffeBayFaitUneRequeteAGiantBomb',
+                )
+            );
+
+            $context = stream_context_create($opts);
+
+            $response = file_get_contents($url, false, $context);
+            //error_log($response);
+
+            //$html = curl_exec($ch);
+            //error_log($html);
+            $manage = (array)json_decode($response);
 
             if (isset($manage['results'])) {
                 foreach ($manage['results'] as $k => $result) {
@@ -344,6 +374,8 @@ class AdminController extends Controller
         $return['games'] = array_merge($arrfromDB, array_values($manage['results']));
         //$return['index'] = $request['index'];
         //print_r($manage);
+
+        unset($manage);
 
         echo json_encode($return);
     }

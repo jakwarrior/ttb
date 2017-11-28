@@ -11,6 +11,16 @@ class Crontroller extends Controller {
 
 	public function gibbactuRaw()
   {
+      // TEST IP
+      //$url2 = "http://whatismyip.org/";
+      //$ch2 = curl_init();
+      //curl_setopt($ch2, CURLOPT_URL,$url2);
+      //curl_setopt($ch2, CURLOPT_RETURNTRANSFER,true);
+      //$html2 = curl_exec($ch2);
+      //echo "IP<br/>";
+      //echo $html2."<br/>";
+
+
 	  $crons = new Cron($this->db);
 		$cron = $crons->load(array('name = ?','gibbactu'));
 
@@ -18,10 +28,14 @@ class Crontroller extends Controller {
 		$url = "http://forum.hardware.fr/forum2.php?post=177180&cat=5&config=hfr.inc&cache=&page=1&sondage=0&owntopic=0&word=GIBBACTU&firstnum=". $cron->last_id ."&currentnum=0&filter=1";
 		//echo $url."<br/>";
 
+        //echo "SERVER_ADDR : ".$_SERVER['SERVER_ADDR']."<br/>";;
+        //echo "REMOTE_ADDR : ".$_SERVER['REMOTE_ADDR']."<br/>";;
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
 		$html = curl_exec($ch);
+        //echo $html."<br/>";
 
 		libxml_use_internal_errors(true);
 
@@ -35,6 +49,7 @@ class Crontroller extends Controller {
 		$last_id = $cron->last_id;
 		foreach ($divsMessage as $key => $node)
 		{
+            //echo "NEW ACTU";
 			$newActu = array();
 			//echo $dom->saveHTML($node);
 			//var_dump($xpath->query('.//td[@class = "messCase2"]//a[contains(@href, "profil-")]', $node)->item(0)->getAttribute('href')) ;
@@ -56,6 +71,7 @@ class Crontroller extends Controller {
 
 			//le message est candidat à l'actu, on sauvegarde le contenu du message pour le post Process
 			$newActu['content_raw'] = $dom->saveHTML($node);
+            //echo $newActu['content_raw'];
 			$newActus[] = $newActu;
 
 			//On enregistre l'ID du message pour le cron.
@@ -79,6 +95,7 @@ class Crontroller extends Controller {
 		{
 			$actu->content_raw = $actus['content_raw'];
 			$actu->content_raw = $actus['content_raw'];
+
 			$actu->save();
 			$actu->reset();
 		}
@@ -289,7 +306,7 @@ class Crontroller extends Controller {
 
             if ($this->f3->get('enableTwitter') == "true") {
                 if (isset($configuration->short_url_length)) {
-                    $nbChar = 140 - $configuration->short_url_length - 3;
+                    $nbChar = 280 - $configuration->short_url_length - 3;
                     $news = strip_tags($processHTMLfinal);
 
                     if (strlen($news) > ($nbChar + 3)) {
