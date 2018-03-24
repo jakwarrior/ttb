@@ -4,7 +4,7 @@
 	<a href="/gibbactu/id/{{@item['id']}}" class="date" id="{{ @item['id'] }}">
 		{{ @item['username'] }} &#8226; {{ date('d/m/y à G\hi', strtotime(@item['date_posted']) ) }} &#8675;
 	</a>
-
+    
     <check if="{{ (\Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'true')) ||
                     (\Base::instance()->exists('normalLoginCheck') && (@normalLoginCheck == 'true')
                     && \Base::instance()->exists('adminLoginCheck') && (@adminLoginCheck == 'false')

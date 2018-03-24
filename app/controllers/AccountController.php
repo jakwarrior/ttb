@@ -167,8 +167,8 @@ class AccountController extends Controller
             foreach ($actus as $subKey => $subArray) {
                 $subArray['content'] = $utils->content_post_treatment($subArray['content']);
 
-                if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
-                    && ($this->f3->get('COOKIE.username') == $subArray['username'])) {
+                if ((isset($check['normalLoginCheck'])) && ($check['normalLoginCheck'] == 'true') && (isset($check['adminLoginCheck'])) && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.hfr_user_id'))
+                    && ($this->f3->get('COOKIE.hfr_user_id') == $subArray['hfr_user_id'])) {
 
                     if ($this->user->checkActuPossession($subArray['id'])) {
                         $subArray['checkActuPossession'] = 'true';

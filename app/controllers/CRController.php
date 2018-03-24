@@ -47,8 +47,8 @@ class CRController extends Controller
             $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
             $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
-            if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
-                && ($this->f3->get('COOKIE.username') == $myCR['username'])
+            if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.hfr_user_id'))
+                && ($this->f3->get('COOKIE.hfr_user_id') == $myCR['hfr_user_id'])
             ) {
                 //apparemment l'utilisateur a les droits d'éditer le CR mais on va quand même vérifier son identité
                 if ($user->checkCrPossession($myCR['id'])) {
@@ -127,8 +127,8 @@ class CRController extends Controller
                 $this->f3->set('normalLoginCheck', $check['normalLoginCheck']);
                 $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
 
-                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.username'))
-                    && ($this->f3->get('COOKIE.username') == $myCR['username'])
+                if (($check['normalLoginCheck'] == 'true') && ($check['adminLoginCheck'] == 'false') && ($this->f3->exists('COOKIE.hfr_user_id'))
+                    && ($this->f3->get('COOKIE.hfr_user_id') == $myCR['hfr_user_id'])
                 ) {
 
                     if ($user->checkCrPossession($myCR['id'])) {
