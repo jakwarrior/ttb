@@ -17,7 +17,7 @@ class RSS extends DB\SQL\Mapper {
         ' ON g.id = cg.game_id'.
         ' GROUP BY c.id ORDER BY c.date_posted DESC LIMIT 20)'.
         ' UNION'.
-        ' (SELECT a.id, a.hfr_post_id AS hfr_post_id, a.username as username, a.date_posted as date_posted, a.content as content, "actu" as type, "" as games FROM actu a WHERE a.active = 1 ORDER BY a.date_posted DESC LIMIT 20)'.
+        ' (SELECT a.id, a.hfr_post_id AS hfr_post_id, a.username as username, a.date_posted as date_posted, a.content as content, "actu" as type, "" as games FROM actu a WHERE a.active = 1 AND username != "ravenloft" ORDER BY a.date_posted DESC LIMIT 20)'.
         ' ) as p'.
         ' ORDER BY p.date_posted DESC';
 

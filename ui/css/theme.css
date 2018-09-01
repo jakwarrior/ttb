@@ -891,7 +891,7 @@ a.hfrtv.all {
     color: black;
 }
 
-.mod a, .sondage a {
+.mod a, .podcast a {
     color: black;
     font-weight: bold;
 }
@@ -904,11 +904,11 @@ a.hfrtv.all {
     display: block;
 }
 
-.mod, .sondage {
+.mod, .podcast {
     font-size: 0.9em;
 }
 
-.sondage img {
+.podcast img {
     max-width: 100%;
     height: auto;
     width: 90%;

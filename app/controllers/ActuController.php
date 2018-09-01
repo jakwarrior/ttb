@@ -20,7 +20,7 @@ class ActuController extends Controller {
             $this->f3->set('adminLoginCheck', $check['adminLoginCheck']);
         }
 
-		$page=$actus->paginate(0,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
+		$page=$actus->paginate(0,$this->nbPage, array('active = 1 AND username != "ravenloft"'), array('order'=>'date_posted DESC, id DESC'));
 
         $page2 = array();
         $page2['pos'] = $page['pos'];
@@ -87,7 +87,7 @@ class ActuController extends Controller {
 		}
 
         $actus = new Actu($this->db);
-		$page=$actus->paginate($pageNum,$this->nbPage, array('active = 1'), array('order'=>'date_posted DESC, id DESC'));
+		$page=$actus->paginate($pageNum,$this->nbPage, array('active = 1 AND username != "ravenloft"'), array('order'=>'date_posted DESC, id DESC'));
 
 		if($pageNum > $page['count']) { //On vérifie que le numéro de page existe
 			$this->f3->reroute('@actus_list');

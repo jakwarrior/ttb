@@ -116,6 +116,7 @@ $f3=require('lib/base.php');
 $f3->config('config.ini');
 $f3->config('routes.ini');
 $f3->set('LANGUAGE', 'fr-FR');
+$f3->set('CORS.origin', 'http://cdn.podigee.com');
 $f3->set('ONERROR',function($f3){
 	if($f3->get('ERROR')['code'] == 404)
 	{

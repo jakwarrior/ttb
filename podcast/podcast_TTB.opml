@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+	<title>Flux d’abonnement TTB</title>
+</head>
+<body>
+	<outline text="Le podcast de TTB" type="rss" xmlUrl="http://www.thetartuffebay.org/podcast/podcast_TTB.xml" htmlUrl="hhttp://www.thetartuffebay.org" />
+</body>
+</opml>

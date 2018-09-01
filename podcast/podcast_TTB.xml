@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="http://www.thetartuffebay.org/podcast/podcast_TTB.xml" rel="self" type="application/rss+xml" />
+<link>http://www.thetartuffebay.org/podcasts</link>
+<title>Le podcast des Tartuffes</title>
+<description>Retrouvez ici l'actualité des jeux vidéos PC avec l'équipe des tartuffes, ainsi que les annonces des jeux switch 6 ans en avance !</description>
+<language>fr-fr</language>
+<copyright>TTB, CC BY-NC-SA 2.0 fr</copyright>
+<lastBuildDate>Sat, 01 Sep 2018 02:00:00 +0200</lastBuildDate>
+<webMaster>webmaster@thetartuffebay.org (Webmaster)</webMaster>
+<itunes:author>TheTartuffeBay</itunes:author>
+<itunes:subtitle>Le podcast des tartuffes</itunes:subtitle>
+<itunes:summary>Retrouvez ici l'actualité des jeux vidéos PC avec l'équipe des tartuffes, ainsi que les annonces des jeux switch 6 ans en avance ! </itunes:summary>
+<itunes:owner>
+  <itunes:name>TTB</itunes:name>
+  <itunes:email>webmaster@thetartuffebay.org</itunes:email>
+</itunes:owner>
+<itunes:explicit>no</itunes:explicit>
+<itunes:image href="http://www.thetartuffebay.org/ui/images/podcast_HD.jpg"/>
+<itunes:category text="Games &amp; Hobbies"><itunes:category text="Video Games" /></itunes:category>  
+
+<!-- EPISODE 1 -->
+<item>
+<title>Podcast #1</title>
+<itunes:author>TheTartuffeBay</itunes:author>
+<itunes:subtitle>Avec Eyldebrandt, Gibbonaz, Fenston, Remiche et Mukumi</itunes:subtitle>
+<itunes:summary>Au sommaire : Gamescom, Cyberpunk et RTX</itunes:summary>
+<link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3</link>
+<enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3" type="audio/mpeg" />
+<guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3</guid>
+<pubDate>Sat, 01 Sep 2018 02:00:00 +0200</pubDate>
+<itunes:duration>2:16:04</itunes:duration>
+<itunes:image href="http://www.thetartuffebay.org/ui/images/podcast_HD.jpg" />
+<itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+</item>
+
+</channel>
+</rss>

@@ -1,3 +1,5 @@
+Header set Access-Control-Allow-Origin "http://cdn.podigee.com"
+
 #AuthUserFile /home/thetartuhi/.htpasswd
 #AuthName "Acces Restreint"
 #AuthType Basic

@@ -1,0 +1,22 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://thetartuffebay.dev/podcast/Les_Tartuffes_0.mp3"},
+        "title": "Les Tartuffes n°0",
+        "url": "http://thetartuffebay.dev/podcast/Les_Tartuffes_0.mp3",
+        "coverUrl": "http://thetartuffebay.dev/ui/images/podcast.jpg",
+        "subtitle": "Ceci est un test, à ne surtout pas écouter",
+        "description": "Description de l'épisode",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Actu"},
+            {"start": "00:20:00", "title": "Dossier"},
+            {"start": "01:10:00", "title": "Une blague nulle de mukumi"}
+            ]
+    }
+}

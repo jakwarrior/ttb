@@ -13,7 +13,7 @@ class Actu extends DB\SQL\Mapper {
   		$request =
   			'SELECT *'.
   			' FROM actu as a'.
-            ' WHERE active = 1'.
+            ' WHERE active = 1 AND username != "ravenloft"'.
   			' ORDER by a.date_posted DESC, a.id DESC'.
             ' LIMIT :limit';
 
@@ -45,7 +45,7 @@ class Actu extends DB\SQL\Mapper {
         $request =
             'SELECT *'.
             ' FROM actu as a'.
-            ' WHERE date_posted LIKE :date'.
+            ' WHERE date_posted LIKE :date AND username != "ravenloft"'.
             ' ORDER BY date_posted ASC';
 
         return $this->db->exec($request, array(':date' => ($dateActu . '%')));
@@ -55,7 +55,7 @@ class Actu extends DB\SQL\Mapper {
         $request =
             'SELECT *'.
             ' FROM actu as a'.
-            ' WHERE content LIKE :content'.
+            ' WHERE content LIKE :content AND username != "ravenloft"'.
             ' ORDER BY date_posted DESC';
 
         return $this->db->exec($request, array(':content' => '%' . htmlentities($content) . '%'));

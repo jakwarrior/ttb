@@ -304,7 +304,7 @@ class Crontroller extends Controller {
 			$NPA->save();
 			echo "\n\n\n\n\n";
 
-            if ($this->f3->get('enableTwitter') == "true") {
+            if ($this->f3->get('enableTwitter') == "true" && $NPA->username != "ravenloft") {
                 if (isset($configuration->short_url_length)) {
                     $nbChar = 280 - $configuration->short_url_length - 3;
                     $news = strip_tags($processHTMLfinal);

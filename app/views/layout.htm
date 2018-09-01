@@ -14,8 +14,15 @@
         <link rel="stylesheet" href="/ui/jquery-ui/jquery-ui.css">
         <script src="/ui/jquery-ui/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="/ui/js/ttb.js"></script>
-        
-        <link rel="alternate" type="application/rss+xml" title="Le RSS 100% tartuffe" href="{{ @ALIASES.rss_all }}" />
+
+        <check if="{{ \Base::instance()->exists('includePodcast') && (@includePodcast == 'true') }}">
+            <true>
+                <link type="application/rss+xml" rel="alternate" title="Le podcast des Tartuffes" href="http://www.thetartuffebay.org/podcast/podcast_TTB.xml"/>
+            </true>
+            <false>
+                <link rel="alternate" type="application/rss+xml" title="Le RSS 100% tartuffe" href="{{ @ALIASES.rss_all }}" />
+            </false>
+        </check>
 
         <check if="{{ \Base::instance()->exists('includeJsCssAccount') && (@includeJsCssAccount == 'true') }}">
             <true>
