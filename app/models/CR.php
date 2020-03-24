@@ -235,7 +235,7 @@ class CR extends DB\SQL\Mapper
         $processHTMLfinal = htmlentities(preg_replace('/title="[^\"]+"/i', '', html_entity_decode($processHTMLfinal)));
 
 
-        $processHTMLfinal = str_replace("hfr-rehost.net/", 'reho.st/', $processHTMLfinal);
+        //$processHTMLfinal = str_replace("hfr-rehost.net/", 'reho.st/', $processHTMLfinal);
         $processHTMLfinal = htmlentities(str_replace("<p><br></p>", '', html_entity_decode($processHTMLfinal)));
 
         $processHTMLfinal = html_entity_decode($processHTMLfinal);

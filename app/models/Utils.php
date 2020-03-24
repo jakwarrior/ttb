@@ -127,7 +127,7 @@ class Utils extends Controller
                 foreach ($a->getElementsByTagName('img') as $img) {
                     if (($this->str_ends_with($img->getAttribute('alt'), '.jpg')) || ($this->str_ends_with($img->getAttribute('alt'), '.jpeg'))
                         || ($this->str_ends_with($img->getAttribute('alt'), '.png'))) {
-                        $a->setAttribute('href', str_replace('https://reho.st/view/self/', 'https://reho.st/self/', $a->getAttribute('href')));
+                        //$a->setAttribute('href', str_replace('https://reho.st/view/self/', 'https://reho.st/self/', $a->getAttribute('href')));
                         $a->setAttribute('class', 'test-popup-link');
                     }
                 }
