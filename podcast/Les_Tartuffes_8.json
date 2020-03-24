@@ -1,0 +1,49 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_8.mp3"},
+        "title": "Les Tartuffes #8 : Intouchables",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_8.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_08.jpg",
+        "subtitle": "Présenté par Gibbonaz, avec Eyldebrandt, Fenston, Gracchus et Solid",
+        "description": "Des jambes à n'en plus finir à en faire pâlir d'envie Adriana Karembeu. Une tête bien faite pour déchiffrer les annonces d'un VideoGamesAwards qui restera dans les annales.<br/>Les seins nourriciers du podcast que sont StarCitizen et Assassin's Creed Odyssey, un peu de poil dépassant d'un segment de jeux de combat viril mais correct, et pour parachever le tout un petit peu de fesses moites avec Fallout 76.<br/>C'est un podcast PEGI18 qui inaugure l'ère Gibbonaz aux commandes, accompagné de Michel et Fenston, le retour de Solid et ... Gracchus ? Il se porte à merveille !<br/>Bienvenue dans une étape charnière de notre but non avoué : le podcast quotidien de 24h en direct. Les tartuffes numéro 8, magnéto Gibbo !",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:26", "title": "Intro"},
+            {"start": "00:02:15", "title": "Tekken 7"},
+            {"start": "00:07:01", "title": "Fighting Ex Layer"},
+            {"start": "00:09:36", "title": "Street Fighter V"},
+            {"start": "00:18:36", "title": "SNK"},
+            {"start": "00:20:15", "title": "FarCry New Dawn / FarCry 5"},
+            {"start": "00:34:17", "title": "Epic Store"},
+            {"start": "00:43:14", "title": "Star Citizen"},
+            {"start": "00:57:13", "title": "Assassin's Creed Odyssey - Legacy of the first blade"},
+            {"start": "01:07:40", "title": "Fallout 76"},
+            {"start": "01:27:55", "title": "Just Cause 4"},
+            {"start": "01:42:05", "title": "Darksiders III"},
+            {"start": "02:07:20", "title": "VGA The Games Awards - Préshow"},
+            {"start": "02:07:37", "title": "Metal Gear Solid"},
+            {"start": "02:22:15", "title": "Dragon Age 4"},
+            {"start": "02:30:45", "title": "Projet indiana/The Outer Worlds"},
+            {"start": "02:38:48", "title": "Crash Team Racing"},
+            {"start": "02:42:37", "title": "Metroid Prime 4"},
+            {"start": "02:49:45", "title": "The Legend of Zelda - Skyward Sword"},
+            {"start": "02:50:47", "title": "CEMU"},
+            {"start": "02:56:00", "title": "Mortal Kombat XI"},
+            {"start": "02:57:13", "title": "Alien Blackout"},
+            {"start": "02:58:40", "title": "Avengers"},
+            {"start": "03:05:35", "title": "Avatar"},
+            {"start": "03:08:11", "title": "Borderlands 3"},
+            {"start": "03:08:45", "title": "THQ Nordic"},
+            {"start": "03:10:52", "title": "Ancestors"},
+            {"start": "03:12:57", "title": "CSGO - F2P & Battle Royale"},
+            {"start": "03:24:30", "title": "Bonus Track : VGA The Games Awards - Live"}
+            ]
+    }
+}

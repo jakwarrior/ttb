@@ -1,0 +1,38 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_7.mp3"},
+        "title": "Les Tartuffes #7 : Les Hauts de Hurlevent",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_7.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_07.jpg",
+        "subtitle": "Présenté par Eyldebrandt, avec Fenston, Solid, Mukumi et Remiche",
+        "description": "Des revenants, des nouveaux, des pluriels singuliers, de l'humour fin et de l'humour moins fin, des conseils d'achats de Mukumi : vous trouverez tout dans le numéro 7 du podcasts des Tartuffes.<br/>Deux lignes rouges s'y opposent sans jamais s'y croiser, le Spaceporn de Fenston et les FPS de barbus de Solid, invité spécial pour cette nouvelle thématique abordée à coté des marroniers habituels que sont Star Citizen et Shadow of the Tomb Raider.<br/>Ah, et un petit peu aussi de Fallout Septante six, evidemment.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Sommaire"},
+            {"start": "00:02:16", "title": "Générique"},
+            {"start": "00:02:45", "title": "Star Citizen"},
+            {"start": "00:40:50", "title": "Rainbow Six Siege"},
+            {"start": "01:10:30", "title": "Blue Reflection"},
+            {"start": "01:17:28", "title": "Final Fantasy XV"},
+            {"start": "01:24:10", "title": "Instant Lootboxes"},
+            {"start": "01:28:53", "title": "Rachat d'inXile et Obsidian par Microsoft"},
+            {"start": "01:43:00", "title": "No Man's Sky"},
+            {"start": "02:13:30", "title": "Sunset Overdrive"},
+            {"start": "02:21:22", "title": "World War III/Battlefield V"},
+            {"start": "02:42:50", "title": "Free DLC ACOD"},
+            {"start": "02:49:20", "title": "DLC Shadow of Tomb Raider"},
+            {"start": "02:52:18", "title": "DLC Kingdom Come Deliverance"},
+            {"start": "02:57:55", "title": "Insurgency Sandstorm"},
+            {"start": "03:06:30", "title": "Yakuza 0"},
+            {"start": "03:26:40", "title": "Fallout 76"},
+            {"start": "04:15:35", "title": "Debrief"},
+            {"start": "04:19:37", "title": "Outro"}
+            ]
+    }
+}

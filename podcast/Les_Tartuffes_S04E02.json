@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E02.mp3"},
+        "title": "Les Tartuffes S04E02 : Band of Branleurs",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E02.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S04E02.jpg",
+        "subtitle": "Présenté par Fenston en compagnie de Bardack, Daweed, Eyldebrandt, Gracchus, Gromatt, Gibbonaz, Poulpus, Remiche et Solid",
+        "description": "Le programme de l'émission de ce soir : on parcourt les sorties à venir en 2020"
+    }
+}

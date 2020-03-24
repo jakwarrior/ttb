@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          [HFR] Flux RSS TTB Edition
-// @version       1.0.2
+// @version       1.0.3
 // @description   permet d'avoir les infos de son choix en direct
 // @icon          http://reho.st/self/40f387c9f48884a57e8bbe05e108ed4bd59b72ce.png
 // @downloadURL   http://www.thetartuffebay.org/mod/HFR_Flux_RSS_TTB.user.js
@@ -467,9 +467,9 @@ var Rss = function (uri) {
 				var nodes = doc.getElementsByTagName ("item");
 				for (var i = 0; i < nodes.length; i++) {
 					var item = {
-						title       : nodes[i].getElementsByTagName ("title")[0].childNodes[0].data,
-						link        : nodes[i].getElementsByTagName ("link")[0].childNodes[0].data,
-						description : nodes[i].getElementsByTagName ("description")[0].childNodes[0].data
+						title       : nodes[i].getElementsByTagName ("title")[0].textContent,
+						link        : nodes[i].getElementsByTagName ("link")[0].textContent,
+						description : nodes[i].getElementsByTagName ("description")[0].textContent
 					};
 					this.items.push (item);
 				}

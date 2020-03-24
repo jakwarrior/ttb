@@ -1,0 +1,30 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_1.mp3"},
+        "title": "Ta Mère l'Input #1",
+        "url": "http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_1.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Carre_HD_TLI_01.jpg",
+        "subtitle": "Présenté par Gibbonaz, avec Eyldebrandt et Lamren",
+        "description": "Plus rien n'arrête ces connards de Tartuffes !<br/>Après le passage au direct lors du début de la saison 2, voici venus les spin-offs de la mort.<br/>Plus spécialisés, plus décontractés, le but de ces programmes est de se faire plaisir, hors du cadre plus sérieux d'un podcast généraliste.<br/>Le premier d'entre eux ne pouvait être que le spin-off bagarre, dont la génèse est aussi vieille que le podcast canon lui-même. On le joue depuis le 1.<br/>En direct, et peut-être avec du public, de 21h30 à 00h, Ta Mère l'Input se tiendra le lundi 11 Mars 2019 et sera présenté par le grand Zanobbig, Community Manager pour Capcom Europe, assisté de Lamren, Webdev chez Cerebos, et d'Eyldebrandt, le seul mec avec du skill de ce podcast.<br/>Le 1er numéro de Ta Mère l'Input démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:02:59", "title": "Evo 2019 : Lineup & dramas"},
+            {"start": "00:20:40", "title": "For Honor"},
+            {"start": "00:35:33", "title": "Street Fighter 5"},
+            {"start": "00:49:44", "title": "Samurai Shodown"},
+            {"start": "00:58:40", "title": "Power Rangers: Battle for the Grid"},
+            {"start": "01:08:08", "title": "Granblue Fantasy Versus"},
+            {"start": "01:20:00", "title": "Dragon Ball FighterZ"},
+            {"start": "01:44:40", "title": "Mortal Kombat XI"},
+            {"start": "02:05:48", "title": "Dead or Alive 6"},
+            {"start": "02:24:00", "title": "Outro"}
+            ]
+    }
+}

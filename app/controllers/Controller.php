@@ -78,7 +78,7 @@ class Controller
             'tcolor' => 'white',
             'icon' => 'url(/ui/images/book.png)');
 
-        $menu[] = array('title' => 'HFR.tv',
+        $menu[] = array('title' => 'Tartuffes TV',
             'url' => $this->f3->get('ALIASES.streams_list'),
             'color' => '#3F4C6C',
             'tcolor' => 'white',

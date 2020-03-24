@@ -1,0 +1,37 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_5.mp3"},
+        "title": "Les Tartuffes #5 : On l'appelle Trinita",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_5.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_05.jpg",
+        "subtitle": "Présenté par Eyldebrandt, avec Bardack, Fenston, Gibbonaz et Remiche",
+        "description": "On a laissé passer 3 semaines depuis le dernier numéro, en esperant avoir de l'actu croustillante à décortiquer. Mais c'était peine perdue, on est toujours en pleine traversée du desert.<br/>Mais ça ne nous a pas empeché de faire peter le record de longueur d'émission, grâce à un segment d'1h20 sur le dernier Assassin's Creed, sans oublier les outreaux de 50 minutes.<br/>En dehors de ça, les hypes sont nombreuses : Fenston qui remet une couche sur Star Citizen et ses torchons qui flottent, Eylde vante For Honor et ses 800 millions de joueurs hardcore, Bardack le petit nouveau nous fait découvrir Sinner, et on sort la boule de cristal pour la Blizzcon.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:27", "title": "Intro"},
+            {"start": "00:00:44", "title": "Présentations"},
+            {"start": "00:04:30", "title": "Sommaire"},
+            {"start": "00:05:18", "title": "Soul Calibur VI"},
+            {"start": "00:08:10", "title": "Jump Force"},
+            {"start": "00:15:30", "title": "For Honor Marching Fire"},
+            {"start": "00:31:40", "title": "Street Fighter V"},
+            {"start": "00:33:48", "title": "Fallout 76"},
+            {"start": "00:44:25", "title": "Star Citizen"},
+            {"start": "01:12:35", "title": "Blizzard"},
+            {"start": "01:32:25", "title": "Kingdom Come Deliverance"},
+            {"start": "01:38:30", "title": "Shakedown Hawai"},
+            {"start": "01:42:50", "title": "The Evil Within 2"},
+            {"start": "01:56:35", "title": "Sinner: Sacrifice for Redemption"},
+            {"start": "02:02:42", "title": "Assassin's Creed Odyssey"},
+            {"start": "03:21:30", "title": "Outro"},
+            {"start": "03:43:50", "title": "Outreau"}
+            ]
+    }
+}

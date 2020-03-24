@@ -10,11 +10,18 @@ class Actu extends DB\SQL\Mapper {
     }
 
     public function all($limit = 0) {
-  		$request =
+/*  		$request =
   			'SELECT *'.
   			' FROM actu as a'.
             ' WHERE active = 1 AND username != "ravenloft"'.
   			' ORDER by a.date_posted DESC, a.id DESC'.
+            ' LIMIT :limit';*/
+
+        $request =
+            'SELECT *'.
+            ' FROM actu as a'.
+            ' WHERE active = 1'.
+            ' ORDER by a.date_posted DESC, a.id DESC'.
             ' LIMIT :limit';
 
         return $this->db->exec($request, array(':limit' => $limit));
@@ -42,20 +49,32 @@ class Actu extends DB\SQL\Mapper {
     }
 
     public function byDate($dateActu) {
-        $request =
+/*        $request =
             'SELECT *'.
             ' FROM actu as a'.
             ' WHERE date_posted LIKE :date AND username != "ravenloft"'.
+            ' ORDER BY date_posted ASC';*/
+
+        $request =
+            'SELECT *'.
+            ' FROM actu as a'.
+            ' WHERE date_posted LIKE :date'.
             ' ORDER BY date_posted ASC';
 
         return $this->db->exec($request, array(':date' => ($dateActu . '%')));
     }
 
     public function byContentLike($content) {
-        $request =
+/*        $request =
             'SELECT *'.
             ' FROM actu as a'.
             ' WHERE content LIKE :content AND username != "ravenloft"'.
+            ' ORDER BY date_posted DESC';*/
+
+        $request =
+            'SELECT *'.
+            ' FROM actu as a'.
+            ' WHERE content LIKE :content'.
             ' ORDER BY date_posted DESC';
 
         return $this->db->exec($request, array(':content' => '%' . htmlentities($content) . '%'));

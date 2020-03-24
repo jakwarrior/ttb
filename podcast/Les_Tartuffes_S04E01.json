@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E01.mp3"},
+        "title": "Les Tartuffes S04E01 : Il faut sauver le soldat Tartuffe",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E01.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S04E01.jpg",
+        "subtitle": "Présenté par Gracchus en compagnie de Bardack, Daweed, Eyldebrandt, Fenston, Gibbonaz, Manowar, Mukumi et Remiche",
+        "description": "Le programme de l'émission de ce soir : récap en vrac de l'année 2019"
+    }
+}

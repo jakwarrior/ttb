@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E04.mp3"},
+        "title": "Les Tartuffes S02E04 : Ratatouille",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E04.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E04.jpg",
+        "subtitle": "Présenté par Fenston en compagnie de Caboc, Eyldebrandt, Gracchus, Gromatt Remiche et Solid",
+        "description": "Le programme de l'émission de ce soir :<br/><br/>Actus<br/>► Ubisoft Pass Premium<br/>► Les jeux Quantic Dreams sur EGS<br/>► L'addiction aux jeux vidéos est désormais une maladie<br/>► Code Vein<br/>► Nioh 2<br/>► The Surge 2<br/><br/>2 mois plus tard<br/>► The Division 2<br/><br/>Reviews<br/>► Sigil<br/>► Shakedown Hawaï<br/>► Ape Out<br/>► Rage 2<br/>► A Plague Tale: Innocence"
+    }
+}

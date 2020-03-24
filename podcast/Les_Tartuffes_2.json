@@ -1,0 +1,46 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_2.mp3"},
+        "title": "Les Tartuffes #2 : 3:10 pour Yuma",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_2.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_02.jpg",
+        "subtitle": "Présenté par Eyldebrandt, avec Gibbonaz, Fenston, Remiche et Jakwarrior",
+        "description": "Apres 3 jours de travail acharné pour mettre tout ça au propre et supprimer quelques passages compromettants (non, ne cherchez pas, vous n'aurez pas la version non-censurée), le second numéro est enfin disponible ! Encore une fois dirigé par Eyldebrandt, c'est un roster pratiquement inchangé (mais avec du nouveau matos !) qui se retrouve pour parler de Tomb Raider. Accessoirement, on a également : discuté de quelques actus plus ou moins intéressantes, critiqué Fallout 4 en cœur, endormi Jak et Remiche en parlant de baston, fantasmé sur Star Citizen, et halluciné sur le prix des licences de l'Overwatch League",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Intro"},
+            {"start": "00:01:20", "title": "Présentations"},
+            {"start": "00:03:18", "title": "Sommaire"},
+            {"start": "00:04:13", "title": "A quoi qu'on a joué ?"},
+            {"start": "00:04:30", "title": "World of Warcraft"},
+            {"start": "00:14:48", "title": "Dragon Quest XI"},
+            {"start": "00:22:24", "title": "Fallout 4"},
+            {"start": "00:38:20", "title": "Little Nightmares"},
+            {"start": "00:43:05", "title": "Anubis Zone of the Enders : Mars"},
+            {"start": "00:49:47", "title": "Rise of tomb Raider"},
+            {"start": "01:05:30", "title": "Shadow of Tomb Raider"},
+            {"start": "01:33:34", "title": "Actualités"},
+            {"start": "01:34:05", "title": "Samourai Spirits"},
+            {"start": "01:47:48", "title": "Soul Calibur VI"},
+            {"start": "01:48:51", "title": "Dead or Alive 6"},
+            {"start": "01:53:18", "title": "Spintires"},
+            {"start": "01:55:12", "title": "Door Kickers: Action Squad"},
+            {"start": "01:57:26", "title": "COD BOIIII Battle Royale"},
+            {"start": "02:03:14", "title": "GODS Remastered"},
+            {"start": "02:05:40", "title": "Sekiro : Shadows Die Twice"},
+            {"start": "02:09:30", "title": "Overwatch"},
+            {"start": "02:16:34", "title": "The Last Remnant"},
+            {"start": "02:18:41", "title": "Space Hulk Tactics"},
+            {"start": "02:19:40", "title": "Assassin's Creed Odyssey"},
+            {"start": "02:21:15", "title": "Timespinner "},
+            {"start": "02:22:25", "title": "Dossier Star Citizen"},
+            {"start": "02:56:30", "title": "Outro"}
+            ]
+    }
+}

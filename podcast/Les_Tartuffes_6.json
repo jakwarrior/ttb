@@ -1,0 +1,38 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_6.mp3"},
+        "title": "Les Tartuffes #6 : Le Jour d'après",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_6.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_06.jpg",
+        "subtitle": "Présenté par Fenston, avec Eyldebrandt, Gibbonaz, Gracchus et Zad69",
+        "description": "On l'a fait ! On est passé sous la barre des 3 heures !<br/>Et pourtant le programme était chargé : il fallait basher Bethesda pour son Fallout 76 (pas si) paresseux et Blizzard pour sa Blizzcon (pas si) catastrophique !<br/>Entre deux segments mouchetés de mauvaise foi, on a quand même réussi à placer un real talk de Michel 'L'Influenceur' Debrandt sur Pillars of Eternity 2, un point sur le futur GOTY Crackdown 3, et Zad le nouveau venu nous a même hypés sur un jeu de programmation de robots.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:28", "title": "Introduction"},
+            {"start": "00:00:40", "title": "Présentations"},
+            {"start": "00:02:37", "title": "Disclaimer"},
+            {"start": "00:05:50", "title": "Fallout 76"},
+            {"start": "00:49:50", "title": "Gladiabots"},
+            {"start": "01:03:35", "title": "Gremlins Inc."},
+            {"start": "01:06:58", "title": "Crackdown 3"},
+            {"start": "01:07:43", "title": "Blizzcon"},
+            {"start": "01:11:50", "title": "Overwatch"},
+            {"start": "01:19:32", "title": "Froot Loops"},
+            {"start": "01:22:33", "title": "Hearthstone"},
+            {"start": "01:27:23", "title": "World of Warcraft"},
+            {"start": "01:41:25", "title": "Warcraft III Reforged"},
+            {"start": "01:57:05", "title": "Diablo Immortal et au-delà"},
+            {"start": "02:41:15", "title": "Pillars of Eternity II"},
+            {"start": "02:46:30", "title": "Shroud of the Avatar"},
+            {"start": "02:48:40", "title": "Debrief"},
+            {"start": "02:57:38", "title": "Outro"}
+            ]
+    }
+}

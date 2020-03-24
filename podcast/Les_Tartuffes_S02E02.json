@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E02.mp3"},
+        "title": "Les Tartuffes S02E02 : Chappie",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E02.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E02.jpg",
+        "subtitle": "Présenté par Fenston, avec Bardack, Eyldebrandt, Lamren, Manowar et Solid",
+        "description": "Les Tartuffes sont de retour pour une saison 2 ! Désormais en direct sur Youtube, c'est une véritable émission que nous vous proposons, tous les 15 jours, le jeudi soir, de 21h30 à 00h.<br/>Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br/>Le programme de l'émission de ce soir, animée par Fenston en compagnie de Bardack, Solid, Manowar, Lamren, et Eyldebrandt:<br/>Actus : l'annonce de Darkest Dungeon II, le reveal d'Hollow Knight Silksong, l'analyse du community manager de Warhorse France sur le rachat par THQ Nordiq<br/>Preview : notre retour sur les betas de The Division 2<br/>Reviews : Anthem, Far Cry New Dawn, Metro Exodus, Dirt Rally 2.0, Apex Legends<br/>Le 2nd épisode de la saison 2 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus."
+    }
+}

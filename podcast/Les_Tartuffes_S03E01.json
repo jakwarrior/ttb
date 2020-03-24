@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S03E01.mp3"},
+        "title": "Les Tartuffes S03E01 : Les Bronzés",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S03E01.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S03E01.jpg",
+        "subtitle": "Présenté par Fenston en compagnie de Bardack, Eyldebrandt, Gracchus, Gibbonaz et Remiche",
+        "description": "Le programme de l'émission de ce soir :<br/><br/>Actus<br/>► The Division 2<br/><br/>Dossier<br/>► Gamescon<br/><br/>Drama<br/>► Star Citizen<br/><br/>Review<br/>► Outer Wilds<br/>► Bloodstained<br/>► Ion Maiden<br/>► Onirism<br/>► GOW 5"
+    }
+}

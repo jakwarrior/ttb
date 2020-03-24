@@ -1,0 +1,52 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS03.mp3"},
+        "title": "Les Tartuffes HS #3 - Super Mario, le film",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS03.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_HS03.jpg",
+        "subtitle": "Présenté par Fenston, avec Daweed, Bardack, Gracchus, Solid, et Eyldebrandt",
+        "description": "Pour célébrer ensemble le 1er avril, quoi de mieux que de prendre le contrepied des attentes et traiter, le plus sérieusement qu'il nous sera possible, l'actualité Switch vu par de fiers représentants de la Master Race ?<br/>Toutefois pas d'inquiétude, jeune aryen, les tartuffes s'attarderont également sur le planning des sorties PC des mois d'Avril à Aout.<br/>En direct, et peut-être avec du public, de 21h30 à 00h, ce hors-série se tiendra le lundi 1er avril 2019 et sera présenté par Fenston. Autour de lui vous retrouverez Daweed, Bardack, Gracchus, Solid, et Eyldebrandt.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:28", "title": "Présentation"},
+            {"start": "00:05:01", "title": "Kid Icarus"},
+            {"start": "00:11:11", "title": "Virtua Racing"},
+            {"start": "00:17:09", "title": "Turok"},
+            {"start": "00:20:25", "title": "Castle Crashers Remastered"},
+            {"start": "00:22:44", "title": "Bulletstorm duke of switch"},
+            {"start": "00:24:00", "title": "Cuphead & A Hat in Time"},
+            {"start": "00:27:28", "title": "Super Dragon Ball Heroes World Mission"},
+            {"start": "00:29:15", "title": "DMC5"},
+            {"start": "00:34:18", "title": "Nintendo Labo VR"},
+            {"start": "00:47:31", "title": "Rumeurs nouvelles Switch"},
+            {"start": "00:56:08", "title": "Zelda Breath of the Wild"},
+            {"start": "01:44:42", "title": "Sorties PC"},
+            {"start": "01:45:09", "title": "Shovel Knight Showdown"},
+            {"start": "01:47:25", "title": "Katana Zero"},
+            {"start": "01:50:36", "title": "Mortal Kombat 11"},
+            {"start": "01:52:20", "title": "Super Meat Boy Forever"},
+            {"start": "01:53:15", "title": "Gracchus se masturbe avec son micro"},
+            {"start": "01:55:32", "title": "Rage 2"},
+            {"start": "02:00:12", "title": "A plague tale innocence"},
+            {"start": "02:02:23", "title": "Team Sonic Racing"},
+            {"start": "02:06:48", "title": "The Sinking City"},
+            {"start": "02:07:15", "title": "Kingdom Come Deliverance Royal Edition"},
+            {"start": "02:08:13", "title": "TESO Elsweyr"},
+            {"start": "02:10:32", "title": "Crash Team Racing Nitro Fuel"},
+            {"start": "02:12:42", "title": "Ion Maiden"},
+            {"start": "02:17:57", "title": "FF14"},
+            {"start": "02:18:58", "title": "Wolfenstein Young Blood"},
+            {"start": "02:20:38", "title": "Shenmue 3"},
+            {"start": "02:24:28", "title": "Biomutant"},
+            {"start": "02:26:33", "title": "Control"},
+            {"start": "02:32:09", "title": "Outro"}
+            ]
+    }
+}

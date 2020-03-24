@@ -1,0 +1,28 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_2.mp3"},
+        "title": "Ta Mère l'Input #2",
+        "url": "http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_2.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Carre_HD_TLI_02.jpg",
+        "subtitle": "Présenté par Gibbonaz, avec Eyldebrandt et Lamren",
+        "description": "Et voici le second numéro pour Ta Mere L'Input, le podcast parlant de jeux de baston auxquels on ne joue pas.<br/>Cette fois encore j'ai accueilli Lamren et Eyldebrandt pour commenter l'actualité, et on parle du sexisme, des weebs et des dead games.<br/>Mais aussi pour notre dossier sur Mortal Kombat 11, le jeu où ton AI est plus forte que toi.<br/>Avec un petit point sur les tournois à venir, ou déjà passés si vous avez raté le live.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:02:50", "title": "Samurai Spirits : Topo sur son actu"},
+            {"start": "00:21:37", "title": "Dragon Ball FighterZ : Goku GT le perso OP"},
+            {"start": "00:34:08", "title": "Jump Force : Fin de vie"},
+            {"start": "00:41:46", "title": "For Honor : Perso DLC"},
+            {"start": "00:53:45", "title": "Dead or Alive 6 : Patchs de censure et revenus"},
+            {"start": "01:10:25", "title": "Granblue Versus : On le veut sur PC"},
+            {"start": "01:16:38", "title": "Mortal Kombat XI : 1h à parler des défauts, mais on a aimé quand meme"},
+            {"start": "02:38:30", "title": "Tournois à venir : Texas Showdown, Stunfest..."}
+            ]
+    }
+}

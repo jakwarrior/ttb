@@ -1,0 +1,52 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_3.mp3"},
+        "title": "Les Tartuffes #3 : Memento",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_3.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_03.jpg",
+        "subtitle": "Présenté par Fenston, avec Eyldebrandt, FlyinPoulpus, Gracchus, Gromatt et Manowar",
+        "description": "Autour du capitaine Fenston, en charge des troupes pour la première fois, et de son bras droit Rémiche, découvrez, Gracchus, Manowar, FlyinPoulus, Gromatt et Michel, tous aussi bêtes que méchant, qui n’hésiteront pas à mettre en péril leur respectabilité pour vous faire marrer en tirant le fil des diverses actualités du monde vidéoludique sur PC.<br/>Les nouvelles cartes RTX d’Nvidia, le Final Major de CSGO, un jeu porno, des jeux capcom, des jeux de plateforme, des escroqueries françaises overhypées, ainsi qu’un dossier sur Gamekult et la nouvelle formule premium, voici le programme chargé au menu de ce podcast exceptionnel. Cliquez ici pour entendre en exclusivité des vannes glauques censurées qui ne manqueront pas de vous étonner.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Disclaimer"},
+            {"start": "00:00:38", "title": "Intro"},
+            {"start": "00:01:06", "title": "Présentations"},
+            {"start": "00:05:23", "title": "Sommaire"},
+            {"start": "00:05:55", "title": "Actualités"},
+            {"start": "00:06:04", "title": "Décalquage Horaire - Doom Eternal"},
+            {"start": "00:17:58", "title": "Final Stage Major CSGO "},
+            {"start": "00:26:13", "title": "Nvidia RTX, release, tests et Double ID"},
+            {"start": "00:39:27", "title": "Modération des forums Steam"},
+            {"start": "00:41:52", "title": "News en vrac I"},
+            {"start": "00:42:24", "title": "Tales of Vesperia"},
+            {"start": "00:44:24", "title": "l'Arjel se penche sur les lootbox"},
+            {"start": "00:49:04", "title": "Negligee: Love Stories"},
+            {"start": "00:53:12", "title": "Return Of The Obra Dinn"},
+            {"start": "00:54:30", "title": "Lawbreakers"},
+            {"start": "00:55:30", "title": "Devil May Cry 5"},
+            {"start": "00:59:54", "title": "Compilation BTU Capcom"},
+            {"start": "01:01:10", "title": "Megaman XI"},
+            {"start": "01:01:56", "title": "Resident Evil 2"},
+            {"start": "01:04:49", "title": "Minoria"},
+            {"start": "01:06:47", "title": "Renaine"},
+            {"start": "01:08:39", "title": "Romancing Saga 3"},
+            {"start": "01:10:43", "title": "Infos en vrac II"},
+            {"start": "01:11:17", "title": "A quoi qu'on a joué ?"},
+            {"start": "01:11:23", "title": "Dead Cells"},
+            {"start": "01:21:36", "title": "Two Point Hospital"},
+            {"start": "01:24:39", "title": "Monster Hunter: World"},
+            {"start": "01:34:27", "title": "A Hat in a Time"},
+            {"start": "01:39:43", "title": "Hollow Knight: Godsmaster"},
+            {"start": "01:44:47", "title": "Shadow of the Tomb Raider"},
+            {"start": "01:50:40", "title": "Gamekult : nouvelle politique premium ou la mort de la ligne éditoriale de la presse vidéoludique ?"},
+            {"start": "02:37:30", "title": "Outro"},
+            {"start": "02:40:50", "title": "Bonus track"}
+            ]
+    }
+}

@@ -140,7 +140,7 @@ angular.module('App', ['ngSanitize', 'angular-loading-bar'])
 
             if ($filter('exist')($scope.table, game) == -1) {
                 //console.log(game);
-                game.image['super_url'] = "http://reho.st/" + game.image['super_url'];
+                game.image['super_url'] = "https://reho.st/" + game.image['super_url'];
                 $scope.table.push(game);
                 $scope.searchterm = '';
                 $scope.tableGames = [];

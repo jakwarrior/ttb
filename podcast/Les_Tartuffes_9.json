@@ -1,0 +1,37 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_9.mp3"},
+        "title": "Les Tartuffes #9 : Bad Santa",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_9.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_09.jpg",
+        "subtitle": "Présenté par FlyinPoulpus, avec Gracchus, Groomy, Jakwarrior et Remiche",
+        "description": "Les Tartuffes ont travaillé dur pendant le réveillons pour vous proposer la crème de l'analyse vidéoludique.<br/>Pour la première fois présenté par FlyinPoulpus, accompagné d'un casting aussi inédit qu'hétéroclite, les tartuffes passent au crible l'actualité périmée du jeu vidéo sur PC.<br/>Au programme de l'arlésienne iconique, de l'EA vieux de 5 ans, du AA de l'an dernier, des jeux avec des lolis, et des Wargames pour barbus confirmés.<br/>Des sujets passionnants condensés en moins de 3 heures en exclusivité pour HFR.<br/><br/><a href='https://www.leqg.org/forum/viewtopic.php?f=77&t=15044' target='_blank'>Lien dont parle Groomy pendant le dossier Wargame</a>",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:25", "title": "Intro"},
+            {"start": "00:03:27", "title": "DayZ"},
+            {"start": "00:08:43", "title": "Transport Fever"},
+            {"start": "00:13:48", "title": "Gris"},
+            {"start": "00:23:34", "title": "Bladed Fury"},
+            {"start": "00:27:21", "title": "Censure des jeux à caractère pédo-pornographique sur steam"},
+            {"start": "00:46:57", "title": "Dusk"},
+            {"start": "00:50:25", "title": "Beyond Good & Evil 2"},
+            {"start": "01:00:27", "title": "Stellaris"},
+            {"start": "01:06:22", "title": "The Surge"},
+            {"start": "01:21:27", "title": "Thea 2: The Shattering"},
+            {"start": "01:28:20", "title": "Star Citizen/Squadron 42"},
+            {"start": "01:42:30", "title": "Strategic Command WWII: World at war"},
+            {"start": "01:51:25", "title": "The Elders Scrolls Online"},
+            {"start": "02:00:40", "title": "Action Henk"},
+            {"start": "02:02:40", "title": "Adoptez un Wargame pour Noel"},
+            {"start": "02:36:00", "title": "Outro"}
+            ]
+    }
+}

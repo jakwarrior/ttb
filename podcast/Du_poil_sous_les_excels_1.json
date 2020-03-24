@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Du_poil_sous_les_excels_1.mp3"},
+        "title": "Du Poil sous les Excels #1",
+        "url": "http://www.thetartuffebay.org/podcast/Du_poil_sous_les_excels_1.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Carre_HD_DPSLE_01.jpg",
+        "subtitle": "Présenté par Galak, avec Groomy, Remiche, Stukka et Zad",
+        "description": "Plus rien n'arrête ces connards de Tartuffes !<br/>Après le passage au direct lors du début de la saison 2, voici venus les spin-offs de la mort.<br/>Plus spécialisés, plus décontractés, le but de ces programmes est de se faire plaisir, hors du cadre plus sérieux d'un podcast généraliste.<br/><br/>On l'avait promis, alors on l'a fait, le fameux podcast entièrement dédié aux jeux de barbus.<br/>STR, 4X, grande stratégie, jeux de gestion, simulations, tableurs excels ludiques, ascii games et pire encore, rien ne vous sera épargné.<br/><br/>En direct et en simultané sur Tiwtch et Youtube, de 21h30 à 00h, Du Poil sous les Excels se tiendra le jeudi 16 Mai 2019 et sera présenté par l'amiral fenston.<br/>Autour de lui, Groomy, Zad, Galak et Remiche tenteront de faire honneur à leur réputation.<br/>Ce 1er podcast permettra aux tartuffes d'accueillir leur 1er invité de marque, Stukka, aussi connu sous le pseudonyme d'odieux connard.<br/><br/>Le programme de l'émission:<br/><br/>Actus<br/>► Total War: Three Kingdoms<br/>► Steel Division 2<br/>► Gladiabots<br/>► Transport Fever 2<br/>► Cliff Empire<br/><br/>Reviews<br/>► Thea 2<br/>► Farming Simulator 2019<br/>► Rise of Industry<br/>► Hearts of Iron 4 Man the Guns<br/>► Imperator: Rome<br/><br/>Dossiers<br/>► Dwarf Fortress<br/>► Anno 1800"
+    }
+}

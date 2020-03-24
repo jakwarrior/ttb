@@ -1,0 +1,41 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_10.mp3"},
+        "title": "Les Tartuffes #10 : Les aventures de Rocketeer",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_10.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_10.jpg",
+        "subtitle": "Présenté par Fenston, avec Bardack, Gibbonaz, Gracchus, Solid et Michel",
+        "description": "Il est là ! Enfin ! Le premier podcast en direct, mais pas (encore) depuis Montauban City of lights and gras de canard ! Pour mener à bien ce projet, le capitaine de soirée Fenston s'est entouré des meilleurs, mais également de Gracchus.<br/>Dans ce podcast aussi rythmé qu'une reprise des rage par Brass Against, ou les voix les plus fortes s'opposent aux trompettes les plus mélodieuses, on abordera la vrai problématique du pouvoir d'achat en ce premier trimestre 2019 : trop de jeu tue t'il le jeu ? Pourrons nous jouer à tout ? Solid est il vraiment raciste ?<br/>Pendant deux heures et 27 minutes, Fenston et sa troupe vous expliqueront que ces trois prochains mois, votre endroit de prédilection se doit d'être devant votre écran de PC, et sur la chaine des Tartuffes.<br/>Abonne toi.<br/>Fais le.<br/>Maintenant.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:25", "title": "Intro"},
+            {"start": "00:04:35", "title": "Street Fighter V"},
+            {"start": "00:15:20", "title": "Dragon Ball FighterZ"},
+            {"start": "00:28:08", "title": "Code Vein"},
+            {"start": "00:32:15", "title": "Rad Rodgers"},
+            {"start": "00:38:02", "title": "Catherine"},
+            {"start": "00:40:40", "title": "Dossier sorties du 1er trimestre 2019"},
+            {"start": "00:41:00", "title": "Onimusha Warlords"},
+            {"start": "00:42:50", "title": "Resident Evil 2"},
+            {"start": "01:02:55", "title": "Metro Exodus"},
+            {"start": "01:15:03", "title": "Far Cry New Dawn"},
+            {"start": "01:21:35", "title": "Jump Force"},
+            {"start": "01:26:50", "title": "Dead or Alive 6"},
+            {"start": "01:31:42", "title": "Sinner Sacrifice for Redemption"},
+            {"start": "01:35:43", "title": "Anthem"},
+            {"start": "01:47:02", "title": "Dirt Rally 2.0"},
+            {"start": "01:49:10", "title": "Total War Three Kingdoms"},
+            {"start": "01:53:08", "title": "Devil May cry 5"},
+            {"start": "02:00:27", "title": "The Division 2"},
+            {"start": "02:06:00", "title": "Sekiro Shadow Die Twice"},
+            {"start": "02:18:15", "title": "Outro"}
+            ]
+    }
+}

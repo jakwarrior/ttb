@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+<style type="text/css">.pill{fill:none;stroke-width:4;stroke-linecap:round;}</style>
+<path stroke="#e5e5e5" fill="#fff" d="M24,47.5C14.4,47.5,8.84,46,5.4,42.6S.5,33.6.5,24,2,8.84,5.4,5.4,14.4.5,24,.5,39.16,2,42.6,5.4s4.9,9,4.9,18.6S46,39.16,42.6,42.6,33.6,47.5,24,47.5Z"/>
+<line stroke="#fab908" class="pill" x1="24" y1="10.25" x2="24" y2="12.25"/>
+<line stroke="#fab908" class="pill" x1="24" y1="35.75" x2="24" y2="37.75"/>
+<line stroke="#fab908" class="pill" x1="24" y1="18.25" x2="24" y2="29.75"/>
+<line stroke="#ea4335" class="pill" x1="17" y1="16.5" x2="17" y2="23.5"/>
+<line stroke="#ea4335" class="pill" x1="17" y1="29.5" x2="17" y2="31.5"/>
+<line stroke="#34a853" class="pill" x1="31" y1="24.5" x2="31" y2="31.5"/>
+<line stroke="#34a853" class="pill" x1="31" y1="18.5" x2="31" y2="16.5"/>
+<line stroke="#4285f4" class="pill" x1="38" y1="23" x2="38" y2="25"/>
+<line stroke="#0066d9" class="pill" x1="10" y1="23" x2="10" y2="25"/>
+</svg>

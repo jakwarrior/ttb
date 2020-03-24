@@ -1,0 +1,31 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E01.mp3"},
+        "title": "Les Tartuffes S02E01 : Dawn of the Dead",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E01.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E01.jpg",
+        "subtitle": "Présenté par Fenston, avec Eyldebrandt, Gibbonaz, Gracchus, et Solid",
+        "description": "Les Tartuffes sont de retour pour une saison 2 ! Désormais en direct sur Youtube, c'est une véritable émission que nous vous proposons, tous les 15 jours, le jeudi soir, de 21h30 à 00h.<br/>Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps. Le programme de l'émission de ce soir, animée par Fenston accompagné de Gibbonaz, Solid, Gracchus, et Eyldebrandt:<br/>une opé spé bénévole pour le dernier DLC de Kingdom Come: Deliverance, la présentation de la dernière extension de TESO, nommée Elsweyr, un débat sur le dernier drama en date au sujet d'ACOD, l'analyse de la politique agressive d'EPIC par le biais de l'exclusivité EPIC STORE pour Metro Exodus, la preview d'Anthem, notre 1er regard sur Apex Legends, le Battle Royale qui sort de nulle part, une hype en retard sur Sundered: Eldritch Edition, un CR sur Pikuniku, notre critique de Resident Evil 2<br/>Le 1er épisode de la saison 2 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Générique"},
+            {"start": "00:00:28", "title": "Intro"},
+            {"start": "00:03:18", "title": "Epic Store"},
+            {"start": "00:21:53", "title": "DLC Kingdom Come: Deliverance"},
+            {"start": "00:24:36", "title": "DLC The Elders Scrolls Online"},
+            {"start": "00:33:08", "title": "Polemique DLC Assassin's Creed Odyssey"},
+            {"start": "00:53:12", "title": "Anthem"},
+            {"start": "01:06:47", "title": "Apex Legends"},
+            {"start": "01:26:37", "title": "Sundered"},
+            {"start": "01:48:50", "title": "Pikuniku"},
+            {"start": "01:58:18", "title": "Resident Evil 2 Remake"},
+            {"start": "02:27:21", "title": "Outro"}
+            ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS01.mp3"},
+        "title": "Les Tartuffes HS #1 : HFR PC Awards 2018",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS01.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_HS01.jpg",
+        "subtitle": "Présenté par Fenston, avec toute l'équipe des Tartuffes et de nombreux invités",
+        "description": "",
+        "chaptermarks": []
+    }
+}

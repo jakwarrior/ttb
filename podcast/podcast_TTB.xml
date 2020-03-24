@@ -1,39 +1,852 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<atom:link href="http://www.thetartuffebay.org/podcast/podcast_TTB.xml" rel="self" type="application/rss+xml" />
-<link>http://www.thetartuffebay.org/podcasts</link>
-<title>Le podcast des Tartuffes</title>
-<description>Retrouvez ici l'actualité des jeux vidéos PC avec l'équipe des tartuffes, ainsi que les annonces des jeux switch 6 ans en avance !</description>
-<language>fr-fr</language>
-<copyright>TTB, CC BY-NC-SA 2.0 fr</copyright>
-<lastBuildDate>Sat, 01 Sep 2018 02:00:00 +0200</lastBuildDate>
-<webMaster>webmaster@thetartuffebay.org (Webmaster)</webMaster>
-<itunes:author>TheTartuffeBay</itunes:author>
-<itunes:subtitle>Le podcast des tartuffes</itunes:subtitle>
-<itunes:summary>Retrouvez ici l'actualité des jeux vidéos PC avec l'équipe des tartuffes, ainsi que les annonces des jeux switch 6 ans en avance ! </itunes:summary>
-<itunes:owner>
-  <itunes:name>TTB</itunes:name>
-  <itunes:email>webmaster@thetartuffebay.org</itunes:email>
-</itunes:owner>
-<itunes:explicit>no</itunes:explicit>
-<itunes:image href="http://www.thetartuffebay.org/ui/images/podcast_HD.jpg"/>
-<itunes:category text="Games &amp; Hobbies"><itunes:category text="Video Games" /></itunes:category>  
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0"
+     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="http://www.thetartuffebay.org/podcast/podcast_TTB.xml" rel="self" type="application/rss+xml"/>
+        <link>http://www.thetartuffebay.org/podcasts</link>
+        <title>Le podcast des Tartuffes</title>
+        <description>Retrouvez ici l'actualité des jeux vidéos PC avec l'équipe des tartuffes, ainsi que les annonces
+            des jeux switch 6 ans en avance !
+        </description>
+        <language>fr-fr</language>
+        <copyright>TTB, CC BY-NC-SA 2.0 fr</copyright>
+        <lastBuildDate>Wed, 29 Jan 2020 18:00:00 +0100</lastBuildDate>
+        <webMaster>webmaster@thetartuffebay.org (Webmaster)</webMaster>
+        <itunes:author>TheTartuffeBay</itunes:author>
+        <itunes:subtitle>Le podcast des Tartuffes</itunes:subtitle>
+        <itunes:summary>Retrouvez ici l'actualité des jeux vidéos PC avec l'équipe des tartuffes, ainsi que les annonces des jeux switch 6 ans en avance !</itunes:summary>
+        <itunes:owner>
+            <itunes:name>TTB</itunes:name>
+            <itunes:email>webmaster@thetartuffebay.org</itunes:email>
+        </itunes:owner>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD.jpg"/>
+        <itunes:category text="Games &amp; Hobbies">
+            <itunes:category text="Video Games"/>
+        </itunes:category>
 
-<!-- EPISODE 1 -->
-<item>
-<title>Podcast #1</title>
-<itunes:author>TheTartuffeBay</itunes:author>
-<itunes:subtitle>Avec Eyldebrandt, Gibbonaz, Fenston, Remiche et Mukumi</itunes:subtitle>
-<itunes:summary>Au sommaire : Gamescom, Cyberpunk et RTX</itunes:summary>
-<link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3</link>
-<enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3" type="audio/mpeg" />
-<guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3</guid>
-<pubDate>Sat, 01 Sep 2018 02:00:00 +0200</pubDate>
-<itunes:duration>2:16:04</itunes:duration>
-<itunes:image href="http://www.thetartuffebay.org/ui/images/podcast_HD.jpg" />
-<itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
-</item>
+        <!-- EPISODE 1 -->
+        <item>
+            <title>Les Tartuffes #1</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Eyldebrandt, avec Gibbonaz, Fenston, Remiche et Mukumi</itunes:subtitle>
+            <itunes:summary>Sous la houlette de (Mich)Eyldebrandt, la fine équipe composée de Fenston, Remiche, Mukumi et Gibbonaz se réunit pour parler de l'actualité vidéo ludique de façon totalement professionnelle, et avec une qualité sonore prodigieuse. Avec notamment un mini dossier sur les annonces de la Gamescom, un long exposé sur les origines de Cyberpunk 2077, et un petit aparté sur les nouvelles cartes Nvidia</itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3</guid>
+            <pubDate>Sat, 01 Sep 2018 02:00:00 +0200</pubDate>
+            <itunes:duration>2:16:04</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
 
-</channel>
+        <!-- EPISODE 2 -->
+        <item>
+            <title>Les Tartuffes #2 : 3:10 pour Yuma</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Eyldebrandt, avec Gibbonaz, Fenston, Remiche et Jakwarrior</itunes:subtitle>
+            <itunes:summary><![CDATA[Apres 3 jours de travail acharné pour mettre tout ça au propre et supprimer quelques passages compromettants (non, ne cherchez pas, vous n'aurez pas la version non-censurée), le second numéro est enfin disponible !<br>
+                Encore une fois dirigé par Eyldebrandt, c'est un roster pratiquement inchangé (mais avec du nouveau matos !) qui se retrouve pour parler de Tomb Raider.<br>
+                Accessoirement, on a également : discuté de quelques actus plus ou moins intéressantes, critiqué Fallout 4 en cœur, endormi Jak et Remiche en parlant de baston, fantasmé sur Star Citizen, et halluciné sur le prix des licences de l'Overwatch League.<br>
+                <br>
+                Intro : 00:00<br>
+
+                Présentations : 01:20<br>
+
+                Sommaire : 03:18<br>
+
+                A quoi qu'on a joué ? : 04:13<br>
+                World of Warcraft : 04:30<br>
+                Dragon Quest XI : 14;48<br>
+                Fallout 4 : 22:24<br>
+                Little Nightmares : 38:20<br>
+                Anubis Zone of the Enders : Mars : 43:05<br>
+                Rise of tomb Raider : 49:47<br>
+                Shadow of Tomb Raider : 1:05:30<br>
+
+                Actualités : 1:33:34<br>
+                Samourai Spirits : 1:34:05<br>
+                Soul Calibur VI : 1:47:48<br>
+                Dead or Alive 6 : 1:48:51<br>
+                Spintires : 1:53:18<br>
+                Door Kickers: Action Squad : 1:55:12<br>
+                COD BOIIII Battle Royale : 1:57:26<br>
+                GODS Remastered : 2:03:14<br>
+                Sekiro : Shadows Die Twice : 2:05:40<br>
+                Overwatch : 2:09:30<br>
+                The Last Remnant : 2:16:34<br>
+                Space Hulk Tactics : 2:18:41<br>
+                Assassin's Creed Odissey : 2:19:40<br>
+                Timespinner : 2:21:15<br>
+
+                Dossier Star Citizen : 2:22:25<br>
+
+                Outro : 2:56:30]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_2.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_2.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_2.mp3</guid>
+            <pubDate>Mon, 17 Sep 2018 21:00:00 +0200</pubDate>
+            <itunes:duration>2:58:55</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_02.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 3 -->
+        <item>
+            <title>Les Tartuffes #3 : Memento</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Eyldebrandt, FlyinPoulpus, Gracchus, Gromatt et Manowar</itunes:subtitle>
+            <itunes:summary><![CDATA[Autour du capitaine Fenston, en charge des troupes pour la première fois, et de son bras droit Rémiche, découvrez, Gracchus, Manowar, FlyinPoulus, Gromatt et Michel, tous aussi bêtes que méchant, qui n’hésiteront pas à mettre en péril leur respectabilité pour vous faire marrer en tirant le fil des diverses actualités du monde vidéoludique sur PC.<br>
+                Les nouvelles cartes RTX d’Nvidia, le Final Major de CSGO, un jeu porno, des jeux capcom, des jeux de plateforme, des escroqueries françaises overhypées, ainsi qu’un dossier sur Gamekult et la nouvelle formule premium, voici le programme chargé au menu de ce podcast exceptionnel.<br>
+                Cliquez ici pour entendre en exclusivité des vannes glauques censurées qui ne manqueront pas de vous étonner.<br>
+                <br>
+                0:00:00 : Disclaimer<br>
+
+                0:00:38 : Intro<br>
+                0:01:06 : Présentations<br>
+                0:05:23 : Sommaire<br>
+
+                0:05:55 : Actualités<br>
+                0:06:04 : Décalquage Horaire - Doom Eternal<br>
+                0:17:58 : Final Stage Major CSGO<br>
+                0:26:13 : Nvidia RTX, release, tests et Double ID<br>
+                0:39:27 : Modération des forums Steam<br>
+                0:41:52 : News en vrac I<br>
+                0:42:24 : Tales of Vesperia<br>
+                0:44:24 : l'Arjel se penche sur les lootbox<br>
+                0:49:04 : Negligee: Love Stories<br>
+                0:53:12 : Return Of The Obra Dinn<br>
+                0:54:30 : Lawbreakers<br>
+                0:55:30 : Devil May Cry 5<br>
+                0:59:54 : Compilation BTU Capcom<br>
+                1:01:10 : Megaman XI<br>
+                1:01:56 : Resident Evil 2<br>
+                1:04:49 : Minoria<br>
+                1:06:47 : Renaine<br>
+                1:08:39 : Romancing Saga 3<br>
+                1:10:43 : Infos en vrac II<br>
+
+                1:11:17 : A quoi qu'on a joué ?<br>
+                1:11:23 : Dead Cells<br>
+                1:21:36 : Two Point Hospital<br>
+                1:24:39 : Monster Hunter: World<br>
+                1:34:27 : A Hat in a Time<br>
+                1:39:43 : Hollow Knight: Godsmaster<br>
+                1:44:47 : Shadow of the Tomb Raider<br>
+
+                1:50:40 : Gamekult : nouvelle politique premium ou la mort de la ligne éditoriale de la presse vidéoludique ?<br>
+
+                2:37:30 : Outro<br>
+
+                2:40:50 : Bonus track]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_3.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_3.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_3.mp3</guid>
+            <pubDate>Mon, 24 Sep 2018 18:00:00 +0200</pubDate>
+            <itunes:duration>2:41:49</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_03.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 4 -->
+        <item>
+            <title>Les Tartuffes #4 : Cineman</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Eyldebrandt, Gibbonaz, Gracchus et Remiche</itunes:subtitle>
+            <itunes:summary><![CDATA[Suite aux remarques sur la trop grande longueur du podcast, nous avons décidé de franchement couper dans le lard du conducteur afin de synthétiser le programme et de proposer une émission condensée et plus courte.<br>
+            De toute évidence c'est raté, mais c'est le prix à payer quand on veut proposer un contenu de qualité. Que ce soient des actualités décortiquées, des segments argumentés, des comptes rendus exhaustifs ou même un dossier étayé, nos intervenants ont tous donné de leur personne (bon ok, certains plus longtemps que d'autres) afin de vous fournir ces 3h30 de podcast d'une qualité sonore sans précédent, quoiqu'en diront nos détracteurs jaloux.<br>
+            Et il y en a pour tous les goûts ; space opéra, baston, AAA et même émulation PS3 !<br>
+            <br>
+                00:00:00 : Intro<br>
+                00:01:12 : Présentations<br>
+                00:04:07 : Sommaire<br>
+                00:05:03 : Soul Calibur 6<br>
+                00:11:48 : Jump Force<br>
+                00:14:49 : Dragon Ball Fighter Z<br>
+                00:18:40 : Street Fighter 5<br>
+                00:22:15 : Fighting EX Layers<br>
+                00:26:13 : Dirt Rally 2<br>
+                00:30:19 : Wildstar<br>
+                00:41:39 : Fallout 76<br>
+                00:46:54 : Star Citizen<br>
+                00:52:27 : Elite Dangerous<br>
+                01:04:57 : X4 Foundations<br>
+                01:07:00 : No Man's Sky<br>
+                01:08:35 : Helium Rain<br>
+                01:09:06 : Limit Theory<br>
+                01:11:22 : Infinity Battlescape<br>
+                01:17:14 : Demon's Soul<br>
+                01:36:01 : Shadow of the Tomb Raider<br>
+                01:43:34 : Pathfinder Kingmaker<br>
+                01:56:26 : World of Warcraft<br>
+                01:58:58 : Assassin's Creed Odyssey<br>
+                02:37:48 : Jeu vidéo japonais<br>
+                03:30:35 : Outro(modifié)]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_4.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_4.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_4.mp3</guid>
+            <pubDate>Mon, 08 Oct 2018 16:00:00 +0200</pubDate>
+            <itunes:duration>3:35:43</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_04.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 5 -->
+        <item>
+            <title>Les Tartuffes #5 : On l'appelle Trinita</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Eyldebrandt, avec Bardack, Fenston, Gibbonaz et Remiche</itunes:subtitle>
+            <itunes:summary><![CDATA[On a laissé passer 3 semaines depuis le dernier numéro, en esperant avoir de l'actu croustillante à décortiquer. Mais c'était peine perdue, on est toujours en pleine traversée du desert.<br/>
+            Mais ça ne nous a pas empeché de faire peter le record de longueur d'émission, grâce à un segment d'1h20 sur le dernier Assassin's Creed, sans oublier les outreaux de 50 minutes.<br/>
+            En dehors de ça, les hypes sont nombreuses : Fenston qui remet une couche sur Star Citizen et ses torchons qui flottent, Eylde vante For Honor et ses 800 millions de joueurs hardcore, Bardack le petit nouveau nous fait découvrir Sinner, et on sort la boule de cristal pour la Blizzcon.<br>
+            <br>
+                Générique: 0:00:00<br>
+                Intro: 0:00:27<br>
+                Présentations: 0:00:44<br>
+                Sommaire: 0:04:30<br>
+                Soul Calibur VI: 0:05:18<br>
+                Jump Force: 0:08:10<br>
+                For Honor Marching Fire: 0:15:30<br>
+                Street Fighter V: 0:31:40<br>
+                Fallout 76: 0:33:48<br>
+                Star Citizen: 0:44:25<br>
+                Blizzard: 1:12:35<br>
+                Kingdom Come Deliverance: 1:32:25<br>
+                Shakedown Hawai: 1:38:30<br>
+                The Evil Within 2: 1:42:50<br>
+                Sinner: Sacrifice for Redemption: 1:56:35<br>
+                Assassin's Creed Odyssey: 2:02:42<br>
+                Outro: 3:21:30<br>
+                Outreau: 3:43:50]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_5.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_5.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_5.mp3</guid>
+            <pubDate>Mon, 29 Oct 2018 16:00:00 +0200</pubDate>
+            <itunes:duration>4:11:42</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_05.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 6 -->
+        <item>
+            <title>Les Tartuffes #6 : Le Jour d'après</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Eyldebrandt, Gibbonaz, Gracchus et Zad69</itunes:subtitle>
+            <itunes:summary><![CDATA[On l'a fait ! On est passé sous la barre des 3 heures !<br/>
+            Et pourtant le programme était chargé : il fallait basher Bethesda pour son Fallout 76 (pas si) paresseux et Blizzard pour sa Blizzcon (pas si) catastrophique !<br/>
+            Entre deux segments mouchetés de mauvaise foi, on a quand même réussi à placer un real talk de Michel 'L'Influenceur' Debrandt sur Pillars of Eternity 2, un point sur le futur GOTY Crackdown 3, et Zad le nouveau venu nous a même hypés sur un jeu de programmation de robots.<br>
+            <br>Générique: 0:00:00<br>
+                Introduction: 0:00:28<br>
+                Présentations: 0:00:40<br>
+                Disclaimer: 0:02:37<br>
+                Fallout 76: 0:05:50<br>
+                Gladiabots: 0:49:50<br>
+                Burly Men at Sea: 1:00:22<br>
+                Gremlins Inc: 1:03:35<br>
+                Crackdown 3 : 1:06:58<br>
+                Blizzcon: 1:07:43<br>
+                Heroes of the Storm: 1:08:08<br>
+                Overwatch: 1:11:50<br>
+                Froot Loops : 1:19:32<br>
+                Hearthstone: 1:22:33<br>
+                World of Warcraft: 1:27:23<br>
+                Warcraft III Reforged: 1:41:25<br>
+                Diablo Immortal et au-delà: 1:57:05<br>
+                Pillars of Eternity II: 2:41:15<br>
+                Shroud of the Avatar: 2:46:30<br>
+                Debrief: 2:48:40<br>
+                Outro: 2:57:38]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_6.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_6.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_6.mp3</guid>
+            <pubDate>Sun, 11 Nov 2018 19:00:00 +0100</pubDate>
+            <itunes:duration>2:58:10</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_06.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 7 -->
+        <item>
+            <title>Les Tartuffes #7 : Les Hauts de Hurlevent</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Eyldebrandt, avec Fenston, Solid, Mukumi et Remiche</itunes:subtitle>
+            <itunes:summary><![CDATA[Des revenants, des nouveaux, des pluriels singuliers, de l'humour fin et de l'humour moins fin, des conseils d'achats de Mukumi : vous trouverez tout dans le numéro 7 du podcasts des Tartuffes.<br/>
+            Deux lignes rouges s'y opposent sans jamais s'y croiser, le Spaceporn de Fenston et les FPS de barbus de Solid, invité spécial pour cette nouvelle thématique abordée à coté des marroniers habituels que sont Star Citizen et Shadow of the Tomb Raider.<br/>
+            Ah, et un petit peu aussi de Fallout Septante six, evidemment.<br>
+                Sommaire: 0:00:00<br>
+                Générique: 0:02:16<br>
+                Star Citizen: 0:02:45<br>
+                Rainbow Six Siege: 0:40:50<br>
+                Blue Reflection: 1:10:30<br>
+                Final Fantasy XV: 1:17:28<br>
+                Instant Lootboxes: 1:24:10<br>
+                Rachat d'inXile et Obsidian par Microsoft: 1:28:53<br>
+                No Man's Sky: 1:43:00<br>
+                Sunset Overdrive: 2:13:30<br>
+                World War III/Battlefield V: 2:21:22<br>
+                Free DLC ACOD: 2:42:50<br>
+                DLC Shadow of Tomb Raider: 2:49:20<br>
+                DLC Kingdom Come Deliverance: 2:52:18<br>
+                Insurgency Sandstorm: 2:57:55<br>
+                Yakuza 0: 3:06:30<br>
+                Fallout 76: 3:26:40<br>
+                Debrief: 4:15:35<br>
+                Outro: 4:19:37]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_7.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_7.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_7.mp3</guid>
+            <pubDate>Mon, 26 Nov 2018 17:00:00 +0100</pubDate>
+            <itunes:duration>4:21:23</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_07.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 8 -->
+        <item>
+            <title>Les Tartuffes #8 : Intouchables</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Gibbonaz, avec Eyldebrandt, Fenston, Gracchus et Solid</itunes:subtitle>
+            <itunes:summary><![CDATA[Des jambes à n'en plus finir à en faire pâlir d'envie Adriana Karembeu. Une tête bien faite pour déchiffrer les annonces d'un VideoGamesAwards qui restera dans les annales.<br/>
+            Les seins nourriciers du podcast que sont StarCitizen et Assassin's Creed Odyssey, un peu de poil dépassant d'un segment de jeux de combat viril mais correct, et pour parachever le tout un petit peu de fesses moites avec Fallout 76.<br/>
+            C'est un podcast PEGI18 qui inaugure l'ère Gibbonaz aux commandes, accompagné de Michel et Fenston, le retour de Solid et ... Gracchus ? Il se porte à merveille !<br/>Bienvenue dans une étape charnière de notre but non avoué : le podcast quotidien de 24h en direct. Les tartuffes numéro 8, magnéto Gibbo !<br/>
+            0:00:00 : Générique<br/>
+            0:00:26 : Intro<br/>
+            0:02:15 : Tekken 7<br/>
+            0:07:01 : Fighting Ex Layer<br/>
+            0:09:36 : Street Fighter V<br/>
+            0:18:36 : SNK<br/>
+            0:20:15 : FarCry New Dawn / FarCry 5<br/>
+            0:34:17 : Epic Store<br/>
+            0:43:14 : Star Citizen<br/>
+            0:57:13 : Assassin's Creed Odyssey - Legacy of the first blade<br/>
+            1:07:40 : Fallout 76<br/>
+            1:27:55 : Just Cause 4<br/>
+            1:42:05 : Darksiders III<br/>
+            2:07:20 : VGA The Games Awards - Préshow<br/>
+            2:07:37 : Metal Gear Solid<br/>
+            2:22:15 : Dragon Age 4<br/>
+            2:30:45 : Projet indiana/The Outer Worlds<br/>
+            2:38:48 : Crash Team Racing<br/>
+            2:42:37 : Metroid Prime 4<br/>
+            2:49:45 : The Legend of Zelda - Skyward Sword<br/>
+            2:50:47 : CEMU<br/>
+            2:56:00 : Mortal Kombat XI<br/>
+            2:57:13 : Alien Blackout<br/>
+            2:58:40 : Avengers<br/>
+            3:05:35 : Avatar<br/>
+            3:08:11 : Borderlands 3<br/>
+            3:08:45 : THQ Nordic<br/>
+            3:10:52 : Ancestors<br/>
+            3:12:57 : CSGO - F2P & Battle Royale<br/>
+            Bonus Track<br/>
+            3:24:30 : VGA The Games Awards - Live]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_8.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_8.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_8.mp3</guid>
+            <pubDate>Mon, 10 Dec 2018 17:00:00 +0100</pubDate>
+            <itunes:duration>6:48:28</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_08.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 9 -->
+        <item>
+            <title>Les Tartuffes #9 : Bad Santa</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par FlyinPoulpus, avec Gracchus, Groomy, Jakwarrior et Remiche</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes ont travaillé dur pendant le réveillons pour vous proposer la crème de l'analyse vidéoludique.<br/>Pour la première fois présenté par FlyinPoulpus, accompagné d'un casting aussi inédit qu'hétéroclite, les tartuffes passent au crible l'actualité périmée du jeu vidéo sur PC.<br/>Au programme de l'arlésienne iconique, de l'EA vieux de 5 ans, du AA de l'an dernier, des jeux avec des lolis, et des Wargames pour barbus confirmés.<br/>Des sujets passionnants condensés en moins de 3 heures en exclusivité pour HFR.<br/><br/><a href='https://www.leqg.org/forum/viewtopic.php?f=77&t=15044' target='_blank'>Lien dont parle Groomy pendant le dossier Wargame</a><br>
+            Générique: 0:00:00<br>
+            Intro: 0:00:25<br>
+            DayZ: 0:03:27<br>
+            Transport Fever: 0:08:43<br>
+            Gris: 0:13:48<br>
+            Bladed Fury: 0:23:34<br>
+            Censure des jeux à caractère pédo-pornographique sur steam: 0:27:21<br>
+            Dusk: 0:46:57<br>
+            Beyond Good & Evil 2: 0:50:25<br>
+            Stellaris: 1:00:27<br>
+            The Surge: 1:06:22<br>
+            Thea 2: The Shattering: 1:21:27<br>
+            Star Citizen/Squadron 42: 1:28:20<br>
+            Strategic Command WWII: World at war: 1:42:30<br>
+            The Elders Scrolls Online: 1:51:25<br>
+            Action Henk: 2:00:40<br>
+            Adoptez un Wargame pour Noel: 2:02:40<br>
+            Outro: 2:36:00]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_9.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_9.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_9.mp3</guid>
+            <pubDate>Thu, 27 Dec 2018 22:00:00 +0100</pubDate>
+            <itunes:duration>2:42:06</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_09.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE 10 -->
+        <item>
+            <title>Les Tartuffes #10 : Les aventures de Rocketeer</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Bardack, Gibbonaz, Gracchus, Solid et Michel</itunes:subtitle>
+            <itunes:summary><![CDATA[Il est là ! Enfin ! Le premier podcast en direct, mais pas (encore) depuis Montauban City of lights and gras de canard ! Pour mener à bien ce projet, le capitaine de soirée Fenston s'est entouré des meilleurs, mais également de Gracchus.<br/>Dans ce podcast aussi rythmé qu'une reprise des rage par Brass Against, ou les voix les plus fortes s'opposent aux trompettes les plus mélodieuses, on abordera la vrai problématique du pouvoir d'achat en ce premier trimestre 2019 : trop de jeu tue t'il le jeu ? Pourrons nous jouer à tout ? Solid est il vraiment raciste ?<br/>Pendant deux heures et 27 minutes, Fenston et sa troupe vous expliqueront que ces trois prochains mois, votre endroit de prédilection se doit d'être devant votre écran de PC, et sur la chaine des Tartuffes.<br/>Abonne toi.<br/>Fais le.<br/>Maintenant.<br>
+            0:00:00 Générique<br>
+            0:00:25 Intro<br>
+            0:04:35 Street Fighter V<br>
+            0:15:20 Dragon Ball FighterZ<br>
+            0:28:08 Code Vein<br>
+            0:32:15 Rad Rodgers<br>
+            0:38:02 Catherine<br>
+            0:40:40 Dossier sorties du 1er trimestre 2019<br>
+            0:41:00 Onimusha Warlords<br>
+            0:42:50 Resident Evil 2<br>
+            1:02:55 Metro Exodus<br>
+            1:10:30 Crackdown 3<br>
+            1:15:03 Far Cry New Dawn<br>
+            1:21:35 Jump Force<br>
+            1:26:50 Dead or Alive 6<br>
+            1:31:42 Sinner Sacrifice for Redemption<br>
+            1:35:43 Anthem<br>
+            1:47:02 Dirt Rally 2.0<br>
+            1:49:10 Total War Three Kingdoms<br>
+            1:53:08 Devil May cry 5<br>
+            2:00:27 The Division 2<br>
+            2:06:00 Sekiro Shadow Die Twice<br>
+            2:18:15 Outro]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_10.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_10.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_10.mp3</guid>
+            <pubDate>Mon, 14 Jan 2019 17:00:00 +0100</pubDate>
+            <itunes:duration>2:27:04</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_10.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE HS1 -->
+        <item>
+            <title>Les Tartuffes HS #1 : HFR PC Awards 2018</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec toute l'équipe des Tartuffes et de nombreux invités</itunes:subtitle>
+            <itunes:summary><![CDATA[Vous écoutez actuellement le live plus trop en direct des HFR PC Awards 2018]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS01.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS01.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS01.mp3</guid>
+            <pubDate>Thu, 24 Jan 2019 21:00:00 +0100</pubDate>
+            <itunes:duration>2:34:54</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_HS01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE HS2 -->
+        <item>
+            <title>Les Tartuffes HS #2 : L'After des HFR PC Awards 2018</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec toute l'équipe des Tartuffes et de nombreux invités</itunes:subtitle>
+            <itunes:summary><![CDATA[Vous écoutez actuellement l'after du live plus trop en direct des HFR PC Awards 2018, mais surtout Rémiche complètement bourré]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS02.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS02.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS02.mp3</guid>
+            <pubDate>Thu, 24 Jan 2019 21:00:00 +0100</pubDate>
+            <itunes:duration>4:17:19</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_HS02.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S02E01 -->
+        <item>
+            <title>Les Tartuffes S02E01 : Dawn of the Dead</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Eyldebrandt, Gibbonaz, Gracchus, et Solid</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 2 ! Désormais en direct sur Youtube, c'est une véritable émission que nous vous proposons, tous les 15 jours, le jeudi soir, de 21h30 à 00h.<br>Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps. Le programme de l'émission de ce soir, animée par Fenston accompagné de Gibbonaz, Solid, Gracchus, et Eyldebrandt:<br>une opé spé bénévole pour le dernier DLC de Kingdom Come: Deliverance, la présentation de la dernière extension de TESO, nommée Elsweyr, un débat sur le dernier drama en date au sujet d'ACOD, l'analyse de la politique agressive d'EPIC par le biais de l'exclusivité EPIC STORE pour Metro Exodus, la preview d'Anthem, notre 1er regard sur Apex Legends, le Battle Royale qui sort de nulle part, une hype en retard sur Sundered: Eldritch Edition, un CR sur Pikuniku, notre critique de Resident Evil 2<br>Le 1er épisode de la saison 2 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.<br>
+            00:00:00 - Generique<br>
+            00:00:28 - Intro<br>
+            00:03:18 - Epic Store<br>
+            00:21:53 - DLC Kingdom Come: Deliverance<br>
+            00:24:36 - DLC The Elders Scrolls Online<br>
+            00:33:08 - Polemique DLC Assassin's Creed Odyssey<br>
+            00:53:12 - Anthem<br>
+            01:06:47 - Apex Legends<br>
+            01:26:37 - Sundered<br>
+            01:48:50 - Pikuniku<br>
+            01:58:18 - Resident Evil 2 Remake<br>
+            2:27:21 - Outro]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E01.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E01.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E01.mp3</guid>
+            <pubDate>Sat, 23 Feb 2019 10:00:00 +0100</pubDate>
+            <itunes:duration>2:29:29</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S02E02 -->
+        <item>
+            <title>Les Tartuffes S02E02 : Chappie</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Bardack, Eyldebrandt, Lamren, Manowar et Solid</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 2 ! Désormais en direct sur Youtube, c'est une véritable émission que nous vous proposons, tous les 15 jours, le jeudi soir, de 21h30 à 00h.<br>Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br>Le programme de l'émission de ce soir, animée par Fenston en compagnie de Bardack, Solid, Manowar, Lamren, et Eyldebrandt:<br>Actus : l'annonce de Darkest Dungeon II, le reveal d'Hollow Knight Silksong, l'analyse du community manager de Warhorse France sur le rachat par THQ Nordiq<br>Preview : notre retour sur les betas de The Division 2<br>Reviews : Anthem, Far Cry New Dawn, Metro Exodus, Dirt Rally 2.0, Apex Legends<br>Le 2nd épisode de la saison 2 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.<br>]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E02.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E02.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E02.mp3</guid>
+            <pubDate>Mon, 11 Mar 2019 18:00:00 +0100</pubDate>
+            <itunes:duration>2:32:44</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E02.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- TA MERE L'INPUT #1 -->
+        <item>
+            <title>Ta Mère l'Input #1</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Gibbonaz, avec Eyldebrandt et Lamren</itunes:subtitle>
+            <itunes:summary><![CDATA[Plus rien n'arrête ces connards de Tartuffes !<br>Après le passage au direct lors du début de la saison 2, voici venus les spin-offs de la mort.<br>Plus spécialisés, plus décontractés, le but de ces programmes est de se faire plaisir, hors du cadre plus sérieux d'un podcast généraliste.<br>Le premier d'entre eux ne pouvait être que le spin-off bagarre, dont la génèse est aussi vieille que le podcast canon lui-même. On le joue depuis le 1.<br>En direct, et peut-être avec du public, de 21h30 à 00h, Ta Mère l'Input se tiendra le lundi 11 Mars 2019 et sera présenté par le grand Zanobbig, Community Manager pour Capcom Europe, assisté de Lamren, Webdev chez Cerebos, et d'Eyldebrandt, le seul mec avec du skill de ce podcast.<br>Le 1er numéro de Ta Mère l'Input démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.<br>
+            00:00:00 Générique<br>
+            00:02:59 Evo 2019 : Lineup & dramas<br>
+            00:20:40 For Honor<br>
+            00:35:33 Street Fighter 5<br>
+            00:49:44 Samurai Shodown<br>
+            00:58:40 Power Rangers: Battle for the Grid<br>
+            01:08:08 Granblue Fantasy Versus<br>
+            01:20:00 Dragon Ball FighterZ<br>
+            01:44:40 Mortal Kombat XI<br>
+            02:05:48 Dead or Alive 6<br>
+            02:24:00 Outro]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_1.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_1.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_1.mp3</guid>
+            <pubDate>Sun, 17 Mar 2019 18:00:00 +0100</pubDate>
+            <itunes:duration>2:27:57</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Carre_HD_TLI_01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE HS3 -->
+        <item>
+            <title>Les Tartuffes HS #3 - Super Mario, le film</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston, avec Daweed, Bardack, Gracchus, Solid, et Eyldebrandt</itunes:subtitle>
+            <itunes:summary><![CDATA[Pour célébrer ensemble le 1er avril, quoi de mieux que de prendre le contrepied des attentes et traiter, le plus sérieusement qu'il nous sera possible, l'actualité Switch vu par de fiers représentants de la Master Race ?<br>
+            Toutefois pas d'inquiétude, jeune aryen, les tartuffes s'attarderont également sur le planning des sorties PC des mois d'Avril à Aout.<br>En direct, et peut-être avec du public, de 21h30 à 00h, ce hors-série se tiendra le lundi 1er avril 2019 et sera présenté par Fenston. Autour de lui vous retrouverez Daweed, Bardack, Gracchus, Solid, et Eyldebrandt.
+            00:00:00 Générique<br>
+            00:00:28 Présentation<br>
+            00:05:01 Kid Icarus<br>
+            00:11:11 Virtua Racing<br>
+            00:17:09 Turok<br>
+            00:20:25 Castle Crashers Remastered<br>
+            00:22:44 Bulletstorm duke of switch<br>
+            00:24:00 Cuphead & A Hat in Time<br>
+            00:27:28 Super Dragon Ball Heroes World Mission<br>
+            00:29:15 DMC5<br>
+            00:34:18 Nintendo Labo VR<br>
+            00:47:31 Rumeurs nouvelles Switch<br>
+            00:56:08 Zelda Breath of the Wild<br>
+            01:44:42 Sorties PC<br>
+            01:45:09 Shovel Knight Showdown<br>
+            01:47:25 Katana Zero<br>
+            01:50:36 Mortal Kombat 11<br>
+            01:52:20 Super Meat Boy Forever<br>
+            01:53:15 Gracchus se masturbe avec son micro<br>
+            01:55:32 Rage 2<br>
+            02:00:12 A plague tale innocence<br>
+            02:02:23 Team Sonic Racing<br>
+            02:06:48 The Sinking City<br>
+            02:07:15 Kingdom Come Deliverance Royal Edition<br>
+            02:08:13 TESO Elsweyr<br>
+            02:10:32 Crash Team Racing Nitro Fuel<br>
+            02:12:42 Ion Maiden<br>
+            02:17:57 FF14<br>
+            02:18:58 Wolfenstein Young Blood<br>
+            02:20:38 Shenmue 3<br>
+            02:24:28 Biomutant<br>
+            02:26:33 Control<br>
+            02:32:09 Outro]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS03.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS03.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_HS03.mp3</guid>
+            <pubDate>Mon, 1 Apr 2019 20:00:00 +0100</pubDate>
+            <itunes:duration>2:34:39</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_HS03.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S02E03 -->
+        <item>
+            <title>Les Tartuffes S02E03 : Yojimbo</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston avec Bardack, Solid, Manowar, Gibbonaz, Eyldebrandt, Gracchus, Remiche et FlyinPoulpus</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 2 !<br>
+            Désormais en direct et en simultané sur Youtube et sur Twitch, c'est une véritable émission que nous vous proposons, tous les 15 jours, ou presque, le jeudi soir, de 21h30 à 00h.<br>
+            <br>
+            Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br>
+            Le programme de l'émission de ce soir, animée par Fenston en compagnie de Bardack, Solid, Manowar, Gibbonaz, Eyldebrandt, Gracchus, Remiche et Flyin Poulpus.<br>
+            <br>
+            Le Courrier des Lecteurs<br>
+            <br>
+            Actus<br>
+            -Borderlands 3<br>
+            -Anthem, EA, Bioware, Shitstorms<br>
+            <br>
+            <br>
+            Preview<br>
+            -notre retour sur les betas de The Division 2<br>
+            <br>
+            Dossier The Division 2<br>
+            -The Division 1.5 ?<br>
+            -L'open world de référence ?<br>
+            -Massive et la promesse du endgame<br>
+            -Le verdict des tartuffes<br>
+            <br>
+            Dossier Sekiro: Shadows Die Twice<br>
+            -From Software réinvente sa formule<br>
+            -Le meilleur système de combat de l'histoire ?<br>
+            -L'art du level design<br>
+            -Le verdict des Tartuffes]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03.mp3</guid>
+            <pubDate>Thu, 11 Apr 2019 20:00:00 +0100</pubDate>
+            <itunes:duration>2:30:46</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E03.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S02E03 - After -->
+        <item>
+            <title>Les Tartuffes S02E03 : Yojimbo - l'After</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston avec Bardack, Solid, Manowar, Gibbonaz, Eyldebrandt, Gracchus, Remiche et FlyinPoulpus</itunes:subtitle>
+            <itunes:summary><![CDATA[L'after du podcast n°3 de la saison 2]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03_After.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03_After.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03_After.mp3</guid>
+            <pubDate>Thu, 11 Apr 2019 22:00:00 +0100</pubDate>
+            <itunes:duration>3:06:27</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E03.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- TA MERE L'INPUT #2 -->
+        <item>
+            <title>Ta Mère l'Input #2</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Gibbonaz, avec Eyldebrandt et Lamren</itunes:subtitle>
+            <itunes:summary><![CDATA[Et voici le second numéro pour Ta Mere L'Input, le podcast parlant de jeux de baston auxquels on ne joue pas.<br/>
+            Cette fois encore j'ai accueilli Lamren et Eyldebrandt pour commenter l'actualité, et on parle du sexisme, des weebs et des dead games.<br/>
+            Mais aussi pour notre dossier sur Mortal Kombat 11, le jeu où ton AI est plus forte que toi.<br/>
+            Avec un petit point sur les tournois à venir, ou déjà passés si vous avez raté le live.<br/>
+            00:02:50 Samurai Spirits : Topo sur son actu<br/>
+            00:21:37 Dragon Ball FighterZ : Goku GT le perso OP<br/>
+            00:34:08 Jump Force : Fin de vie<br/>
+            00:41:46 For Honor : Perso DLC<br/>
+            00:53:45 Dead or Alive 6 : Patchs de censure et revenus<br/>
+            01:10:25 Granblue Versus : On le veut sur PC<br/>
+            01:16:38 Mortal Kombat XI : 1h à parler des défauts, mais on a aimé quand meme<br/>
+            02:38:30 Tournois à venir : Texas Showdown, Stunfest...]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_2.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_2.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_2.mp3</guid>
+            <pubDate>Mon, 06 May 2019 18:00:00 +0100</pubDate>
+            <itunes:duration>2:59:01</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Carre_HD_TLI_02.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- DU POIL SOUS LES EXCELS #2 -->
+        <item>
+            <title>Du Poil sous les Excels #1</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Galak, avec Groomy, Remiche, Stukka et Zad</itunes:subtitle>
+            <itunes:summary><![CDATA[Plus rien n'arrête ces connards de Tartuffes !<br>
+            Après le passage au direct lors du début de la saison 2, voici venus les spin-offs de la mort.<br>
+            Plus spécialisés, plus décontractés, le but de ces programmes est de se faire plaisir, hors du cadre plus sérieux d'un podcast généraliste.<br>
+			<br>
+            On l'avait promis, alors on l'a fait, le fameux podcast entièrement dédié aux jeux de barbus.<br>
+            STR, 4X, grande stratégie, jeux de gestion, simulations, tableurs excels ludiques, ascii games et pire encore, rien ne vous sera épargné.<br>
+			<br>
+            En direct et en simultané sur Tiwtch et Youtube, de 21h30 à 00h, Du Poil sous les Excels se tiendra le jeudi 16 Mai 2019 et sera présenté par l'amiral fenston.<br>
+            Autour de lui, Groomy, Zad, Galak et Remiche tenteront de faire honneur à leur réputation.<br>
+            Ce 1er podcast permettra aux tartuffes d'accueillir leur 1er invité de marque, Stukka, aussi connu sous le pseudonyme d'odieux connard.<br>
+			<br>
+            Le programme de l'émission:<br>
+			<br>
+            Actus<br>
+            ► Total War: Three Kingdoms<br>
+            ► Steel Division 2<br>
+            ► Gladiabots<br>
+            ► Transport Fever 2<br>
+            ► Cliff Empire<br>
+			<br>
+            Reviews<br>
+            ► Thea 2<br>
+            ► Farming Simulator 2019<br>
+            ► Rise of Industry<br>
+            ► Hearts of Iron 4 Man the Guns<br>
+            ► Imperator: Rome<br>
+			<br>
+            Dossiers<br>
+            ► Dwarf Fortress<br>
+            ► Anno 1800<br>
+			<br>
+            Sache également, jeune connard, qu'on a un ouvert un discord Les tartuffes.<br>
+            Si tu veux juste bitcher, discuter, coopérer, ou quoi que ce soit d'autre, clique ici https://discord.gg/2u5GuxX<br>
+			<br>
+            Le 1er numéro Du Poil sous les Excels démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Du_poil_sous_les_excels_1.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Du_poil_sous_les_excels_1.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Du_poil_sous_les_excels_1.mp3</guid>
+            <pubDate>Thu, 16 May 2019 20:00:00 +0100</pubDate>
+            <itunes:duration>2:26:53</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Carre_HD_DPSLE_01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S02E04 -->
+        <item>
+            <title>Les Tartuffes S02E04 : Ratatouille</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston en compagnie de Caboc, Eyldebrandt, Gracchus, Gromatt Remiche et Solid</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 2 !<br>
+            Désormais en direct et en simultané sur Youtube et sur Twitch, c'est une véritable émission que nous vous proposons, tous les 15 jours, ou presque, un soir au pif sans la semaine, de 21h30 à 00h.<br>
+			<br>
+            Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br>
+            Le programme de l'émission de ce soir, animée par Fenston en compagnie de Caboc, Eyldebrandt, Gracchus, Gromatt Remiche et Solid.<br>
+			<br>
+            Actus<br>
+            ► Ubisoft Pass Premium<br>
+            ► Les jeux Quantic Dreams sur EGS<br>
+            ► L'addiction aux jeux vidéos est désormais une maladie<br>
+            ► Code Vein<br>
+            ► Nioh 2<br>
+            ► The Surge 2<br>
+			<br>
+            2 mois plus tard<br>
+            ► The Division 2<br>
+			<br>
+            Reviews<br>
+            ► Sigil<br>
+            ► Shakedown Hawaï<br>
+            ► Ape Out<br>
+            ► Rage 2<br>
+            ► A Plague Tale: Innocence<br>
+			<br>
+            Sache également, jeune connard, qu'on a un ouvert un discord Les tartuffes.<br>
+            Si tu veux juste bitcher, discuter, coopérer, ou quoi que ce soit d'autre, clique ici https://discord.gg/2u5GuxX<br>
+			<br>
+            Le 4e épisode de la saison 2 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E04.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E04.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E04.mp3</guid>
+            <pubDate>Wed, 29 May 2019 20:00:00 +0100</pubDate>
+            <itunes:duration>3:27:41</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E04.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S03E01 -->
+        <item>
+            <title>Les Tartuffes S03E01 : Les Bronzés</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston en compagnie de Bardack, Eyldebrandt, Gracchus, Gibbonaz et Remiche</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 3 !<br>
+            Désormais en direct et en simultané sur Youtube et sur Twitch, c'est une véritable émission que nous vous proposons, tous les 15 jours, ou presque, un soir au pif sans la semaine, de 21h30 à 00h.<br>
+			<br>
+            Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br>
+            Le programme de l'émission de ce soir, animée par Fenston en compagnie de Bardack, Eyldebrandt, Gracchus, Gibbonaz et Remiche.<br>
+			<br>
+            Actus<br/>
+            ► The Division 2<br/>
+            <br/>
+            Dossier<br/>
+            ► Gamescon<br/>
+            <br/>
+            Drama<br/>
+            ► Star Citizen<br/>
+            <br/>
+            Review<br/>
+            ► Outer Wilds<br/>
+            ► Bloodstained<br/>
+            ► Ion Maiden<br/>
+            ► Onirism<br/>
+            ► GOW 5<br>
+            <br>
+            Sache également, jeune connard, qu'on a un ouvert un discord Les tartuffes.<br>
+            Si tu veux juste bitcher, discuter, coopérer, ou quoi que ce soit d'autre, clique ici https://discord.gg/2u5GuxX<br>
+			<br>
+            Le 1er épisode de la saison 3 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S03E01.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S03E01.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S03E01.mp3</guid>
+            <pubDate>Thu, 12 Sep 2019 20:00:00 +0100</pubDate>
+            <itunes:duration>3:14:58</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S03E01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- TA MERE L'INPUT #3 -->
+        <item>
+            <title>Ta Mère l'Input #3</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Gibbonaz, avec Eyldebrandt et Lamren</itunes:subtitle>
+            <itunes:summary><![CDATA[Et voici le 3ème numéro pour Ta Mere L'Input, le podcast parlant de jeux de baston auxquels on ne joue pas.<br>
+            Au programme de cet épisode, Guilty Gear, For Honor, DBZF, Mortal Kombat XI Street Fighter 5, Grandblue Versus, Tekken 7,...]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_3.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_3.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_3.mp3</guid>
+            <pubDate>Fri, 04 Oct 2019 20:00:00 +0100</pubDate>
+            <itunes:duration>3:28:11</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Carre_HD_TLI_03.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S04E01 -->
+        <item>
+            <title>Les Tartuffes S04E01 : Il faut sauver le soldat Tartuffe</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Gracchus en compagnie de Bardack, Daweed, Eyldebrandt, Fenston, Gibbonaz, Manowar, Mukumi et Remiche</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 4 !<br>
+            Désormais en direct et en simultané sur Youtube et sur Twitch (ou pas), c'est une véritable émission que nous vous proposons, tous les 15 jours (ou pas), un soir au pif sans la semaine, de 21h30 à 00h (ou beaucoup plus tard)<br>
+			<br>
+            Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br>
+            Le programme de l'émission de ce soir, animée par Gracchus en compagnie de Bardack, Daweed, Eyldebrandt, Fenston, Gibbonaz, Manowar, Mukumi et Remiche.<br>
+			<br>
+            ► Récap en vrac de l'année 2019<br/>
+            <br>
+            Sache également, jeune connard, qu'on a un ouvert un discord Les tartuffes.<br>
+            Si tu veux juste bitcher, discuter, coopérer, ou quoi que ce soit d'autre, clique ici https://discord.gg/2u5GuxX<br>
+			<br>
+            Le 1er épisode de la saison 4 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E01.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E01.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E01.mp3</guid>
+            <pubDate>Fri, 17 Jan 2020 20:00:00 +0100</pubDate>
+            <itunes:duration>3:26:13</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S04E01.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+        <!-- EPISODE S04E02 -->
+        <item>
+            <title>Les Tartuffes S04E02 : Band of Branleurs</title>
+            <itunes:author>TheTartuffeBay</itunes:author>
+            <itunes:subtitle>Présenté par Fenston en compagnie de Bardack, Daweed, Eyldebrandt, Gracchus, Gromatt, Gibbonaz, Poulpus, Remiche et Solid</itunes:subtitle>
+            <itunes:summary><![CDATA[Les Tartuffes sont de retour pour une saison 4 !<br>
+            Désormais en direct et en simultané sur Youtube et sur Twitch (ou pas), c'est une véritable émission que nous vous proposons, tous les 15 jours (ou pas), un soir au pif sans la semaine, de 21h30 à 00h (ou beaucoup plus tard)<br>
+			<br>
+            Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps.<br>
+            Le programme de l'émission de ce soir, animée par Fenston en compagnie de Bardack, Daweed, Eyldebrandt, Gracchus, Gromatt, Gibbonaz, Poulpus, Remiche et Solid<br>
+			<br>
+            ► On parcourt en vrac les sorties à venir en 2020<br/>
+            <br>
+            Sache également, jeune connard, qu'on a un ouvert un discord Les tartuffes.<br>
+            Si tu veux juste bitcher, discuter, coopérer, ou quoi que ce soit d'autre, clique ici https://discord.gg/2u5GuxX<br>
+			<br>
+            Le 1er épisode de la saison 4 des tartuffes démarre maintenant, cale-toi dans ton fauteuil gamer dégueulasse, mets du son dans ton casque Hi-Res, abonne-toi, et mets des pouces bleus.]]></itunes:summary>
+            <link>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E02.mp3</link>
+            <enclosure url="http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E02.mp3" type="audio/mpeg"/>
+            <guid>http://www.thetartuffebay.org/podcast/Les_Tartuffes_S04E02.mp3</guid>
+            <pubDate>Fri, 24 Jan 2020 20:00:00 +0100</pubDate>
+            <itunes:duration>5:21:17</itunes:duration>
+            <itunes:image href="http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S04E02.jpg"/>
+            <itunes:keywords>jeux vidéo, video games, PC, podcast, tartuffe, TTB</itunes:keywords>
+        </item>
+
+    </channel>
 </rss>

@@ -1,0 +1,44 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_4.mp3"},
+        "title": "Les Tartuffes #4 : Cineman",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_4.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_04.jpg",
+        "subtitle": "Présenté par Fenston, avec Eyldebrandt, Gibbonaz, Gracchus et Remiche",
+        "description": "Suite aux remarques sur la trop grande longueur du podcast, nous avons décidé de franchement couper dans le lard du conducteur afin de synthétiser le programme et de proposer une émission condensée et plus courte.<br/>De toute évidence c'est raté, mais c'est le prix à payer quand on veut proposer un contenu de qualité. Que ce soient des actualités décortiquées, des segments argumentés, des comptes rendus exhaustifs ou même un dossier étayé, nos intervenants ont tous donné de leur personne (bon ok, certains plus longtemps que d'autres) afin de vous fournir ces 3h30 de podcast d'une qualité sonore sans précédent, quoiqu'en diront nos détracteurs jaloux.<br/>Et il y en a pour tous les goûts ; space opéra, baston, AAA et même émulation PS3 !",
+        "chaptermarks": [
+            {"start": "00:00:00", "title": "Intro"},
+            {"start": "00:01:12", "title": "Présentations"},
+            {"start": "00:04:07", "title": "Sommaire"},
+            {"start": "00:05:03", "title": "Soul Calibur 6"},
+            {"start": "00:11:48", "title": "Jump Force"},
+            {"start": "00:14:49", "title": "Dragon Ball Fighter Z"},
+            {"start": "00:18:40", "title": "Street Fighter 5"},
+            {"start": "00:22:15", "title": "Fighting EX Layers"},
+            {"start": "00:26:13", "title": "Dirt Rally 2"},
+            {"start": "00:30:19", "title": "Wildstar"},
+            {"start": "00:41:39", "title": "Fallout 76"},
+            {"start": "00:46:54", "title": "Star Citizen"},
+            {"start": "00:52:27", "title": "Elite Dangerous"},
+            {"start": "01:04:57", "title": "X4 Foundations"},
+            {"start": "01:07:00", "title": "No Man's Sky"},
+            {"start": "01:08:35", "title": "Helium Rain"},
+            {"start": "01:09:06", "title": "Limit Theory"},
+            {"start": "01:11:22", "title": "Infinity Battlescape"},
+            {"start": "01:17:14", "title": "Demon's Soul"},
+            {"start": "01:36:01", "title": "Shadow of the Tomb Raider"},
+            {"start": "01:43:34", "title": "Pathfinder Kingmaker"},
+            {"start": "01:56:26", "title": "World of Warcraft"},
+            {"start": "01:58:58", "title": "Assassin's Creed Odyssey"},
+            {"start": "02:37:48", "title": "Dossier : le jeu vidéo japonais"},
+            {"start": "03:30:35", "title": "Outro"}
+            ]
+    }
+}

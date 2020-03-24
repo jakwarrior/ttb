@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03.mp3"},
+        "title": "Les Tartuffes S02E03 : Yojimbo",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_S02E03.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_S02E03.jpg",
+        "subtitle": "Présenté par Fenston avec Bardack, Solid, Manowar, Gibbonaz, Eyldebrandt, Gracchus, Remiche et FlyinPoulpus",
+        "description": "Les Tartuffes sont de retour pour une saison 2 !<br/>Désormais en direct et en simultané sur Youtube et sur Twitch, c'est une véritable émission que nous vous proposons, tous les 15 jours, ou presque, le jeudi soir, de 21h30 à 00h.<br/>Trailers, extraits de gameplay et démos en live sur tous les sujets abordés, le tout en 1440p @ 60fps."
+    }
+}

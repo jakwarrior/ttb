@@ -1,0 +1,17 @@
+{
+    "extensions": {
+        "ChapterMarks": {},
+        "EpisodeInfo": {},
+        "Playlist": {},
+        "Transcript": {},
+        "SubscribeBar": {}
+    },
+    "episode": {
+        "media": {"mp3": "http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_3.mp3"},
+        "title": "Ta Mère l'Input #3",
+        "url": "http://www.thetartuffebay.org/podcast/Ta_Mere_l'Input_3.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Carre_HD_TLI_03.jpg",
+        "subtitle": "Présenté par Gibbonaz, avec Eyldebrandt et Lamren",
+        "description": "Et voici le 3ème numéro pour Ta Mere L'Input, le podcast parlant de jeux de baston auxquels on ne joue pas.<br/>Au programme de cet épisode, Guilty Gear, For Honor, DBZF, Mortal Kombat XI Street Fighter 5, Grandblue Versus, Tekken 7,..."
+    }
+}

@@ -9,10 +9,10 @@
     "episode": {
         "media": {"mp3": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3"},
         "title": "Les Tartuffes #1",
-        "url": "http://thetartuffebay.dev/podcast/Les_Tartuffes_1.mp3",
-        "coverUrl": "http://www.thetartuffebay.org/ui/images/podcast.jpg",
-        "subtitle": "Avec Eyldebrandt, Gibbonaz, Fenston, Remiche et Mukumi",
-        "description": "Description de l'épisode",
+        "url": "http://www.thetartuffebay.org/podcast/Les_Tartuffes_1.mp3",
+        "coverUrl": "http://www.thetartuffebay.org/ui/images/Podcast_Live_Carre_HD_01.jpg",
+        "subtitle": "Présenté par Eyldebrandt, avec Gibbonaz, Fenston, Remiche et Mukumi",
+        "description": "Sous la houlette de (Mich)Eyldebrandt, la fine équipe composée de Fenston, Remiche, Mukumi et Gibbonaz se réunit pour parler de l'actualité vidéo ludique de façon totalement professionnelle, et avec une qualité sonore prodigieuse. Avec notamment un mini dossier sur les annonces de la Gamescom, un long exposé sur les origines de Cyberpunk 2077, et un petit aparté sur les nouvelles cartes Nvidia",
         "chaptermarks": [
             {"start": "00:00:00", "title": "Intro"},
             {"start": "00:00:29", "title": "Sommaire"},
@@ -40,7 +40,7 @@
             {"start": "00:47:06", "title": "World War III"},
             {"start": "00:48:02", "title": "Dragon Quest XI"},
             {"start": "00:50:19", "title": "Resident Evil 2"},
-            {"start": "00:55:07", "title": "Assassin's Creed Odissey"},
+            {"start": "00:55:07", "title": "Assassin's Creed Odyssey"},
             {"start": "01:05:26", "title": "Devil May Cry 5"},
             {"start": "01:07:01", "title": "Sekiro: Shadows Die Twice"},
             {"start": "01:14:53", "title": "The Surge 2"},
